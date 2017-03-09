@@ -62,13 +62,13 @@ Program FirstHarmonic
 	!                                                     !
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	! the buoyancy frequency
-	real*8 BV
+	real*8 BV, omega
 	! the group velocities and the viscous dissipation coefficients and amplitude half-width and the wave length in x direction
 	real*8 Cgx,Cgy,alpha,sigma,lambdax
 	! the viscous dissipation for first harmonic and the wave numbers and the inital amplitude of the incident beam
 	real*8 alpha_2,kx,kz,A_0
 	! the parameter for the first higher harmonic
-	real*8 kx_har,kz_har,omega_har
+	real*8 kx_har,kz_har,omega_har,Cgx_har,Cgy_har
 	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
@@ -125,22 +125,23 @@ Program FirstHarmonic
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	! the kinematic viscosity
 	xnu=10E-1
-	! the group velocities
-	Cgx=0.05
-	Cgy=-0.05
 	! the viscous dissipation coefficient
 	alpha=0.0002
 	
-	!the wave numbers and 
-	kx=0.0875
-	kz=-0.0875
+	!the wave number in x direction
+	kx=0.875
 	!the inital amplitude of the incident beam
 	A_0=0.3
 	! the wave length of the incident internal wave beam in x direction 
 	lambdax=2.*pi/kx
 	! amplitude half-width
 	sigma=0.5*lambdax
-	
+	! the bouyancy frequency 
+	BV=2.34
+	! the incident internal wave frequency 
+	omega=0.9
+	! the first harmonci frequency
+	omega_har=2.*omega
 	! the first harmonic frequency and wave numbers
 	kx_har=2.*kx
 	
@@ -152,8 +153,8 @@ Program FirstHarmonic
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	! domian properties: number of points in domain and length of domain
-	Nx=20
-	Ny=20
+	Nx=40
+	Ny=40
 	! the domain length in x direction and y direction
 	Lx=10.*lambdax
 	Ly=5.*lambdax
@@ -181,23 +182,17 @@ Program FirstHarmonic
 	allocate(xi_ref(2))
 	allocate(xr_ref(2))
 	
-	do i=1,Ny
-		do j=1,Nx
-			if(j==1 .and. i>10 .and. i<12) then
-				F((i-1)*Nx+j)=20.
-			else
-				F(i)=0.
-			end if		
-		end do
-	end do
+	! the reference points 
+	! the incident reference
+	xi_ref(1)=2.*lambdax
+	xi_ref(2)=0.
 	
-	! 2D boundary cond
-	call TwoDBCFirst(BCMatrix2D,0,1,1,0,Nx,Ny)
-	call ViscousAdvection(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx,Cgy,alpha)
-	call TwoDBCApplyFirst(BCMatrix2D,VisAdvMatrix,SysMatrix,Nx,Ny)
-	call invertSVD(Nx*Ny,SysMatrix,InvSysMatrix)
-	call TwoDRHS(RHS,F,Nx,Ny)
-	call matvect(InvSysMatrix,RHS,F,Nx*Ny)
+	! let's calculate the first harmonic wave number in z direction
+	call getWaveNumberInZ(BV,omega_har, kx_har, kz_har)
+	! let's calculat the group velocities for the incident internal wave beam
+	call getGroupVelocity(Cgx,Cgy,BV,omega,kx,kz)
+	! let's calculate the reflection point
+	call getReflectionPoint(xr_ref,xi_ref,Cgx,Cgy,Lx,Ly)
 	! let's generate the mother grid
 	call TwoDMapXY(x_2Dmother,wx,wy,Nx,Ny)
 	! let's generate the real grid
@@ -206,31 +201,53 @@ Program FirstHarmonic
 		x_2Dreal(i,2)=(x_2Dmother(i,2)+1)*Ly/2.
 	end do
 	
-	! the reference points 
-	! the incident reference
-	xi_ref(1)=0.
-	xi_ref(2)=0.
-	! the reflecting reference
-	xr_ref(1)=5.*lambdax
-	xr_ref(2)=5.*lambdax
-	
 	! let's get the incident internal wave beam field
 	do i=1,Nx*Ny
-		call getIncidentAmplitude(Ampx_inc(i),x_2Dreal(i,:),xi_ref,sigma, alpha, A_0, kx, kz)
-		call getIncidentAmplitude(Ampx_ref(i),x_2Dreal(i,:),xr_ref,sigma, alpha, A_0, kx, -1.*kz)
+		call getIncidentAmplitude(Ampx_inc(i),x_2Dreal(i,:),xi_ref,sigma, alpha, A_0, kx, -1.*kz)
+		call getIncidentAmplitude(Ampx_ref(i),x_2Dreal(i,:),xr_ref,sigma, alpha, A_0, kx, kz)
+		F(i)=Ampx_inc(i)*Ampx_ref(i)*dsin(kz_har*x_2Dreal(i,2)-2.*kx*x_2Dreal(i,2))
+		!print*,F(i)
 	end do
+	
+	open(142,file='IncidentAmplitude.dat',status='unknown')
+	open(143,file='ReflectingAmplitude.dat',status='unknown')
+	open(144,file='RHSForcing.dat',status='unknown')
+	
+	do i=1,Nx*Ny
+		write(142,*) x_2Dreal(i,:)/lambdax,Ampx_inc(i)
+		write(143,*) x_2Dreal(i,:)/lambdax,Ampx_ref(i)
+		write(144,*) x_2Dreal(i,:)/lambdax,F(i)
+	end do
+	
+	! it is set to zero at boundaries
+	do i=1,Ny
+		do j=1,Nx
+			if(j==1 .or. i==Ny) then
+				F((i-1)*Nx+j)=0.
+			end if		
+		end do
+	end do
+	
+	! 2D boundary cond
+	call TwoDBCFirst(BCMatrix2D,0,1,1,0,Nx,Ny)
+	! let's calculate the group velocities for the first harmonic frequency 
+	call getGroupVelocity(Cgx_har,Cgy_har,BV,omega_har,kx_har,kz_har)
+	
+	call ViscousAdvection(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx_har,-1.*Cgy_har,alpha)
+	call TwoDBCApplyFirst(BCMatrix2D,VisAdvMatrix,SysMatrix,Nx,Ny)
+	call invertSVD(Nx*Ny,SysMatrix,InvSysMatrix)
+	call TwoDRHS(RHS,F,Nx,Ny)
+	call matvect(InvSysMatrix,RHS,F,Nx*Ny)
+	
+	
 	
 	open(140,file='2DLaplace.dat',status='unknown')
 	open(141,file='2DNumerical.dat',status='unknown')
-	open(142,file='IncidentAmplitude.dat',status='unknown')
-	open(143,file='ReflectingAmplitude.dat',status='unknown')
 	
 	do i=1,Nx*Ny
 	!	write(140,*) BCMatrix2D(i,:)
 	!	write(140,*) SysMatrix(i,:)
 		write(141,*) x_2Dreal(i,:)/lambdax,F(i)
-		write(142,*) x_2Dreal(i,:)/lambdax,Ampx_inc(i)
-		write(143,*) x_2Dreal(i,:)/lambdax,Ampx_ref(i)
 	end do
 		
 		
