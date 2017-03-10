@@ -9,7 +9,7 @@ AmpFharx=SimData1(:,3);
 SimData2=importdata('IncidentAmplitude.dat');
 x=SimData2(:,1);
 y=SimData2(:,2);
-%AmpFharx=SimData2(:,3);
+AmpIncx=SimData2(:,3);
 
 SimData3=importdata('ReflectingAmplitude.dat');
 
@@ -25,6 +25,7 @@ Ny=40;
 %% let's reshape vectors to plot them
 
 AmpFharx_r = reshape(AmpFharx,Nx,Ny);
+AmpIncx_r = reshape(AmpIncx,Nx,Ny);
 AmpRefx_r = reshape(AmpRefx,Nx,Ny);
 RHS_r = reshape(RHS,Nx,Ny);
 x_r = reshape(x,Nx,Ny);
@@ -37,6 +38,17 @@ figure(1)
 contourf(x_r,y_r,AmpFharx_r,'LineColor','none')
 colorbar
 title('The amplitute of the first higher harmonic velocity  in x direction', 'FontSize', 8)
+xlabel('x/\lambda_x')
+ylabel('z/\lambda_x')
+hcb=colorbar
+title(hcb,'A_{2\omega_0}^{x}/A_0')
+
+%% let's generate the countor plot
+figure(1)
+
+contourf(x_r,y_r,AmpIncx_r,'LineColor','none')
+colorbar
+title('The amplitute of the incident velocity  in x direction', 'FontSize', 8)
 xlabel('x/\lambda_x')
 ylabel('z/\lambda_x')
 hcb=colorbar
