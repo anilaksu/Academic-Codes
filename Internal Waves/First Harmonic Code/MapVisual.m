@@ -6,6 +6,9 @@ SimData1=importdata('2DNumerical.dat');
 %y=SimData1(:,2);
 AmpFharx=SimData1(:,3);
 
+%let's clean the data
+[ AmpFharx ] = cleanData(AmpFharx);
+
 SimData2=importdata('IncidentAmplitude.dat');
 x=SimData2(:,1);
 y=SimData2(:,2);
@@ -18,6 +21,8 @@ AmpRefx=SimData3(:,3);
 SimData4=importdata('RHSForcing.dat');
 
 RHS=SimData4(:,3);
+
+[ RHS ] = cleanData(RHS);
 
 Nx=40;
 Ny=40;
@@ -44,7 +49,7 @@ hcb=colorbar
 title(hcb,'A_{2\omega_0}^{x}/A_0')
 
 %% let's generate the countor plot
-figure(1)
+figure(2)
 
 contourf(x_r,y_r,AmpIncx_r,'LineColor','none')
 colorbar
@@ -54,7 +59,7 @@ ylabel('z/\lambda_x')
 hcb=colorbar
 title(hcb,'A_{2\omega_0}^{x}/A_0')
 
-figure(2)
+figure(3)
 
 contourf(x_r,y_r,AmpRefx_r,'LineColor','none')
 colorbar
@@ -64,7 +69,7 @@ ylabel('z/\lambda_x')
 hcb=colorbar
 title(hcb,'A_{ref}^{x}/A_0')
 
-figure(3)
+figure(4)
 
 contourf(x_r,y_r,RHS_r,'LineColor','none')
 colorbar
