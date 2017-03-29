@@ -42,7 +42,7 @@ subroutine getReflectionPoint(x_reflect,x_ref,Cgx,Cgz,Lx,Lz)
 	real*8 theta
 	
 	! let's calculate propagation angle
-	theta=datan(Cgz/Cgx)
+	theta=datan(Cgx/Cgz)
 	
 	! it has to be the top level in z direction
 	x_reflect(2)=Lz
@@ -68,7 +68,8 @@ subroutine getIncidentAmplitude(Amp,x,x_ref,sigma, alpha, A_0, kx, kz)
 	allocate(x_rot(2))
 
 	! the rotation angle
-	theta=datan(-1.d0*kz/kx)
+	theta=datan(-1.d0*kx/kz)
+	! print*,"the angle of rotation", theta
 	! let's get the rotated coordinates
 	call Rotate2D(x_rot,x,x_ref,theta)
 	
@@ -87,7 +88,22 @@ subroutine Rotate2D(x_rot,x,x_ref,theta)
 	real*8, intent(in):: theta
 	
 	! let's perform the rotation 
-	x_rot(1)=dcos(theta)*(x(1)-x_ref(1))+dsin(theta)*(x(2)-x_ref(2))
-	x_rot(2)=dsin(theta)*(x(1)-x_ref(1))-dcos(theta)*(x(2)-x_ref(2))
+	x_rot(1)=dcos(theta)*(x(1)-x_ref(1))-dsin(theta)*(x(2)-x_ref(2))
+	x_rot(2)=dsin(theta)*(x(1)-x_ref(1))+dcos(theta)*(x(2)-x_ref(2))
 	
 end subroutine Rotate2D
+
+subroutine BackRotate2D(x_rot,x,x_ref,theta)
+		
+	!the original coordinates and the reference coordinate
+	real*8, intent(in),dimension(2):: x,x_ref
+	!the rotated coordinates
+	real*8, intent(inout),dimension(2):: x_rot
+	!the rotation angle
+	real*8, intent(in):: theta
+	
+	! let's perform the rotation 
+	x_rot(1)=dcos(theta)*x(1)-dsin(theta)*x(2)+x_ref(1)
+	x_rot(2)=dsin(theta)*x(1)+dcos(theta)*x(2)+x_ref(2)
+	
+end subroutine BackRotate2D

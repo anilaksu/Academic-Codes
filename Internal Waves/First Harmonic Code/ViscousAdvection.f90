@@ -43,7 +43,8 @@ subroutine ViscousAdvection(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx,Cgy,alpha)
 		! x-derivative 
 		do j=1,Nx
 			do k=1,Nx
-				VisAdvMatrix(istart+j,istart+k)=2.*Cgx*D1x(j,k)*wx(j)*wy(i)/Lx
+				VisAdvMatrix(istart+j,istart+k)=2.*Cgx*D1x(j,k)/Lx
+				!*wx(j)*wy(i)*Ly
 				!print*,LaplaceMatrix(istart+j,istart+k)
 			end do 
 		end do
@@ -54,7 +55,8 @@ subroutine ViscousAdvection(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx,Cgy,alpha)
 		! y-derivative of laplacian
 		do j=1,Ny
 			do k=1,Ny
-				VisAdvMatrix(i+Nx*(j-1),i+Nx*(k-1))=VisAdvMatrix(i+Nx*(j-1),i+Nx*(k-1))+2.*Cgy*D1y(j,k)*wy(j)*wx(i)/Ly
+				VisAdvMatrix(i+Nx*(j-1),i+Nx*(k-1))=VisAdvMatrix(i+Nx*(j-1),i+Nx*(k-1))+2.*Cgy*D1y(j,k)/Ly
+				!*wy(j)*wx(i)*Lx
 				!print*,LaplaceMatrix(istart+j,istart+k)
 			end do 
 		end do
@@ -66,7 +68,8 @@ subroutine ViscousAdvection(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx,Cgy,alpha)
 			! the counter 
 			istart=(i-1)*Nx+j
 			
-			VisAdvMatrix(istart,istart)=VisAdvMatrix(istart,istart)+alpha*wx(j)*wy(i)
+			VisAdvMatrix(istart,istart)=VisAdvMatrix(istart,istart)+alpha
+			!*wx(j)*wy(i)*Lx*Ly/4.
 		end do
 	end do
 	

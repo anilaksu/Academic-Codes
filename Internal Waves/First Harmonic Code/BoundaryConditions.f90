@@ -173,7 +173,7 @@ subroutine TwoDBCFirst(BCMatrix,LB,RB,BB,TB,Nx,Ny)
 		!! dirichlet-dirichlet boundary condition
 		if(TB==0 .and. BB==0) then
 			do j=1,Ny
-				do i=2,Nx-1
+				do i=2,Nx
 					! the bottom boundary 
 					if(j==1) then 
 						BCMatrix(jstart+i-1,jstart+i-1)=1.+BCMatrix(jstart+i-1,jstart+i-1)
@@ -186,7 +186,7 @@ subroutine TwoDBCFirst(BCMatrix,LB,RB,BB,TB,Nx,Ny)
 			 ! dirichlet on bottom boundary condition
 		else if (TB==1 .and. BB==0) then
 				do j=1,Ny
-					do i=2,Nx-1
+					do i=2,Nx
 						! the bottom boundary 
 						if(j==1) then 
 							BCMatrix(jstart+i-1,jstart+i-1)=1.+BCMatrix(jstart+i-1,jstart+i-1)
@@ -197,7 +197,7 @@ subroutine TwoDBCFirst(BCMatrix,LB,RB,BB,TB,Nx,Ny)
 			  ! dirichlet on top boundary condition
 			 else if (TB==0 .and. BB==1) then
 					 	do j=1,Ny
-							do i=2,Nx-1
+							do i=2,Nx
 								! the top boundary
 								if(j==Ny) then 					
 									BCMatrix((jend-1)*Nx+i,(jend-1)*Nx+i)=1.+BCMatrix((jend-1)*Nx+i,(jend-1)*Nx+i)
@@ -227,7 +227,7 @@ subroutine TwoDBCApplyFirst(BCMatrix,GEMatrix,SysMatrix,Nx,Ny)
 	! the boundary conditions added
 	do i=1,Nx*Ny
 		! if there is no boundary condition
-		if(sum(BCMatrix(i,:))==0.) then	
+		if(sum(BCMatrix(i,:))<10.**-2.) then	
 			SysMatrix(i,:)=GEMatrix(i,:)
 		else		
 			SysMatrix(i,:)=BCMatrix(i,:)

@@ -1,7 +1,7 @@
 
 % this routine is generated to visualize 2D solution
  
-SimData1=importdata('2DNumerical.dat');
+SimData1=importdata('E_har.dat');
 %x=SimData1(:,1);
 %y=SimData1(:,2);
 AmpFharx=SimData1(:,3);
@@ -42,12 +42,12 @@ figure(1)
 
 contourf(x_r,y_r,AmpFharx_r,'LineColor','none')
 colorbar
-title('The amplitute of the first higher harmonic velocity  in x direction', 'FontSize', 8)
+title('The energy flux of the first higher harmonic wave  in \xi_{2\omega_0} direction', 'FontSize', 8)
 xlabel('x/\lambda_x')
 ylabel('z/\lambda_x')
 hcb=colorbar
-title(hcb,'A_{2\omega_0}^{x}/A_0')
-
+title(hcb,'F_{2\omega_0}^{\xi_{2\omega_0}}/A_{0}^4')
+pbaspect([3 1 1])
 %% let's generate the countor plot
 figure(2)
 
@@ -58,7 +58,7 @@ xlabel('x/\lambda_x')
 ylabel('z/\lambda_x')
 hcb=colorbar
 title(hcb,'A_{2\omega_0}^{x}/A_0')
-
+pbaspect([3 1 1])
 figure(3)
 
 contourf(x_r,y_r,AmpRefx_r,'LineColor','none')
@@ -68,7 +68,7 @@ xlabel('x/\lambda_x')
 ylabel('z/\lambda_x')
 hcb=colorbar
 title(hcb,'A_{ref}^{x}/A_0')
-
+pbaspect([3 1 1])
 figure(4)
 
 contourf(x_r,y_r,RHS_r,'LineColor','none')
@@ -78,3 +78,4 @@ xlabel('x/\lambda_x')
 ylabel('z/\lambda_x')
 hcb=colorbar
 title(hcb,'A_{ref}^{x}/A_0')
+pbaspect([3 1 1])
