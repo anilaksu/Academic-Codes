@@ -22,7 +22,8 @@ Program FirstHarmonic
 	real*8, allocatable:: x_2Dreal(:,:),x_2Dmother(:,:)
 	! the reference points for the incident and the reflecting internal wave beam
 	real*8, allocatable:: xi_ref(:),xr_ref(:)
-	
+	! the coordinates to be used in interpolation
+	real*8, allocatable::x_intData(:,:)
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
 	!               Dependent Variables                   !
@@ -40,7 +41,8 @@ Program FirstHarmonic
 	real*8, allocatable::u_int(:),v_int(:)
 	! the famplitude for the first harmonic wave field in interpolation grid
 	real*8, allocatable::Ampx_int(:),Ampz_int(:),E_int(:)
-	
+	! the original data to be used in interpolation
+	real*8, allocatable::Ampx_intData(:),Ampz_intData(:),E_intData(:)
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
 	!         The dimensions of dependent and 			  !
@@ -57,6 +59,8 @@ Program FirstHarmonic
 	integer Nx,Ny
 	! the number of points in interpolation grid 
 	integer Nx_int,Ny_int
+	! the indice array to be used in interpolation
+	integer, allocatable::Indices(:)
 	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
@@ -162,8 +166,8 @@ Program FirstHarmonic
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	! domian properties: number of points in domain and length of domain
-	Nx=40.
-	Ny=40.
+	Nx=10
+	Ny=10
 	! the domain length in x direction and y direction
 	Lx=25.*lambdax
 	Ly=4.3*lambdax
@@ -206,7 +210,8 @@ Program FirstHarmonic
 	! let's calculate the reflection point
 	call getReflectionPoint(xr_ref,xi_ref,Cgx,Cgy,Lx,Ly)
 	! let's generate the mother grid
-	call TwoDMapXY(x_2Dmother,wx,wy,Nx,Ny)
+	!call TwoDMapXY(x_2Dmother,wx,wy,Nx,Ny)
+	call TwoDMapXYUniform(x_2Dmother,Nx,Ny)
 	! let's generate the real grid
 	do i=1,Nx*Ny
 		x_2Dreal(i,1)=(x_2Dmother(i,1)+1)*Lx/2.
@@ -248,10 +253,9 @@ Program FirstHarmonic
 	! let's calculate viscous dissipation coefficient for the first higher harmonic signal
 	alpha_har=xnu*(BV**2.)*(kx**2.)/(2.*dsqrt(Cgx_har**2.+Cgy_har**2.)*(omega**2.))
 	!print*,"the group velocity of first harmonic",Cgx_har,Cgy_har,Cgx,Cgy
-	call ViscousAdvection(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx_har,-1.*Cgy_har,alpha_har)
+	call ViscousAdvectionFinite(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx_har,-1.*Cgy_har,alpha_har)
 	call TwoDBCApplyFirst(BCMatrix2D,VisAdvMatrix,SysMatrix,Nx,Ny)
 	call invertSVD(Nx*Ny,SysMatrix,InvSysMatrix)
-	!call TwoDRHS(RHS,F,Nx,Ny)
 	call matvect(InvSysMatrix,F,Ampx_har,Nx*Ny)
 			
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -300,7 +304,7 @@ Program FirstHarmonic
 	end do
 	
 	! just to check the orhogonality relation between wave number and group velocity
-	!print*, Cgx_har,Cgy_har,kx_har,kz_har
+	print*, Cgx_har,Cgy_har,kx_har,kz_har
 	!print*, (Cgx_har*kx_har-Cgy_har*kz_har)
 	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -309,7 +313,7 @@ Program FirstHarmonic
 	!	Ray path										  !
 	!                                                     !
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		
+	
 	! the number of points in interpolation grid
 	Nx_int=30
 	! let's allocate the interpolation parameters
@@ -322,6 +326,7 @@ Program FirstHarmonic
 	allocate(Ampx_int(Nx_int))
 	allocate(Ampz_int(Nx_int))
 	allocate(E_int(Nx_int))
+	allocate(Indices(Nx*Ny))
 	! let's generate evenly distributed grid
 	do i=1,3
 		do j=1,10
@@ -333,25 +338,38 @@ Program FirstHarmonic
 	end do
 	
 	theta_har=datan(-1.*kx_har/kz_har)
-    print*,"the angle of rotation", theta_har
-	print*, "the reference point", xr_ref/lambdax
+    !print*,"the angle of rotation", theta_har
+	!print*, "the reference point", xr_ref/lambdax
 	
 	
 	
 	do i=1,Nx_int
 		call BackRotate2D(x_rot2D(i,:),x_int2D(i,:),xr_ref,theta_har)
-		print*,x_int2D(i,:),x_rot2D(i,:)
+		!print*,x_int2D(i,:),x_rot2D(i,:)
 	end do
-		
-	! let's perform the interpolation
-	call interpolation2D(IntMatrix,x_rot2D(:,1),x_2Dreal(:,1),x_rot2D(:,2),x_2Dreal(:,2),Nx_int,Nx*Ny)
-	call matvectnon(IntMatrix,E_har,E_int,Nx_int,Nx*Ny)
-		
-	open(145,file='E_int.dat',status='unknown')
 	
-	do i=1,30
-		write(145,*) x_rot2D(i,:)/lambdax,E_int(i)/(A_0**4.)
+	!! data refinement for interpolation, it eliminates the data far from the region which probably increases
+	!! the error
+	call getInterpolationPoints(Indices,counter,x_rot2D,x_2Dreal,lambdax,Nx_int,Nx*Ny)
+	! the original data to be used in interpolation
+	allocate(Ampx_intData(counter))
+	allocate(Ampz_intData(counter))
+	allocate(E_intData(counter))
+	allocate(x_intData(counter,2))
+	call getDataForInterpolation(Indices(1:counter),E_har,E_intData,x_2Dreal,x_intData,counter,Nx*Ny)
+	
+	do i=1,counter
+		print*,x_intData(i,:)
 	end do
+	! let's perform the interpolation
+	!call interpolation2D(IntMatrix,x_rot2D(:,1),x_2Dreal(:,1),x_rot2D(:,2),x_2Dreal(:,2),Nx_int,Nx*Ny)
+	!call matvectnon(IntMatrix,E_har,E_int,Nx_int,Nx*Ny)
+		
+	!open(145,file='E_int.dat',status='unknown')
+	
+	!do i=1,30
+	!	write(145,*) x_rot2D(i,:)/lambdax,E_int(i)/(A_0**4.)
+	!end do
 		
 	
 End Program FirstHarmonic	

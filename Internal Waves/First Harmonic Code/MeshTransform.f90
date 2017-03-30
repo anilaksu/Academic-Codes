@@ -137,6 +137,25 @@ subroutine TwoDMapXY(x_grid,wx,wy,Nx,Ny)
 		
 end subroutine TwoDMapXY
 
+subroutine TwoDMapXYUniform(x_grid,Nx,Ny)
+	integer i,j
+	! the number of points on grid in x nad y direction  
+	integer, intent(in):: Nx, Ny
+	!the grid coordinate array
+	real*8, intent(inout),dimension(Ny*Ny,2):: x_grid
+	
+	! let's generate the grid
+	do i=1,Nx
+		do j=1,Ny
+			! the x coordinate of the grid
+			x_grid((j-1)*Nx+i,1)=-1.+2.*(i-1)/(Nx-1)
+			! the y coordinate of the grid
+			x_grid((j-1)*Nx+i,2)=-1.+2.*(j-1)/(Nx-1)
+		end do
+	end do
+		
+end subroutine TwoDMapXYUniform
+
 subroutine TwoDMeshTransform(x_trans,x_surf,x_grid,Nsurf,Ngrid)
 	! this routine maps and generates arbitrary surface to 2D square domain
 	! x_surf is the surface elements of arbitrary domain, it is given in counter-clockwise direction

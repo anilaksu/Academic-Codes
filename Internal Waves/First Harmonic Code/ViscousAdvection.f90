@@ -1,6 +1,7 @@
-!! this routine generates 1-D and 2-D Laplacian Operators
-subroutine ViscousAdvection(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx,Cgy,alpha)
-	!! This function returns differentian matrix in 1D on mother interval -1 to 1
+!! this routine generates 1-D and 2-D Viscous Dissipation Operators with Spectral Methods
+!! on GLL-GLL grid and finite differences
+subroutine ViscousAdvectionSpectral(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx,Cgy,alpha)
+	!! This function returns Viscous Advection operator on 2D GLL-GLL grid
 	integer i,j,k 
 	!! the start and end of indices
 	integer istart,iend,jstart,jend
@@ -73,6 +74,68 @@ subroutine ViscousAdvection(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx,Cgy,alpha)
 		end do
 	end do
 	
-end subroutine ViscousAdvection
+end subroutine ViscousAdvectionSpectral
 
+
+subroutine ViscousAdvectionFinite(VisAdvMatrix,Nx,Ny,Lx,Ly,Cgx,Cgy,alpha)
+	!! This function returns Viscous Advection operator on uniform 2D grid 
+	integer i,j,k 
+	!! the start and end of indices
+	integer istart,iend,jstart,jend
+	! the number of grid points
+	integer, intent(in):: Nx,Ny
+	! the domain length in x and y direction
+	real*8, intent(in):: Lx,Ly
+	! the group velocities and the viscous dissipation coefficients
+	real*8, intent(in):: Cgx,Cgy,alpha
+	!the differentiation matrix
+	real*8, intent(inout),dimension(Nx*Ny,Nx*Ny):: VisAdvMatrix
+	! the finite step sizes
+	real*8 :: dx,dy
+	
+	! the step sizes 
+	dx=Lx/(Nx-1)
+	dy=Ly/(Ny-1)
+	
+	! the derivative in x direction multiplied with group velocity in x direction
+	do i=1,Ny
+		istart=Nx*(i-1)
+		! x-derivative 
+		do j=1,Nx		
+			if(j==1) then
+				VisAdvMatrix(istart+j,istart+j)=-Cgx/dx
+				VisAdvMatrix(istart+j,istart+j+1)=Cgx/dx			
+			else
+				VisAdvMatrix(istart+j,istart+j-1)=-Cgx/dx
+				VisAdvMatrix(istart+j,istart+j)=Cgx/dx
+			end if
+			
+		end do
+	end do
+	
+	! the derivative in y direction multiplied with group velocity in y direction
+	do i=1,Nx
+		! y-derivative of laplacian
+		do j=1,Ny			
+				if(j==Ny) then
+					VisAdvMatrix(i+Nx*(j-1),i+Nx*(j-2))=VisAdvMatrix(i+Nx*(j-1),i+Nx*(j-2))-Cgy/dy	
+					VisAdvMatrix(i+Nx*(j-1),i+Nx*(j-1))=VisAdvMatrix(i+Nx*(j-1),i+Nx*(j-1))+Cgy/dy			
+				else
+					VisAdvMatrix(i+Nx*(j-1),i+Nx*(j-1))=VisAdvMatrix(i+Nx*(j-1),i+Nx*(j-1))-Cgy/dy	
+					VisAdvMatrix(i+Nx*(j-1),i+Nx*j)=VisAdvMatrix(i+Nx*(j-1),i+Nx*j)+Cgy/dy	
+				end if
+		end do
+	end do
+	
+	! the viscous dissipation term
+	do i=1,Ny		
+		do j=1,Nx
+			! the counter 
+			istart=(i-1)*Nx+j
+			
+			VisAdvMatrix(istart,istart)=VisAdvMatrix(istart,istart)+alpha
+		end do
+	end do
+	
+end subroutine ViscousAdvectionFinite
 
