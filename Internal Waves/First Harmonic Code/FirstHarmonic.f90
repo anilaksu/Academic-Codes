@@ -43,6 +43,9 @@ Program FirstHarmonic
 	real*8, allocatable::Ampx_int(:),Ampz_int(:),E_int(:)
 	! the original data to be used in interpolation
 	real*8, allocatable::Ampx_intData(:),Ampz_intData(:),E_intData(:)
+	! the total harmonic energy along the Ray path
+	real*8, allocatable::E_tot(:)
+	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
 	!         The dimensions of dependent and 			  !
@@ -142,7 +145,7 @@ Program FirstHarmonic
 	! the density
 	rho=1000.
 	!the wave number in x direction
-	kx=2.*pi/0.875
+	kx=4.*pi/0.875
 	!the inital amplitude of the incident beam
 	A_0=0.3
 	! the wave length of the incident internal wave beam in x direction 
@@ -152,7 +155,7 @@ Program FirstHarmonic
 	! the bouyancy frequency 
 	BV=2.34
 	! the incident internal wave frequency 
-	omega=0.42*BV
+	omega=0.176*BV
 	! the first harmonci frequency
 	omega_har=2.*omega
 	! the first harmonic frequency and wave numbers
@@ -166,10 +169,10 @@ Program FirstHarmonic
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	! domian properties: number of points in domain and length of domain
-	Nx=10
-	Ny=10
+	Nx=40
+	Ny=40
 	! the domain length in x direction and y direction
-	Lx=25.*lambdax
+	Lx=40.*lambdax
 	Ly=4.3*lambdax
 	
 	! let's allocate all the related matrices
@@ -315,11 +318,13 @@ Program FirstHarmonic
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	! the number of points in interpolation grid
-	Nx_int=30
+	Nz_int=40
+	Nx_int=10*Nz_int
+
 	! let's allocate the interpolation parameters
 	allocate(x_int2D(Nx_int,2))
 	allocate(x_rot2D(Nx_int,2))
-	allocate(IntMatrix(Nx*Ny,Nx_int))
+	
 	! the velocity field
 	allocate(u_int(Nx_int))
 	allocate(v_int(Nx_int))
@@ -328,11 +333,11 @@ Program FirstHarmonic
 	allocate(E_int(Nx_int))
 	allocate(Indices(Nx*Ny))
 	! let's generate evenly distributed grid
-	do i=1,3
+	do i=1,Nz_int
 		do j=1,10
 			counter=(i-1)*10+j
-			x_int2D(counter,2)=-2.*lambdax+(j-1)*1.5*lambdax/9
-			x_int2D(counter,1)=0.5*i*lambdax
+			x_int2D(counter,2)=-1.5*lambdax+(j-1)*1.9*lambdax/9
+			x_int2D(counter,1)=0.1*i*lambdax
 			!print*,x_int2D(counter,:)
 		end do
 	end do
@@ -350,26 +355,54 @@ Program FirstHarmonic
 	
 	!! data refinement for interpolation, it eliminates the data far from the region which probably increases
 	!! the error
-	call getInterpolationPoints(Indices,counter,x_rot2D,x_2Dreal,lambdax,Nx_int,Nx*Ny)
+	call getInterpolationPoints(Indices,counter,x_rot2D,x_2Dreal,8.*lambdax,Nx_int,Nx*Ny)
 	! the original data to be used in interpolation
 	allocate(Ampx_intData(counter))
 	allocate(Ampz_intData(counter))
 	allocate(E_intData(counter))
 	allocate(x_intData(counter,2))
+	allocate(E_tot(Nz_int))
 	call getDataForInterpolation(Indices(1:counter),E_har,E_intData,x_2Dreal,x_intData,counter,Nx*Ny)
 	
-	do i=1,counter
-		print*,x_intData(i,:)
-	end do
-	! let's perform the interpolation
-	!call interpolation2D(IntMatrix,x_rot2D(:,1),x_2Dreal(:,1),x_rot2D(:,2),x_2Dreal(:,2),Nx_int,Nx*Ny)
-	!call matvectnon(IntMatrix,E_har,E_int,Nx_int,Nx*Ny)
-		
-	!open(145,file='E_int.dat',status='unknown')
-	
-	!do i=1,30
-	!	write(145,*) x_rot2D(i,:)/lambdax,E_int(i)/(A_0**4.)
+	!print*,"interpolation coordinates"
+	!do i=1,counter
+	!	print*,x_intData(i,:)/lambdax,E_intData(i)/(A_0**4.)
 	!end do
-		
 	
+	!print*,"interpolated coordinates"
+	!do i=1,Nx_int
+	!	print*,i,x_rot2D(i,:)/lambdax
+	!end do
+	!allocate(IntMatrix(Nx_int,counter))
+	allocate(IntMatrix(Nx_int,counter))
+	! let's perform the interpolation
+	call interpolation2D(IntMatrix,x_rot2D(:,1),x_intData(:,1),x_rot2D(:,2),x_intData(:,2),counter,Nx_int)
+	!call interpolation2D(IntMatrix,x_intData(:,1),x_intData(:,1),x_intData(:,2),x_intData(:,2),counter,counter)
+	call matvectnon(IntMatrix,E_intData,E_int,Nx_int,counter)
+		
+	open(145,file='E_int.dat',status='unknown')
+	!open(146,file='IntMatrix.dat',status='unknown')
+	
+	do i=1,Nx_int
+		write(145,*) x_int2D(i,:)/lambdax,E_int(i)/(A_0**4.)
+		!write(146,*) IntMatrix(i,:)
+	end do
+	
+	! total energy flux calculations
+	E_tot=0.
+	
+	do i=1,Nz_int
+		do j=1,9
+			counter=(i-1)*10+j
+			E_tot(i)=E_tot(i)+0.25*(x_int2D(counter+1,2)-x_int2D(counter,2))*(E_int(counter)+E_int(counter+1))
+		end do
+	end do 
+	
+	open(146,file='E_tot.dat',status='unknown')
+	!open(146,file='IntMatrix.dat',status='unknown')
+	
+	do i=1,Nz_int
+		write(146,*) x_int2D(i*10,1)/lambdax,E_tot(i)/(A_0**4.)
+		!write(146,*) IntMatrix(i,:)
+	end do
 End Program FirstHarmonic	

@@ -28,7 +28,7 @@ subroutine interpolation2D(Ar,xi,x,yi,y,N1,N2)
 	!this function generates A matrix using x coordinates
 	CALL matgen(A,x,y,N1)
 	!this function generates Ai matrix using xi coordinates
-	CALL matgenxi(Ai,xi,x,yi,y,N2,N1)
+	CALL matgenxi(Ai,x,xi,y,yi,N2,N1)
 	! the inversion of the system matrix !
 	CALL invertSVD(N1,A,A1)
 	! the resultant matrix 
@@ -63,16 +63,16 @@ subroutine matgen(A,x,y,N)
 	return 
 end subroutine matgen 
 
-subroutine matgenxi(A,xi,x,yi,y,N1,N2)
+subroutine matgenxi(A,x,xi,y,yi,N1,N2)
 ! this routine is generated to interpolate the data on desired points given as x,y
 integer , intent(in)::N1,N2
 	!N1 is the number of the columns !
 	!N2 is the number of the rows!
 	real*8 ,dimension(N1,N2),intent(inout)::A
 	! Interpolation points
-	real*8 ,dimension(N1),intent(inout)::x,y
+	real*8 ,dimension(N1),intent(inout)::xi,yi
 	! Data Points coordinates xi, yi
-	real*8 ,dimension(N2),intent(inout)::xi,yi
+	real*8 ,dimension(N2),intent(inout)::x,y
 
 	integer i,j,k
 	real*8 c,mq
@@ -84,7 +84,7 @@ integer , intent(in)::N1,N2
 			! the famous rbf ! 
 			! each entry of the matrix is the values of the rbf !
 			! by summing the effect of the each entry multiplied by corresponding alpha coefficent , the resultant interploation is obtained  
-			call multi(mq,xi(j),x(i),yi(j),y(i),c)
+			call multi(mq,x(j),xi(i),y(j),yi(i),c)
 			A(i,j)=mq
 		end do 
 	end do

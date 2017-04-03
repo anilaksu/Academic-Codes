@@ -27,6 +27,16 @@ RHS=SimData4(:,3);
 Nx=40;
 Ny=40;
 
+
+SimData5=importdata('E_int.dat');
+
+EnergyFlux=SimData5(:,3);
+eta=SimData5(:,2)
+
+SimData6=importdata('E_tot.dat');
+
+EnergyFluxTot=SimData6(:,2);
+xi=SimData6(:,1)
 %% let's reshape vectors to plot them
 
 AmpFharx_r = reshape(AmpFharx,Nx,Ny);
@@ -77,5 +87,27 @@ title('RHS Forcing', 'FontSize', 8)
 xlabel('x/\lambda_x')
 ylabel('z/\lambda_x')
 hcb=colorbar
-title(hcb,'A_{ref}^{x}/A_0')
+title(hcb,'F_{2\omega_0}/A_{0}^2')
 pbaspect([3 1 1])
+
+u_limit=40;
+l_limit=31;
+figure(5)
+
+plot(eta(l_limit:u_limit),EnergyFlux(l_limit:u_limit),'LineWidth',2)
+hold on
+plot(eta(l_limit:u_limit),EnergyFlux(l_limit:u_limit),'r*')
+
+title('The first higher harmonic wave at \xi_{2\omega_0}/\lambda_x =1')
+xlabel('x/\lambda_x')
+ylabel('A_{2\omega}^{x}/A_{0}^2')
+
+figure(6)
+
+plot(xi,EnergyFluxTot,'LineWidth',4)
+%hold on
+%plot(xi,EnergyFluxTot,'r*')
+
+title('The first higher harmonic wave energy flux along the Ray path')
+xlabel('\xi_{2\omega_0}/\lambda_x')
+ylabel('F_{2\omega}^{tot}/A_{0}^4')
