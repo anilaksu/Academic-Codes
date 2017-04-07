@@ -1,5 +1,5 @@
 
-Program FirstHarmonic
+Program BrainTumor
 	! this program is written to solve 2D transient elastodynamic model with anomalies on the bounries
 	! it will be excited on two points seperated by distance d, the hope is to mimic parallax effect to 
 	! to detect anomalies
@@ -51,8 +51,10 @@ Program FirstHarmonic
 	!              Elastisity Parameters			      !
 	!                                                     !
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	! the frequency
-	real*8 omega
+	! lame constants and densite
+	real*8 mu, lambda, rho
+	! the excitation wave length 
+	real*8 lambdax
 	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
@@ -60,11 +62,11 @@ Program FirstHarmonic
 	!                                                     !
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	! 1-D Discontinuous SEM Laplacian Operator and Boundary Condition Matrix
-	real*8, allocatable:: LapDis1D(:,:),SEMBCMatrix1D(:,:)
+	real*8, allocatable:: InvMassMatrix(:,:),SEMBCMatrix1D(:,:)
 	! the identity matrix 
 	real*8, allocatable:: ID(:,:),ID2D(:,:)
 	! 2-D Laplacian Operator and Boundary Condition Matrix
-	real*8, allocatable:: VisAdvMatrix(:,:),BCMatrix2D(:,:)
+	real*8, allocatable:: StiffMatrix(:,:),BCMatrix2D(:,:)
 	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
@@ -107,27 +109,11 @@ Program FirstHarmonic
 	!               Elasticity Parameters                 !
 	!                                                     !
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	! the kinematic viscosity
-	xnu=10E-1
-	! the viscous dissipation coefficient
-	alpha=0.0002
-	
-	!the wave number in x direction
-	kx=0.875
-	!the inital amplitude of the incident beam
-	A_0=0.3
-	! the wave length of the incident internal wave beam in x direction 
-	lambdax=2.*pi/kx
-	! amplitude half-width
-	sigma=0.5*lambdax
-	! the bouyancy frequency 
-	BV=2.34
-	! the incident internal wave frequency 
-	omega=0.9
-	! the first harmonci frequency
-	omega_har=2.*omega
-	! the first harmonic frequency and wave numbers
-	kx_har=2.*kx
+	! lame parameters
+	mu=10 
+	lambda=20
+	! the excitation wave length in x direction
+	lambdax=0.875
 	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
@@ -137,20 +123,13 @@ Program FirstHarmonic
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	! domian properties: number of points in domain and length of domain
-	Nx=40
-	Ny=40
+	Nx=5
+	Ny=5
 	! the domain length in x direction and y direction
 	Lx=10.*lambdax
 	Ly=5.*lambdax
 	
-	! let's allocate all the related matrices
-	allocate(BCMatrix2D(Nx*Ny,Nx*Ny))
-	allocate(VisAdvMatrix(Nx*Ny,Nx*Ny))
-	allocate(SysMatrix(Nx*Ny,Nx*Ny))
-	allocate(InvSysMatrix(Nx*Ny,Nx*Ny))
-	
-	allocate(F(Nx*Ny))
-	allocate(RHS(Nx*Ny))
+	! let's allocate the grid
 	allocate(x_2Dmother(Nx*Ny,2))
 	allocate(x_2Dreal(Nx*Ny,2))
 	allocate(wx(Nx))
@@ -163,38 +142,60 @@ Program FirstHarmonic
 	do i=1,Nx*Ny
 		x_2Dreal(i,1)=(x_2Dmother(i,1)+1)*Lx/2.
 		x_2Dreal(i,2)=(x_2Dmother(i,2)+1)*Ly/2.
+		print*,x_2Dmother(i,:)
 	end do
 	
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	!                                                     !
+	!  System Matrices: Mass Matrix and Stiffness Matrix  !
+	!                                                     !
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	
 
-
+	! let's allocate all the related matrices
+	allocate(BCMatrix2D(Nx*Ny,Nx*Ny))
+	allocate(StiffMatrix(Nx*Ny,Nx*Ny))
+	allocate(SysMatrix(Nx*Ny,Nx*Ny))
+	allocate(InvSysMatrix(Nx*Ny,Nx*Ny))
+	!allocate(InvMassMatrix(2*Nx*Ny,2*Nx*Ny))
+	! let's allocate all relavent vector
+	allocate(F(Nx*Ny))
+	allocate(RHS(Nx*Ny))
+	
+	! let's generate the mass matrix
+	!call getInverseMassMatrix(InvMassMatrix,Nx,Ny,Lx,Ly)
+	
 	! it is set to zero at boundaries
 	do i=1,Ny
 		do j=1,Nx
 			if(j==1 .or. i==Ny) then
-				F((i-1)*Nx+j)=0.
+				F((i-1)*Nx+j)=2.
 			end if		
 		end do
 	end do
 	
 	! 2D boundary cond
-	call TwoDBCFirst(BCMatrix2D,0,1,1,0,Nx,Ny)
-	call TwoDBCApplyFirst(BCMatrix2D,VisAdvMatrix,SysMatrix,Nx,Ny)
+	!call TwoDBCFirst(BCMatrix2D,0,1,1,0,Nx,Ny)
+	!call TwoDBCApplyFirst(BCMatrix2D,VisAdvMatrix,SysMatrix,Nx,Ny)
+	!call invertSVD(Nx*Ny,SysMatrix,InvSysMatrix)
+	!call TwoDRHS(RHS,F,Nx,Ny)
+	!call matvect(InvSysMatrix,RHS,F,Nx*Ny)
+	
+	call getStiffMatrix(StiffMatrix,Nx,Ny,lambda,mu)
+	call TwoDBCFirst(BCMatrix2D,0,0,0,0,Nx,Ny)
+	call TwoDBCApplyFirst(BCMatrix2D,StiffMatrix,SysMatrix,Nx,Ny)
 	call invertSVD(Nx*Ny,SysMatrix,InvSysMatrix)
-	call TwoDRHS(RHS,F,Nx,Ny)
-	call matvect(InvSysMatrix,RHS,F,Nx*Ny)
+	call matvect(InvSysMatrix,F,RHS,Nx*Ny)
 	
-	
-	
-	open(140,file='2DLaplace.dat',status='unknown')
+	open(140,file='StiffMatrix.dat',status='unknown')
 	open(141,file='2DNumerical.dat',status='unknown')
 	
 	do i=1,Nx*Ny
 	!	write(140,*) BCMatrix2D(i,:)
-	!	write(140,*) SysMatrix(i,:)
-		write(141,*) x_2Dreal(i,:)/lambdax,F(i)
+	 	write(140,*) StiffMatrix(i,:)
+		write(141,*) x_2Dreal(i,:)/lambdax,RHS(i)
 	end do
 		
 		
 	
 			
-End Program FirstHarmonic	
+End Program BrainTumor

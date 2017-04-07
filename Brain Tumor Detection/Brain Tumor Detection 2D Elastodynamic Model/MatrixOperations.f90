@@ -126,8 +126,6 @@ end subroutine matmultnon
 subroutine IdMatrix(Id,N)
 	! this routine generates identity matrix
 	integer , intent(in)::N
-	! N1 is the number of rows in Matrix L
-	! N2 is the number of columns in Matrix L
 	real*8 ,dimension(N,N),intent(inout)::Id
 	integer i
 	! first let's set it to zero
@@ -138,3 +136,21 @@ subroutine IdMatrix(Id,N)
 
 	return 
 end subroutine IdMatrix
+
+subroutine getTranspose(A,At,N1,N2)
+	! this routine takes transpose of a matrix
+	integer , intent(in)::N1,N2
+	! N1 is the number of rows in Matrix A
+	! N2 is the number of columns in Matrix A
+	real*8 ,dimension(N1,N2),intent(inout)::A
+	real*8 ,dimension(N2,N1),intent(inout)::At
+	integer i,j
+	
+	do i=1,N1
+		do j=1,N2
+			At(j,i)=A(i,j)
+		end do
+	end do
+
+	return 
+end subroutine getTranspose
