@@ -7,8 +7,8 @@ AmpFharx=SimData1(:,3);
 
 
 
-Nx=20;
-Ny=20;
+Nx=40;
+Ny=40;
 
 %% let's reshape vectors to plot them
 

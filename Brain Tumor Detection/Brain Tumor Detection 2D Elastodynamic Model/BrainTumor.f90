@@ -18,17 +18,6 @@ Program BrainTumor
 	
 	! the test grid in coordinate transformation
 	real*8, allocatable:: x_2Dreal(:,:),x_2Dmother(:,:)
-	! the reference points for the incident and the reflecting internal wave beam
-	real*8, allocatable:: xi_ref(:),xr_ref(:)
-	
-	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	!                                                     !
-	!               Dependent Variables                   !
-	!                                                     !
-	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	! displacement field in x and y direction and theit time derivatives
-	real*8, allocatable::u_x(:,:,:),v_x(:,:,:),up_x(:,:,:),vp_x(:,:,:)
-
 	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
@@ -38,20 +27,39 @@ Program BrainTumor
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	! the number of points in grid and the order of legendre polynomial
 	integer N,Nl,Ngrid
-	! the number of subgrids and the number of time steps
-	integer Nsub,Ntime
+	! the number of subgrids 
+	integer Nsub
 	! the length of domain in each direction
 	real*8 :: Lx,Ly
 	! the number of points in each subgrid in x and y direction
 	integer Nx,Ny
 	
-
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	!                                                     !
+	!         The time integration parameters             !
+	!                                                     !
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! the time integration parameter and the step size
+	real*8 theta, dt
+	! the number of time steps
+	integer Ntime
+	! the explicit part of integration
+	real*8, allocatable:: f_time(:)
+	
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	!                                                     !
+	!               Dependent Variables                   !
+	!                                                     !
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! displacement field in x and y direction and theit time derivatives
+	real*8, allocatable::u_x(:,:),v_x(:,:),up_x(:,:),vp_x(:,:)
+	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
 	!              Elastisity Parameters			      !
 	!                                                     !
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	! lame constants and densite
+	! lame constants and density
 	real*8 mu, lambda, rho
 	! the excitation wave length 
 	real*8 lambdax
@@ -62,11 +70,15 @@ Program BrainTumor
 	!                                                     !
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	! 1-D Discontinuous SEM Laplacian Operator and Boundary Condition Matrix
-	real*8, allocatable:: InvMassMatrix(:,:),SEMBCMatrix1D(:,:)
-	! the identity matrix 
-	real*8, allocatable:: ID(:,:),ID2D(:,:)
+	real*8, allocatable:: MassMatrix(:,:),InvMassMatrix(:,:)
+	! the system matrix and its inverse and the right handside matrix
+	real*8, allocatable:: SysMatrix(:,:),InvSysMatrix(:,:),RhsMatrix(:,:)
 	! 2-D Laplacian Operator and Boundary Condition Matrix
 	real*8, allocatable:: StiffMatrix(:,:),BCMatrix2D(:,:)
+	! Boundary condition, Governing Equation and System Matrix and inverse of the system matrix
+	real*8, allocatable:: BCMatrix(:,:),GEMatrix(:,:)
+	!! Differentiation Matrix and the product of the derivatices of lagrange interpolants in x and y direction
+	real*8 ,allocatable:: D1x(:,:),ldpnx(:,:), D1y(:,:),ldpny(:,:)
 	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
@@ -81,16 +93,11 @@ Program BrainTumor
 	integer, allocatable::Nsurf(:)
 	! legendre polynomials and associated q
 	real*8, allocatable:: Ln(:),Lpn(:),q(:),qp(:)
-	! Test matrix 
-	real*8, allocatable:: A(:,:),Ainv(:,:)
-	! Boundary condition, Governing Equation and System Matrix and inverse of the system matrix
-	real*8, allocatable:: BCMatrix(:,:),GEMatrix(:,:),SysMatrix(:,:),InvSysMatrix(:,:)
 	! Test Function
 	real*8, allocatable:: F(:),dF(:),FB(:),LegenData(:)
 	! the right hand side of the equation
 	real*8, allocatable:: RHS(:)
-	! the differentiation matrix
-	real*8, allocatable:: D1(:,:)
+
 
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	!                                                     !
@@ -123,8 +130,10 @@ Program BrainTumor
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	! domian properties: number of points in domain and length of domain
-	Nx=5
-	Ny=5
+	Nx=40
+	Ny=40
+	! the number of time steps
+	Ntime = 100
 	! the domain length in x direction and y direction
 	Lx=10.*lambdax
 	Ly=5.*lambdax
@@ -156,10 +165,12 @@ Program BrainTumor
 	allocate(StiffMatrix(Nx*Ny,Nx*Ny))
 	allocate(SysMatrix(Nx*Ny,Nx*Ny))
 	allocate(InvSysMatrix(Nx*Ny,Nx*Ny))
-	!allocate(InvMassMatrix(2*Nx*Ny,2*Nx*Ny))
+	allocate(RhsMatrix(Nx*Ny,Nx*Ny))
+	allocate(MassMatrix(Nx*Ny,Nx*Ny))
+	allocate(InvMassMatrix(Nx*Ny,Nx*Ny))
 	! let's allocate all relavent vector
-	allocate(F(Nx*Ny))
-	allocate(RHS(Nx*Ny))
+	allocate(u_x(Nx*Ny,Ntime))
+	allocate(f_time(Nx*Ny))
 	
 	! let's generate the mass matrix
 	!call getInverseMassMatrix(InvMassMatrix,Nx,Ny,Lx,Ly)
@@ -167,32 +178,64 @@ Program BrainTumor
 	! it is set to zero at boundaries
 	do i=1,Ny
 		do j=1,Nx
-			if(j==1 .or. i==Ny) then
-				F((i-1)*Nx+j)=2.
+			if(j==1) then
+				!F((i-1)*Nx+j)=dsin(2.*pi*x_2Dreal((i-1)*Nx+j,2)/lambdax)
+				u_x((i-1)*Nx+j,1)=2.
+			else 
+				u_x((i-1)*Nx+j,1)=0.
 			end if		
 		end do
 	end do
+	print*,"okey"
 	
-	! 2D boundary cond
-	!call TwoDBCFirst(BCMatrix2D,0,1,1,0,Nx,Ny)
-	!call TwoDBCApplyFirst(BCMatrix2D,VisAdvMatrix,SysMatrix,Nx,Ny)
-	!call invertSVD(Nx*Ny,SysMatrix,InvSysMatrix)
-	!call TwoDRHS(RHS,F,Nx,Ny)
-	!call matvect(InvSysMatrix,RHS,F,Nx*Ny)
+	! let's generate 2D stiffness matrix 
+	call getStiffMatrix(StiffMatrix,Nx,Ny,wx,wy,ldpnx,ldpny)
+	! let's generate the boundary conditions
+	call TwoDBC(BCMatrix2D,0,0,0,0,Nx,Ny)
+	! let's apply boundary conditions
+	call TwoDBCApplyFirst(BCMatrix2D,StiffMatrix,InvSysMatrix,Nx,Ny)
+	! let's generate the required mass matrix
+	call getMassMatrix(InvMassMatrix,Nx,Ny)
+	! the boundary conditions are also applied to mass matrix in this formulation but this time all of them has to zero
+	call TwoDBC(BCMatrix2D,0,0,0,0,Nx,Ny)
+	! let's apply them 
+	call TwoDBCApplyFirst(BCMatrix2D,InvMassMatrix,MassMatrix,Nx,Ny)
 	
-	call getStiffMatrix(StiffMatrix,Nx,Ny,lambda,mu)
-	call TwoDBCFirst(BCMatrix2D,0,0,0,0,Nx,Ny)
-	call TwoDBCApplyFirst(BCMatrix2D,StiffMatrix,SysMatrix,Nx,Ny)
+	
+	! the time integration Crank-Nicholson method is employed to get more stable and accurate 
+	! solution, it is commonly referred semi implicit time integration as it has explicit and 
+	! implicit part. The calculation of explicit part is straightforward, however implicit part
+	! requires matrix inversion
+	
+	! theta integration parameter
+	theta=0.5
+	
+	! the step size
+	dt=1.
+
+	! the RHS term integration matrix
+	call getRHSMatrix(MassMatrix,InvSysMatrix,RhsMatrix,Nx,Ny,theta,dt)
+	! the integration of RHS
+	call getImplicitIntegrate(MassMatrix,InvSysMatrix,SysMatrix,Nx,Ny,theta,dt)
+	! let's invert it
 	call invertSVD(Nx*Ny,SysMatrix,InvSysMatrix)
-	call matvect(InvSysMatrix,F,RHS,Nx*Ny)
 	
-	open(140,file='StiffMatrix.dat',status='unknown')
+	do i=2,Ntime
+		! the calculation of RHS of time integration, therefore the external forcing of time integration 
+		call matvect(RhsMatrix,u_x(:,(i-1)),f_time,Nx*Ny)
+		! the calculation of implicit part of integration 
+		call matvect(InvSysMatrix,f_time,u_x(:,i),Nx*Ny)		
+	end do
+	
+	!open(139,file='BCMatrix.dat',status='unknown')
+	!open(140,file='StiffMatrix.dat',status='unknown')
 	open(141,file='2DNumerical.dat',status='unknown')
 	
 	do i=1,Nx*Ny
 	!	write(140,*) BCMatrix2D(i,:)
-	 	write(140,*) StiffMatrix(i,:)
-		write(141,*) x_2Dreal(i,:)/lambdax,RHS(i)
+	!	write(139,*) BCMatrix2D(i,:)
+	! 	write(140,*) SysMatrix(i,:)
+		write(141,*) x_2Dreal(i,:)/lambdax,u_x(i,Ntime)
 	end do
 		
 		

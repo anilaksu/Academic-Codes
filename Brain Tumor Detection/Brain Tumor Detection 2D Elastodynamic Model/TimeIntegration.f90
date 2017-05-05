@@ -1,19 +1,35 @@
 !! this routine contains all required subroutines associated with time integration
-subroutine TwoDIDMatrix(Id,Nx,Ny)
-	!! This function generates Identity matrix to integrate the system in time
-	integer i,j,k 
+!! it has to be used with MatrixOperations.f90 which includes all matrix operations routines used here
+subroutine getImplicitIntegrate(M,K,MK,Nx,Ny,theta,dt)
+	!! This function generates the matrix required to perform time integration for 
+	!! given diffusice matrix and mass matrix
+	!! It also requires the time integration coefficient theta
+	integer i,j
 	! the number of grid points in and y direction
 	integer, intent(in):: Nx, Ny
-	!the identity matrix
-	real*8, intent(inout),dimension(Nx*Ny,Nx*Ny):: Id
+	! theta coefficient and the time step
+	real*8, intent(in):: theta, dt
+	!the diffusion and the mass matrix and their combination
+	real*8, intent(inout),dimension(Nx*Ny,Nx*Ny):: K,M,MK
+	! the quantity to be integrated in time and 
 	
-	Id=0.
+	MK=M-dt*(1.-theta)*K
 	
-	do i=2,Ny-1
-		do j=2,Nx-1
-			! Note that the rows spared for boundary conditions are intentionally left empty
-				Id((i-1)*Nx+j,(i-1)*Nx+j)=1.
-		end do
-	end do
+end subroutine getImplicitIntegrate
+
+subroutine getRHSMatrix(M,K,MK,Nx,Ny,theta,dt)
+	!! This function generates the matrix required to perform time integration for 
+	!! given diffusive matrix and mass matrix, it results in the explicit integration term
+	!! It also requires the time integration coefficient theta
+	integer i,j
+	! the number of grid points in and y direction
+	integer, intent(in):: Nx, Ny
+	! theta coefficient and the time step
+	real*8, intent(in):: theta, dt
+	!the diffusion and the mass matrix and their combination
+	real*8, intent(inout),dimension(Nx*Ny,Nx*Ny):: K,M,MK
+	! the quantity to be integrated in time and 
 	
-end subroutine TwoDIDMatrix
+	MK=M+dt*theta*K
+	
+end subroutine getRHSMatrix

@@ -173,7 +173,7 @@ subroutine TwoDBCFirst(BCMatrix,LB,RB,BB,TB,Nx,Ny)
 		!! dirichlet-dirichlet boundary condition
 		if(TB==0 .and. BB==0) then
 			do j=1,Ny
-				do i=2,Nx-1
+				do i=1,Nx
 					! the bottom boundary 
 					if(j==1) then 
 						BCMatrix(jstart+i-1,jstart+i-1)=1.+BCMatrix(jstart+i-1,jstart+i-1)
@@ -186,7 +186,7 @@ subroutine TwoDBCFirst(BCMatrix,LB,RB,BB,TB,Nx,Ny)
 			 ! dirichlet on bottom boundary condition
 		else if (TB==1 .and. BB==0) then
 				do j=1,Ny
-					do i=2,Nx-1
+					do i=1,Nx
 						! the bottom boundary 
 						if(j==1) then 
 							BCMatrix(jstart+i-1,jstart+i-1)=1.+BCMatrix(jstart+i-1,jstart+i-1)
@@ -197,7 +197,7 @@ subroutine TwoDBCFirst(BCMatrix,LB,RB,BB,TB,Nx,Ny)
 			  ! dirichlet on top boundary condition
 			 else if (TB==0 .and. BB==1) then
 					 	do j=1,Ny
-							do i=2,Nx-1
+							do i=1,Nx
 								! the top boundary
 								if(j==Ny) then 					
 									BCMatrix((jend-1)*Nx+i,(jend-1)*Nx+i)=1.+BCMatrix((jend-1)*Nx+i,(jend-1)*Nx+i)
@@ -209,6 +209,114 @@ subroutine TwoDBCFirst(BCMatrix,LB,RB,BB,TB,Nx,Ny)
 	
 	
 end subroutine TwoDBCFirst
+
+subroutine TwoDBC(BCMatrix,LB,RB,BB,TB,Nx,Ny)
+	!! This function generates boundary conditions 
+	!! if LB==1, it is neumann boundary condtion 
+	!! if LB==0, it is dirichlet boundary condition
+	integer i,j,k 
+	!! the start and end indices
+	integer jstart, jend
+	! the number of grid points in x and y direction 
+	! and left boundary condition LB and right boundary condtion RB
+	! the top boundary condition and the bottom boundary condition
+	integer, intent(in):: Nx, Ny, LB, RB, TB, BB
+	!the differentiation matrix
+	real*8, intent(inout),dimension(Nx*Ny,Nx*Ny):: BCMatrix
+	!! Differentiation Matrix 
+	real*8,allocatable:: D1x(:,:),D1y(:,:)
+
+	! the allocation of first derivative matrix in x direction
+	allocate(D1x(Nx,Nx))
+	! the allocation of first derivative matrix in x direction
+	allocate(D1y(Ny,Ny))
+	
+	! let's first generate differentiation matrix in x direction
+	call FirstDiff(D1x,Nx)
+	! let's first generate differentiation matrix in y direction
+	call FirstDiff(D1y,Ny)
+	BCMatrix=0.
+	
+	! let's impose the boundary conditions in x coordinate
+	do i=1,Ny
+		jstart=(i-1)*Nx+1
+		jend=i*Nx
+		!! dirichlet-dirichlet boundary condition
+		if(LB==0 .and. RB==0) then
+			BCMatrix(jstart,jstart)=1.
+			BCMatrix(jend,jend)=1.
+			 ! dirichlet-neumann boundary condition
+		else if (LB==0 .and. RB==1) then
+				BCMatrix(jstart,jstart)=1.
+				BCMatrix(jend,jstart:jend)=D1x(Nx,:)
+			  ! neumann-dirichlet boundary condition
+			 else if (LB==1 .and. RB==0) then
+					BCMatrix(jstart,jstart:jend)=D1x(1,:)
+					BCMatrix(jend,jend)=1.
+				   ! neumann-neumann boundary condition
+				  else if (LB==1 .and. RB==1) then
+					 BCMatrix(jstart,jstart:jend)=D1x(1,:)
+					 BCMatrix(jend,jstart:jend)=D1x(Nx,:)
+		end if 
+	end do
+	
+	! let's impose the boundary conditions in y coordinate
+	
+		jstart=1
+		jend=Ny
+		!! dirichlet-dirichlet boundary condition
+		if(TB==0 .and. BB==0) then
+			do j=1,Ny
+				do i=1,Nx
+					! the bottom boundary 
+					if(j==1) then 
+						BCMatrix(jstart+i-1,jstart+i-1)=1.+BCMatrix(jstart+i-1,jstart+i-1)
+						! the top boundary
+					else if(j==Ny) then 					
+						BCMatrix((jend-1)*Nx+i,(jend-1)*Nx+i)=1.+BCMatrix((jend-1)*Nx+i,(jend-1)*Nx+i)
+					end if 
+				end do
+			end do
+			 ! dirichlet-neumann boundary condition
+		else if (TB==1 .and. BB==0) then
+				do j=1,Ny
+					do i=1,Nx
+						! the bottom boundary 
+						if(j==1) then 
+							BCMatrix(jstart+i-1,jstart+i-1)=1.+BCMatrix(jstart+i-1,jstart+i-1)
+						end if
+							! the top boundary			
+							BCMatrix((jend-1)*Nx+i,(j-1)*Nx+i)=D1y(Ny,j)+BCMatrix((jend-1)*Nx+i,(j-1)*Nx+i)
+					end do
+				end do
+			  ! neumann-dirichlet boundary condition
+			 else if (TB==0 .and. BB==1) then
+					 	do j=1,Ny
+							do i=1,Nx
+								! the bottom boundary 
+								BCMatrix(i,(j-1)*Nx+i)=D1y(1,j)+BCMatrix(i,(j-1)*Nx+i)
+								! the top boundary
+								if(j==Ny) then 					
+									BCMatrix((jend-1)*Nx+i,(jend-1)*Nx+i)=1.+BCMatrix((jend-1)*Nx+i,(jend-1)*Nx+i)
+								end if 
+							end do
+						end do
+				   ! neumann-neumann boundary condition
+				  else if (TB==1 .and. BB==1) then
+							do j=1,Ny
+								do i=1,Nx
+									! the bottom boundary 
+									BCMatrix(i,(j-1)*Nx+i)=D1y(1,j)+BCMatrix(i,(j-1)*Nx+i)
+									print*,BCMatrix(i,(j-1)*Nx+i)
+									! the top boundary
+									BCMatrix((jend-1)*Nx+i,(j-1)*Nx+i)=D1y(Ny,j)+BCMatrix((jend-1)*Nx+i,(j-1)*Nx+i)
+								end do
+							end do
+					 
+		end if 
+	
+	
+end subroutine TwoDBC
 
 subroutine TwoDBCApplyFirst(BCMatrix,GEMatrix,SysMatrix,Nx,Ny)
 	!! This function applies boundary condition for first order partial differential equation 
@@ -231,6 +339,7 @@ subroutine TwoDBCApplyFirst(BCMatrix,GEMatrix,SysMatrix,Nx,Ny)
 			SysMatrix(i,:)=GEMatrix(i,:)
 		else		
 			SysMatrix(i,:)=BCMatrix(i,:)
+			!print*,"okey"
 		end if
 	end do
 
