@@ -1,0 +1,126 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+
+
+% Set the title, author, and date information.
+\title{Homework 4}
+\author{Anil Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section*{Problem 1 }
+
+Prove that in "fake" Poincar\'{e} Plane  where Poincar\'{e} metric $g$ on a manifold $M$ is given as:
+\begin{equation*}
+g=\frac{\mathrm{d}x\otimes \mathrm{d}x +\mathrm{d}y\otimes \mathrm{d}y }{y}.
+\end{equation*} 
+\subsection*{a)}
+\begin{equation*}
+\Gamma_{**}^{*}=0,
+\end{equation*}
+except
+\begin{equation*}
+\Gamma_{yx}^{x}=\Gamma_{xy}^{x}=-\frac{1}{y^2},
+\end{equation*}
+and 
+\begin{equation*}
+\Gamma_{xx}^{y}=\Gamma_{yy}^{y}=-\frac{1}{2y}.
+\end{equation*}
+\subsection*{b)}
+The geodesic $\gamma(0)=(0,1)$ where $\dot{\gamma}(0)=-\partial/\partial y$ is $x=0$ and $y=(1-t/2)^2$.
+\\
+\\
+\textbf{Solution(a):}\\
+Christoffel  symbol of second kind $\Gamma_{\beta j}^{\gamma}$ can be computed using Euler-Lagrange equation. First, let's define the energy functional as:
+\begin{equation}
+\label{eq:1}
+\int_{a}^{b}F(\vec{\dot{x}},\vec{x},t)\mathrm{d}t=\int_{a}^{b}\dot{x}^{i}\dot{x}^{j}g_{ij}\mathrm{d}t.
+\end{equation}
+The energy functional above has to satisfy Euler-Lagrange equations which are given as:
+\begin{equation}
+\label{eq:2}
+\frac{\mathrm{d}}{\mathrm{d} t}(\frac{\partial F}{\partial \dot{x}^i})-\frac{\partial F}{\partial x_i}=0.
+\end{equation}
+Equation \ref{eq:2}  will result in the following set of differential equations:
+\begin{equation}
+\label{eq:3}
+\frac{\mathrm{d}^2 x^i}{\mathrm{d} t^2}+\Gamma_{j k}^{i}\dot{x}^j \dot{x}^k =0.
+\end{equation}
+In "fake" Poincar\'{e} Plane, the energy functional is defined as:
+\begin{equation}
+\label{eq:4}
+F(\vec{\dot{x}},\vec{x},t)=\frac{\dot{x}^2+\dot{y}^2}{y}.
+\end{equation}
+Therefore, Euler-Lagrange equations give the following set of ordinary differential equations:
+\begin{equation}
+\label{eq:5}
+\ddot{x}-\frac{\dot{x}\dot{y}}{y}=0,
+\end{equation}
+\begin{equation}
+\label{eq:6}
+\ddot{y}-\frac{\dot{y}^2}{2y}+\frac{\dot{x}^2}{2y}=0.
+\end{equation}
+Therefore, Christoffel symbols are obtained as:
+\begin{equation}
+\Gamma_{x y}^{x}=\Gamma_{y x}^{x}=-\frac{1}{2y},
+\end{equation}
+\begin{equation}
+\Gamma_{y y}^{y}=-\frac{1}{2y},
+\end{equation}
+\begin{equation}
+\Gamma_{x x}^{y}=\frac{1}{2y}.
+\end{equation}
+\\
+\\
+\textbf{Solution(b):}\\
+Equation \ref{eq:5} can be re-arranged as:
+\begin{equation}
+\label{eq:7}
+\frac{\ddot{x}}{\dot{x}}=\frac{\dot{y}}{y}.
+\end{equation}
+After integration both sides of equation \ref{eq:7}, it leads to the following relation:
+\begin{equation}
+\label{eq:8}
+\dot{x}=cy
+\end{equation}
+After imposing initial conditions $\dot{x}=0$, if it is replaced into equation \ref{eq:6}, it reduces to the following equation:
+\begin{equation}
+\label{eq:9}
+\ddot{y}-\frac{\dot{y}^2}{2y}=0.
+\end{equation}
+Equation \ref{eq:9} can be re-arranged as:
+\begin{equation}
+\label{eq:10}
+\frac{\ddot{y}}{\dot{y}}=\frac{\dot{y}}{2y}.
+\end{equation}
+After integrating both sides of equation \ref{eq:10}, 
+\begin{equation}
+\label{eq:11}
+\dot{y}^2=c y.
+\end{equation}
+After imposing initial conditions, the integration constant $c=1$. Therefore, the equation \ref{eq:11} can be re-expressed as integral:
+\begin{equation}
+\label{eq:12}
+-\frac{\mathrm{d}y}{\sqrt{y}}=\mathrm{d}t.
+\end{equation}
+It results in the following equation:
+\begin{equation}
+\label{eq:13}
+y=(1-\frac{t}{2})^2.
+\end{equation}
+
+\end{document}
+
+

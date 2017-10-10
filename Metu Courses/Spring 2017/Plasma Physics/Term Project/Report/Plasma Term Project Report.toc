@@ -1,0 +1,18 @@
+\contentsline {chapter}{\numberline {1}Introduction}{4}
+\contentsline {section}{\numberline {1.1}Plasma Flows}{6}
+\contentsline {subsection}{\numberline {1.1.1}Shocks In Plasma Flows}{7}
+\contentsline {section}{\numberline {1.2}Problem Description And Objectives}{9}
+\contentsline {chapter}{\numberline {2}Analysis}{11}
+\contentsline {section}{\numberline {2.1}Magneto-hydrodynamic Model }{11}
+\contentsline {section}{\numberline {2.2}Spectral Element Method}{13}
+\contentsline {subsection}{\numberline {2.2.1}Operator Splitting Time Integration}{14}
+\contentsline {section}{\numberline {2.3}1-D Analytical Solution to Shocks for Large and Small Prandtl Numbers }{15}
+\contentsline {chapter}{\numberline {3}Results}{16}
+\contentsline {chapter}{\numberline {4}Conclusion}{19}
+\contentsline {chapter}{\numberline {5}Future Work}{20}
+\contentsline {chapter}{\numberline {A}Spectral Methods}{21}
+\contentsline {section}{\numberline {A.1} Differentiation Matrix }{21}
+\contentsline {section}{\numberline {A.2}Spectral Filtering }{21}
+\contentsline {section}{\numberline {A.3}Weak Formulation }{22}
+\contentsline {chapter}{\numberline {B}Matlab Routines}{24}
+\contentsline {section}{\numberline {B.1}1-D Analytical Shock Solver}{24}

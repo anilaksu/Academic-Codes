@@ -1,0 +1,240 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+
+% Set the title, author, and date information.
+\title{Homework 3}
+\author{Anil Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section*{Problem 1 }
+Show that for an electric field of the form: 
+\begin{equation*}
+\vec{E}(\vec{x},\tau,t)=\vec{E_0}(\vec{x},\tau)\cos(\omega t- \vec{k}\vec{x}).
+\end{equation*}
+the magnetic field is given by
+\begin{equation*}
+\vec{B}(\vec{x},\tau,t)=-\frac{1}{\omega}\left \{  \left [\vec{\nabla}\times \vec{E_0}(\vec{x},\tau) \right ]\sin(\omega t -\vec{k}\vec{x})-\left [\vec{k}\times  \vec{E_0}(\vec{x},\tau) \right ]\cos(\omega t- \vec{k}\vec{x})\right \}.
+\end{equation*}
+\\
+\textbf{Solution:}\\
+by Maxwell's equation the relation between the magnetic field $\vec{B}$ and the electric field $\vec{E}$ can be given as:
+\begin{equation}
+\label{eq:1}
+\frac{\partial \vec{B}}{\partial t}=-\vec{\nabla}\times\vec{E}.
+\end{equation}
+Therefore, if we replace the electric field given in problem to equation \ref{eq:1}, the rate of change of the magnetic field can be obtained as:
+\begin{equation}
+\label{eq:2}
+\frac{\partial \vec{B}}{\partial t}= -\left [\vec{\nabla}\times \vec{E_0}(\vec{x},\tau) \right ]\cos(\omega t -\vec{k}\vec{x})-\left [\vec{k}\times  \vec{E_0}(\vec{x},\tau) \right ]\sin(\omega t- \vec{k}\vec{x}).
+\end{equation}
+Note that here $\tau$ is assumed to be slowly varying time, therefore during the time integration over one wave period $2\pi / \omega$, it is assumed to be constant, therefore the magnetic field $\vec{B}$ can be given as:
+\begin{equation}
+\label{eq:3}
+\vec{B}=\int \frac{\partial \vec{B}}{\partial t} \mathrm{d} t=-\frac{1}{\omega}\left \{  \left [\vec{\nabla}\times \vec{E_0}(\vec{x},\tau) \right ]\sin(\omega t -\vec{k}\vec{x})-\left [\vec{k}\times  \vec{E_0}(\vec{x},\tau) \right ]\cos(\omega t- \vec{k}\vec{x})\right \}.
+\end{equation}
+\newpage
+ \section*{Problem 2 }
+An electron of charge $q_e=-e$ and mass $m_e$ and an proton of charge $q_e=e$ and mass $m_i=m_p$ are initially at rest at $\mathbf{x}=(0,0,0)$ in a magnetic field $\vec{B}=B_0 \hat{z}$. An electric field is then turned on at $t=0$ and increased linearly until $t_1=\frac{20\pi m_i}{e B_0}$ at which point electric field held constant,
+\begin{equation*}
+\vec{E}=
+\left\{\begin{matrix}
+0 & t<0\\ 
+E_0(t/t_1)\hat{y} &0\leq t\leq t_1 \\ 
+E_0 \hat{y} & t\geq t_1
+\end{matrix}\right.
+\end{equation*}
+Find the total current as a function of time due to drifts of two particles (neglect
+the current due to the fast Larmor oscillation).
+\\
+\textbf{Solution:}\\
+To derive any arbitrary drift motion due to the presence of a magnetic field $\mathbf{B}$, let's write the equation of motion:
+\begin{equation}
+\label{eq:4}
+m\dot{\mathbf{v}}=q(\mathbf{E}+\mathbf{v}\times \mathbf{B}).
+\end{equation}
+Under these condition,
+Since we have magnetic field only in $\hat{z}$ direction, it only causes an acceleration in $\hat{x}$ and $\hat{y}$ directions, therefore the equations of motion can be given as:
+\begin{equation}
+\label{eq:5}
+\dot{v}_x=qv_yB_0/m,
+\end{equation}
+\begin{equation}
+\label{eq:6}
+\dot{v}_y=q(E/m-v_xB_0/m).
+\end{equation}
+Equation \ref{eq:5} and equation \ref{eq:6} can be combined by taking derivative of equation \ref{eq:6} and replacing equation \ref{eq:6} into it. The resultant equation can be obtained as:
+\begin{equation}
+\label{eq:7}
+\ddot{v}_{x}+(\frac{q B_{0}}{m})^2 v_{x}=\frac{q^2 B_{0}E}{m^2}.
+\end{equation}
+Therefore, the solution can be given as a combination of homogeneous and particular solution:
+\begin{equation}
+\label{eq:8}
+v_{x}=v_{x}^h+v_{x}^p.
+\end{equation}
+The homogeneous part is a combination of cosine and sine function with a frequency $\omega=q B_0/m$ and the non-homogeneous part is a polynomial in form of $a t+ b$, therefore the solution can be explicitly given as:
+\begin{equation}
+\label{eq:9}
+v_{x}=c_1 \cos{\omega t}+ c_2 \sin{\omega t}+ a t+b.
+\end{equation}
+for $0<t \leq t_1$, the particular solution can be given as:
+\begin{equation}
+\label{eq:10}
+v_{x}^p=\frac{E_0 }{B_0 t_1}t.
+\end{equation}
+If we replace it into equation \ref{eq:5}, the velocity in $y$ direction can be found as:
+\begin{equation}
+\label{eq:11}
+v_{y}^p=\frac{E_0 }{B_0 t_1 \omega}.
+\end{equation}
+After imposing initial conditions, it comes out that the total velocity field can be given as:
+\begin{equation}
+\label{eq:12}
+\begin{bmatrix}
+v_x\\ 
+v_y
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{E_0 }{B_0 t_1}t-\frac{E_0 }{B_0 t_1 \omega}\sin{\omega t}\\ 
+\frac{E_0 }{B_0 t_1 \omega}(1-\cos{\omega t})
+\end{bmatrix}.
+\end{equation}
+At $t=t_1$, the velocity field can be given as:
+\begin{equation}
+\label{eq:13}
+\begin{bmatrix}
+v_x\\ 
+v_y
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{E_0 }{B_0}-\frac{E_0 }{B_0 t_1 \omega}\sin{\omega t_1}\\ 
+\frac{E_0 }{B_0 t_1 \omega}(1-\cos{\omega t_1})
+\end{bmatrix}.
+\end{equation}
+This can be directly used as an initial condition for $t>t_1$. Similar to the previous time interval, the total solution for $t>t_1$ can be given as:
+\begin{equation}
+\label{eq:14}
+\begin{bmatrix}
+v_x\\ 
+v_y
+\end{bmatrix}
+=
+\begin{bmatrix}
+c_1 \cos{\omega t} + c_2 \sin{\omega t} +\frac{E_0}{B_0} \\ 
+-c_1 \sin{\omega t} + c_2 \cos{\omega t}
+\end{bmatrix}.
+\end{equation}
+The velocities have to match at $t=t_1$, therefore:
+\begin{equation}
+\label{eq:15}
+\begin{bmatrix}
+ \cos{\omega t_1} & \sin{\omega t_1} \\ 
+- \sin{\omega t_1} & \cos{\omega t_1}
+\end{bmatrix}
+\begin{bmatrix}
+c_1  \\ 
+ c_2
+\end{bmatrix}
++
+\begin{bmatrix}
+\frac{E_0 }{B_0}\\ 
+0
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\frac{E_0 }{B_0 t_1 \omega}\sin{\omega t_1}\\ 
+\frac{E_0 }{B_0 t_1 \omega}(1-\cos{\omega t_1})
+\end{bmatrix}
++
+\begin{bmatrix}
+\frac{E_0 }{B_0}\\ 
+0
+\end{bmatrix}
+.
+\end{equation}
+After cancelling $E_0/B_0$ at both sides and inverting the matrix and multiplying it with the right hand side of the equation \ref{eq:15}, constants $c_1$ and $c_2$ can be found as:
+\begin{equation}
+\label{eq:16}
+\begin{bmatrix}
+ \cos{\omega t_1} & -\sin{\omega t_1} \\ 
+ \sin{\omega t_1} & \cos{\omega t_1}
+\end{bmatrix}
+\begin{bmatrix}
+-\frac{E_0 }{B_0 t_1 \omega}\sin{\omega t_1}\\ 
+\frac{E_0 }{B_0 t_1 \omega}(1-\cos{\omega t_1})
+\end{bmatrix}
+=
+\begin{bmatrix}
+c_1  \\ 
+ c_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\frac{E_0 }{B_0 t_1 \omega}\sin{\omega t_1} \\ 
+ \frac{E_0 }{B_0 t_1 \omega}(\cos{\omega t_1}-1)
+\end{bmatrix}
+.
+\end{equation}
+As a result, the velocity field after $t>t_1$ is obtained as:
+\begin{equation}
+\label{eq:17}
+\begin{bmatrix}
+v_x\\ 
+v_y
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\frac{E_0 }{B_0 t_1 \omega}\sin{\omega t_1} \cos{\omega t} +  \frac{E_0 }{B_0 t_1 \omega}(\cos{\omega t_1}-1) \sin{\omega t} +\frac{E_0}{B_0} \\ 
+\frac{E_0 }{B_0 t_1 \omega}\sin{\omega t_1} \sin{\omega t} +  \frac{E_0 }{B_0 t_1 \omega}(\cos{\omega t_1}-1)\cos{\omega t}
+\end{bmatrix}.
+\end{equation}
+The velocity field came out to be independent of the sign of the charge. The current is given as:
+\begin{equation}
+\label{eq:18}
+\mathbf{j}=n_{e} e (\vec{u}_e-\vec{u}_i).
+\end{equation}
+Under this formulation, the only parameter different is the frequency due to the differences in mass which are $m_e$ and $m_i$. Let's denote corresponding frequencies by $\omega_e$ and $\omega_i$. Therefore, for $t<t_1$ the current can be given as:
+\begin{equation}
+\label{eq:19}
+\begin{bmatrix}
+j_x\\ 
+j_y
+\end{bmatrix}
+=
+n_{e}e
+\begin{bmatrix}
+\frac{E_0 }{B_0 t_1 }(\frac{\sin{\omega_i t}}{\omega_i}-\frac{\sin{\omega_e t}}{\omega_e})\\ 
+\frac{E_0 }{B_0 t_1 }(\frac{(1-\cos{\omega_e t})}{\omega_e}-\frac{(1-\cos{\omega_i t})}{\omega_i})
+\end{bmatrix}.
+\end{equation}
+And also for $t>t_1$ the current can be given as:
+\begin{equation}
+\label{eq:20}
+\begin{bmatrix}
+j_x\\ 
+j_y
+\end{bmatrix}
+=
+n_{e}e
+\begin{bmatrix}
+\frac{E_0 }{B_0 t_1 }(\frac{\sin{\omega_i t_1} \cos{\omega_i t}}{\omega_i}-\frac{\sin{\omega_e t_1}\cos{\omega_e t}}{\omega_e})-\frac{E_0 }{B_0 t_1 }(\frac{\sin{\omega_i t} (\cos{\omega_i t_1}-1)}{\omega_i}-\frac{\sin{\omega_e t}(\cos{\omega_e t_1}-1)}{\omega_e})\\ 
+-\frac{E_0 }{B_0 t_1 }(\frac{\sin{\omega_i t_1} \sin{\omega_i t}}{\omega_i}-\frac{\sin{\omega_e t_1}\sin{\omega_e t}}{\omega_e})-\frac{E_0 }{B_0 t_1 }(\frac{\cos{\omega_i t} (\cos{\omega_i t_1}-1)}{\omega_i}-\frac{\cos{\omega_e t}(\cos{\omega_e t_1}-1)}{\omega_e})
+\end{bmatrix}.
+\end{equation}
+\end{document}

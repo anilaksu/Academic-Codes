@@ -1,0 +1,134 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+
+
+% Set the title, author, and date information.
+\title{Homework 2}
+\author{Anil Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section{Problem 1 }
+
+Given a connection $\nabla$ with torsion $T$ and curvature $R$, prove that
+\\
+\subsection*{A}
+\begin{equation*}
+\wp_{X,Y,Z} \left ( R(X,Y,Z)+T(T(X,Y),Z)+\nabla_{Z}T(X,Y) \right ))=0.
+\end{equation*}
+\\
+\textbf{Solution:}\\
+Let's start the solution by defining torsion $T$ and curvature $R$. The torsion of $\nabla$ is the tensor field $T=T_{\nabla}$ of bidegree $(1,2)$ defined for each $X,Y,Z\in TM$ by 
+\begin{equation*}
+T(X,Y)=\nabla(X,Y)-\nabla(Y,X)-\left [ X,Y \right ].
+\end{equation*} 
+And also the curvature of $\nabla$ is defined as:
+\begin{equation*}
+R(X,Y,Z)=\nabla(X,\nabla(Y,Z))-\nabla(Y,\nabla(X,Z))-\nabla(\left [ X,Y \right ],Z).
+\end{equation*} 
+Let's write the relation between torsion and curvature explicitly,
+\begin{equation}
+\label{eq:1}
+\begin{split}
+R(X,Y,Z)+T(T(X,Y),Z)+\nabla_{Z}T(X,Y)=\nabla(X,\nabla(Y,Z))-\nabla(Y,\nabla(X,Z))
+\\
+-\nabla(\left [ X,Y \right ],Z)+\nabla(\nabla(X,Y),Z)-\nabla(Z,\nabla(X,Y))-\left [ \nabla(X,Y),Z \right ]
+\\
++\nabla(Z,\nabla(X,Y))-\nabla(Z,\nabla(Y,X))-\nabla(Z,\left [ X,Y \right ]).
+\end{split}
+\end{equation}
+The term $\nabla(Z,\nabla(X,Y))$ cancels out and it reduces to:
+\begin{equation}
+\label{eq:2}
+\begin{split}
+R(X,Y,Z)+T(T(X,Y),Z)+\nabla_{Z}T(X,Y)=\nabla(X,\nabla(Y,Z))-\nabla(Y,\nabla(X,Z))
+\\
+-\nabla(\left [ X,Y \right ],Z)+\nabla(\nabla(X,Y),Z)-\left [ \nabla(X,Y),Z \right ]
+-\nabla(Z,\nabla(Y,X))-\nabla(Z,\left [ X,Y \right ]).
+\end{split}
+\end{equation}
+Moreover, the next term in cycle with order $(Z,X,Y)$ can be given as:
+\begin{equation}
+\label{eq:3}
+\begin{split}
+R(Z,X,Y)+T(T(Z,X),Y)+\nabla_{Y}T(Z,X)=\nabla(Z,\nabla(X,Y))-\nabla(X,\nabla(Z,Y))
+\\
+-\nabla(\left [ Z,X \right ],Y)+\nabla(\nabla(Z,X),Y)-\left [ \nabla(Z,X),Y \right ]
+-\nabla(Y,\nabla(X,Z))-\nabla(Y,\left [ Z,X \right ]).
+\end{split}
+\end{equation}
+Finally, the term $(Y,Z,X)$ is given as:
+\begin{equation}
+\label{eq:4}
+\begin{split}
+R(Y,Z,X)+T(T(Y,Z),X)+\nabla_{X}T(Y,Z)=\nabla(Y,\nabla(Z,X))-\nabla(Z,\nabla(Y,X))
+\\
+-\nabla(\left [ Y,Z \right ],X)+\nabla(\nabla(Y,Z),X)-\left [ \nabla(Y,Z),X \right ]
+-\nabla(X,\nabla(Z,Y))-\nabla(X,\left [ Y,Z \right ]).
+\end{split}
+\end{equation}
+Note that
+\begin{equation}
+\label{eq:5}
+\begin{split}
+\nabla(\nabla(Y,Z),X)-\left [ \nabla(Y,Z),X \right ]
+-\nabla(X,\nabla(Z,Y))=\nabla(X,\nabla(Y,Z))-\nabla(X,\nabla(Z,Y))
+\\
+=\nabla(X,\left[ Y,Z \right ]).
+\end{split}
+\end{equation}
+After replacing this result into equation \ref{eq:4}, it reduces to:
+\begin{equation}
+\label{eq:6}
+\begin{split}
+R(Y,Z,X)+T(T(Y,Z),X)+\nabla_{X}T(Y,Z)=\nabla(Y,\nabla(Z,X))-\nabla(Z,\nabla(Y,X))
+\\
+-\nabla(\left [ Y,Z \right ],X).
+\end{split}
+\end{equation}
+It also means that last four terms of equation \ref{eq:2} and \ref{eq:3} drops out and if they are all added together, the following  summation is obtained:
+\begin{equation}
+\label{eq:7}
+\begin{split}
+\nabla(Y,\nabla(Z,X))-\nabla(Z,\nabla(Y,X))-\nabla(\left [ Y,Z \right ],X)+\nabla(X,\nabla(Y,Z))-\nabla(Y,\nabla(X,Z))
+\\
+-\nabla(\left [ X,Y \right ],Z)+\nabla(Z,\nabla(X,Y))-\nabla(X,\nabla(Z,Y))-\nabla(\left [ Z,X \right ],Y)
+\end{split}
+\end{equation}
+In summation \ref{eq:7}, 
+\begin{equation}
+\label{eq:8}
+\nabla(Y,\nabla(Z,X))-\nabla(Y,\nabla(X,Z))-\nabla(\left [ Z,X \right ],Y)=\nabla(Y,\left [ Z,X \right ])-\nabla(\left [ Z,X \right ],Y)=\left [ Y,\left [ Z,X \right ] \right ],
+\end{equation}
+\begin{equation}
+\label{eq:9}
+\nabla(Z,\nabla(X,Y))-\nabla(Z,\nabla(Y,X))-\nabla(\left [ X,Y \right ],Z)=\nabla(Z,\left [ X,Y \right ])-\nabla(\left [ X,Y \right ],Z)=\left [ Z,\left [ X,Y \right ] \right ],
+\end{equation}
+\begin{equation}
+\label{eq:10}
+\nabla(X,\nabla(Y,Z))-\nabla(X,\nabla(Z,Y))-\nabla(\left [ Y,Z \right ],X)=\nabla(X,\left [ Y,Z \right ])-\nabla(\left [ Y,Z \right ],X)=\left [ X,\left [ Y,Z \right ] \right ].
+\end{equation}
+
+Therefore, the summation \ref{eq:7} can be written more compactly as:
+\begin{equation}
+\left [ Y,\left [ Z,X \right ] \right ]+\left [ Z,\left [ X,Y \right ] \right ]+\left [ X,\left [ Y,Z \right ] \right ]=0.
+\end{equation}
+
+\end{document}
+
+
+
+
+

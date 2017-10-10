@@ -1,0 +1,710 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.10)  12 JUN 2017 11:01
+entering extended mode
+**"./Plasma Term Project Report.tex"
+("Plasma Term Project Report.tex"
+LaTeX2e <2017/01/01> patch level 1
+Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks14
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen103
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks16
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks17
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latexsym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+) (mcode.sty
+-- Package: `mcode' 2.3 <2012/08/31> --
+Package: mcode 2012/08/31 2.3
+ - settings optimized for display (colour formating)
+ - line numbering enabled
+ - literate programming (character replacements) enabled
+ - automatic line breaking enabled (careful, buggy!)
+ - framed listings
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count100
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+\lst@mode=\count101
+\lst@gtempboxa=\box28
+\lst@token=\toks21
+\lst@length=\count102
+\lst@currlwidth=\dimen112
+\lst@column=\count103
+\lst@pos=\count104
+\lst@lostspace=\dimen113
+\lst@width=\dimen114
+\lst@newlines=\count105
+\lst@lineno=\count106
+\lst@maxwidth=\dimen115
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count107
+\lst@skipnumbers=\count108
+\lst@framebox=\box29
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
+Package: textcomp 2017/01/24 v2.0c Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
+\lbreakdots=\box30
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 220.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+)
+\Gin@req@height=\dimen116
+\Gin@req@width=\dimen117
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen118
+\captionmargin@=\dimen119
+\captionwidth=\dimen120
+\caption@tempdima=\dimen121
+\caption@indent=\dimen122
+\caption@parindent=\dimen123
+\caption@hangindent=\dimen124
+)
+\c@ContinuedFloat=\count109
+Package caption Info: listings package is loaded.
+)
+\c@subfigure=\count110
+\c@subtable=\count111
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\adjustbox\adjustbox.sty"
+Package: adjustbox 2012/05/21 v1.0 Adjusting TeX boxes (trim, clip, ...)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkvutils.tex"
+\XKV@toks=\toks22
+\XKV@tempa@toks=\toks23
+)
+\XKV@depth=\count112
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\adjustbox\adjcalc.sty"
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\adjustbox\trimclip.sty"
+Package: trimclip 2012/05/16 v1.0 Trim and clip general TeX material
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\collectbox\collectbox.sty"
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box31
+)
+\tc@llx=\dimen125
+\tc@lly=\dimen126
+\tc@urx=\dimen127
+\tc@ury=\dimen128
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\adjustbox\tc-pdftex.def"
+File: tc-pdftex.def 2012/05/13 v1.0 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen129
+\adjbox@Height=\dimen130
+\adjbox@Depth=\dimen131
+\adjbox@Totalheight=\dimen132
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\ifoddpage\ifoddpage.sty"
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count113
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\varwidth.sty"
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box32
+\sift@deathcycles=\count114
+\@vwid@loff=\dimen133
+\@vwid@roff=\dimen134
+))
+\c@theorem=\count115
+\c@definition=\count116
+
+("Plasma Term Project Report.aux"
+
+LaTeX Warning: Label `eq:3' multiply defined.
+
+
+LaTeX Warning: Label `eq:4' multiply defined.
+
+
+LaTeX Warning: Label `eq:30' multiply defined.
+
+
+LaTeX Warning: Label `eq:31' multiply defined.
+
+)
+\openout1 = `"Plasma Term Project Report.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 18.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 18.
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count117
+\scratchdimen=\dimen135
+\scratchbox=\box33
+\nofMPsegments=\count118
+\nofMParguments=\count119
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count120
+\MPscratchDim=\dimen136
+\MPnumerator=\count121
+\makeMPintoPDFobject=\count122
+\everyMPtoPDFconversion=\toks25
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+\c@lstlisting=\count123
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Try loading font information for U+msa on input line 24.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 24.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 24.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+) [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [1] ("Plasma Term Project
+ Report.toc")
+\tf@toc=\write3
+\openout3 = `"Plasma Term Project Report.toc"'.
+
+
+[2
+
+] ("Plasma Term Project Report.lof")
+\tf@lof=\write4
+\openout4 = `"Plasma Term Project Report.lof"'.
+
+ [3
+
+]
+Chapter 1.
+[4
+
+] <AtmosphereLayers.png, id=24, 1092.08pt x 986.68625pt>
+File: AtmosphereLayers.png Graphic file (type png)
+
+<use AtmosphereLayers.png>
+Package pdftex.def Info: AtmosphereLayers.png used on input line 49.
+(pdftex.def)             Requested size: 327.62653pt x 296.00815pt.
+ [5 <./AtmosphereLayers.png>]
+<Rocket.png, id=32, 1978.39125pt x 1129.21875pt>
+File: Rocket.png Graphic file (type png)
+ <use Rocket.png>
+Package pdftex.def Info: Rocket.png used on input line 57.
+(pdftex.def)             Requested size: 395.67125pt x 225.83975pt.
+ [6 <./Rocket.png>] [7] <shock.png, id=45, 163.61125pt x 204.765pt>
+File: shock.png Graphic file (type png)
+ <use shock.png>
+Package pdftex.def Info: shock.png used on input line 115.
+(pdftex.def)             Requested size: 101.17645pt x 126.62491pt.
+ [8 <./shock.png>] <shockTS.jpg, id=52, 312.16624pt x 240.9pt>
+File: shockTS.jpg Graphic file (type jpg)
+ <use shockTS.jpg>
+Package pdftex.def Info: shockTS.jpg used on input line 136.
+(pdftex.def)             Requested size: 202.3529pt x 156.16042pt.
+ [9 <./shockTS.jpg>] <2DPlasmaSurfaceInteraction.png, id=56, 1243.64626pt x 688
+.5725pt>
+File: 2DPlasmaSurfaceInteraction.png Graphic file (type png)
+
+<use 2DPlasmaSurfaceInteraction.png>
+Package pdftex.def Info: 2DPlasmaSurfaceInteraction.png used on input line 149.
+
+(pdftex.def)             Requested size: 404.71353pt x 224.07759pt.
+ [10 <./2DPlasmaSurfaceInteraction.png>]
+Chapter 2.
+[11
+
+] [12] [13] [14] [15]
+Chapter 3.
+Package epstopdf Info: Source file: <1DVel.eps>
+(epstopdf)                    date: 2017-05-09 18:10:56
+(epstopdf)                    size: 20545 bytes
+(epstopdf)             Output file: <1DVel-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-09 18:11:36
+(epstopdf)                    size: 5406 bytes
+(epstopdf)             Command: <epstopdf --outfile=1DVel-eps-converted-to.pdf 
+1DVel.eps>
+(epstopdf)             \includegraphics on input line 314.
+Package epstopdf Info: Output file is already uptodate.
+<1DVel-eps-converted-to.pdf, id=79, 421.575pt x 316.18124pt>
+File: 1DVel-eps-converted-to.pdf Graphic file (type pdf)
+
+<use 1DVel-eps-converted-to.pdf>
+Package pdftex.def Info: 1DVel-eps-converted-to.pdf used on input line 314.
+(pdftex.def)             Requested size: 202.35675pt x 151.7701pt.
+Package epstopdf Info: Source file: <1DTemp.eps>
+(epstopdf)                    date: 2017-05-09 18:11:10
+(epstopdf)                    size: 20516 bytes
+(epstopdf)             Output file: <1DTemp-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-09 18:11:37
+(epstopdf)                    size: 5398 bytes
+(epstopdf)             Command: <epstopdf --outfile=1DTemp-eps-converted-to.pdf
+ 1DTemp.eps>
+(epstopdf)             \includegraphics on input line 320.
+Package epstopdf Info: Output file is already uptodate.
+
+<1DTemp-eps-converted-to.pdf, id=80, 421.575pt x 316.18124pt>
+File: 1DTemp-eps-converted-to.pdf Graphic file (type pdf)
+
+<use 1DTemp-eps-converted-to.pdf>
+Package pdftex.def Info: 1DTemp-eps-converted-to.pdf used on input line 320.
+(pdftex.def)             Requested size: 202.35675pt x 151.7701pt.
+ [16
+
+ <./1DVel-eps-converted-to.pdf> <./1DTemp-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <Ebeg.eps>
+(epstopdf)                    date: 2017-05-09 20:28:28
+(epstopdf)                    size: 201194 bytes
+(epstopdf)             Output file: <Ebeg-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-09 20:28:48
+(epstopdf)                    size: 13246 bytes
+(epstopdf)             Command: <epstopdf --outfile=Ebeg-eps-converted-to.pdf E
+beg.eps>
+(epstopdf)             \includegraphics on input line 337.
+Package epstopdf Info: Output file is already uptodate.
+
+<Ebeg-eps-converted-to.pdf, id=92, 414.54875pt x 315.1775pt>
+File: Ebeg-eps-converted-to.pdf Graphic file (type pdf)
+
+<use Ebeg-eps-converted-to.pdf>
+Package pdftex.def Info: Ebeg-eps-converted-to.pdf used on input line 337.
+(pdftex.def)             Requested size: 252.94499pt x 192.31088pt.
+Package epstopdf Info: Source file: <Emid1.eps>
+(epstopdf)                    date: 2017-05-09 20:32:24
+(epstopdf)                    size: 225616 bytes
+(epstopdf)             Output file: <Emid1-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-09 20:32:48
+(epstopdf)                    size: 15248 bytes
+(epstopdf)             Command: <epstopdf --outfile=Emid1-eps-converted-to.pdf 
+Emid1.eps>
+(epstopdf)             \includegraphics on input line 342.
+Package epstopdf Info: Output file is already uptodate.
+
+<Emid1-eps-converted-to.pdf, id=93, 421.575pt x 316.18124pt>
+File: Emid1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use Emid1-eps-converted-to.pdf>
+Package pdftex.def Info: Emid1-eps-converted-to.pdf used on input line 342.
+(pdftex.def)             Requested size: 252.94499pt x 189.7102pt.
+Package epstopdf Info: Source file: <Emid2.eps>
+(epstopdf)                    date: 2017-05-09 20:35:33
+(epstopdf)                    size: 222636 bytes
+(epstopdf)             Output file: <Emid2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-09 20:36:02
+(epstopdf)                    size: 14804 bytes
+(epstopdf)             Command: <epstopdf --outfile=Emid2-eps-converted-to.pdf 
+Emid2.eps>
+(epstopdf)             \includegraphics on input line 348.
+Package epstopdf Info: Output file is already uptodate.
+
+<Emid2-eps-converted-to.pdf, id=94, 414.54875pt x 315.1775pt>
+File: Emid2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use Emid2-eps-converted-to.pdf>
+Package pdftex.def Info: Emid2-eps-converted-to.pdf used on input line 348.
+(pdftex.def)             Requested size: 252.94499pt x 192.31088pt.
+Package epstopdf Info: Source file: <EFinal.eps>
+(epstopdf)                    date: 2017-05-09 20:38:41
+(epstopdf)                    size: 238278 bytes
+(epstopdf)             Output file: <EFinal-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-05-09 20:38:50
+(epstopdf)                    size: 16303 bytes
+(epstopdf)             Command: <epstopdf --outfile=EFinal-eps-converted-to.pdf
+ EFinal.eps>
+(epstopdf)             \includegraphics on input line 352.
+Package epstopdf Info: Output file is already uptodate.
+
+<EFinal-eps-converted-to.pdf, id=95, 421.575pt x 316.18124pt>
+File: EFinal-eps-converted-to.pdf Graphic file (type pdf)
+
+<use EFinal-eps-converted-to.pdf>
+Package pdftex.def Info: EFinal-eps-converted-to.pdf used on input line 352.
+(pdftex.def)             Requested size: 252.94499pt x 189.7102pt.
+ [17 <./Ebeg-eps-converted-to.pdf> <./Emid1-eps-converted-to.pdf> <./Emid2-eps-
+converted-to.pdf> <./EFinal-eps-converted-to.pdf>] [18]
+Chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--363
+
+ []
+
+[19
+
+]
+Chapter 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--372
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--372
+
+ []
+
+[20
+
+]
+Appendix A.
+[21
+
+] [22] [23]
+Appendix B.
+(AnalyticalShock.m
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 18.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1pcr.fd"
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+)
+[24
+
+]
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 46.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspcr.fd"
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
+) [25]
+(getClosedFormShock.m) (getShockVelocity.m
+LaTeX Font Info:    Try loading font information for OML+pcr on input line 11.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omlpcr.fd"
+File: omlpcr.fd 
+)
+LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 11.
+ [26])
+("Plasma Term Project Report.bbl" [27] [28
+
+]) [29]
+("Plasma Term Project Report.aux")
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 6801 strings out of 493333
+ 99079 string characters out of 3139182
+ 211992 words of memory out of 3000000
+ 10164 multiletter control sequences out of 15000+200000
+ 19960 words of font info for 80 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 42i,9n,77p,1072b,1544s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}{C:/Program Files/Mi
+KTeX 2.9/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
+y8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on "Plasma Term Project Report.pdf" (30 pages, 470291 bytes).
+PDF statistics:
+ 232 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+

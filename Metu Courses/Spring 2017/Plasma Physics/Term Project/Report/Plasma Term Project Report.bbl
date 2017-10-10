@@ -1,0 +1,60 @@
+\begin{thebibliography}{10}
+
+\bibitem{Chen}
+Liu Chen, Liu Changjian, Feng Xu, and Du~Ying.
+\newblock A new dynamic fluid-kinetic model for plasma transport within the
+  plasmasphere.
+\newblock {\em China Satellite Navigation Conference (CSNC)}, 2017.
+
+\bibitem{NetAtm}
+UCAR Center For~Science Education.
+\newblock Layers of earth's atmosphere, 2017.
+
+\bibitem{IntPlasma}
+R.~J. Goldston and P.~H. Rutherford.
+\newblock {\em Introdduction to Plasma Physics}.
+\newblock Taylor and Francis, Plasma Physics Laboratory Princeton University,
+  1995.
+
+\bibitem{hakimphd}
+Ammar~H. Hakim.
+\newblock {\em High Resolution Wave Propagation Schemes for Two-Fluid Plasma
+  Simulations}.
+\newblock PhD thesis, University of Washington, Seattle, WA 98105, USA, May
+  2006.
+
+\bibitem{Hesthaven}
+Jan~S. Hesthaven.
+\newblock Handbook of numerical analysis: Spectral methods for hyperbolic
+  problems, 2017.
+
+\bibitem{Johnson}
+B.~M. Johnson.
+\newblock Analytical shock solutions at large and small prandtl number.
+\newblock {\em JFM Rapids}, 726, 2013.
+
+\bibitem{Takashi}
+Takashi Kikuchi and Kumiko~K. Hashimoto.
+\newblock Transmission of electric fields to the low latitude ionosphere in the
+  magnetosphere-ionosphere current.
+\newblock {\em Geoscience Letters}, 3:4, 2016.
+
+\bibitem{Savino}
+R.~Savino, D.~Paterna, M.~De~Stefano Fumo, and M.~D'Elia.
+\newblock Plasma-radiofrequency interactions around atmospheric re-entry
+  vehicles: Modelling and arc-jet simulation.
+\newblock {\em The Open Aerospace Engineering Journal,}, 3, 2010.
+
+\bibitem{Vasilevski}
+S.~A. Vasilevski and A.~F. Kolsenikov.
+\newblock Numerical simulation of equilibrium induction plasma flows in a
+  cylindrical plasmatron channel.
+\newblock {\em Fluid Dynamics}, 35, 2000.
+
+\bibitem{Votta}
+R.~Votta, A.~Schettino, G.~Ranuzzi, and S.~Borrelli.
+\newblock Continuum and kinetic simulations of orion (cev) atmospheric re-entry
+  in high altitude flight conditions.
+\newblock {\em AIP Conference Proceedings}, 2008.
+
+\end{thebibliography}

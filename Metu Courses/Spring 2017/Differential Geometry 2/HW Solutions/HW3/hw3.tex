@@ -1,0 +1,153 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+
+
+% Set the title, author, and date information.
+\title{Homework 3}
+\author{Anil Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section*{Problem 1 }
+
+Compute the sectional curvature in Poincar\'{e} Plane.
+\\
+\textbf{Solution:}\\
+Poincar\'{e} metric $g$ on a manifold $M$ is given as:
+\begin{equation}
+g=\frac{\mathrm{d}x\otimes \mathrm{d}x +\mathrm{d}y\otimes \mathrm{d}y }{y^2}.
+\end{equation} 
+And also the sectional curvature is defined as:
+\begin{equation}
+K(u,v)=-\frac{<R(u,w)u,w>}{<u,u><v,v>-<u,v>^2}.
+\end{equation} 
+where
+\begin{equation*}
+R_{\beta jk}^{\alpha}=\frac{\partial \Gamma_{\beta k}^{\alpha}}{\partial x_j}-\frac{\partial \Gamma_{\beta j}^{\alpha}}{\partial x_k}+ \Gamma_{\gamma j}^{\alpha} \Gamma_{\beta k}^{\gamma}- \Gamma_{\gamma k}^{\alpha} \Gamma_{\beta j}^{\gamma}.
+\end{equation*}
+Christoffel  symbol of second kind $\Gamma_{\beta j}^{\gamma}$ can be computed using Euler-Lagrange equation. First, let's define the energy functional as:
+\begin{equation}
+\label{eq:1}
+\int_{a}^{b}F(\vec{\dot{x}},\vec{x},t)\mathrm{d}t=\int_{a}^{b}\dot{x}^{i}\dot{x}^{j}g_{ij}\mathrm{d}t.
+\end{equation}
+The energy functional above has to satisfy Euler-Lagrange equations which are given as:
+\begin{equation}
+\label{eq:2}
+\frac{\mathrm{d}}{\mathrm{d} t}(\frac{\partial F}{\partial \dot{x}^i})-\frac{\partial F}{\partial x_i}=0.
+\end{equation}
+Equation \ref{eq:2}  will result in the following set of differential equations:
+\begin{equation}
+\label{eq:3}
+\frac{\mathrm{d}^2 x^i}{\mathrm{d} t^2}+\Gamma_{j k}^{i}\dot{x}^j \dot{x}^k =0.
+\end{equation}
+In Poincar\'{e} Plane, the energy functional is defined as:
+\begin{equation}
+\label{eq:4}
+F(\vec{\dot{x}},\vec{x},t)=\frac{\dot{x}^2+\dot{y}^2}{y^2}.
+\end{equation}
+Therefore, Euler-Lagrange equations give the following set of ordinary differential equations:
+\begin{equation}
+\label{eq:5}
+\ddot{x}-2\frac{\dot{x}\dot{y}}{y}=0,
+\end{equation}
+\begin{equation}
+\label{eq:5}
+\ddot{y}-\frac{\dot{y}^2}{y}+\frac{\dot{x}^2}{y}=0.
+\end{equation}
+Therefore, Christoffel symbols are obtained as:
+\begin{equation}
+\Gamma_{x y}^{x}=\Gamma_{y x}^{x}=-\frac{1}{y},
+\end{equation}
+\begin{equation}
+\Gamma_{y y}^{y}=-\frac{1}{y},
+\end{equation}
+\begin{equation}
+\Gamma_{x x}^{y}=\frac{1}{y}.
+\end{equation}
+By using Christoffel symbols derived above, let's write down the components of  the curvature $R_{\beta jk}^{\alpha}$,
+\begin{equation}
+R_{xxx}^{x}=\frac{\partial \Gamma_{x x}^{x}}{\partial x}-\frac{\partial \Gamma_{x x}^{x}}{\partial x}+ \Gamma_{\gamma x}^{x} \Gamma_{x x}^{\gamma}- \Gamma_{\gamma x}^{x} \Gamma_{x x}^{\gamma}=0,
+\end{equation}
+and
+\begin{equation}
+R_{xxy}^{x}=\frac{\partial \Gamma_{x y}^{x}}{\partial x}-\frac{\partial \Gamma_{x x}^{x}}{\partial y}+ \Gamma_{\gamma x}^{x} \Gamma_{x y}^{\gamma}- \Gamma_{\gamma y}^{x} \Gamma_{x x}^{\gamma}=-R_{xyx}^{x}=0,
+\end{equation}
+and
+\begin{equation}
+R_{xyy}^{x}=\frac{\partial \Gamma_{x y}^{x}}{\partial y}-\frac{\partial \Gamma_{x y}^{x}}{\partial y}+ \Gamma_{\gamma y}^{x} \Gamma_{x y}^{\gamma}- \Gamma_{\gamma y}^{x} \Gamma_{x y}^{\gamma}=0,
+\end{equation}
+and
+\begin{equation}
+R_{yxx}^{x}=\frac{\partial \Gamma_{y x}^{x}}{\partial x}-\frac{\partial \Gamma_{y x}^{x}}{\partial x}+ \Gamma_{\gamma x}^{x} \Gamma_{y x}^{\gamma}- \Gamma_{\gamma x}^{x} \Gamma_{y x}^{\gamma}=0,
+\end{equation}
+and
+\begin{equation}
+R_{yxy}^{x}=\frac{\partial \Gamma_{y y}^{x}}{\partial x}-\frac{\partial \Gamma_{y x}^{x}}{\partial y}+ \Gamma_{\gamma x}^{x} \Gamma_{y y}^{\gamma}- \Gamma_{\gamma y}^{x} \Gamma_{y x}^{\gamma}=-R_{yyx}^{x}=-\frac{1}{y^2},
+\end{equation}
+and
+\begin{equation}
+R_{yyy}^{x}=\frac{\partial \Gamma_{y y}^{x}}{\partial y}-\frac{\partial \Gamma_{y y}^{x}}{\partial y}+ \Gamma_{\gamma y}^{x} \Gamma_{y y}^{\gamma}- \Gamma_{\gamma y}^{x} \Gamma_{y y}^{\gamma}=0,
+\end{equation}
+Furthermore,
+\begin{equation}
+R_{xxx}^{y}=\frac{\partial \Gamma_{x x}^{y}}{\partial x}-\frac{\partial \Gamma_{x x}^{y}}{\partial x}+ \Gamma_{\gamma x}^{y} \Gamma_{x x}^{\gamma}- \Gamma_{\gamma x}^{y} \Gamma_{x x}^{\gamma}=0,
+\end{equation}
+and
+\begin{equation}
+R_{xxy}^{y}=\frac{\partial \Gamma_{x y}^{y}}{\partial x}-\frac{\partial \Gamma_{x x}^{y}}{\partial y}+ \Gamma_{\gamma x}^{y} \Gamma_{x y}^{\gamma}- \Gamma_{\gamma y}^{y} \Gamma_{x x}^{\gamma}=-R_{xyx}^{y}=\frac{1}{y^2},
+\end{equation}
+and
+\begin{equation}
+R_{xyy}^{y}=\frac{\partial \Gamma_{x y}^{y}}{\partial y}-\frac{\partial \Gamma_{x y}^{y}}{\partial y}+ \Gamma_{\gamma y}^{y} \Gamma_{x y}^{\gamma}- \Gamma_{\gamma y}^{y} \Gamma_{x y}^{\gamma}=0,
+\end{equation}
+and
+\begin{equation}
+R_{yxx}^{y}=\frac{\partial \Gamma_{y x}^{y}}{\partial x}-\frac{\partial \Gamma_{y x}^{y}}{\partial x}+ \Gamma_{\gamma x}^{y} \Gamma_{y x}^{\gamma}- \Gamma_{\gamma x}^{y} \Gamma_{y x}^{\gamma}=0,
+\end{equation}
+and
+\begin{equation}
+R_{yxy}^{y}=\frac{\partial \Gamma_{y y}^{y}}{\partial x}-\frac{\partial \Gamma_{y x}^{y}}{\partial y}+ \Gamma_{\gamma x}^{y} \Gamma_{y y}^{\gamma}- \Gamma_{\gamma y}^{y} \Gamma_{y x}^{\gamma}=-R_{yyx}^{y}=0,
+\end{equation}
+and
+\begin{equation}
+R_{yyy}^{y}=\frac{\partial \Gamma_{y y}^{y}}{\partial y}-\frac{\partial \Gamma_{y y}^{y}}{\partial y}+ \Gamma_{\gamma y}^{y} \Gamma_{y y}^{\gamma}- \Gamma_{\gamma y}^{y} \Gamma_{y y}^{\gamma}=0.
+\end{equation}
+After expanding curvature $R_{\beta jk}^{\alpha}$, let's write down vectors $u$ and $v$ explicitly,
+\begin{equation}
+u=a_1 \frac{\partial}{\partial x}+a_2 \frac{\partial}{\partial y},
+\end{equation}
+and 
+\begin{equation}
+v=b_1 \frac{\partial}{\partial x}+b_2 \frac{\partial}{\partial y}.
+\end{equation}
+As a result,
+\begin{equation}
+R(u,v)u=(b_1 a_2-a_1 b_2)\frac{a_2}{y^2}\frac{\partial}{\partial x}+(a_1 b_2-b_1 a_2)\frac{a_1}{y^2}\frac{\partial}{\partial y}
+\end{equation}
+Therefore,
+\begin{equation}
+<R(u,v)u,v>=\frac{(a_1 b_2-b_1 a_2)^2}{y^4}.
+\end{equation}
+and also
+\begin{equation}
+<u,u><v,v>-<u,v>^2=\frac{(a_{1}^2+a_{2}^2)(b_{1}^2+b_{2}^2)- (a_1 b_1+ a_2 b_2)^2}{y^4}=\frac{(a_1 b_2-b_1 a_2)^2}{y^4}
+\end{equation}
+Finally,
+\begin{equation}
+K(u,v)=-1.
+\end{equation} 
+\end{document}
+
+

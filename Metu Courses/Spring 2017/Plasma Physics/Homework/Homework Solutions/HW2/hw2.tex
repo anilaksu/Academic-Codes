@@ -1,0 +1,274 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+
+% Set the title, author, and date information.
+\title{Homework 2}
+\author{Anil Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section*{Problem 1 }
+Begin by considering the case where we have a perpendicular gradient in the field strength, B. For simplicity let us assume that $B$ is in the $z$ direction, and varies only with $y$: 
+\begin{equation*}
+\mathbf{B}=B_{gc,i}\hat{z}+(y-y_{gc,i})\frac{\mathrm{d}B}{\mathrm{d}y}\hat{z}.
+\end{equation*}
+\\
+Derive the orbit of a charged particle.
+\\
+\textbf{Solution:}\\
+The equation of motion in most general form under the effect of the magnetic field can be given as:
+\begin{equation}
+\label{eq:1}
+m \mathbf{\dot{v}}=q\mathbf{v}\times\mathbf{B}.
+\end{equation}
+Since we have magnetic field only in $\hat{z}$ direction, it only causes an acceleration in $\hat{x}$ and $\hat{y}$ directions, therefore the equations of motion can be given as:
+\begin{equation}
+\label{eq:2}
+\dot{v}_x=qv_yB/m,
+\end{equation}
+\begin{equation}
+\label{eq:3}
+\dot{v}_y=-qv_xB/m.
+\end{equation}
+Note that $B_{gc,i}>>(y-y_{gc,i})\mathrm{d}B/ \mathrm{d}y$, therefore the velocity field can be decomposed so that the leading order term is dominated by $B_{gc,i}$ and the effect of the varying magnetic field is felt in $O(\epsilon)$ term. As a result of this scaling of magnetic field, the velocity field can be given as:
+\begin{equation}
+\label{eq:4}
+\mathbf{v}=\mathbf{v}^0 + \epsilon \mathbf{v}^1.
+\end{equation}
+Note that $\epsilon<<1$ serves as small parameter. After replacing the velocity field \ref{eq:4} into equation \ref{eq:2} and equation \ref{eq:3} along with the full terms of the magnetic field. The governing equation can be obtained as:
+\begin{equation}
+\label{eq:5}
+\dot{v}_{x}^{0}+\epsilon\dot{v}_{x}^{1}=q(v_{y}^{0}+\epsilon v_{y}^{1})(B_{gc,i}+(y-y_{gc,i})\frac{\mathrm{d}B}{\mathrm{d}y})/m,
+\end{equation}
+and 
+\begin{equation}
+\label{eq:6}
+\dot{v}_{y}^{0}+\epsilon\dot{v}_{y}^{1}=-q (v_{x}^{0}+\epsilon v_{x}^{1})(B_{gc,i}+(y-y_{gc,i})\frac{\mathrm{d}B}{\mathrm{d}y})/m.
+\end{equation}
+At the leading order, equation \ref{eq:5} and equation \ref{eq:6} can be simplified to the following set of equations:
+\begin{equation}
+\label{eq:7}
+\dot{v}_{x}^{0}=q v_{y}^{0} B_{gc,i}/m,
+\end{equation}
+and 
+\begin{equation}
+\label{eq:8}
+\dot{v}_{y}^{0}=-q v_{x}^{0} B_{gc,i}/m.
+\end{equation}
+Equation \ref{eq:7} and equation \ref{eq:8} can be combined by taking derivative of equation \ref{eq:7} and replacing equation \ref{eq:8} into it. The resultant equation can be obtained as:
+\begin{equation}
+\label{eq:9}
+\ddot{v}_{x}^{0}=-(\frac{q B_{gc,i}}{m})^2 v_{x}^{0}.
+\end{equation}
+The solution to equation \ref{eq:9} can be found as:
+\begin{equation}
+\label{eq:10}
+v_{x}^{0}=c_1 \cos \alpha t +c_2 \sin \alpha t.
+\end{equation}
+where $\alpha=q B_{gc,i}/m$. By using replacing $v_{x}^0$ into equation \ref{eq:7}, the velocity in $y$ direction can also be found as:
+\begin{equation}
+\label{eq:11}
+v_{y}^0=-c_1 \sin \alpha t +c_2 \cos \alpha t.
+\end{equation}
+This is the leading order solution, the coefficient $c_1$ and $c_2$ can be found to satisfy the initial condition. Similarly, the orbit of the particle can be given as:
+\begin{equation}
+\int_{0}^{t}\mathbf{v}\mathrm{d}t=\mathbf{x}=\mathbf{x}^{0}+\epsilon\mathbf{x}^1.
+\end{equation}
+The leading order path can be found as:
+\begin{equation}
+\label{eq:12}
+x^{0}(t)=\frac{c_1}{\alpha}\sin \alpha t -\frac{c_2}{\alpha}\cos \alpha t,
+\end{equation}
+and 
+\begin{equation}
+\label{eq:13}
+y^{0}(t)=\frac{c_1}{\alpha}\cos \alpha t +\frac{c_2}{\alpha}\sin \alpha t.
+\end{equation}
+Moreover, these results are used to find a $O(\epsilon)$ solution to equation \ref{eq:5} and \ref{eq:6}. If $O(\epsilon)$ terms are grouped together, the following equations can be obtained:
+\begin{equation}
+\label{eq:14}
+\epsilon\dot{v}_{x}^{1}=\epsilon q v_{y}^{1} B_{gc,i}/m+q v_{y}^{0}(y-y_{gc,i})\frac{\mathrm{d}B}{\mathrm{d}y}/m,
+\end{equation}
+\begin{equation}
+\label{eq:15}
+\epsilon\dot{v}_{y}^{1}=-\epsilon q v_{x}^{1} B_{gc,i}/m+q v_{x}^{0}(y-y_{gc,i})\frac{\mathrm{d}B}{\mathrm{d}y}/m.
+\end{equation}
+Equation \ref{eq:14} and equation \ref{eq:15} can also be combined into single equation by taking the derivative of equation \ref{eq:14} and replacing equation \ref{eq:15}. As a result, the following second order equation is obtained:
+\begin{equation}
+\label{eq:16}
+\ddot{v}_{x}^{1}=-\alpha^2 v_{x}^{1}+\frac{q}{\epsilon m}\frac{\mathrm{d}B}{\mathrm{d}y}((v_{y}^{0})^2+(\dot{v}_{y}^{0}+\alpha v_{x}^{0})(y-y_{gc,i})).
+\end{equation}
+After replacing the leading order terms and trigonometric manipulation, equation \ref{eq:16} can be given as:
+\begin{equation}
+\label{eq:17}
+\ddot{v}_{x}^{1}=-\alpha^2 v_{x}^{1}+\frac{q}{\epsilon m}\frac{\mathrm{d}B}{\mathrm{d}y}(\frac{c_{1}^2+c_{2}^{2}}{2}-\frac{c_{1}^2-c_{2}^{2}}{2}\cos 2 \alpha t-\frac{c_1 c_2}{2}\sin 2\alpha t).
+\end{equation}
+In $O(\epsilon)$ solution, we are only interested in the non-homogeneous part of the solution which can be solved by method of undetermined coefficients. The right hand side of the equation \ref{eq:17} is composed of polynomial and cosine and sine functions therefore the non-homogeneous solution can be obtained as a combination of them. The polynomial part can be given as $a t +b$ if it is replaced into equation \ref{eq:17}, it leads to the following equality:
+\begin{equation}
+\label{eq:18}
+\alpha^2 (a t +b)=\frac{q(c_{1}^2+c_{2}^{2})}{2\epsilon m}\frac{\mathrm{d}B}{\mathrm{d}y}.
+\end{equation}
+As a result, the time dependent part cancels out, therefore 
+\begin{equation}
+\label{eq:19}
+b=\frac{q(c_{1}^2+c_{2}^{2})}{2\alpha^2 \epsilon m}\frac{\mathrm{d}B}{\mathrm{d}y}.
+\end{equation}
+Non-homogeneous solution to the polynomial part is found, however sine and cosine part is not solved. This part has a solution in form of $a_1 \cos 2 \alpha t + a_2 \sin 2\alpha t$, if it is replaced into equation \ref{eq:17}, it leads to the following equality:
+\begin{equation}
+\label{eq:20}
+-3 \alpha^2 a_1 \cos 2 \alpha t + 5 \alpha^2 a_2 \sin 2\alpha t=\frac{-q}{\epsilon m}\frac{\mathrm{d}B}{\mathrm{d}y}(\frac{c_{1}^2-c_{2}^{2}}{2}\cos 2 \alpha t+\frac{c_1 c_2}{2}\sin 2\alpha t).
+\end{equation}
+The relation above is satisfied with the following coefficients:
+\begin{equation}
+\label{eq:21}
+a_1=\frac{q(c_{1}^2-c_{2}^{2})}{6 \alpha^2 \epsilon m}\frac{\mathrm{d}B}{\mathrm{d}y},
+\end{equation}
+and
+\begin{equation}
+\label{eq:21}
+a_2=\frac{-q c_{1}c_{2}}{10 \alpha^2 \epsilon m}\frac{\mathrm{d}B}{\mathrm{d}y}.
+\end{equation}
+After obtaining $v_{x}^1$, $v_{y}^1$ can also be found by replacing it into equation \ref{eq:14}:
+\begin{equation}
+\label{eq:22}
+ v_{y}^{1}=(-2a_1 \sin 2\alpha t+2a_2 \cos 2\alpha t)-\frac{q}{\epsilon \alpha m}\frac{\mathrm{d}B}{\mathrm{d}y}v_{y}^{0}(y-y_{gc,i}).
+\end{equation}
+I am deliberately leaving equation \ref{eq:22} in the form above, it will make it easier to represent the time integral. Moreover, $O(\epsilon)$ correction to the velocity field leads to $O(\epsilon)$ correction to the orbit of the particle. Therefore, 
+\begin{equation}
+\epsilon\int_{0}^{t}\mathbf{v}^1 \mathrm{d}t=\epsilon \mathbf{x}^1.
+\end{equation}
+Explicitly, these can be given as:
+\begin{equation}
+\label{eq:23}
+x^1(t)=\frac{a_1}{2 \alpha}\sin 2\alpha t-\frac{a_2}{2 \alpha}\cos 2\alpha t + b t,
+\end{equation}
+and 
+\begin{equation}
+\label{eq:24}
+ y^{1}(t)=(\frac{a_1}{\alpha} \cos 2\alpha t+\frac{a_2}{\alpha} \sin 2\alpha t)-\frac{q}{\epsilon \alpha m}\frac{\mathrm{d}B}{\mathrm{d}y}(\frac{(y^0)^2}{2}-y_{gc,i}y^0).
+\end{equation}
+As a result, the orbit of the particle is computed as:
+\begin{equation}
+\label{eq:25}
+x(t)=x^0(t)+\epsilon x^1(t),
+\end{equation}
+\begin{equation}
+\label{eq:26}
+y(t)=y^0(t)+\epsilon y^1(t).
+\end{equation}
+These analysis show that the particle drifts along $x$ direction, the rest of the motion is oscillatory, therefore on one period, the particle returns to its initial point but it drifts $\epsilon b T$ where $T=2\pi/ \alpha$ along $x$ direction in every period. 
+ \section*{Problem 2 }
+Derive the average of the combined \textbf{grad-B} and curvature guiding-center drifts for the particles in a vacuum magnetic field for non-isotropic and isotropic plasmas.
+\\
+\textbf{Solution:}\\
+To derive any arbitrary drift motion due to the presence of a magnetic field $\mathbf{B}$, let's write the equation of motion:
+\begin{equation}
+\label{eq:27}
+m\dot{\mathbf{v}}=\mathbf{F}+q\mathbf{v}\times \mathbf{B}.
+\end{equation}
+Under these condition, the velocity can be decomposed into two components, one of which is parallel to  the magnetic field $\mathbf{v}_{\parallel}$ and one of which is perpendicular to the magnetic field $\mathbf{v}_{\perp}$. The purpose of this formulation is to write out the motion in one direction purely under effect of the magnetic field and in the other direction purely under the other force which may be gravity, electric field but in our case which is centrifugal force. :
+\begin{equation}
+\label{eq:28}
+\mathbf{u}=\mathbf{v}-(\mathbf{F}\times\mathbf{B})/q B^2.
+\end{equation}
+After replacing the velocity $\mathbf{u}$ in equation \ref{eq:28}, the equation of motion can be reformulated as:
+\begin{equation}
+\label{eq:29}
+m \dot{\mathbf{u}}=\hat{b}(\mathbf{F}\cdot \hat{b})+q\mathbf{u}\times\mathbf{B}.
+\end{equation}
+where $\hat{b}$ is the unit normal of the magnetic field. If we take the dot product of $\hat{b}$ equation \ref{eq:29}, the equation of motion along the magnetic field can be given as:
+\begin{equation}
+\label{eq:30}
+m \dot{\mathbf{u}}_{\parallel}=\mathbf{F}\cdot \hat{b}
+\end{equation}
+Therefore, the velocity parallel to the magnetic field can be given as:
+\begin{equation}
+\label{eq:31}
+\mathbf{u}_{\parallel}=\frac{\mathbf{F}\cdot \hat{b}}{m}t.
+\end{equation}
+with addition of the drift total velocity parallel to the magnetic field is given as:
+\begin{equation}
+\label{eq:32}
+\mathbf{v}_{\parallel}=\frac{\mathbf{F}\cdot \hat{b}}{m}t+\frac{\mathbf{F}\times\mathbf{B}}{q B^2}.
+\end{equation}
+Therefore, the drift due to external force $\mathbf{F}$ is found as $(\mathbf{F}\times\mathbf{B})/q B^2$. In the case of rotational motion, this external force is centrifugal force under the assumption that magnetic field is locally constant and along the angular direction $\hat{\theta}$.
+Taking these into account, the centrifugal force can be  given as:
+\begin{equation}
+\label{eq:33}
+\mathbf{F}_{cf}=\frac{m v_{\parallel}^2}{R_{c}^2}\mathbf{R}_c.
+\end{equation}
+If we replace it into equation \ref{eq:32}, the drift due to centrifugal force can be computed as:
+\begin{equation}
+\label{eq:34}
+\mathbf{v}_{curv}=\frac{m v_{\parallel}^2}{q B^2}\frac{\mathbf{R}_c\times\mathbf{B}}{R_{c}^2}=\frac{2 W_{\parallel}}{q B^2}\frac{\mathbf{R}_c\times\mathbf{B}}{R_{c}^2}.
+\end{equation}
+where $W_{\parallel}=m<v_{\parallel}^2>/2$. However, In the case of circular magnetic field, other than the centrifugal force, there exists a external forcing due to the gradient of the magnetic field $\mathbf{\nabla}B$. Therefore, the drift due to the gradient of the magnetic field can be given as:
+\begin{equation}
+\label{eq:35}
+\mathbf{v}_{grad}=\frac{ v_{\perp}^2}{\omega_c}\frac{\mathbf{B}\times\mathbf{\nabla}B}{B^2}=\frac{ 2 W_{\perp}}{q}\frac{\mathbf{B}\times\mathbf{\nabla}B}{B^3}.
+\end{equation}
+where $W_{\perp}=m<v_{\perp}^2>/2$. Therefore, the total drift can be given as:
+\begin{equation}
+\label{eq:36}
+\mathbf{v}_{curv}+\mathbf{v}_{grad}=\frac{m v_{\parallel}^2}{q B^2}\frac{\mathbf{R}_c\times\mathbf{B}}{R_{c}^2}+\frac{ v_{\perp}^2}{\omega_c}\frac{\mathbf{B}\times\mathbf{\nabla}B}{B^2}.
+\end{equation}
+Note that 
+\begin{equation*}
+\frac{\mathbf{R}_c}{R_{c}^2}=-(\hat{b}\cdot\mathbf{\nabla})\hat{b},
+\end{equation*}
+Alternatively,
+\begin{equation}
+\label{eq:37}
+\mathbf{v}_{curv}+\mathbf{v}_{grad}=\frac{ 2(W_{\perp}+W_{\parallel})}{q}\frac{\mathbf{B}\times\mathbf{\nabla}B}{B^3}.
+\end{equation}
+In case of isotropic plasma, $W_{\perp}=W_{\parallel}$, therefore the drift in equation \ref{eq:37} can be given as:
+\begin{equation}
+\label{eq:37}
+\mathbf{v}_{curv}+\mathbf{v}_{grad}=\frac{ 4 W_{\perp}}{q}\frac{\mathbf{B}\times\mathbf{\nabla}B}{B^3}.
+\end{equation}
+\section*{Problem 3 }
+Show that the momentum gained by electrons due to collisions with ions, $\mathbf{R}_{ei}$, may now be expressed in terms of the resistivity $\eta$ and the current density $\mathbf{j}$ as; 
+\begin{equation*}
+\mathbf{R}_{ei}=-m_e n_e <v_{ei}>(\vec{u}_e-\vec{u}_i)=-\eta n_{e}^2 e^2 (\vec{u}_e-\vec{u}_i)=\eta n_{e}e\mathbf{j}.
+\end{equation*}
+\\
+\textbf{Solution:}\\
+As given in the question, the momentum exchange between ions and electrons is modelled as:
+\begin{equation}
+\label{eq:38}
+\mathbf{R}_{ei}=-m_e n_e <v_{ei}>(\vec{u}_e-\vec{u}_i).
+\end{equation}
+At the same time, the plasma resistivity is given as:
+\begin{equation}
+\label{eq:39}
+\eta=\frac{m_e <v_{ei}>}{n_e e^2}.
+\end{equation}
+Note that $<v_{ei}>$ is the average frequency of collision between ions and electrons. If the plasma resistivity defined in equation \ref{eq:39} is replaced in equation \ref{eq:38}, the momentum exchange can be alternatively given as:
+\begin{equation}
+\label{eq:40}
+\mathbf{R}_{ei}=-\eta n_{e}^2 e^2 (\vec{u}_e-\vec{u}_i).
+\end{equation}
+Moreover, the electric current is defined as:
+\begin{equation}
+\label{eq:41}
+\mathbf{j}=n_{e} e (\vec{u}_e-\vec{u}_i).
+\end{equation}
+After replacing the current into equation \ref{eq:40}, the momentum exchange terms can be re-expressed as:
+\begin{equation}
+\mathbf{R}_{ei}=\eta n_{e}e\mathbf{j}.
+\end{equation}
+
+\end{document}

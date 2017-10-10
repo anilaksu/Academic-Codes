@@ -1,0 +1,193 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+
+% Set the title, author, and date information.
+\title{Homework 1}
+\author{Anil Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section*{Problem 1 }
+
+Maxwellian distribution is given as: 
+\begin{equation*}
+f_v(v)=\frac{1}{(2 \pi)^{3/2}v_{th}^3}\exp(-\frac{v^2}{2 v_{th}^2}).
+\end{equation*}
+\\
+Find
+\subsection*{a}
+the average velocities of each component
+\\
+\textbf{Solution:}\\
+As known, the velocity vector has three components, for time being, let's stick to regular notation for the velocity $\vec{v}=(v_x,v_y,v_z)$. Maxwellian distribution given in the problem can be given explicitly in terms of these components as:
+\begin{equation}
+f_v(v_x,v_y,v_z)=\frac{1}{(2 \pi)^{3/2}v_{th}^3}\exp(-\frac{v_{x}^2+v_{y}^2+v_{z}^2}{2 v_{th}^2}).
+\end{equation}
+To calculate the average velocity, first, let's find the number of particle in a unit volume as:
+\begin{equation}
+\label{eq:1}
+n=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f_v(v_x,v_y,v_z)\mathrm{d}v_x\mathrm{d}v_y\mathrm{d}v_z.
+\end{equation}
+Note that Maxwellian distribution is separable in terms of velocity components, therefore the integral \ref{eq:1} can be written as:
+\begin{equation}
+\label{eq:2}
+n=\frac{1}{(2 \pi)^{3/2}v_{th}^3}\int_{-\infty}^{\infty}\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x\int_{-\infty}^{\infty}\exp(-\frac{v_{y}^2}{2 v_{th}^2})\mathrm{d}v_y\int_{-\infty}^{\infty}\exp(-\frac{v_{z}^2}{2 v_{th}^2})\mathrm{d}v_z.
+\end{equation}
+In the integral \ref{eq:2}, the result of each integral is same, therefore if we compute one, it will be enough to proceed. It is a well known integral but let's perform it explicitly anyway.
+\begin{equation}
+\int_{-\infty}^{\infty}\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x=v_{th}\int_{-\infty}^{\infty}\exp(-\frac{v^2}{2})\mathrm{d}v=\sqrt{2 \pi}v_{th}.
+\end{equation}
+After plugging the result into the integral \ref{eq:2}, the number of particles in unit volume $n=1$. It is unity, it facilitates the further operation. The average velocity in $x$ direction can be found as:
+\begin{equation}
+\label{eq:3}
+<v_x>=\frac{1}{(2 \pi)^{3/2}v_{th}^3}\int_{-\infty}^{\infty}v_{x}\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x\int_{-\infty}^{\infty}\exp(-\frac{v_{y}^2}{2 v_{th}^2})\mathrm{d}v_y\int_{-\infty}^{\infty}\exp(-\frac{v_{z}^2}{2 v_{th}^2})\mathrm{d}v_z.
+\end{equation}
+Here is the result of the following integral:
+\begin{equation}
+\int_{-\infty}^{\infty}v_{x}\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x=-2v_{th}^2 \exp(-\frac{v_{x}^2}{2 v_{th}^2})\Biggr|_{-\infty}^{\infty}=0.
+\end{equation}
+Therefore, $<v_x>=0$ Similarly the mean velocity in $y$ direction is given as:
+\begin{equation}
+\label{eq:4}
+<v_y>=\frac{1}{(2 \pi)^{3/2}v_{th}^3}\int_{-\infty}^{\infty}\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x\int_{-\infty}^{\infty}v_{y}\exp(-\frac{v_{y}^2}{2 v_{th}^2})\mathrm{d}v_y\int_{-\infty}^{\infty}\exp(-\frac{v_{z}^2}{2 v_{th}^2})\mathrm{d}v_z.
+\end{equation}
+The result of the integral above is also same, as a result, $<v_y>=0$. Finally, the mean velocity in $z$ direction is defined as:
+\begin{equation}
+\label{eq:5}
+<v_z>=\frac{1}{(2 \pi)^{3/2}v_{th}^3}\int_{-\infty}^{\infty}\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x\int_{-\infty}^{\infty}\exp(-\frac{v_{y}^2}{2 v_{th}^2})\mathrm{d}v_y\int_{-\infty}^{\infty}v_{z}\exp(-\frac{v_{z}^2}{2 v_{th}^2})\mathrm{d}v_z.
+\end{equation}
+The integral \ref{eq:5} also vanishes so $<v_z>=0$. 
+\subsection*{b}
+the average kinetic energy
+\\
+\textbf{Solution:}\\
+The average kinetic energy is defined as:
+\begin{equation}
+\label{eq:6}
+\frac{1}{2}n(<v_{x}^2>+<v_{y}^2>+<v_{z}^2>)=\frac{1}{2}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(v_{x}^2+v_{y}^2+v_{z}^2)f_v(v_x,v_y,v_z)\mathrm{d}v_x\mathrm{d}v_y\mathrm{d}v_z.
+\end{equation}
+Since the distribution function is isotropic meaning that it is independent of the direction, the average kinetic energy can also be given as:
+\begin{equation}
+\label{eq:6}
+\frac{3}{2}n<v_{x}^2>=\frac{3}{2}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}v_{x}^2f_v(v_x,v_y,v_z)\mathrm{d}v_x\mathrm{d}v_y\mathrm{d}v_z.
+\end{equation}
+The integral $\ref{eq:6}$ can be explicitly given as:
+\begin{equation}
+\label{eq:7}
+\frac{3}{2}n<v_{x}^2>=\frac{3}{2(2 \pi)^{3/2}v_{th}^3}\int_{-\infty}^{\infty}v_{x}^2\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x\int_{-\infty}^{\infty}\exp(-\frac{v_{y}^2}{2 v_{th}^2})\mathrm{d}v_y\int_{-\infty}^{\infty}\exp(-\frac{v_{z}^2}{2 v_{th}^2})\mathrm{d}v_z.
+\end{equation}
+The only result was not obtained previously in the integral \ref{eq:7} is :
+\begin{equation}
+\label{eq:8}
+\int_{-\infty}^{\infty}v_{x}^2\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x=-v_{th}^2 v_x\exp(-\frac{v_{x}^2}{2 v_{th}^2})\Biggr|_{-\infty}^{\infty}+v_{th}^2\int_{-\infty}^{\infty}\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x=\sqrt{2 \pi}v_{th}^3.
+\end{equation}
+After replacing this and the previous results, the average kinetic energy is obtained as:
+\begin{equation}
+\label{eq:7}
+\frac{3}{2}n<v_{x}^2>=\frac{3}{2}v_{th}^2.
+\end{equation}
+\subsection*{c}
+the average velocity $<\left | v \right |>$
+\\
+\textbf{Solution:}\\
+The average velocity is defined as:
+\begin{equation}
+\label{eq:8}
+<\left | v \right |>=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\sqrt{v_{x}^2+v_{y}^2+v_{z}^2}f_v(v_x,v_y,v_z)\mathrm{d}v_x\mathrm{d}v_y\mathrm{d}v_z.
+\end{equation}
+The easiest way to take this integral is to write it in spherical coordinates as follows:
+\begin{equation}
+\label{eq:9}
+<\left | v \right |>=\int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{\infty}vf_v(v)v^2\sin \phi\mathrm{d}v\mathrm{d}\phi\mathrm{d}\theta.
+\end{equation}
+The integral in $v$ direction can be taken separately as:
+\begin{equation}
+\label{eq:10}
+\int_{0}^{\infty}v^3\exp(-\frac{v^2}{2 v_{th}^2})\mathrm{d}v=-v_{th}^2 v^2\exp(-\frac{v^2}{2 v_{th}^2})\Biggr|_{0}^{\infty}+2v_{th}^2\int_{0}^{\infty}v\exp(-\frac{v^2}{2 v_{th}^2})\mathrm{d}v_x=2v_{th}^4.
+\end{equation}
+After replacing this result into equation \ref{eq:9}, it is found that
+\begin{equation}
+\label{eq:11}
+<\left | v \right |>=\frac{8\pi v_{th}^4}{(2 \pi)^{3/2}v_{th}^3}=\sqrt{\frac{8}{\pi}}v_{th}.
+\end{equation}
+\subsection*{d}
+the flux of charged particles $\Gamma_{p,x}=\frac{1}{2}n_0<\left | v_x \right |>$ along $x$ direction
+\\
+\textbf{Solution:}\\
+\begin{equation}
+\label{eq:12}
+<\left | v_x \right |>=\frac{1}{(2 \pi)^{3/2}v_{th}^3}\int_{-\infty}^{\infty}\left | v_x \right |\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x\int_{-\infty}^{\infty}\exp(-\frac{v_{y}^2}{2 v_{th}^2})\mathrm{d}v_y\int_{-\infty}^{\infty}\exp(-\frac{v_{z}^2}{2 v_{th}^2})\mathrm{d}v_z.
+\end{equation}
+Here is the result of the following integral:
+\begin{equation}
+\int_{-\infty}^{\infty}\left | v_x \right |\exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x=2\int_{0}^{\infty}v_x \exp(-\frac{v_{x}^2}{2 v_{th}^2})\mathrm{d}v_x=-4v_{th}^2 \exp(-\frac{v_{x}^2}{2 v_{th}^2})\Biggr|_{0}^{\infty}=4v_{th}^2.
+\end{equation}
+Therefore, the flux is obtained as:
+ \begin{equation}
+ \Gamma_{p,x}=\sqrt{\frac{2}{\pi}}v_{th}.
+ \end{equation}
+
+ \section*{Problem 2 }
+ 
+Find the plasma parameters $\lambda_D$, \textbf{$\wedge$}, $\omega_{pe}$, $\omega_{pi}$, $\omega_{ci}$, $\omega_{ce}$ for the ionized gas given in table \ref{tab:1}.
+\\
+\textbf{Definitions:}\\
+Debye length $\lambda_D=\sqrt{\epsilon_0 T_e /n_e e^2}$
+\\
+Number of particles in Debye sphere$\wedge=n \lambda_{D}^3$
+\\
+electron plasma frequency $\omega_{pe}=\sqrt{4 \pi n_e e^2 /m_e }$
+\\
+ion plasma frequency $\omega_{pi}=\sqrt{4 \pi n_i Z^2 e^2 /m_i }$
+\\
+electron gyrofrequency $\omega_{ce}=e B/m_e c$
+\\
+ion gyrofrequency $\omega_{ci}=Z e B/m_i c$
+\\
+\\
+Note that $e=1.602\times 10 ^{-19} C$, $m_e=9.109\time 10^{-31} kg$, $\epsilon_0=8.85\time 10^{-12} C m^{-1} V^{-1}$ and $c=3.00\times 10 ^{8} m s^{-1}$. 
+\\
+\\
+Plasma criteria are given as:
+\begin{itemize}
+\item the length scale $L>>\lambda_D$
+\item Number of particles in Debye sphere$\wedge>>1$
+\item $\omega_{pi}\tau>1$
+\end{itemize}
+Under these conditions, only Interstellar Gas and Solar Corona satisfy these criteria. Indeed, I could not check the last criteria as I don't know how to calculate the average time between collisions $\tau$.
+\newpage
+ \begin{table}
+ \centering
+\caption{\label{tab:1} Plasma Parameters of Some Ionized Gases}
+\begin{tabular}{ccccccc}
+ Ionized Gas&$\lambda_D$ (m)&$\wedge$&$\omega_{pe}$ 
+&$\omega_{pi}$  &$\omega_{ce}$ &$\omega_{ci}$\\ \hline
+ Interstellar Gas&$1.85\times 10^{10}$&$6.4\times 10^{36}$ &$0.59$&& $5.9\times 10^{-9}$\\
+ Solar Wind&$1.85\times 10^{10}$&$6.4\times 10^{37}$&$1.88$&&$5.9\times 10^{-7}$\\
+ Val ellen Belts&$5.8\times 10^{9}$&$2.02\times 10^{38}$&$18.8$&&$5.9\times 10^{-5}$\\
+ Earth's Ionosphere&$1.85\times 10^{7}$&$6.4\times 10^{33}$&$188.1$&&$1.7\times 10^{-3}$\\
+ Solar Corona&$5.87\times 10^{7}$&$2.02\times 10^{36}$ &$1881.6$&&$5.8\times 10^{-8}$\\
+ Gas Discharge&$2.6\times 10^{4}$&$2.02\times 10^{36}$ &$5.9\times 10^{5}$&&$0$\\
+ Process Plasmas&$1.85\times 10^{5}$&$1.81\times 10^{32}$ &$5.9\times 10^{5}$&&$58.6$\\
+ Fusion Experiments &$1.85\times 10^{5}$&$6.4\times 10^{35}$ &$5.9\times 10^{6}$&&$2.9\times 10^{3}$\\
+ Fusion Reactor&$1.85\times 10^{5}$&$6.4\times 10^{35}$ &$5.9\times 10^{5}$&&$2.9\times 10^{3}$\\
+\end{tabular}
+\end{table}
+\lstinputlisting{PlasmaParameters.m} 
+\lstinputlisting{getDebyeLength.m} 
+\lstinputlisting{getPlasmaFrequency.m} 
+\lstinputlisting{getGyroFrequency.m} 
+\end{document}

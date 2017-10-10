@@ -1,0 +1,58 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+
+
+% Set the title, author, and date information.
+\title{Homework 1}
+\author{Anil Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section{Problem 1 }
+
+Prove that $x_1,...,x_q\in U$ are linearly independent iff $x_1\wedge ...\wedge x_q \neq 0$.
+\\
+
+\textbf{Solution:}\\
+Let $x_n$ where $1\leq n \leq q$ be a linear combination of $x_i,x_j,x_k \in \bigcup_{1}^{q}x_i$ such that:
+\begin{equation}
+x_n=\alpha x_i +\beta x_j +\gamma x_k.
+\end{equation}
+The wedge product can be arranged so that:
+\begin{equation}
+x_1\wedge ...\wedge x_q=sign(\sigma)x_1\wedge...\wedge(x_i\wedge x_j \wedge x_k \wedge x_n)\wedge ... \wedge x_q.
+\end{equation}
+Moreover,
+\begin{equation}
+x_i\wedge x_j \wedge x_k \wedge x_n=x_i\wedge x_j \wedge( x_k \wedge (\alpha x_i +\beta x_j +\gamma x_k)),
+\end{equation}
+which is equivalent to:
+\begin{equation}
+x_i\wedge x_j \wedge( x_k \wedge (\alpha x_i +\beta x_j +\gamma x_k))=x_i\wedge x_j \wedge(\alpha x_k \wedge  x_i +\beta x_k \wedge x_j)
+\end{equation}
+As the wedge product of $x_k$ by itself is zero, the last term vanishes. Furthermore,
+\begin{equation}
+x_i\wedge x_j \wedge(\alpha x_k \wedge  x_i +\beta x_k \wedge x_j)=\alpha x_i\wedge x_j \wedge x_k \wedge  x_i+\beta x_i\wedge x_j \wedge x_k \wedge x_j.
+\end{equation}
+Finally,
+\begin{equation}
+\alpha x_i\wedge x_j \wedge x_k \wedge  x_i+\beta x_i\wedge x_j \wedge x_k \wedge x_j=\alpha x_k\wedge x_j \wedge( x_i \wedge  x_i)-\beta x_i\wedge x_k \wedge( x_j \wedge x_j)=0.
+\end{equation}
+As a result,
+\begin{equation}
+x_1\wedge ...\wedge x_q=0.
+\end{equation}
+Therefore, it is shown that  $x_1,...,x_q\in U$ must be linearly independent to obtain non-zero wedge product $x_1\wedge ...\wedge x_q$.
+\end{document}
