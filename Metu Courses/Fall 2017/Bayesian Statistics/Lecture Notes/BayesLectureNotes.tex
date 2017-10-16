@@ -1,0 +1,247 @@
+% This is a sample file for the Undergraduate Faculty Program at
+% PCMI, containing one lecture 
+%
+%   What is a Partial Differential Equation?
+%
+%  from the Park City Lectures of Andrew J. Bernoff.
+%
+% The sample file illustrates the use of epsf.tex to include postscript 
+% graphics, as well as various "AmS-LaTeX" constructions from the amsmath
+% package (which is automatically loaded by the pcms-l document class).
+% To run this file you need the files 
+%
+%        pcms-l.cls and pcmslmod.tex
+%
+
+
+\documentclass[lecture,12pt,]{pcms-l}
+\input pcmslmod.tex  % v.1.2
+%\input epsf.tex
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix}
+%\usepackage{natbib}
+%\usepackage{amssymb} % this command would have loaded all the extra symbols,
+
+
+
+% authors should not define these, they will be defined by the volume editors
+%\def\currentvolume{3}
+%\def\currentyear{1993}
+
+
+% EQUATION NUMBERING AND THEOREM SETUP
+
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{lemma}[equation]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definition}
+
+\newtheorem{exercise}{Exercise}
+\newtheorem{problem}{Problem}
+\newtheorem*{remark}{Remark}
+
+% Set enumerate to use letters, not numbers for problem parts.
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\labelenumi}{(\theenumi)}
+
+% AUTHOR-DEFINED MACROS:
+
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+
+\begin{document}
+
+\mainmatter
+\setcounter{page}{1}
+
+%\LogoOn
+
+\lectureseries[Bayesian Analysis]{Decision Theory and Bayesian Analysis}
+
+
+\auth[Dr. Vilda Purutcuoglu]{Dr. Vilda Purutcuoglu}
+\address{Tubitak Space Technologies Research Institute, Ankara, 06800, Turkey}
+
+\footnote{Edited by Anil A. Aksu based on lecture notes of STAT 565 course by Dr. Vilda Purutcuoglu }
+%\email{ajb@hmc.edu}
+
+
+
+% the following hack starts the lecture numbering at 1
+\setcounter{lecture}{0}
+\setcounter{chapter}{0}
+\tableofcontents
+
+\lecture{Bayesian Paradigm}
+
+%\section{Outline of Lecture}
+%\begin{itemize}
+%\item{What is a Partial Differential Equation?}
+%\item{Classifying PDE's: Order, Linear vs. Nonlinear}
+%\item{Homogeneous PDE's and Superposition}
+%\item{The Transport Equation} 
+%\end{itemize}
+
+
+\section{Bayes theorem for distributions}
+
+If $A$ and $B$ are two events,
+\begin{equation}
+P(A\mid B)=\frac{P(A)P(B\mid A)}{P(B)}.
+\end{equation}
+This is just a direct consequence of the multiplication law of probabilities that says we can express $P(A\mid B)$ as either $P(A)P(B\mid A)$ or $P(B)P(A\mid B)$. For discrete distributions, if $Z,Y$ are discrete random variables
+\begin{equation}
+\label{eq:1}
+P(Z=z\mid Y = y)=\frac{P(Z =z)P(Y = y\mid Z =z)}{P(Y = y)}.
+\end{equation}
+\begin{itemize}
+\item How many distributions do we deal with here?
+\end{itemize}
+We can express the denominator in terms of the distribution in the numerator\cite{Allen}.
+\begin{equation}
+P(Y = y)=\sum_z P(Y = y, Z =z)=\sum_z P(Z= z)P(Y = y\mid Z =z).
+\end{equation}
+\begin{itemize}
+\item This is sometimes called the law of total probability 
+\end{itemize}
+In this context, it is just an expression of the fact that as $z$ ranges over the possible values of $Z$
+, the probabilities on the left hand-side of equation \ref{eq:1} make up the distribution of $Z$ given $Y=y$, and so they must add up to one. The extension to continuous distribution is easy. If $Z,Y$ are continuous random variable,
+\begin{equation}
+f(Z\mid Y)=\frac{f(Z)f(Y\mid Z)}{f(Y)}.
+\end{equation}
+where the denominator is now expressed as an integral:
+\begin{equation}
+f(Y)=\int f(Z)f(Y\mid Z)\mathrm{d}Z.
+\end{equation}
+\begin{equation}
+f=
+\left\{\begin{matrix}
+continous \quad name ?\\ 
+discrete \quad name ?
+\end{matrix}\right.
+\end{equation}
+
+
+\vfill
+%\begin{center}
+%{\it (Room for notes)}
+%\end{center}
+\eject
+
+\section{How Bayesian Statistics Uses Bayes Theorem}
+\begin{theorem}[Bayes' theorem]
+\label{Bayes}
+\[P(A\mid B)=\frac{P(A)P(B\mid A)}{P(B)}\]
+$P(B)$=if we are interested in the event $B$, $P(B)$ is the initial or prior probability of the occurence of event $B$. Then we observe event $A$ 
+\\
+$P(B\mid A)=$ How likely $B$ is when $A$ is known to have occurred is the posterior probability $P(B\mid A)$. 
+\end{theorem}
+Bayes' theorem can be understood as a formula for updating from prior to posterior probability, the updating consists of multiplying by the ratio $P(B\mid A)/P(A)$. It describes how a probability changes as we learn new information. Observing the occurrence of $A$ will increase the probability of $B$ if $P(B\mid A)>P(A)$.
+From the law of total probability,
+\begin{equation}
+P(A)=P(A\mid B)P(B)+P(A\mid B^c)+P(A\mid B^c)P(B^c).
+\end{equation}
+where $P(B^c)=1-P(B)$.
+\begin{lemma}
+\[P(A\mid B)-P(A)=\frac{P(A)-P(A\mid B^c)P(B^c)}{1-P(B^c)}-P(A)\]
+\end{lemma}
+ 
+\begin{proof}
+\[P(A\mid B)-P(A)=\frac{P(A)-P(A\mid B^c)P(B^c)-P(A)+P(A)P(B^c)}{P(B)}\]
+\[P(A\mid B)-P(A)=\frac{P(B^c)(P(A)-P(A\mid B^c))}{P(B)}\]
+\[P(A\mid B)-P(A)=P(B^c)(\frac{P(B)P(A\mid B)+P(B^c)P(A\mid B^c)}{P(B)}-\frac{P(A\mid B^c)}{P(B)})\]
+\[P(A\mid B)-P(A)=P(B^c)(P(A\mid B)-\frac{P(A\mid B^c)(1-P(B^c))}{P(B)})\]
+\[P(A\mid B)-P(A)=P(B^c)(P(A\mid B)-P(A\mid B^c))\]
+\end{proof}
+\subsection{Generalization of the Bayes' Theorem}
+Let $B_1,...,B_n$ be a set of mutually exclusive events. Then
+\begin{equation}
+P(B_r\mid A)=\frac{P(B_r)P(A\mid B_r)}{P(A)}=\frac{P(B_r)P(A\mid B_r)}{\sum_{i=1}^n P(B_r)P(A\mid B_r)}.
+\end{equation}
+\begin{itemize}
+\item Assuming that $P(B_r)>0$,$P(A\mid B)>P(A)$ if and only if $P(A\mid B)>P(A\mid B^c)$.
+\item In Bayesian inference we use Bayes' theorem in a particular way.
+\item $Z$ is the parameter (vector) $\theta$.
+\item $Y$ is the data (vector) $X$.
+\end{itemize}
+So we have 
+\begin{equation}
+f(\theta\mid X)=\frac{f(\theta)f(X\mid \theta)}{f(X)}
+\end{equation}
+\begin{equation}
+f(X)=\int f(\theta)f(X\mid \theta)\mathrm{d}\theta.
+\end{equation}
+\begin{equation}
+f(\theta)=
+\end{equation}
+\begin{equation}
+f(\theta\mid X)=
+\end{equation}
+\begin{equation}
+f(X\mid \theta)=
+\end{equation}
+\subsection{Interpreting our sense} 
+How do we interpret the things we see, hear, feel, taste or smell?
+\begin{example}
+I hear a song on the radio I identify the singer as Robbie Williams. Why do I think it's Robbie Williams?. Because he sounds like that. Formally, $P($ What I hear Robbie Williams $)>>P($What I hear someone else $)$
+\end{example}
+\begin{example}
+I look out of the window and see what appears to be a tree. It has a big, dark coloured part sticking up out of the ground that branches into thinner sticks and on the ends of these are small green things. Clearly, $P($ What I hear Robbie Williams $)>>P($What I hear someone else $)$
+\end{example}
+\vfill
+\eject
+
+\section{Prior to Posterior}
+
+\section{Triplot}
+
+\footnote{All plots are generated in R, relevant codes are provided in Appendix R Codes }
+\vfill
+\eject
+
+\subsection{Weak Prior Information}
+It is the case where the prior information is much weaker that the data. This will occur, for instance, if we do not have strong information about $Q$ before seeing the  data, and if there are lots of data. Then in triplot, the prior distribution will be much broader and flatter that the likelihood. \underline{So the posterior is approximately proportional to the likelihood.}
+\begin{example}
+Classify the follow differential equations as ODE's or PDE's, linear
+or nonlinear, and determine their order. For the linear equations,
+determine whether or not they are homogeneous.
+\end{example}
+
+
+
+\vfill
+\eject
+
+
+
+
+\lecture{Some Common Probability Distributions}
+
+\lecture{Inference}
+
+\appendix
+
+
+\chapter*{Basic Statistics}
+
+\chapter*{R Codes}
+
+\lstinputlisting[caption={Triplot Code in R}]{BasicStatistics.R}
+
+\bibliographystyle{plain}
+% Note the spaces between the initials
+\bibliography{Bayes}
+\end{document}
