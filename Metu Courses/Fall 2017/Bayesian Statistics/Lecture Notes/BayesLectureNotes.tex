@@ -84,6 +84,7 @@
 \setcounter{lecture}{0}
 \setcounter{chapter}{0}
 \tableofcontents
+%\listoffigures
 
 \lecture{Bayesian Paradigm}
 
@@ -199,25 +200,126 @@ How do we interpret the things we see, hear, feel, taste or smell?
 I hear a song on the radio I identify the singer as Robbie Williams. Why do I think it's Robbie Williams?. Because he sounds like that. Formally, $P($ What I hear Robbie Williams $)>>P($What I hear someone else $)$
 \end{example}
 \begin{example}
-I look out of the window and see what appears to be a tree. It has a big, dark coloured part sticking up out of the ground that branches into thinner sticks and on the ends of these are small green things. Clearly, $P($ What I hear Robbie Williams $)>>P($What I hear someone else $)$
+I look out of the window and see what appears to be a tree. It has a big, dark coloured part sticking up out of the ground that branches into thinner sticks and on the ends of these are small green things. Clearly, $P(view \mid  tree)$ is high and $P(view \mid car)$ or $P(view \mid Robbie \quad Williams)$ are very small. But $P(view \mid carboard \quad cutout \quad cunningly \quad painted \quad to \quad look \quad like \quad a \quad tree)$ is also very high. Maybe even higher than $P(view \mid  tree)$ in the sense that what I see looks almost like a tree.
+\\
+Does this mean I should now believe that I am seeing a cardboard cut-out cunningly painted to look like a tree? No because it is much less likely to begin with than a red tree.
 \end{example}
-\vfill
-\eject
+In statistical terms, consider some data $X$ and some unknown parameter $\theta$. The first step in any statistical analysis is to build a model that links the data to unknown parameters and the main function of this model is to allow us to state the probability of observing any data given any specified values of the parameters. That is the model defines $f(x\mid \theta)$. 
+\\
+When we think of $f(x\mid \theta)$ as a function of $\theta$ for fixed observed data $X$, we call it likelihood function and it by $L(\theta,X)$.
+\begin{itemize}
+\item So how can we combine this with our example?
+\end{itemize}
+This perspective underlies the differences between the two main theories of statistical inference.
+\begin{itemize}
+\item Frequentist inference essentially uses only the likelihood, it does not recognize $f(\theta)$.
+\item Bayesian inference uses both likelihood and $f(\theta)$.
+\end{itemize}
+The principal distinguishing feature of Bayesian inference as opposed to frequentist inference is its use of $f(\theta)$.
 
 \section{Prior to Posterior}
-
+We refer to $f(\theta)$ as the \underline{prior distribution} of $\theta$. It represents knowledge about $\theta$ prior to observing the data $X$. We refer to $f(\theta \mid X)$ as the \underline{posterior distribution} of $\theta$ and it represents knowledge about $\theta$ after observing $X$. 
+\begin{itemize}
+\item So we have two sources of information about $\theta$.
+\item Here $f(x)$ does not depend on $\theta$. Thus $\int f(\theta \mid x) \mathrm{d} \theta=1$. Since $f(x)$ is a constant within the integral, we can take it outside to get $1=f^{-1}(x)\int f(\theta) f(x \mid \theta) \mathrm{d}\theta$.
+\item $f(\theta \mid x)= \propto f(\theta) f(x \mid \theta)\propto f(\theta) L(\theta ; x)$ (the posterior is proportional to the prior times the likelihood).
+\item The constant that we require to scale the right hand side to integrate to $1$ is usually called the normalizing constant. If we haven't dropped any constants form $f(\theta)$ or $f(x \mid \theta)$, then the normalising constant is just $f^{-1}(x)$, otherwise it also restores any dropped constants. 
+\end{itemize}
 \section{Triplot}
+If for any value of $\theta$, we have either $f(\theta)=0$ or $f(x\mid \theta)=0$, then we will also have $f(\theta \mid x)=0$. This is called the property of zero preservation. So if either:
+\begin{itemize}
+\item the prior information says that this $\theta$ value is impossible
+\item the data say that this value of $\theta$ is impossible because if it were the true value, then the observed data would have been impossible, then the posterior distribution confirms that this value of $\theta$ is impossible.
+\end{itemize}
 
-\footnote{All plots are generated in R, relevant codes are provided in Appendix R Codes }
+\begin{definition}{Crowwell's Rule:}
+If either information source completely rules out a specific $\theta$, then the posterior must rule it out too. This means that we should be very careful about giving zero probability to something unless it is genuinely impossible. Once something has zero probability then no amount of further evidence can cause it to have a non-zero posterior probability.
+\end{definition}
+
+\begin{itemize}
+\item More generally, $f(\theta \mid x)$ will be low if either $f(\theta)$ is very small.  We will tend to find that $f(x \mid \theta)$ is large when both $f(\theta)$ and $f(x \mid \theta)$ are relatively large, so that this $\theta$ value is given support by \underline{both} information sources.
+\end{itemize}
+When $\theta$ is a scalar parameter, a useful diagram is the \underline{triplot}, which shows the prior, likelihood and posterior on the same graph. An example is in Figure \ref{fig:Triplot}.\footnote{All plots are generated in R, relevant codes are provided in Appendix R Codes }
+\begin{figure}
+\centering
+ \includegraphics[scale=0.7]{triplot}% Images in 100% size
+  \caption{Triplot of prior, likelihood and posterior. }
+\label{fig:Triplot}
+\end{figure} 
+\\
+\\
+A strong information source in the triplot is indicated by a cırve that is narrow (and therefore, because it integrates to one, also has a high peak). A narrow curves concentrates on a small range of $\theta$ values, and thereby "rules out" all values of $\theta$ outside that range.
+
 \vfill
 \eject
-
+\begin{itemize}
+\item Over the range $\theta<-1$, the likelihood:
+\item Over the range $\theta>3$,the likelihood:
+\item Values of $\theta$ between $-1$ and $3$, the likelihood:
+\item The maximum value of the posterior at:
+\item The MLE of $\theta$ is:
+\end{itemize}
+\subsection{Normal Mean}
+For example, suppose that $X_1, X_2,...,X_n$ are iid $ \mathcal{N}(\mu,\,\sigma^{2})$ and $\sigma^2$ is known. Then the likelihood is :
+\begin{equation}
+\begin{split}
+f(x \mid \mu)= \prod_{i=1}^{n}f(x_i \mid \mu)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}\sigma}\exp\left (  -\frac{1}{2\sigma^2}(x_i -\mu)^2 \right )
+\\
+\propto \exp\left (  -\frac{1}{2\sigma^2}(x_i -\mu)^2 \right ).
+\end{split}
+\end{equation}
+As,
+\begin{equation}
+\begin{split}
+\sum (x_i-\bar{x}+\bar{x}-\mu)^2=\sum (x_i-\bar{x})^2+n(\bar{x}-\mu)^2+2(\bar{x}-\mu)\sum(x_i-\bar{x})
+\\
+=\sum (x_i-\bar{x})^2+n(\bar{x}-\mu)^2
+\\
+\propto \exp\left (  -\frac{1}{2\sigma^2}n(\bar{x} -\mu)^2 \right ).
+\end{split}
+\end{equation}
+Note that $2(\bar{x}-\mu)\sum(x_i-\bar{x})=0$ as $\sum(x_i-\bar{x})=0$. Suppose the prior distribution for $\mu$ is normal:
+\begin{equation}
+\mu \sim \mathcal{N}(m,v).
+\end{equation}
+Then applying Bayes' theorem we have:
+\begin{equation}
+\begin{split}
+f(\mu \mid x) \propto \underbrace{\exp\left (  -\frac{1}{2\sigma^2}n(\bar{x} -\mu)^2 \right )}_{f(x \mid \mu)} \underbrace{\exp\left (  -\frac{1}{2\sigma^2}n(\mu-m)^2 \right )}_{f(\mu)}
+\\
+=\exp\left (  -\frac{\theta}{2} \right ).
+\end{split}
+\end{equation}
+Note that
+\begin{equation}
+\theta=n \sigma^{-2}(\bar{x}-\mu)+v^{-1}(\mu-m)^2=(v^*)^{-1}(\mu-m^*)^2+R
+\end{equation}
+and 
+\begin{equation}
+v^*=(n\sigma^{-2}+v^{-1})^{-1}
+\end{equation}
+\begin{equation}
+m^*=(n\sigma^{-2}+v^{-1})^{-1}(n \sigma^{-2}\bar{x}+v^{-1}m)=a \bar{x}+(1-a)m 
+\end{equation}
+where $a=n \sigma^-2/(n \sigma^{-2}+v^{-1})$
+\begin{equation}
+R=(n^{-1}\sigma^2+v)(\bar{x}-m)^2
+\end{equation}
+Therefore,
+\begin{equation}
+f(\mu \mid x) \propto \exp\left (  -\frac{1}{2\sigma^2}n(\mu-m)^2 \right )
+\end{equation}
+and we have shown that the posterior distribution is normal too: $\mu \mid x \sim \mathcal{N}(m^*,\,v^*)$
+\begin{itemize}
+\item $m^*=$ weighted average of the mean $m$ and the usual frequentist data-only estimate $\bar{x}$. 
+\\
+The weights $\propto$:
+\item Bayes' theorem typically works in this way. We \underline{usually} find that posterior estimates are compromises between prior estimates and data based estimates and tend to be closer whichever information source is stronger. And we \underline{usually} find that the posterior variance is smaller than the prior variance.
+\end{itemize}
 \subsection{Weak Prior Information}
 It is the case where the prior information is much weaker that the data. This will occur, for instance, if we do not have strong information about $Q$ before seeing the  data, and if there are lots of data. Then in triplot, the prior distribution will be much broader and flatter that the likelihood. \underline{So the posterior is approximately proportional to the likelihood.}
 \begin{example}
-Classify the follow differential equations as ODE's or PDE's, linear
-or nonlinear, and determine their order. For the linear equations,
-determine whether or not they are homogeneous.
+In the normal mean analysis, we get weak prior information by letting the prior precision of $v^{-1}$ become small. Then $m^* \rightarrow \bar{x}$ and $v^* \rightarrow \sigma^2/n$ so that the posterior distribution of $\mu$ corresponds very closely with standard frequentist theory.
 \end{example}
 
 

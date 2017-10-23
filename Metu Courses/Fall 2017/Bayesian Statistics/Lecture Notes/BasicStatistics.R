@@ -1,29 +1,28 @@
 ####################################################
 #	                                             #
-#   Mean and Standard Deviation Calculation        #
-#                 by Anil Aksu                     #
+#      A Sample Triplot by Anil Aksu               #
 #   It is developed to show some basics of R       #
 #     						         #
 ####################################################	
 
-## library required to read excel files
-require(gdata)
-## functions
-source('getMean.R')
-source('getSigma.R')
-## the random data read from excel file
-RandomNumbers <- read.xls("RandomNumbers.xlsx", perl = "C:\\Perl\\bin\\perl.exe")
-## let's calculate the mean 
-Mean <- getMean(RandomNumbers)
-## the standard deviation 
-Sigma <- getSigma(RandomNumbers)
+## the range of sampling
+x=seq(-4,4,length=101)
 ## this function gets numbers from console
+prior=dnorm(x, mean = 0, sd = 1.5, log = FALSE)
+likelihood=dnorm(x, mean = 1.5, sd = 0.7, log = FALSE)
+posterior=dnorm(x, mean = 1, sd = 0.5, log = FALSE)
 
-## let's output them 
-print("Random Numbers")
-print(RandomNumbers[,1])
-print("The Mean")
-print(Mean)
-print("The Standard Deviation")
-print(Sigma)
 
+## let's plot them
+plot(range(x), range(c(likelihood,prior,posterior)), type='n', xlab="x", ylab="f(x)")
+lines(x, prior, type='l', col='blue')
+lines(x, likelihood, type='l', col='red')
+lines(x, posterior, type='l', col='green')
+
+title("Prior, Likelihood and Posterior Distribution")
+legend(
+  "topright", 
+  lty=c(1,1,1), 
+  col=c("blue", "red", "green"), 
+  legend = c("prior", "likelihood","posterior")
+)

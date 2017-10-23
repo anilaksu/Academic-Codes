@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.8.25)  12 OCT 2017 16:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.8.25)  23 OCT 2017 14:40
 entering extended mode
 **./BayesLectureNotes.tex
 (BayesLectureNotes.tex
@@ -400,7 +400,7 @@ Contents
 \openout3 = `BayesLectureNotes.toc'.
 
  [3] [4]
-Overfull \hbox (17.12718pt too wide) detected at line 165
+Overfull \hbox (17.12718pt too wide) detected at line 166
 \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A \OMS/cmsy/m/n/12 j \OML/c
 mm/m/it/12 B\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 P\OT1/cmr/m/n
 /12 (\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\
@@ -408,88 +408,107 @@ OML/cmm/m/it/12 B[]\OT1/cmr/m/n/12 )([] \OMS/cmsy/m/n/12   []\OT1/cmr/m/n/12 )
  []
 
 [5] [6] [7]
-Overfull \hbox (3.6152pt too wide) in paragraph at lines 216--217
+Package epstopdf Info: Source file: <triplot.eps>
+(epstopdf)                    date: 2017-10-22 13:45:17
+(epstopdf)                    size: 8352 bytes
+(epstopdf)             Output file: <triplot-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-10-22 13:45:34
+(epstopdf)                    size: 4644 bytes
+(epstopdf)             Command: <epstopdf --outfile=triplot-eps-converted-to.pd
+f triplot.eps>
+(epstopdf)             \includegraphics on input line 245.
+Package epstopdf Info: Output file is already uptodate.
+ <triplot-eps-converted-to.pdf, id=37, 416.55624pt x 415.5525pt>
+File: triplot-eps-converted-to.pdf Graphic file (type pdf)
+
+<use triplot-eps-converted-to.pdf>
+Package pdftex.def Info: triplot-eps-converted-to.pdf used on input line 245.
+(pdftex.def)             Requested size: 291.58737pt x 290.88477pt.
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ± in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--252
+
+ []
+
+[8 <./triplot-eps-converted-to.pdf>]
+Overfull \hbox (5.53745pt too wide) in paragraph at lines 280--280
+[] 
+ []
+
+
+Overfull \hbox (5.53745pt too wide) in alignment at lines 279--280
+[] [] 
+ []
+
+[9]
+Overfull \hbox (3.6152pt too wide) in paragraph at lines 320--321
 \OT1/cmr/m/n/12 hood. $[]$ 
  []
 
-[8]
+[10]
 
-[9
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10
+[11
 
 ]
-
-[11]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12
 
 ]
-Basic Statistics
+
 [13]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14
 
 ]
-R Codes
-(BasicStatistics.R
-LaTeX Font Info:    Try loading font information for TS1+pcr on input line 12.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1pcr.fd"
-File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
-)
-LaTeX Font Info:    Try loading font information for OML+pcr on input line 15.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omlpcr.fd"
-File: omlpcr.fd 
-)
-LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 15.
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 15.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspcr.fd"
-File: omspcr.fd 
-)
-LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 15.
-)
-(BayesLectureNotes.bbl [15]
+Basic Statistics
+[15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [16
 
 ]
+R Codes
+(BasicStatistics.R
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 16.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1pcr.fd"
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+))
+(BayesLectureNotes.bbl [17]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-) [17] (BayesLectureNotes.aux) ) 
+ [18
+
+]
+
+) [19] (BayesLectureNotes.aux) ) 
 Here is how much of TeX's memory you used:
- 5196 strings out of 493333
- 69295 string characters out of 3139182
- 175188 words of memory out of 3000000
- 8477 multiletter control sequences out of 15000+200000
+ 5183 strings out of 493333
+ 68894 string characters out of 3139182
+ 184196 words of memory out of 3000000
+ 8456 multiletter control sequences out of 15000+200000
  14094 words of font info for 54 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
- 39i,7n,42p,405b,1287s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 39i,24n,42p,603b,1247s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/ba
 se/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on BayesLectureNotes.pdf (17 pages, 185355 bytes).
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on BayesLectureNotes.pdf (19 pages, 209538 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
+ 127 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
