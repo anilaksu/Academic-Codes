@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Grinstein et~al.(2001)Grinstein, Trutschl, and Cvek]{Grinstein2001}
+Georges Grinstein, Marjan Trutschl, and Ur{\v{s}}ka Cvek.
+\newblock {High-dimensional visualizations}.
+\newblock \emph{Data mining conference KDD workshop}, pages 1--14, 2001.
+\newblock URL
+  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.103.528{\&}rep=rep1{\&}type=pdf}.
+
+\end{thebibliography}
