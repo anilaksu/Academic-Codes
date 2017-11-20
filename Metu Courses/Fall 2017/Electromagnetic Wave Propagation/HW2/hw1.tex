@@ -1,0 +1,470 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{graphicx}
+%\usepackage{natbib}
+% Set the title, author, and date information.
+\title{EE 523: Homework 1}
+\author{Anil A. Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section*{Problem 1 }
+Consider an LTI system with frequency response $H(\omega)=\left | H(\omega) \right | e^{j \varphi(\omega) }$
+
+\begin{itemize}
+\item The phase delay $P(\omega)$ is defined as $P(\omega)=-\frac{\varphi(\omega)}{\omega}$
+\item The group delay $D(\omega)$ is defined as $D(\omega)=-\frac{ \mathrm{d}\varphi(\omega)}{  \mathrm{d}\omega}$
+\end{itemize}
+
+\subsection*{a}
+Show that the phase delay gives the \underline{time delay} experienced by a sinusoidal input signal given
+as $x(t)=e^{j \omega t}$, by evaluating $y(t)$.
+\\
+\textbf{Solution:}\\
+Fourier transform of the sinusoidal signal $x(t)=e^{j \omega_0 t}$ can be given as:
+\begin{equation}
+X(\omega)=\int_{-\infty}^{\infty}e^{j \omega_0 t} e^{-j \omega t} \mathrm{d}t=\delta_{\omega_0}(\omega).
+\end{equation}
+where $\delta_{\omega_0}(\omega)$ is Dirac function centred at $\omega=\omega_0$. The frequency response of the given LTI system can be given in frequency domain as:
+\begin{equation}
+Y(\omega)=H(\omega)X(\omega)=\left | H(\omega) \right | e^{j \varphi(\omega) } \delta_{\omega_0}(\omega)
+\end{equation}
+The inverse Fourier transform of $Y(\omega)$ can be given as:
+\begin{equation}
+y(t)=\frac{1}{2 \pi}\int_{-\infty}^{\infty}Y(\omega)e^{j \omega t} \mathrm{d} \omega=\frac{1}{2 \pi}\int_{-\infty}^{\infty}\left | H(\omega) \right | e^{j \varphi(\omega) } \delta_{\omega_0}(\omega)e^{j \omega t} \mathrm{d} \omega
+\end{equation}
+Therefore,
+\begin{equation}
+y(t)=\left | H(\omega_0) \right | e^{j (\varphi(\omega_0)+ \omega_0 t )}=\left | H(\omega_0) \right | e^{j  \omega_0( t + \frac{\varphi(\omega_0)}{\omega_0} )}.
+\end{equation}
+As a result, the time delay $\Delta t = \varphi(\omega_0)/ \omega_0$.
+\subsection*{b}
+Show that the group delay may be interpreted as the \underline{time delay} of the complex amplitude
+(envelope) of the band-pass signal $x(t)=x_{LP}(t)e^{j \omega_0 t}$, where the complex envelope $x_{LP}(t)$ is a low-pass band-limited signal (i.e. $X_{LP}(\omega)=FT\left \{  x_{LP}(t) \right \}$ vanishes for $\left | \omega \right | > \omega_m$) and $\omega_0 >> \omega_m$ (i.e. the band pass signal $x(t)$ is narrow-band) 
+\\
+\\
+Consider the plane wave $\bar{E}(x)=E_z(x,t)\hat{a}_z$, where $E_z(x,t)=a(x,t)e^{j(\omega t - k(\omega)x)}$. $k(\omega)$ is the (real-valued) wave number in a dispersive medium. Let us define an LTI system action as: $x(t)=E_z(x,t)\Big|_{x=0}$ (input signal), $y(t)=E_z(x,t)\Big|_{x=L}$ (Output signal). 
+\\
+\textbf{Solution:}\\
+The electric field in form of Fourier integral can be given as:
+\begin{equation}
+E_{z}(x,t)=\int_{-\infty}^{\infty}A(\omega)e^{-j(k(\omega)x -\omega t)}\mathrm{d} \omega.
+\end{equation}
+The signal given as $x(t)=x_{LP}(t)e^{j \omega_0 t}$ in frequency domain can be expressed as convolution integral:
+\begin{equation}
+A(\omega)=\int_{-\infty}^{\infty}X_{LP}(\gamma)\delta_{\omega_0}(\omega -\gamma)\mathrm{d} \gamma.
+\end{equation}
+The frequency response of LTI system for the given input can be given as:
+\begin{equation}
+Y(\omega)=H(\omega)A(\omega)=\left | H(\omega) \right | e^{j \varphi(\omega) } \int_{-\infty}^{\infty}X_{LP}(\gamma)\delta_{\omega_0}(\omega -\gamma)\mathrm{d} \gamma.
+\end{equation}
+In time domain, it can be given as:
+\begin{equation}
+y(x,t)=\frac{1}{2 \pi}\int_{-\infty}^{\infty} \int_{-\infty}^{\infty}\left | H(\omega) \right | e^{j \varphi(\omega) } X_{LP}(\gamma)\delta_{\omega_0}(\omega -\gamma) e^{-j(k(\omega)x -\omega t)} \mathrm{d} \omega  \mathrm{d} \gamma
+\end{equation}
+The variables of the integral above can be changed as $\eta=\omega -\gamma$ and $\xi= \omega +\gamma$, therefore the integral can be expressed as:
+\begin{equation}
+y(x,t)=\frac{1}{4 \pi}\int_{-\infty}^{\infty} \int_{-\infty}^{\infty}\left | H((\xi+\eta)/2) \right | e^{j \varphi((\xi+\eta)/2) } X_{LP}((\xi-\eta)/2)\delta_{\omega_0}(\eta) e^{-j(k((\xi+\eta)/2)x - ((\xi+\eta)/2) t)} \mathrm{d} \eta  \mathrm{d} \xi
+\end{equation}
+Due to the property of Dirac function, the integral above can be given as:
+\begin{equation}
+y(x,t)=\frac{1}{4 \pi} \int_{-\infty}^{\infty}\left | H((\xi+\omega_0)/2) \right | e^{j \varphi((\xi+\omega_0)/2) } X_{LP}((\xi-\omega_0)/2) e^{-j(k((\xi+\omega_0)/2)x - ((\xi+\omega_0)/2) t)} \mathrm{d} \xi
+\end{equation}
+As $X_{LP}(\omega)=FT\left \{  x_{LP}(t) \right \}$ vanishes for $\left | \omega \right | > \omega_m$ and $\omega_0 >> \omega_m$, the integral above can be given as:
+\begin{equation}
+y(x,t)=\frac{1}{4 \pi} \int_{\omega_0-2\omega_m}^{\omega_0+2\omega_m}\left | H((\xi+\omega_0)/2) \right | e^{j \varphi((\xi+\omega_0)/2) } X_{LP}((\xi-\omega_0)/2) e^{-j(k((\xi+\omega_0)/2)x - ((\xi+\omega_0)/2) t)} \mathrm{d} \xi
+\end{equation}
+Let's change the variable $\omega=(\xi-\omega_0)/2$,
+\begin{equation}
+\label{int:1}
+y(x,t)=\frac{1}{2 \pi} \int_{-\omega_m}^{\omega_m}\left | H(\omega+\omega_0) \right | e^{j \varphi(\omega+\omega_0) } X_{LP}(\omega) e^{-j(k(\omega+\omega_0)x - (\omega+\omega_0) t)} \mathrm{d} \omega
+\end{equation}
+In the integral above, the terms $\varphi(\omega+\omega_0)$ and $k(\omega+\omega_0)$ can be expanded as Taylor series around $\omega_0$ as follows:
+\begin{equation}
+\varphi(\omega+\omega_0)=\varphi(\omega_0)+\frac{\mathrm{d}\varphi }{\mathrm{d} \omega}\Biggr|_{\omega_0} \omega,
+\end{equation}
+and also 
+\begin{equation}
+k(\omega+\omega_0)=k(\omega_0)+\frac{\mathrm{d}k }{\mathrm{d} \omega}\Biggr|_{\omega_0} \omega,
+\end{equation}
+After expanding these terms and getting the phase variable $e^{-j(k(\omega_0) x-\omega_0 t-\varphi(\omega_0))}$, the integral \ref{int:1} can be written as:
+\begin{equation}
+\label{int:1}
+y(x,t)=\frac{e^{-j(k(\omega_0) x-\omega_0 t-\varphi(\omega_0))}}{2 \pi} \underbrace{\int_{-\omega_m}^{\omega_m}\left | H(\omega+\omega_0) \right | X_{LP}(\omega) e^{-j \omega(\frac{\mathrm{d}k }{\mathrm{d} \omega} x - t- \frac{\mathrm{d}\varphi }{\mathrm{d} \omega})} \mathrm{d} \omega}_{Envelope}
+\end{equation}
+Therefore the time delay in the envelope can be given as:
+\begin{equation}
+\Delta t = \frac{\mathrm{d}\varphi }{\mathrm{d} \omega}.
+\end{equation}
+\subsection*{c}
+
+Let $a(x,t)=1$, i.e. the plane wave is monochromatic. Find the phase delay in this system.
+How is the phase delay related to the phase velocity? Calculate $y(t)$ and comment on your
+results.
+\\
+\textbf{Solution:}\\
+As found in part a, this type of input leads to Dirac function in frequency domain, therefore the response can be given as: 
+\begin{equation}
+y(x,t)=\left | H(\omega_0) \right | e^{j  (\omega_0( t + \frac{\varphi(\omega_0)}{\omega_0} )-k(\omega_0)x)}.
+\end{equation}
+The phase delay does not affect the phase velocity, but it adds a time shift to the phase.
+\subsection*{d}
+Let $a(0,t)$ be a low-pass signal, and assume that narrow-band assumption is valid for $E_z(0,t)=a(0,t)e^{j \omega t}$. Evaluate the group delay for the system defined above. How is the
+group delay related to the group velocity. Calculate $y(t)$ and comment on your results.
+\\
+\textbf{Solution:}\\
+\begin{equation}
+\label{int:1}
+y(x,t)=\frac{e^{-j(k(\omega_0) x-\omega_0 t-\varphi(\omega_0))}}{2 \pi} \int_{-\omega_m}^{\omega_m}\left | H(\omega+\omega_0) \right | A(\omega) e^{-j \omega(\frac{\mathrm{d}k }{\mathrm{d} \omega} x - t- \frac{\mathrm{d}\varphi }{\mathrm{d} \omega})} \mathrm{d} \omega
+\end{equation}
+where $A(\omega)=FT\left \{  a(0,t) \right \}$. Similar to the phase delay, the group delay adds a time shift to the propagation of the wave envelope, however it does not change the group velocity. 
+\subsection*{e}
+Consider a Lorentz medium with the following susceptibility function:
+\begin{equation*}
+\chi(\omega)=\frac{\omega_{p}^{2}}{\omega_{0}^{2}-\omega^{2}},
+\end{equation*}
+where $\omega_p=2\omega_0$ (plasma frequency), and $\omega_0=2\pi  \times 10^9 rad/s$ (resonance frequency)
+\begin{enumerate}
+\item  Evaluate the phase and group velocities at: 
+	\begin{enumerate}
+	\item $\omega=\frac{\omega_0}{100}$,
+	\item $\omega=\frac{\omega_0}{2}$,
+	\item $\omega=\frac{99 \omega_0}{100}$.
+	\end{enumerate}
+Comment on your results.
+\\
+\textbf{Solution:}\\
+The source free wave equation for electric field in time domain\cite{Cheng} can be given as:
+\begin{equation}
+\label{eq:wave}
+\nabla^2 \bar{E}-\mu \varepsilon \frac{\partial^2 \bar{E}}{ \partial t^2}=0.
+\end{equation}
+Note that the permittivity of medium
+\begin{equation}
+\varepsilon=\varepsilon_0 \varepsilon_r(\omega).
+\end{equation}
+where $\varepsilon_0$ is the permittivity of free space and $\varepsilon_r(\omega)$ is the relative permittivity of the medium. For the given susceptibility function of Lorentz medium, the relative permittivity of the medium can be calculated as:
+\begin{equation}
+\varepsilon_r(\omega)=1+\chi(\omega)=1+\frac{\omega_{p}^{2}}{\omega_{0}^{2}-\omega^{2}}.
+\end{equation}
+Assuming that the electric field is in form of $E_z(x,t)\hat{a}_z=a_0 e^{j(\omega t - k(\omega)x)}$, the equation \ref{eq:wave} can be reduced to the following form:
+\begin{equation}
+-k^2(\omega)a_0 e^{j(\omega t - k(\omega)x)}+ \mu \varepsilon \omega^2 a_0 e^{j(\omega t - k(\omega)x)}=0.
+\end{equation}
+Therefore, the wavenumber can be found as:
+\begin{equation}
+k(\omega)=\omega\sqrt{\mu \varepsilon_0 (1+\frac{\omega_{p}^{2}}{\omega_{0}^{2}-\omega^{2}})}.
+\end{equation}
+The phase velocity is defined as:
+\begin{equation}
+c_p = \frac{\omega}{k}=\frac{1}{\sqrt{\mu \varepsilon_0 (1+\frac{\omega_{p}^{2}}{\omega_{0}^{2}-\omega^{2}})}}.
+\end{equation}
+and the group velocity is defined as:
+\begin{equation}
+c_g=\frac{\partial \omega}{ \partial k}=\frac{1}{\sqrt{\mu \varepsilon_0 (1+\frac{\omega_{p}^{2}}{\omega_{0}^{2}-\omega^{2}})}+\frac{\omega^2\omega_{p}^{2}}{(\omega_{0}^{2}-\omega^{2})^2} \sqrt{\mu \varepsilon_0 (1+\frac{\omega_{p}^{2}}{\omega_{0}^{2}-\omega^{2}})^3}}.
+\end{equation}
+The phase and group velocities at
+\begin{enumerate}
+	\item for $\omega=\frac{\omega_0}{100}$, $c_p=0.447/\sqrt{\mu \varepsilon_0}$ and $c_g=0.447/\sqrt{\mu \varepsilon_0}$,
+	
+	\item for $\omega=\frac{\omega_0}{2}$, $c_p=0.397/\sqrt{\mu \varepsilon_0}$ and $c_g=0.015/\sqrt{\mu \varepsilon_0}$,
+	\item for $\omega=\frac{99 \omega_0}{100}$, $c_p=0.07/\sqrt{\mu \varepsilon_0}$ and $c_g=8.7 \times 10^{-9}/\sqrt{\mu \varepsilon_0}$.
+\end{enumerate}
+When the  excitation frequency approaches the resonance frequency, the electric field has slower group velocity, therefore it has hard time to spread out.
+
+\item  Find the phase and group delays for LTI system defined in part c for $L= 1m$. Calculate $y(t)$ and comment on your results.
+\\
+\textbf{Solution:}\\
+\end{enumerate}
+
+
+
+\section*{Problem 2 }
+Consider a linear, homogeneous, anisotropic and non-magnetic (i.e., $\mu=\mu_0$ ) medium with the
+constitutive relations
+\begin{equation*}
+\bar{D}=\overline{\overline{\varepsilon}}\cdot \bar{E}.
+\end{equation*}
+\begin{equation*}
+\bar{B}=\mu_0 \bar{H}.
+\end{equation*}
+Assume that the dyadic permittivity is represented as:
+\begin{equation*}
+\overline{\overline{\varepsilon}}=\varepsilon_{xx}\hat{a}_x \hat{a}_x +\varepsilon_{yy}\hat{a}_y \hat{a}_y +\varepsilon_{zz}\hat{a}_z \hat{a}_z. 
+\end{equation*}
+Suppose that a plane wave is propagating in this source-free anisotropic medium. Assuming that the
+wave vector is on the xy-plane (transverse plane), the fields are expressed by:
+\begin{equation*}
+\bar{E}=\bar{E}e^{-j \bar{k} \cdot \bar{r}}=(\bar{E}_t+E_z \hat{a}_z)e^{-j \bar{k} \cdot \bar{r}}
+\end{equation*}
+\begin{equation*}
+\bar{H}=\bar{H}e^{-j \bar{k} \cdot \bar{r}}=(\bar{H}_t+H_z \hat{a}_z)e^{-j \bar{k} \cdot \bar{r}}
+\end{equation*}
+where the subscript $t$ denotes the transverse components, and $\bar{k}=k_x \hat{a}_x+k_y \hat{a}_y$ is the wavenumber vector.
+
+\begin{enumerate}
+\item Derive the wave equation for $\bar{E}$ in $k$-domain.
+\\
+\textbf{Solution:}\\
+The governing equations for the source free anisotropic medium can be given as:
+\begin{equation}
+\label{eq:1}
+\mathbf{\nabla}\cdot \mathbf{D}=0,
+\end{equation}
+\begin{equation}
+\label{eq:2}
+\mathbf{\nabla}\times \mathbf{E}=-\mu_0 \frac{\partial \mathbf{H}}{\partial t},
+\end{equation}
+\begin{equation}
+\label{eq:3}
+ \mathbf{\nabla}\times \mathbf{H}=\frac{\partial \mathbf{D}}{\partial t}.
+\end{equation}
+In $k$-domain, the equation \ref{eq:1}, \ref{eq:2} and \ref{eq:3} can be given as:
+\begin{equation}
+\label{eq:4}
+-j\mathbf{k}\cdot \mathbf{D}=0,
+\end{equation}
+\begin{equation}
+\label{eq:5}
+-j\mathbf{k}\times \mathbf{E}=j \mu_0 \omega \mathbf{H}
+\end{equation}
+\begin{equation}
+\label{eq:6}
+-j \mathbf{k}\times \mathbf{H}=-j \omega \mathbf{D}.
+\end{equation}
+After eliminating $\mathbf{H}$ from equations \ref{eq:5} and \ref{eq:6}, the governing wave equation for the electric field can be obtained as:
+\begin{equation}
+\label{eq:7}
+(\mathbf{k}\cdot \mathbf{E})\mathbf{k}-(\mathbf{k} \cdot \mathbf{k})\mathbf{E}=-\omega^2 \mu_0\overline{\overline{\varepsilon}}\cdot \mathbf{E},
+\end{equation}
+and 
+\begin{equation}
+\label{eq:8}
+k_x \varepsilon_{xx} E_x + k_y \varepsilon_{yy} E_y +k_z\varepsilon_{zz} E_z=0.
+\end{equation}
+\item Derive the dispersion relations for the following cases and identify the dispersion relations
+corresponding to the ordinary and extraordinary waves:
+\begin{enumerate}
+\item
+\begin{equation*}
+\overline{\overline{\varepsilon}}=\varepsilon_0 \left [ 4\hat{a}_x \hat{a}_x +2\hat{a}_y \hat{a}_y +2\hat{a}_z \hat{a}_z \right ]. 
+\end{equation*}
+\\
+\textbf{Solution:}\\
+In matrix form, equation \ref{eq:7} can be given as:
+\begin{equation}
+\label{eq:9}
+\begin{bmatrix}
+ \omega^2 \mu_0 \varepsilon_{xx}-\mathbf{k} \cdot \mathbf{k}+k_{x}^2 & k_{x}k_{y} & k_{x}k_{z} \\ 
+k_{y}k_{x} & \omega^2 \mu_0 \varepsilon_{yy}-\mathbf{k} \cdot \mathbf{k}+k_{y}^2 & k_{y}k_{z} \\ 
+k_{z}k_{x} & k_{z}k_{y} & \omega^2 \mu_0 \varepsilon_{zz}-\mathbf{k} \cdot \mathbf{k}+k_{z}^2
+\end{bmatrix}
+\begin{bmatrix}
+E_x\\ 
+E_y\\ 
+E_z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\ 
+0\\ 
+0
+\end{bmatrix}
+\end{equation}
+Also by manipulating equation \ref{eq:8} and the given anistropic permittivity, the following relation can be found:
+\begin{equation}
+\mathbf{k}\cdot \mathbf{E}=-k_x E_x.
+\end{equation}
+Therefore, for the given anistropic permittivity, the linear system given in equation \ref{eq:9} can be given as:
+\begin{equation}
+\label{eq:10}
+\begin{bmatrix}
+ 4 \omega^2 \mu_0 \varepsilon_{0}-\mathbf{k} \cdot \mathbf{k}-k_{x}^2 & 0 & 0\\ 
+-k_{y}k_{x} & 2\omega^2 \mu_0 \varepsilon_{0}-\mathbf{k} \cdot \mathbf{k} & 0 \\ 
+-k_{z}k_{x} & 0 & 2\omega^2 \mu_0 \varepsilon_{0}-\mathbf{k} \cdot \mathbf{k}
+\end{bmatrix}
+\begin{bmatrix}
+E_x\\ 
+E_y\\ 
+E_z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\ 
+0\\ 
+0
+\end{bmatrix}
+\end{equation}
+For non-trivial electric field, the determinant of the matrix given in equation \ref{eq:10} must vanish, therefore
+\begin{equation}
+\label{eq:11}
+(2\omega^2 \mu_0 \varepsilon_{0}-(k_{x}^2+k_{y}^2+k_{y}^2))^2(4 \omega^2 \mu_{0} \varepsilon_{0} -(2k_{x}^2+k_{y}^2+k_{z}^2))=0.
+\end{equation}
+For ordinary waves, the dispersion relation based on equation \ref{eq:11} can be given as:
+\begin{equation}
+\label{eq:12}
+\omega^2=\frac{k_{x}^2+k_{y}^2+k_{z}^2}{2 \mu_0 \varepsilon_{0}}.
+\end{equation}
+Actually, in this case, since the optical axis is $x$ direction, ordinary waves must not have a wave number component in $x$ direction, therefore the dispersion relation can be simplified to:
+\begin{equation}
+\omega^2=\frac{k_{y}^2+k_{z}^2}{2 \mu_0 \varepsilon_{0}}.
+\end{equation}
+For extraordinary waves, the dispersion relation based on equation \ref{eq:11} can be given as:
+\begin{equation}
+\label{eq:13}
+\omega^2=\frac{2 k_{x}^2+k_{y}^2+k_{z}^2}{4 \mu_0 \varepsilon_{0}}.
+\end{equation}
+\item 
+\begin{equation*}
+\overline{\overline{\varepsilon}}=\varepsilon_0 \left [ 2\hat{a}_x \hat{a}_x +2\hat{a}_y \hat{a}_y +\hat{a}_z \hat{a}_z \right ]. 
+\end{equation*}
+\\
+\textbf{Solution:}\\
+Similar to part a, for the given anistropic permittivity, by manipulating equation \ref{eq:8} and the given anistropic permittivity, the following relation can be found:
+\begin{equation}
+\mathbf{k}\cdot \mathbf{E}=\frac{1}{2}k_z E_z.
+\end{equation}
+Therefore,
+\begin{equation}
+\label{eq:14}
+\begin{bmatrix}
+ 2 \omega^2 \mu_0 \varepsilon_{0}-\mathbf{k} \cdot \mathbf{k} & 0 & \frac{1}{2}k_{x}k_{z}\\ 
+0 & 2\omega^2 \mu_0 \varepsilon_{0}-\mathbf{k} \cdot \mathbf{k} & \frac{1}{2}k_{y}k_{z} \\ 
+0 & 0 & \omega^2 \mu_0 \varepsilon_{0}-\mathbf{k} \cdot \mathbf{k}+\frac{1}{2}k_{z}^2
+\end{bmatrix}
+\begin{bmatrix}
+E_x\\ 
+E_y\\ 
+E_z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\ 
+0\\ 
+0
+\end{bmatrix}
+\end{equation}
+For non-trivial electric field, the determinant of the matrix given in equation \ref{eq:14} must vanish, therefore
+\begin{equation}
+\label{eq:15}
+(2\omega^2 \mu_0 \varepsilon_{0}-(k_{x}^2+k_{y}^2+k_{z}^2))^2(\omega^2 \mu_{0} \varepsilon_{0}-(k_{x}^2+k_{y}^2+\frac{1}{2}k_{z}^2))=0.
+\end{equation}
+For ordinary waves, the dispersion relation based on equation \ref{eq:15} can be given as:
+\begin{equation}
+\omega^2=\frac{k_{x}^2+k_{y}^2+k_{z}^2}{2 \mu_0 \varepsilon_{0}}.
+\end{equation}
+In this case, since the optical axis is $z$ direction, ordinary waves must not have a wave number component in $z$ direction, therefore the dispersion relation can be simplified to:
+\begin{equation}
+\label{eq:16}
+\omega^2=\frac{k_{x}^2+k_{y}^2}{2 \mu_0 \varepsilon_{0}}.
+\end{equation}
+For extraordinary waves, the dispersion relation based on equation \ref{eq:15} can be given as:
+\begin{equation}
+\label{eq:17}
+\omega^2=\frac{2 k_{x}^2+2k_{y}^2+k_{z}^2}{2 \mu_0 \varepsilon_{0}}.
+\end{equation}
+\end{enumerate}
+
+\item  Suppose that the half space $x<0$ is free space, and the half space $x>0$ is filled with the
+anisotropic material. For the permittivity dyadics (ii-a and ii-b) given above, determine the
+reflected and transmitted $\bar{E}$ fields when the incident field is given as $\bar{E}_{inc}=(\hat{a}_y +2 \hat{a}_z)e^{-j 2 \pi x}$
+\\
+\textbf{Solution:}\\
+For the given incident wave field, the corresponding magnetic field can be found by using the equation below:
+\begin{equation}
+\mathbf{\nabla}\times \mathbf{E}=-\frac{\partial \mathbf{B}}{\partial t}
+\end{equation}
+Therefore, the incident magnetic field for the frequency $\omega$ satisfying the dispersion relation $\omega^2=k_{x}^2/(\varepsilon_0 \mu_0)$ in free space can be given as:
+\begin{equation}
+\bar{B}_{inc}=\frac{2 \pi}{\omega}(2\hat{a}_y - \hat{a}_z)e^{-j 2 \pi x}
+\end{equation}
+The interface conditions at $x=0$ can be given as:
+\begin{equation}
+E_{1t}=E_{2t},
+\end{equation}
+\begin{equation}
+B_{1n}=B_{2n},
+\end{equation}
+\begin{equation}
+\label{eq:18}
+\mathbf{a}_{n}\times(\mathbf{H}_{1}-\mathbf{H}_{2})=0.
+\end{equation}
+where $n$ and $t$ subscripts stand for normal and tangential components of the vector field. In the particular case we analyze here, the magnetic field has no normal component to the interface. However, the condition \ref{eq:18} still applies to the magnetic field. Therefore, the interface condition reduces to the following equation:
+\begin{equation}
+\label{eq:19}
+\bar{E}_{inc}+\bar{E}_{ref}=\bar{E}_{tra},
+\end{equation}
+\begin{equation}
+\label{eq:20}
+\bar{B}_{inc}+\bar{B}_{ref}=\bar{E}_{tra}.
+\end{equation}
+where $ref$ stands for reflecting part and $tra$ stands for the transmitted part. The reflecting electric and magnetic field can be denoted as: 
+\begin{equation}
+\bar{E}_{ref}=\Gamma_{\bot}(\hat{a}_y +2 \hat{a}_z)e^{j 2 \pi x},
+\end{equation}
+\begin{equation}
+\bar{B}_{ref}=\Gamma_{\bot}\frac{2 \pi}{\omega}(-2\hat{a}_y + \hat{a}_z)e^{j 2 \pi x}.
+\end{equation}
+Moreover, the transmitted electric and magnetic field for the medium $\overline{\overline{\varepsilon}}=\varepsilon_0 \left [ 4\hat{a}_x \hat{a}_x +2\hat{a}_y \hat{a}_y +2\hat{a}_z \hat{a}_z \right ]$ by the dispersion relation \ref{eq:13} can be given as:
+\begin{equation}
+\bar{E}_{tra}=T_{\bot}(\hat{a}_y +2 \hat{a}_z)e^{-j 2 \sqrt{2} \pi x},
+\end{equation}
+\begin{equation}
+\bar{B}_{tra}=T_{\bot}\frac{2 \sqrt{2} \pi}{\omega}(2\hat{a}_y - \hat{a}_z)e^{-j 2 \sqrt{2} \pi x}.
+\end{equation}
+By applying the condition \ref{eq:19},
+\begin{equation}
+1+\Gamma_{\bot}=T_{\bot}.
+\end{equation}
+Also by applying the condition \ref{eq:20},
+\begin{equation}
+1-\Gamma_{\bot}= \sqrt{2}T_{\bot}.
+\end{equation}
+As a result, the reflection and the transmission coefficients can be given as:
+\begin{equation}
+T_{\bot}=2\sqrt{2}-2,
+\end{equation}
+\begin{equation}
+\Gamma_{\bot}=2\sqrt{2}-3.
+\end{equation}
+Also, the transmitted electric and magnetic field for the medium $\overline{\overline{\varepsilon}}=\varepsilon_0 \left [ 2\hat{a}_x \hat{a}_x +2\hat{a}_y \hat{a}_y +\hat{a}_z \hat{a}_z \right ]$ by the dispersion relation \ref{eq:16} can be given as:
+\begin{equation}
+\bar{E}_{tra}=T_{\bot}(\hat{a}_y +2 \hat{a}_z)e^{-j 2 \sqrt{2} \pi x},
+\end{equation}
+\begin{equation}
+\bar{B}_{tra}=T_{\bot}\frac{2 \sqrt{2} \pi}{\omega}(2\hat{a}_y - \hat{a}_z)e^{-j 2 \sqrt{2} \pi x}.
+\end{equation}
+By applying the condition \ref{eq:19},
+\begin{equation}
+1+\Gamma_{\bot}=T_{\bot}.
+\end{equation}
+Also by applying the condition \ref{eq:20},
+\begin{equation}
+1-\Gamma_{\bot}= \sqrt{2}T_{\bot}.
+\end{equation}
+As a result, the reflection and the transmission coefficients can be given as:
+\begin{equation}
+T_{\bot}=2\sqrt{2}-2,
+\end{equation}
+\begin{equation}
+\Gamma_{\bot}=2\sqrt{2}-3.
+\end{equation}
+\end{enumerate}
+\bibliographystyle{plain}
+% Note the spaces between the initials
+\bibliography{EE523}
+
+\end{document}
