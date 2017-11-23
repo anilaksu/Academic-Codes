@@ -8,9 +8,9 @@
 ## the range of sampling
 x=seq(-4,4,length=101)
 ## this function gets numbers from console
-prior=dnorm(x, mean = 0, sd = 1.5, log = FALSE)
-likelihood=dnorm(x, mean = 1.5, sd = 0.7, log = FALSE)
-posterior=dnorm(x, mean = 1, sd = 0.5, log = FALSE)
+prior=dnorm(x, mean = 0.5, sd = 0.7, log = FALSE)
+likelihood=dnorm(x, mean = 0.49, sd = 0.65, log = FALSE)
+posterior=dnorm(x, mean = 0.52, sd = 0.5, log = FALSE)
 
 
 ## let's plot them

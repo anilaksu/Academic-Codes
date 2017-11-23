@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.8.25)  23 OCT 2017 14:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.8.25)  23 NOV 2017 19:31
 entering extended mode
 **./BayesLectureNotes.tex
 (BayesLectureNotes.tex
@@ -297,29 +297,29 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 (BayesLectureNotes.aux)
 \openout1 = `BayesLectureNotes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 65.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 62.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 62.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Try loading font information for U+msa on input line 65.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Try loading font information for U+msa on input line 62.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 65.
+LaTeX Font Info:    Try loading font information for U+msb on input line 62.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -400,7 +400,7 @@ Contents
 \openout3 = `BayesLectureNotes.toc'.
 
  [3] [4]
-Overfull \hbox (17.12718pt too wide) detected at line 166
+Overfull \hbox (17.12718pt too wide) detected at line 163
 \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A \OMS/cmsy/m/n/12 j \OML/c
 mm/m/it/12 B\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 P\OT1/cmr/m/n
 /12 (\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\
@@ -416,33 +416,33 @@ Package epstopdf Info: Source file: <triplot.eps>
 (epstopdf)                    size: 4644 bytes
 (epstopdf)             Command: <epstopdf --outfile=triplot-eps-converted-to.pd
 f triplot.eps>
-(epstopdf)             \includegraphics on input line 245.
+(epstopdf)             \includegraphics on input line 242.
 Package epstopdf Info: Output file is already uptodate.
  <triplot-eps-converted-to.pdf, id=37, 416.55624pt x 415.5525pt>
 File: triplot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use triplot-eps-converted-to.pdf>
-Package pdftex.def Info: triplot-eps-converted-to.pdf used on input line 245.
+Package pdftex.def Info: triplot-eps-converted-to.pdf used on input line 242.
 (pdftex.def)             Requested size: 291.58737pt x 290.88477pt.
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ± in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--252
+Underfull \hbox (badness 10000) in paragraph at lines 239--249
 
  []
 
 [8 <./triplot-eps-converted-to.pdf>]
-Overfull \hbox (5.53745pt too wide) in paragraph at lines 280--280
+Overfull \hbox (5.53745pt too wide) in paragraph at lines 277--277
 [] 
  []
 
 
-Overfull \hbox (5.53745pt too wide) in alignment at lines 279--280
+Overfull \hbox (5.53745pt too wide) in alignment at lines 276--277
 [] [] 
  []
 
 [9]
-Overfull \hbox (3.6152pt too wide) in paragraph at lines 320--321
+Overfull \hbox (3.6152pt too wide) in paragraph at lines 317--318
 \OT1/cmr/m/n/12 hood. $[]$ 
  []
 
@@ -450,24 +450,81 @@ Overfull \hbox (3.6152pt too wide) in paragraph at lines 320--321
 
 [11
 
-]
+] [12] [13] [14]
+Package epstopdf Info: Source file: <triplot_v1.eps>
+(epstopdf)                    date: 2017-11-23 16:41:17
+(epstopdf)                    size: 8371 bytes
+(epstopdf)             Output file: <triplot_v1-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-11-23 16:41:31
+(epstopdf)                    size: 4766 bytes
+(epstopdf)             Command: <epstopdf --outfile=triplot_v1-eps-converted-to
+.pdf triplot_v1.eps>
+(epstopdf)             \includegraphics on input line 497.
+Package epstopdf Info: Output file is already uptodate.
+
+<triplot_v1-eps-converted-to.pdf, id=66, 416.55624pt x 415.5525pt>
+File: triplot_v1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use triplot_v1-eps-converted-to.pdf>
+Package pdftex.def Info: triplot_v1-eps-converted-to.pdf used on input line 497
+.
+(pdftex.def)             Requested size: 249.93567pt x 249.33342pt.
+Package epstopdf Info: Source file: <triplot_v2.eps>
+(epstopdf)                    date: 2017-11-23 16:43:53
+(epstopdf)                    size: 8322 bytes
+(epstopdf)             Output file: <triplot_v2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-11-23 16:44:12
+(epstopdf)                    size: 4546 bytes
+(epstopdf)             Command: <epstopdf --outfile=triplot_v2-eps-converted-to
+.pdf triplot_v2.eps>
+(epstopdf)             \includegraphics on input line 504.
+Package epstopdf Info: Output file is already uptodate.
+
+<triplot_v2-eps-converted-to.pdf, id=67, 416.55624pt x 415.5525pt>
+File: triplot_v2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use triplot_v2-eps-converted-to.pdf>
+Package pdftex.def Info: triplot_v2-eps-converted-to.pdf used on input line 504
+.
+(pdftex.def)             Requested size: 249.93567pt x 249.33342pt.
+ [15] [16 <./triplot_v1-eps-converted-to.pdf> <./triplot_v2-eps-converted-to.pd
+f>] [17]
+Overfull \hbox (16.33328pt too wide) in paragraph at lines 547--548
+\OT1/cmr/m/n/12 have $\OML/cmm/m/it/12 E\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 []\O
+T1/cmr/m/n/12 ) = \OML/cmm/m/it/12 a=\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 d \OMS/c
+msy/m/n/12   \OT1/cmr/m/n/12 2)$ if $\OML/cmm/m/it/12 d > \OT1/cmr/m/n/12 2$ an
+d $\OML/cmm/m/it/12 v\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 []\OT1/cmr/m/n/12 ) = 2
+\OML/cmm/m/it/12 a[]= []$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 555--560
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--565
+
+ []
+
+[18] [19]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [12
+ [20
 
 ]
 
-[13]
+[21]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [14
+ [22
 
 ]
 Basic Statistics
-[15]
+[23]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [16
+ [24
 
 ]
 R Codes
@@ -476,20 +533,20 @@ LaTeX Font Info:    Try loading font information for TS1+pcr on input line 16.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1pcr.fd"
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 ))
-(BayesLectureNotes.bbl [17]
+(BayesLectureNotes.bbl [25]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [18
+ [26
 
 ]
 
-) [19] (BayesLectureNotes.aux) ) 
+) [27] (BayesLectureNotes.aux) ) 
 Here is how much of TeX's memory you used:
- 5183 strings out of 493333
- 68894 string characters out of 3139182
- 184196 words of memory out of 3000000
- 8456 multiletter control sequences out of 15000+200000
- 14094 words of font info for 54 fonts, out of 3000000 for 9000
+ 5207 strings out of 493333
+ 69348 string characters out of 3139182
+ 184217 words of memory out of 3000000
+ 8474 multiletter control sequences out of 15000+200000
+ 15334 words of font info for 58 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
  39i,24n,42p,603b,1247s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/ba
@@ -497,18 +554,20 @@ se/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on BayesLectureNotes.pdf (19 pages, 209538 bytes).
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/urw/courier/ucrr8a.pfb>
+Output written on BayesLectureNotes.pdf (27 pages, 260227 bytes).
 PDF statistics:
- 127 PDF objects out of 1000 (max. 8388607)
+ 172 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

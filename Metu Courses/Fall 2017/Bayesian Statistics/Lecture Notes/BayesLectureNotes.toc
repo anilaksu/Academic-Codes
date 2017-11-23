@@ -9,7 +9,14 @@
 \contentsline {subsection}{\tocsubsection {}{1.4.1}{Normal Mean}}{9}
 \contentsline {subsection}{\tocsubsection {}{1.4.2}{Weak Prior Information}}{10}
 \contentsline {chapter}{Lecture\ 2.\ Some Common Probability Distributions}{11}
-\contentsline {chapter}{Lecture\ 3.\ Inference}{13}
-\contentsline {chapter}{Basic Statistics}{15}
-\contentsline {chapter}{R Codes}{17}
-\contentsline {chapter}{Bibliography}{19}
+\contentsline {section}{\tocsection {}{2.1}{Posterior}}{13}
+\contentsline {section}{\tocsection {}{2.2}{Weak Prior}}{15}
+\contentsline {section}{\tocsection {}{2.3}{Sequential Updating}}{17}
+\contentsline {section}{\tocsection {}{2.4}{Normal Sample}}{17}
+\contentsline {section}{\tocsection {}{2.5}{NIC distributions}}{17}
+\contentsline {section}{\tocsection {}{2.6}{Posterior}}{18}
+\contentsline {section}{\tocsection {}{2.7}{Weak prior}}{19}
+\contentsline {chapter}{Lecture\ 3.\ Inference}{21}
+\contentsline {chapter}{Basic Statistics}{23}
+\contentsline {chapter}{R Codes}{25}
+\contentsline {chapter}{Bibliography}{27}

@@ -1,9 +1,6 @@
 % This is a sample file for the Undergraduate Faculty Program at
 % PCMI, containing one lecture 
 %
-%   What is a Partial Differential Equation?
-%
-%  from the Park City Lectures of Andrew J. Bernoff.
 %
 % The sample file illustrates the use of epsf.tex to include postscript 
 % graphics, as well as various "AmS-LaTeX" constructions from the amsmath
@@ -331,7 +328,247 @@ In the normal mean analysis, we get weak prior information by letting the prior 
 
 
 \lecture{Some Common Probability Distributions}
+\underline{\bf{Binomial}} on $Y \in \left \{0,1,...,n  \right \}$ with parameters $n \in \left \{1,2,3,... \right \}$ and $p \in (0,1)$ is denoted by $Bi(n,p)$ and 
+\begin{equation}
+f(y \mid n, p)=\binom{n}{y}p^y (1-p)^{n-y}
+\end{equation}
+for $y=0,1,...,n$. The mean is given as:
+\begin{equation}
+E(y)=np.
+\end{equation}
+Also the variance is given as:
+\begin{equation}
+v(y)=np(1-p).
+\end{equation}
+\underline{\bf{Beta}} on  $Y \in \left \{0,1 \right \}$ with parameters $a,b>0$ is denoted by $Beta(p,q)$ and the density function is:
+\begin{equation}
+f(y \mid p,q)= \frac{\Gamma(p+q)}{\Gamma(p)\Gamma(q)}y^{p-1}(1-y)^{q-1}
+\end{equation}
+for $y \in (0,1)$. The mean is given as:
+\begin{equation}
+E(y)=\frac{p}{p+q},
+\end{equation}
+Also the variance is given as:
+\begin{equation}
+v(y)=\frac{pq}{(p+q)^2(p+q+1)}.
+\end{equation}
+$B(p,q)=\int_{0}^1 y^{p-1}(1-y)^{q-1}\mathrm{d}y$ is the beta function and defined to be the normalizing constant for this density.
+\begin{itemize}
+\item In beta distribution, $p$ and $q$ change the shape of the distribution. Discuss!
+\end{itemize}
+\underline{\bf{Uniform distribution}} on $Y \in \left \{l,r \right \}$ where $-\infty<l<r<\infty$ is denoted by uniform $(l,r)$ and its pdf is:
+\begin{equation}
+f(y\mid l,r)=\frac{1}{r-l}
+\end{equation}
+for $y \in \left \{l,r \right \}$. The mean is given as:
+\begin{equation}
+E(y)=\frac{l+r}{2},
+\end{equation}
+Also the variance is given as:
+\begin{equation}
+v(y)=\frac{(r-l)^2}{12}.
+\end{equation}
+\underline{\bf{Poisson distribution}} on $Y \in \left \{0,1,2,..., \right \}$ with parameter $\theta>0$ is denoted by $Poisson(\theta)$ and its pdf is:
+\begin{equation}
+f(y \mid \theta)=\frac{\exp(-\theta)\theta^y}{y!}
+\end{equation}
+for $y=0,1,2,..$. The mean and the variance are given as\cite{Ross}:
+\begin{equation}
+E(y)=v(y)=\theta.
+\end{equation}
+\underline{\bf{Gamma distribution}} on $Y > 0$ with shape parameter $\alpha>0$ and rate parameter $\lambda>0$ is denoted by $Gamma(\alpha,\lambda)$ and the corresponding density is:
+\begin{equation}
+f(y \mid \alpha, \lambda)=\frac{\lambda^{\alpha}}{\Gamma(\alpha)} y^{\alpha-1} \exp(-\lambda y)
+\end{equation}
+for $y>0$. The mean is given as:
+\begin{equation}
+E(y)=\frac{\alpha}{\lambda},
+\end{equation}
+Also the variance is given as:
+\begin{equation}
+v(y)=\frac{\alpha}{\lambda^2}.
+\end{equation}
+Note that 
+\begin{equation}
+\exp(\lambda)=Gamma(1,\lambda).
+\end{equation}
+\underline{\bf{Univariate normal distribution}} on $Y \in \mathbb{R}$ with $\mu \in \mathbb{R}$ and variance $\sigma^2>0$ is denoted by $\mathcal{N}(\mu,\sigma^2)$ and its pdf is:
+\begin{equation}
+f(y \mid \mu, \sigma^2)=\frac{1}{\sigma} \left (  \frac{1}{2 \pi}\right )^{1/2} \exp \left \{ -\frac{1}{2 \sigma^2}(y -\mu)^2  \right \}.
+\end{equation}
+ The mean is given as:
+\begin{equation}
+E(y)=\mu,
+\end{equation}
+Also the variance is given as:
+\begin{equation}
+v(y)=\sigma^2.
+\end{equation}
+\underline{\bf{K-variate normal distribution}} on $Y \in \mathbb{R}^k$ with vector $\mathbf{b} \in \mathbb{R}^k$ and positive definite symmetric (PDS) covariance matrix $\mathbf{C}$ is denoted by $\mathcal{N}_k(\mathbf{b},\mathbf{C})$ and the corresponding density function is:
+\begin{equation}
+f(y \mid \mathbf{b},\mathbf{C})=\frac{1}{\underbrace{\left | \mathbf{C} \right |^{1/2}}_{determinant}}\frac{1}{(2 \pi)^{k/2}}\exp \left \{ -\frac{1}{2 \sigma^2}(y -\mathbf{b})^T \mathbf{C}^{-1}(y-\mathbf{b}) \right \}.
+\end{equation}
+ The mean is given as:
+\begin{equation}
+E(y)=\mathbf{b},
+\end{equation}
+And the covariance matrix is given as:
+\begin{equation}
+Cov(y)=\mathbf{C}.
+\end{equation}
+\section{Posterior}
+Not only the beta distributions are the simplest and the most convenient distributions for a random variable confined to $[0,1]$, they also work very nicely as prior distribution for a binomial observation. If $\theta \sim Be(p,q)$ then
+\begin{equation}
+f(x \mid \theta)=\binom{n}{x}\theta^x (1-\theta)^{n-x}.
+\end{equation}
+for $x=1,2,...,n$.
+\begin{equation}
+f(\theta)=\frac{1}{Be(p,q)}\theta^{p-1}(1-\theta)^{q-1}
+\end{equation}
+where $0\leq \theta \leq 1$ and $p,q>0$.
+\begin{equation}
+\begin{split}
+f(x)=\int f(\theta)f(x \mid \theta)\mathrm{d}\theta=\binom{n}{r}\frac{1}{Be(p,q)}\int_{0}^{1}\theta^{p+x-1}(1-\theta)^{q+n-x-1}\mathrm{d}\theta
+\\
+=\binom{n}{r}\frac{Be(p+x,q+n-x)}{Be(p,q)}.
+\end{split}
+\end{equation}
+From
+\begin{equation}
+f(\theta \mid x)=\frac{f(\theta)f(x \mid \theta)}{f(x)}.
+\end{equation}
+\begin{equation}
+\begin{split}
+f(\theta \mid x)=\frac{\theta^{p+x-1}(1-\theta)^{q+n-x-1}}{Be(p+x,q+n-x)}
+\propto \underbrace{\theta^{p-1}(1-\theta)^{q-1}}_{Beta \quad part} \underbrace{\theta^{x}(1-\theta)^{n-x}}_{Binomial \quad part}. 
+\end{split}
+\end{equation}
+So $(\theta \mid x)\propto Beta(p+x,q+n-x)$. The posterior mean is:
+\begin{equation}
+\begin{split}
+E(\theta \mid x)= \frac{p+x}{p+q+n}=\frac{p+q}{p+q+n}E(\theta)+\frac{n}{p+q+n}\hat{\theta}
+\end{split}
+\end{equation}
+where $\hat{\theta}=x/n$. The posterior variance is:
+\begin{equation}
+\begin{split}
+v(\theta \mid x)=\frac{(p+x)(q+n-x)}{(p+q+n)^2 (p+q+n+1)}
+\\
+=\frac{E(\theta)(1-E(\theta \mid x))}{ p+q+n+1}
+\end{split}
+\end{equation}
+But,
+\begin{equation}
+v(\theta)=\frac{E(\theta)(1-\theta)}{p+q+1}
+\end{equation}
+So the posterior has higher relative precision that the prior.
+\\
+\underline{\bf{SPECIAL NOTE:}}
+\\
+The classical theory of estimation regards an estimator as good if it is unbiased and has small variance, or more generally if its mean-square-error is small. The MSE is an average squared error where the error is the difference between $\theta$, i.e. $y$ in previous notation , and the estimate $t$. In accordance with classical theory, the average is taken with respect to the sampling distribution of the estimator.
+\\
+In Bayesian inferenc, $\theta$ is a random variable and it is therefore appropriate to average the squared error with respect to the posterior distribution of $\theta$. Consider
+\begin{equation}
+\begin{split}
+E\left \{ (t -\theta)^2 \mid x \right \}=E(t^2 \mid x)- E(2 t \theta \mid x)+ E(\theta^2 \mid x)
+\\
+= t^2 - E(2 t \theta \mid x)+ E(\theta^2 \mid x)
+\\
+=\left \{ t - E(\theta \mid x)\right \}^2+v(\theta \mid x).
+\end{split}
+\end{equation} 
+Therefore the estimate $t$ which minimizes posterior expected square error is $t=E(\theta \mid x)$, the posterior mean. The posterior mean can therefore be seen as an estimate of $\theta$ which is the best in the sense of minimizing expected squared error. This is distinct from, but clearly related to, its more natural role as a useful summary of location of the posterior distribution. 
+\section{Weak Prior}
+If we reduce the prior relative precision to zero by setting $p=q=0$, we get $\theta \mid x \sim Be(x,n-x)$. Then $E(\theta \mid x)=\hat{\theta}$ and $v(\theta \mid x)=\hat{\theta}(1-\hat{\theta})/(n+1)$ results which nicely parallel standard frequentist theory.
+\begin{itemize}
+\item Notice that we are not really allowed to let either parameter of the beta distribution be zero. However, by making $p$ and $q$ extremely small, we get as close to these results as we like. We can think of $p=q=0$ as a defining limiting (if strictly improper) case of weak prior information.
+\end{itemize}
 
+\begin{example}
+A doctor proposes a new treatment protocol for a certain kind of cancer. With current methods about $40 \%$ of patients with this cancer survive six months after diagnosis. After one year of using the new protocol, $15$ patients with diagnosis, of whom $6$ survived. After two years a further $55$ patients have been followed to teh six months mark, of whom $28$ survived. So in total we have $34$ patients surviving out of $70$.
+\\
+Let $\theta$ be the true success rate of the new treatment protocol, i.e. the true proportion of patients who survive $6$ months and we wish to make comparison of $\theta$ with the current survival rate $40\%$.
+\\
+Suppose that the doctor in charge has prior information leading her to assign a prior distribution with expectation $E(\theta)=0.45$, i.e. expects a slight improvement over the existing protocol, form $40\%$ to $45\%$, however her prior standard deviation is $0.07$, $v(\theta)=0.07^2=0.0049$
+\end{example}
+
+\begin{figure}
+\centering
+ \includegraphics[scale=0.6]{triplot_v1}% Images in 100% size
+  \caption{The triplot from first year's data. }
+\label{fig:FirstTriplot}
+\end{figure} 
+
+\begin{figure}
+\centering
+ \includegraphics[scale=0.6]{triplot_v2}% Images in 100% size
+  \caption{The triplot from two years' data. }
+\label{fig:TwoTriplot}
+\end{figure} 
+
+\newpage
+\section{Sequential Updating}
+
+In the last example we pooled the data from the two years and went back to the original prior distribution to use Bayes' theorem. We did not need to do this. A nice feature of Bayes' theorem is the possibility of updating sequentially, incorporating data as they arrive. In this case, consider the data to be just the new patients observed to a six months follow-up during the second year. These comprise $55$ patients, of whom $28$ had survived. The doctor could consider these as the data $x$ with $n=55$ and $r=28$. What would the prior information be?
+\\
+Clearly, the prior distribution should express her information prior to obtaining these new data, i.e. after the first years' data, so her prior for this second analysis is her \underline{posterior} distribution form the first. This was $Be(28.28,36.23)$. Combining this prior with the new data gives the same posterior $Be(28.28+28,36.23+27)=Be(56.28,63.23)$ as before. This simply confirms that we can get to the posterior distribution.
+\begin{itemize}
+\item In a single step, combining all the data with a prior distribution representing information available before any of the data were obtained.
+\item Sequentially, combining each item or block of new data with a prior distribution representing information available just before the new data were obtained (but after getting data previously received).
+\end{itemize}
+
+\section{Normal Sample}
+
+Let $X_1,X_2,...,X_n$ be from $\mathcal{N}(\mu,\sigma^2)$. $\theta=(\mu,\sigma^2) \rightarrow$ unknown parameters.
+The likelihood is:
+\begin{equation}
+\begin{split}
+f(x \mid \mu,\sigma^2)= \prod_{i=1}^{n} \frac{1}{\sqrt{2 \pi} \sigma} \exp \left \{ -\frac{1}{2 \sigma^2}(x_i - \mu)^2  \right \}
+\\
+\propto \sigma^{-n} \exp \left [  -\frac{1}{2 \sigma^2}  \left \{ n(\bar{x} - \mu)^2 +S^2 \right \} \right ]
+\end{split}
+\end{equation}
+where $S^2=\sum_{i=1}^{n}(x_i - \bar{x})^2$
+
+\section{NIC distributions}
+
+For the prior distribution, we now need a \underline{joint} distribution for $\mu$ and $\sigma^2$
+
+\begin{definition}
+The normal-inverse-chi-squared distribution(NIC) has density:
+\begin{equation}
+f(x \mid \mu,\sigma^2) \propto  \sigma^{-(d+3)^/2}  \exp \left [ -\frac{1}{2 \sigma^2} \left \{ v^{-1}( \mu - m)^2 +a  \right \} \right ]
+\end{equation}
+where $a>0$, $d>0$ and $v>0$.
+\end{definition}
+The following facts are easy to derive about $NIC(m,v,a,d)$ distribution. 
+\begin{enumerate}
+\item The conditional distribution of $\mu$ given $\sigma^2$ is $\mathcal{N}(\mu, v \sigma^2)$ so $E(\mu \mid \sigma^2)=m$, $v(\mu \mid \sigma^2)= v \sigma^2$.
+\item The marginal distribution of $\sigma^2$ is such that $a \sigma^{-2} \sim \chi^{2}_d$. We say that $\sigma^2$ has the inverse-chi-square distribution $IC(a,d)$. We have $E(\sigma^2)=a/(d-2)$ if $d>2$ and $v(\sigma^2)=2a^2/\left \{ (d-2)^2 (d-4) \right \}$ if $d>4$.
+\item The conditional distribution of $\sigma^2$ given $\mu$ is $IC(v^{-1}(\mu - m)^2+a, d+1)$ and in particular $E(\sigma^2 \mid \mu)= (v^{-1}(\mu - m)^2 +a)/(d-1)$ provided  $d>1$.
+\item The marginal distribution of $\mu$ is such that $(\mu - m)\sqrt{d}/\sqrt{ a v}\mu +d$. We say that $\mu$ has $t$-distribution $t_d(m,a v/d)$. We have $E(\mu)=m$ if $d>1$, and $v(\mu)=av/(d-2)$ if $d>2$.
+\end{enumerate}
+\section{Posterior}
+Supposing then that  the prior distribution is $NIC(m,v,a,d)$, we find 
+\begin{equation}
+f(\mu, \sigma^2 \mid x) \propto \sigma^{d+n+3} \exp \left [ -\frac{1}{2 \sigma^2} \theta \right ]
+\end{equation}
+where $\theta = v^{-1}(\mu - m)^2 +a +n(\bar{x}-\mu)+s^2$ is a quadratic expression in $\mu$. After completing the square, we see that $\mu, \sigma^2 \mid x \propto NIC(m^*,v^*,a^*,d^*)$ where $m^*=(v^{-1}m + n \bar{x})/(v^{-1}+n)$, $v^*= (v^{-1}+n)^{-1}$, $a^* = a+S^2 +( \bar{x}-m)^2/(n^{-1}+v)$, $d^*=d+n$. To interpret these results, note first that the posterior  mean of $\mu$ is $m^*$ which is a weighted average of the prior mean $m$ and the usual data only-estimate $\bar{x}$ with weights $v^{-1}$ and $n$. 
+\\
+\\
+The posterior mean of $\sigma^2$ is $a^* /(d^* -2)$ which is a weighted average of three terms: the prior mean $a/(d-2)$ with weight $(d-2)$, the usual data-only estimate $S^2/(n-1)$ with weight $(n-1)$ and $(\bar{x}-m)/(n^{-1}+v)$ with weight $1$.
+\section{Weak prior}
+We clearly obtain \underline{weak prior information about $\mu$} by letting $v$ go to infinity or $v^{-1}\rightarrow0$. Then $m^* = \bar{x}$, $v^* = 1/n$, $a^* = a+S^2$, because the third term disappears.
+\\
+\\
+To obtain weak prior information also about $\sigma^2$, if it is usual to set $a=0$ and $d=1$. Then $a^* = S^2$ and $d^* = n-1$. The  resulting inference match the standard frequentist results very closely with these parameters, since we have:
+\begin{equation}
+\frac{(\mu - \bar{x})\sqrt{n}}{S/\sqrt{n-1}} \propto t_{n-1},
+\end{equation}
+\begin{equation}
+\frac{S^2}{\sigma^2} \propto \chi^{2}_{n-1}
+\end{equation}
+Exactly the same distribution statements underlie standard frequentist inference in this problem.
 \lecture{Inference}
 
 \appendix
