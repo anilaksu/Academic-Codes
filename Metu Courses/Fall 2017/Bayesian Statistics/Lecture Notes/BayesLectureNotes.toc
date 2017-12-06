@@ -17,6 +17,13 @@
 \contentsline {section}{\tocsection {}{2.6}{Posterior}}{18}
 \contentsline {section}{\tocsection {}{2.7}{Weak prior}}{19}
 \contentsline {chapter}{Lecture\ 3.\ Inference}{21}
-\contentsline {chapter}{Basic Statistics}{23}
-\contentsline {chapter}{R Codes}{25}
-\contentsline {chapter}{Bibliography}{27}
+\contentsline {section}{\tocsection {}{3.1}{Shape}}{22}
+\contentsline {section}{\tocsection {}{3.2}{Visualizing multivariate densities}}{24}
+\contentsline {section}{\tocsection {}{3.3}{Informal Inferences}}{25}
+\contentsline {section}{\tocsection {}{3.4}{Multivariate inference}}{26}
+\contentsline {chapter}{Lecture\ 4.\ Formal Inference}{27}
+\contentsline {section}{\tocsection {}{4.1}{Utility and decisions}}{27}
+\contentsline {subsection}{\tocsubsection {}{4.1.1}{Formal Point Estimation}}{28}
+\contentsline {subsection}{\tocsubsection {}{4.1.2}{Formal Interval Estimation}}{28}
+\contentsline {chapter}{R Codes}{29}
+\contentsline {chapter}{Bibliography}{33}

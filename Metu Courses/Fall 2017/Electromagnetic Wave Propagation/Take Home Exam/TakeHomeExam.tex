@@ -1,0 +1,461 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{graphicx}
+%\usepackage{natbib}
+% Set the title, author, and date information.
+\title{EE 523: Take Home Midterm}
+\author{Anil A. Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section*{Part 1 }
+A gyroelectric medium at frequency $\omega$ has the constitutive relations:
+\\
+$\bar{D}=\overline{\overline{\varepsilon}}\cdot \bar{E}$, $\bar{B}=\mu_0 \bar{H}$. The permeability $\mu$ is a scalar, whereas the dyadic permittivity $\overline{\overline{\varepsilon}}$ is represented by the matrix: 
+
+
+\begin{equation*}
+\overline{\overline{\varepsilon}} =
+\begin{bmatrix}
+ \varepsilon_1 & j \varepsilon_2 & 0 \\ 
+-j \varepsilon_2 &  \varepsilon_1 & 0 \\ 
+0 & 0 & \varepsilon_3
+\end{bmatrix}
+\end{equation*}
+where $\varepsilon_1 > 0$, $\left |  \varepsilon_2 \right | < \varepsilon_1$, and $\varepsilon_3>0$.
+\subsection*{a}
+Our main aim is to characterize circularly polarized plane waves propagating in $z$-direction within this medium. For this purpose, we consider the two (complex-valued) unit vectors denoting the “circular” directions $\hat{e}_+ = \frac{1}{2}(\hat{a}_x-j\hat{a}_y)$ and $\hat{e}_- = \frac{1}{2}(\hat{a}_x + j \hat{a}_y)$ for right
+and left polarizations. Show that any $\hat{E}$ field in the form $\hat{E}=E_x \hat{a}_x + E_y \hat{a}_y $ can be
+converted to the form $\hat{E}=E_+ \hat{a}_+ + E_- \hat{a}_- $, where $E_+=E_x + j E_y$, and $E_-=E_x - j E_y$.
+\\
+Remark: Note that this operation is a basis change from the linear basis $\left \{ \hat{a}_x ,\hat{a}_y \right \}$ to the circular basis $\left \{ \hat{e}_+ ,\hat{e}_- \right \}$
+\\
+\textbf{Solution:}\\
+The circular coordinate transformation defined in the problem can be given as:
+\begin{equation}
+\label{eq:1}
+\begin{bmatrix}
+ \frac{1}{2} & -\frac{j}{2} \\ 
+\frac{1}{2} &  \frac{j}{2}
+\end{bmatrix}
+\begin{bmatrix}
+ \hat{a}_x  \\ 
+\hat{a}_y
+\end{bmatrix}
+=
+\begin{bmatrix}
+ \hat{e}_+ \\ 
+\hat{e}_-
+\end{bmatrix}
+\end{equation}
+And also,
+\begin{equation}
+\label{eq:2}
+\begin{bmatrix}
+ E_x &  E_y \\ 
+\end{bmatrix}
+\begin{bmatrix}
+ \hat{a}_x  \\ 
+\hat{a}_y
+\end{bmatrix}
+=
+\begin{bmatrix}
+ E_+ &  E_- \\ 
+\end{bmatrix}
+\begin{bmatrix}
+ \hat{e}_+ \\ 
+\hat{e}_-
+\end{bmatrix}
+\end{equation}
+After replacing equation \ref{eq:1} into equation \ref{eq:2}, the following relation can be obtained:
+\begin{equation}
+\label{eq:3}
+\begin{bmatrix}
+ E_x &  E_y \\ 
+\end{bmatrix}
+\begin{bmatrix}
+ \hat{a}_x  \\ 
+\hat{a}_y
+\end{bmatrix}
+=
+\begin{bmatrix}
+ E_+ &  E_- \\ 
+\end{bmatrix}
+\begin{bmatrix}
+ \frac{1}{2} & -\frac{j}{2} \\ 
+\frac{1}{2} &  \frac{j}{2}
+\end{bmatrix}
+\begin{bmatrix}
+ \hat{a}_x  \\ 
+\hat{a}_y
+\end{bmatrix}
+\end{equation}
+Therefore,
+\begin{equation}
+\label{eq:4}
+\begin{bmatrix}
+ E_x &  E_y \\ 
+\end{bmatrix}
+=
+\begin{bmatrix}
+ E_+ &  E_- \\ 
+\end{bmatrix}
+\begin{bmatrix}
+ \frac{1}{2} & -\frac{j}{2} \\ 
+\frac{1}{2} &  \frac{j}{2}
+\end{bmatrix}
+\end{equation}
+After inverting the matrix in equation \ref{eq:4} and multiplying both side of equation \ref{eq:4}, the following system can be obtained:
+\begin{equation}
+\label{eq:5}
+\begin{bmatrix}
+ E_x &  E_y \\ 
+\end{bmatrix}
+\begin{bmatrix}
+ 1 & 1 \\ 
+j &  -j
+\end{bmatrix}
+=
+\begin{bmatrix}
+ E_+ &  E_- \\ 
+\end{bmatrix}
+\end{equation}
+As a result,
+\begin{equation}
+ E_+ = E_x + jE_y,
+\end{equation}
+\begin{equation}
+ E_- = E_x - jE_y.
+\end{equation}
+
+\subsection*{b}
+Show that under this transformation the permittivity matrix is diagonalized. That is:
+\begin{equation*}
+\begin{bmatrix}
+ D_+\\ 
+D_-\\ 
+D_z
+\end{bmatrix}
+=
+\begin{bmatrix}
+ \varepsilon_1 + \varepsilon_2 & 0 & 0 \\ 
+0 &  \varepsilon_1 -\varepsilon_2 & 0 \\ 
+0 & 0 & \varepsilon_3
+\end{bmatrix}
+\begin{bmatrix}
+E_+ \\ 
+E_- \\ 
+E_z 
+\end{bmatrix}
+\end{equation*}
+where $D_{\pm}=D_x \pm j D_y$.
+\\
+\textbf{Solution:}\\
+By indicial notation, the relation $\bar{D}=\overline{\overline{\varepsilon}}\cdot \bar{E}$ can be given as:
+\begin{equation}
+\label{eq:6}
+D_i = \varepsilon_{ij}E_j.
+\end{equation}
+For given basis transformation, the linear coordinate transformation matrix is found as:
+\begin{equation}
+\label{eq:7}
+a_{ij}=
+\begin{bmatrix}
+1 & j & 0 \\ 
+1 &  -j & 0 \\ 
+0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+After applying the coordinate transformation to the equation \ref{eq:6}, it can be given as:
+\begin{equation}
+\label{eq:8}
+a_{ki}D_i=a_{ki}a_{lj}\varepsilon_{ij} a_{lj}E_j.
+\end{equation}
+Note that 
+\begin{equation}
+\label{eq:9}
+a_{ki}D_i=
+\begin{bmatrix}
+ D_+\\ 
+D_-\\ 
+D_z
+\end{bmatrix},
+\end{equation}
+\begin{equation}
+\label{eq:10}
+a_{lj}E_j=
+\begin{bmatrix}
+ E_+\\ 
+E_-\\ 
+E_z
+\end{bmatrix},
+\end{equation}
+As a result,
+\begin{equation}
+a_{ki}a_{lj}\varepsilon_{ij}=
+\begin{bmatrix}
+1 & j & 0 \\ 
+1 &  -j & 0 \\ 
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+ \varepsilon_1 & j \varepsilon_2 & 0 \\ 
+-j \varepsilon_2 &  \varepsilon_1 & 0 \\ 
+0 & 0 & \varepsilon_3
+\end{bmatrix}
+\begin{bmatrix}
+1 & 1 & 0 \\ 
+j &  -j & 0 \\ 
+0 & 0 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+ \varepsilon_1 + \varepsilon_2 & 0 & 0 \\ 
+0 &  \varepsilon_1 -\varepsilon_2 & 0 \\ 
+0 & 0 & \varepsilon_3
+\end{bmatrix}
+\end{equation}
+
+\subsection*{c}
+Show that the wave vectors for right and left circularly polarized plane waves propagating
+in z-direction are given as: $k_+ = \omega \sqrt{\mu \varepsilon_+}$ and $k_- = \omega \sqrt{\mu \varepsilon_-}$, where $\varepsilon_{\pm}=\varepsilon_1 \pm \varepsilon_2$. Note that the permittivity $\varepsilon_3$ has no
+role in this formulation.
+\\
+\textbf{Solution:}\\
+In a source free region, the governing equations for the electric field can be reduced to the following single differential equation: 
+\begin{equation}
+\label{eq:11}
+(\mathbf{k}\cdot \mathbf{E})\mathbf{k}-(\mathbf{k} \cdot \mathbf{k})\mathbf{E}=-\omega^2 \mu_0\overline{\overline{\varepsilon}}\cdot \mathbf{E},
+\end{equation}
+and for the wave field $\bar{E}=E_0 e^{-j k_+ z}\hat{e}_+$, the equation \ref{eq:11} can be given as:
+\begin{equation}
+\label{eq:12}
+-k_{+}^2 E_0 e^{-j k_+ z}=-\omega^2 \mu_0 \varepsilon_{+}E_0 e^{-j k_+ z}.
+\end{equation}
+For non-trivial electric field, the following relation must hold:
+\begin{equation}
+\label{eq:13}
+k_+ = \omega \sqrt{\mu \varepsilon_+}
+\end{equation}
+Similarly, for the wave field $\bar{E}=E_0 e^{-j k_- z}\hat{e}_-$, the equation \ref{eq:11} can be given as:
+\begin{equation}
+\label{eq:14}
+-k_{-}^2 E_0 e^{-j k_+ z}=-\omega^2 \mu_0 \varepsilon_{-}E_0 e^{-j k_+ z}.
+\end{equation}
+For non-trivial electric field, the following relation must hold:
+\begin{equation}
+\label{eq:15}
+k_- = \omega \sqrt{\mu \varepsilon_-}
+\end{equation}
+
+\subsection*{d}
+Assume that the region $0<z<d$ is filled with this gyroelectric medium, whereas the
+regions $z<0$ and $z>d$ are free space. Assume that a linearly polarized plane wave $\bar{E}^i=E_0 e^{-j k_0 z}\hat{a}_x$ in the free space region $z<0$ is incident to the slab. Show that the transmitted wave in the region $z>d$ will be a linearly polarized plane wave $\bar{E}^t=\alpha E_0 \left [ \cos \psi \hat{a}_x + \sin \psi \hat{a}_y  \right ]e^{-j k_0 z}$, where $\alpha$ is a constant of proportionality (i.e. we are
+not concerned with the reflected waves from the boundaries of the slab), and $\psi$ is the
+angle of rotation of the polarization direction which depends on $k_+$, $k_-$ and $d$. Evaluate $\psi$.
+\\
+This phenomenon is known as Faraday rotation, and it was experimentally discovered by Michael Faraday in 1845.
+\\
+Hint: Decompose the wave propagating in the slab into its right and left circular
+components, and relate the rotation angle to the phase difference between the circular
+components at $z=d$, where the wave leaves the medium.
+\\
+\textbf{Solution:}\\
+
+The interface conditions at $z=0$ can be given as:
+\begin{equation}
+E_{1t}=E_{2t},
+\end{equation}
+\begin{equation}
+\label{eq:18}
+\mathbf{a}_{n}\times(\mathbf{H}_{1}-\mathbf{H}_{2})=0.
+\end{equation}
+where $n$ and $t$ subscripts stand for normal and tangential components of the vector field. 
+
+\begin{equation}
+\bar{E}_{tra}=E_- e^{-j k_- z} \hat{e}_- + E_+ e^{-j k_+ z} \hat{e}_+ = T_{\bot}^1 E_0 e^{-j k_0 z}\hat{a}_x.
+\end{equation}
+which has to be satisfied at $z=0$ where $T_{\bot}^1$ is the transmission coefficients, therefore,
+\begin{equation}
+E_-=E_+= T_{\bot}^1 E_0.
+\end{equation}
+At $z=d$, the electric field can be given as:
+\begin{equation}
+T_{\bot}^1 E_0( e^{-j k_- d} \hat{e}_- + e^{-j k_+ d} \hat{e}_+)= \frac{T_{\bot}^1 E_0}{2} (\hat{a}_x(e^{-j k_- d}+e^{-j k_+ d})+j\hat{a}_y (e^{-j k_+ d}- e^{-j k_- d})).
+\end{equation}
+In the equation above, the sums and the differences of complex exponentials can be expanded as:
+\begin{equation}
+e^{-j k_- d}+e^{-j k_+ d}=e^{-j \frac{k_+ d+k_- d}{2}}(e^{-j \frac{k_+ d-k_- d}{2}}+e^{-j \frac{k_- d-k_+ d}{2}})=2 \cos (\frac{k_+ -k_- }{2}d)e^{-j \frac{k_+ +k_- }{2}d}
+\end{equation}
+and 
+\begin{equation}
+e^{-j k_+ d}-e^{-j k_- d}=e^{-j \frac{k_+ d+k_- d}{2}}(e^{-j \frac{k_+ d-k_- d}{2}}-e^{-j \frac{k_- d-k_+ d}{2}})=-2j \sin (\frac{k_+ -k_- }{2}d)e^{-j \frac{k_+ +k_- }{2}d}
+\end{equation}
+As a result, the field can be expressed as:
+\begin{equation}
+ T_{\bot}^1 E_0 e^{-j \frac{k_+ +k_- }{2}d}(\cos (\frac{k_+ -k_- }{2}d) \hat{a}_x+\sin (\frac{k_+ -k_- }{2}d)\hat{a}_y ).
+\end{equation}
+Since at the second transmission, the transmitted wave field after $z>d$ has to match the electric field above due  to interface conditions. The rotation angle of the polarization direction can be found as:
+\begin{equation}
+\psi=\frac{k_+ -k_- }{2}d.
+\end{equation}
+\newpage
+\section*{Part 2 }
+Using the guidelines given below, show that a plasma medium acts as a gyroelectric
+medium when a constant external magnetic field $\bar{B}=B_0 \hat{a}_z$ is applied.
+
+\subsection*{a}
+The equation of motion of a free electron in this medium is governed by the following
+differential equation $m_e \frac{\mathrm{d} \hat{v}}{\mathrm{d} t}=e(\hat{E}+\hat{v}\times \hat{B})$, where $m_e$ and $e$ are the electron mass and charge respectively. Show that the components of the velocity vector $\hat{v}$ satisfy:
+\begin{equation*}
+ \frac{\mathrm{d} v_x}{\mathrm{d} t}=\frac{e}{m_e} E_x+ \omega_b v_y,
+\end{equation*}
+\begin{equation*}
+ \frac{\mathrm{d} v_y}{\mathrm{d} t}=\frac{e}{m_e} E_x - \omega_b v_x.
+\end{equation*}
+where $\omega_b=\frac{e B_0}{m_e}$ is called the cyclotron frequency.
+\\
+\textbf{Solution:}\\
+The forcing due to magnetic field can be expanded as:
+\begin{equation}
+\label{eq:21}
+\hat{v}\times \hat{B}=det(\begin{bmatrix}
+\hat{a}_x & \hat{a}_y & \hat{a}_z \\ 
+v_x &  v_y & 0 \\ 
+0 & 0 & B_0
+\end{bmatrix} )
+=B_0 v_y \hat{a}_x - B_0 v_x \hat{a}_y.
+\end{equation}
+After replacing this term into equation of motion, the set of governing equations can be obtained as:
+\begin{equation}
+\label{eq:22}
+m_e \frac{\mathrm{d} v_x}{\mathrm{d} t}=e (E_x+ B_0 v_y),
+\end{equation}
+\begin{equation}
+\label{eq:23}
+m_e \frac{\mathrm{d} v_y}{\mathrm{d} t}=e (E_y- B_0 v_x).
+\end{equation}
+Dividing both sides of equations \ref{eq:22} and \ref{eq:23} results in the following form:
+\begin{equation}
+\label{eq:24}
+ \frac{\mathrm{d} v_x}{\mathrm{d} t}=\frac{e}{m_e} E_x+ \omega_b v_y,
+\end{equation}
+\begin{equation}
+\label{eq:25}
+ \frac{\mathrm{d} v_y}{\mathrm{d} t}=\frac{e}{m_e} E_y - \omega_b v_x.
+\end{equation}
+where $\omega_b=\frac{e B_0}{m_e}$ is called the cyclotron frequency.
+\subsection*{b}
+In order to solve these coupled differential equations, search (in phasor domain) solutions
+in the form $v_{\pm}=v_x \pm j v_y$. Show that:
+\begin{equation*}
+v_{\pm}=v_x \pm j v_y=\frac{\frac{e}{m_e}(E_x \pm j E_y)}{j (\omega \pm \omega_b) }.
+\end{equation*}
+\\
+\textbf{Solution:}\\
+Fourier transforming equations \ref{eq:24} and \ref{eq:25} in time results in the following set of algebraic equations:
+\begin{equation}
+\label{eq:26}
+j \omega v_x =\frac{e}{m_e} E_x+ \omega_b v_y,
+\end{equation}
+\begin{equation}
+\label{eq:27}
+j \omega v_y =\frac{e}{m_e} E_y - \omega_b v_x.
+\end{equation}
+In matrix form, equations \ref{eq:26} and \ref{eq:27} can be given as:
+\begin{equation}
+\label{eq:28}
+\begin{bmatrix}
+j \omega & -\omega_b \\  
+\omega_b & j \omega
+\end{bmatrix} 
+\begin{bmatrix}
+v_x  \\ 
+ v_y
+\end{bmatrix} 
+=
+\begin{bmatrix}
+\frac{e}{m_e} E_x \\ 
+\frac{e}{m_e} E_y
+\end{bmatrix} 
+\end{equation}
+By inverting the matrix in equation \ref{eq:28}, the velocity components can be obtained as:
+\begin{equation}
+\label{eq:29}
+\begin{bmatrix}
+v_x  \\ 
+ v_y
+\end{bmatrix} 
+=
+\frac{1}{\omega_{b}^2 -\omega^2}
+\begin{bmatrix}
+j \omega & \omega_b \\  
+-\omega_b & j \omega
+\end{bmatrix} 
+\begin{bmatrix}
+\frac{e}{m_e} E_x \\ 
+\frac{e}{m_e} E_y
+\end{bmatrix} 
+\end{equation}
+Therefore,
+\begin{equation}
+\label{eq:30}
+v_+ = v_x+ j v_y = \frac{\frac{e}{m_e}(E_x + j E_y)j(\omega-\omega_b)}{\omega_{b}^2 -\omega^2}=\frac{\frac{e}{m_e}(E_x + j E_y)}{j(\omega_{b} +\omega)},
+\end{equation}
+and also
+\begin{equation}
+\label{eq:31}
+v_- = v_x- j v_y = \frac{\frac{e}{m_e}(E_x - j E_y)j(\omega+\omega_b)}{\omega_{b}^2 -\omega^2}=\frac{\frac{e}{m_e}(E_x - j E_y)}{j(\omega -\omega_b)}.
+\end{equation}
+\subsection*{c}
+Finally let $N$ be the number of electrons per unit volume. Show that $\varepsilon_{\pm}=\varepsilon_1 \pm \varepsilon_2 = \varepsilon_0 \left [ 1 - \frac{\omega_{p}^2}{\omega (\omega \pm \omega_b)}  \right ]$, where $\omega_p = \sqrt{\frac{N e^2}{m_e \varepsilon_0}}$ is the plasma frequency.
+\\
+Hint: Integrate the velocity to find the displacement of a single electron and obtain the
+susceptibility of the bulk material in phasor domain.
+\\
+\textbf{Solution:}\\
+The dipole moment is defined as:
+\begin{equation}
+\label{eq:32}
+\bar{p}(t)=q (-l(t)) \hat{e}{\pm}
+\end{equation}
+where $q=e$ and $l(t)$ can be obtained by integrating the velocity field $v_{\pm}$ as:
+\begin{equation}
+l(t)=\frac{v_{\pm}}{j \omega} = -\frac{\frac{e}{m_e}(E_x \pm j E_y)}{\omega (\omega \pm \omega_b)}
+\end{equation}
+The macroscopic electric polarization vector $\bar{P(t)}$ is evaluated as:
+\begin{equation}
+\bar{P}(t)=N \bar{p(t)}
+\end{equation}
+therefore,
+\begin{equation}
+\label{eq:33}
+\bar{P}(t)= -\frac{\frac{N e^2}{m_e}}{\omega (\omega \pm \omega_b)}(E_x \pm j E_y).
+\end{equation}
+Also
+\begin{equation}
+\label{eq:34}
+\bar{D}=\varepsilon_0 \bar{E}+\bar{P}.
+\end{equation}
+After replacing equation \ref{eq:33} into the relation \ref{eq:34}, the following relation is obtained:
+\begin{equation}
+\bar{D}=\varepsilon_0 \bar{E}(1-\frac{\frac{N e^2}{m_e \varepsilon_0}}{\omega (\omega \pm \omega_b)})
+\end{equation}
+As a result,
+\begin{equation}
+\varepsilon_{\pm}=\varepsilon_1 \pm \varepsilon_2 = \varepsilon_0 \left [ 1 - \frac{\omega_{p}^2}{\omega (\omega \pm \omega_b)}  \right ].
+\end{equation}
+\end{document}

@@ -16,6 +16,7 @@
 %\input epsf.tex
 \usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage[toc,page]{appendix}
 %\usepackage{natbib}
 %\usepackage{amssymb} % this command would have loaded all the extra symbols,
@@ -150,7 +151,7 @@ $P(B\mid A)=$ How likely $B$ is when $A$ is known to have occurred is the poster
 Bayes' theorem can be understood as a formula for updating from prior to posterior probability, the updating consists of multiplying by the ratio $P(B\mid A)/P(A)$. It describes how a probability changes as we learn new information. Observing the occurrence of $A$ will increase the probability of $B$ if $P(B\mid A)>P(A)$.
 From the law of total probability,
 \begin{equation}
-P(A)=P(A\mid B)P(B)+P(A\mid B^c)+P(A\mid B^c)P(B^c).
+P(A)=P(A\mid B)P(B)+P(A\mid B^c)P(B^c).
 \end{equation}
 where $P(B^c)=1-P(B)$.
 \begin{lemma}
@@ -183,13 +184,13 @@ f(\theta\mid X)=\frac{f(\theta)f(X\mid \theta)}{f(X)}
 f(X)=\int f(\theta)f(X\mid \theta)\mathrm{d}\theta.
 \end{equation}
 \begin{equation}
-f(\theta)=
+f(\theta)=prior.
 \end{equation}
 \begin{equation}
-f(\theta\mid X)=
+f(\theta\mid X)=posterior.
 \end{equation}
 \begin{equation}
-f(X\mid \theta)=
+f(X\mid \theta)=likelihood.
 \end{equation}
 \subsection{Interpreting our sense} 
 How do we interpret the things we see, hear, feel, taste or smell?
@@ -245,16 +246,16 @@ When $\theta$ is a scalar parameter, a useful diagram is the \underline{triplot}
 \end{figure} 
 \\
 \\
-A strong information source in the triplot is indicated by a cırve that is narrow (and therefore, because it integrates to one, also has a high peak). A narrow curves concentrates on a small range of $\theta$ values, and thereby "rules out" all values of $\theta$ outside that range.
+A strong information source in the triplot is indicated by a curve that is narrow (and therefore, because it integrates to one, also has a high peak). A narrow curves concentrates on a small range of $\theta$ values, and thereby "rules out" all values of $\theta$ outside that range.
 
 \vfill
 \eject
 \begin{itemize}
-\item Over the range $\theta<-1$, the likelihood:
-\item Over the range $\theta>3$,the likelihood:
-\item Values of $\theta$ between $-1$ and $3$, the likelihood:
-\item The maximum value of the posterior at:
-\item The MLE of $\theta$ is:
+\item Over the range $\theta<-1$, the likelihood: low
+\item Over the range $\theta>3$,the likelihood: low
+\item Values of $\theta$ between $-1$ and $3$, the likelihood: high
+\item The maximum value of the posterior at: $1$
+\item The Maximum likelihood estimation (MLE) of $\theta$ is $\approx 2$
 \end{itemize}
 \subsection{Normal Mean}
 For example, suppose that $X_1, X_2,...,X_n$ are iid $ \mathcal{N}(\mu,\,\sigma^{2})$ and $\sigma^2$ is known. Then the likelihood is :
@@ -282,7 +283,7 @@ Note that $2(\bar{x}-\mu)\sum(x_i-\bar{x})=0$ as $\sum(x_i-\bar{x})=0$. Suppose 
 Then applying Bayes' theorem we have:
 \begin{equation}
 \begin{split}
-f(\mu \mid x) \propto \underbrace{\exp\left (  -\frac{1}{2\sigma^2}n(\bar{x} -\mu)^2 \right )}_{f(x \mid \mu)} \underbrace{\exp\left (  -\frac{1}{2\sigma^2}n(\mu-m)^2 \right )}_{f(\mu)}
+f(\mu \mid x) \propto \underbrace{\exp\left (  -\frac{1}{2\sigma^2}n(\bar{x} -\mu)^2 \right )}_{f(x \mid \mu)} \underbrace{\exp\left (  -\frac{1}{2 v}n(\mu-m)^2 \right )}_{f(\mu)}
 \\
 =\exp\left (  -\frac{\theta}{2} \right ).
 \end{split}
@@ -304,7 +305,7 @@ R=(n^{-1}\sigma^2+v)(\bar{x}-m)^2
 \end{equation}
 Therefore,
 \begin{equation}
-f(\mu \mid x) \propto \exp\left (  -\frac{1}{2\sigma^2}n(\mu-m)^2 \right )
+f(\mu \mid x) \propto \exp\left (  -\frac{1}{2 v}n(\mu-m)^2 \right )
 \end{equation}
 and we have shown that the posterior distribution is normal too: $\mu \mid x \sim \mathcal{N}(m^*,\,v^*)$
 \begin{itemize}
@@ -569,16 +570,198 @@ To obtain weak prior information also about $\sigma^2$, if it is usual to set $a
 \frac{S^2}{\sigma^2} \propto \chi^{2}_{n-1}
 \end{equation}
 Exactly the same distribution statements underlie standard frequentist inference in this problem.
+
 \lecture{Inference}
+\underline{\bf{Summarisation:}} Here all inferences are derived form the posterior distribution. In frequentist statistics, there are three kinds of inference:
+\begin{itemize}
+\item Point estimation: unbiasedness, minimum variance estimation
+\item Interval estimation: Credible intervals in Bayesian inference, confidence interval in frequentist approach
+\item Hypothesis testing: Signifcance test.
+\end{itemize}
+In Bayesian inference, the posterior distribution expresses all that is known about $\theta$. So it uses \underline{an appropriate summaries} of the posterior distribution to describe the main features of what we now know about $\theta$.
+\\
+\\
+\underline{\bf{Plots:}} To draw the posterior density 
+\begin{figure}
+ \includegraphics[scale=0.4]{posterior}% Images in 100% size
+  \caption{A posterior density plot. }
+\label{fig:posterior}
+\end{figure} 
+\newpage
+For a bivariate parameter, we can still usefully draw the density as a perspective plot or a contour plot.
 
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{perspec}
+        \caption{Perspective plot}
+        \label{fig:perspective}
+    \end{subfigure}
+\begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{contour}
+        \caption{Contour plot}
+        \label{fig:contour}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[h!]
+ \includegraphics[scale=0.4]{BivarPost}% Images in 100% size
+  \caption{Marginal Densities. }
+\label{fig:posterior}
+\end{figure}
+\section{Shape}
+In general, plots illustrate the shape of the posterior distribution. Important features of shape are modes (and antimodes), skewness and kurtosis (peakedness or heavy tails). The quantitative summaries of shape are needed to supplement like the view of mode (antimode). 
+\\
+The first task is to identify turning points of the density, i.e. solutions of $f'(\theta)=0$. Such points include \underline{local maxima} and \underline{minima} of $f(\theta)$ which we call \underline{mode} and \underline{antimode}, respectively.
+\\
+A point $\theta_0$ is characterized as a mode if $f'(\theta_0)=0$ and $f''(\theta_0)<0$ whereas it is an antimode if $f'(\theta_0)=0$ and $f''(\theta_0)>0$. Any point $\theta_0$ for which $f''(\theta_0)=0$ is a point of inflection of the density (whether or not $f'(\theta_0)=0$).
+
+\begin{example}
+Consider the gamma density
+\begin{equation}
+f(\theta)=\frac{a^b}{\Gamma(b)}\theta^{b-1}e^{-a \theta}\qquad;\qquad \theta>0
+\end{equation}
+where $a$, $b$ are positive constants.
+\begin{equation}
+f'(\theta)=\frac{a^b}{\Gamma(b)}\left \{ (b-1) -a \theta  \right \}\theta^{b-2}e^{-a \theta}
+\end{equation}
+
+\begin{equation}
+f''(\theta)=\frac{a^b}{\Gamma(b)}\left \{a^2 \theta^2 - 2a (b-1)\theta -(b-1)(b-2) \right \}\theta^{b-3}e^{-a \theta}
+\end{equation}
+So from $f'(\theta)$, the turning point at $\theta=(b-1)/a$. For $b \leq 1$, $f'(\theta)<0$ for all $\theta \geq 0$, so $f(\theta)$ is monotonic decreasing and the mode is at $\theta=0$. For $\theta>1$, $f(\theta) \rightarrow 0$ as $\theta \rightarrow 0$, so the turning point $\theta=0$ is not a mode. In this case, $f'(\theta)>0$ for $\theta < (b-1)/a$ and $f'(\theta)<0$ for  $\theta > (b-1)/a$. Therefore $\theta = (b-1)/a$ is the mode. Looking at $f''(\theta)$, the quadratic expression has roots at $\theta = \frac{b-1}{a}\mp \frac{(b-1)^{1/2}}{a}$. Therefore $b>1$, these are the points of inflection.
+\end{example}
+
+\begin{example}
+Consider the mixture of two normal distributions
+\begin{equation}
+f(\theta)=\underbrace{\frac{0.8}{\sqrt{2 \pi}} \exp \left \{-\frac{1}{2} \theta^2 \right \}}_{\sim \mathcal{N} \quad with \quad weight}+ \underbrace{\frac{0.2}{\sqrt{2 \pi}} \exp \left \{-\frac{1}{2} (\theta-4)^2 \right \}}_{\sim \mathcal{N} \quad with \quad weight}
+\end{equation}
+
+\begin{figure}[h!]
+ \includegraphics[scale=0.4]{MixGauss}% Images in 100% size
+  \caption{Plot of mixture of two normal distributions }
+\label{fig:posterior}
+\end{figure}
+
+\begin{equation}
+f'(\theta)=-\frac{0.8 \theta}{\sqrt{2 \pi}} \exp \left \{-\frac{1}{2} \theta^2 \right \}-\frac{0.2(\theta -4)}{\sqrt{2 \pi}} \exp \left \{-\frac{1}{2} (\theta-4)^2 \right \}
+\end{equation}
+For $\theta \leq 0$, $f'(\theta)>0$ and for $\theta \geq 0$, $f'(\theta)<0$, the turning points at $\theta=0.00034$, $2.46498$ and $3.9945$.
+\begin{equation}
+f''(\theta)=-\frac{0.8 (\theta^2-1)}{\sqrt{2 \pi}} \exp \left \{-\frac{1}{2} \theta^2 \right \}-\frac{0.2((\theta^2-8\theta -15)}{\sqrt{2 \pi}} \exp \left \{-\frac{1}{2} (\theta-4)^2 \right \}
+\end{equation}
+This is positive for $\theta \leq -1$, for $1 \leq \theta \leq 3$ and $\theta \geq 5$, confirming that the middle turning point is an antimode. Calculating $f''(\theta)$ at the other points confirms them to be modes. Finally points of inflection are at $\theta = -0.99998$, $\theta = 0.98254$, $\theta = 3.17903$, $\theta = 4.99971$. 
+\end{example}
+
+\section{Visualizing multivariate densities}
+
+\underline{\bf{Turning points:}}
+\\
+At a mode, or at a turning pons generally, the gradients of function in all directions are zero. Therefore, the turning points are solutions of the simultaneous equations:
+\begin{equation}
+0= \frac{\partial f(\theta, \phi)}{\partial \phi}= \frac{\partial f(\theta, \phi)}{\partial \theta}.
+\end{equation}
+The turning points may be classified by examining the symmetric matrix $F''(\theta
+, \phi)$ of the second order partial derivatives. For instance, for a bivariate density $f(\theta, \phi)$,
+\begin{equation}
+F''(\theta, \phi)=\begin{bmatrix}
+\frac{\partial^2 f(\theta, \phi)}{\partial \theta^2 } & \frac{\partial^2 f(\theta, \phi)}{\partial \theta \partial \phi }\\ 
+\frac{\partial^2 f(\theta, \phi)}{\partial \phi \partial \theta } & \frac{\partial^2 f(\theta, \phi)}{\partial \phi^2 }
+\end{bmatrix}
+\end{equation}
+$F''(\theta, \phi)$ is known as the \underline{Hessian matrix}. The second derivative of $f(\theta)$ ,m a direction $t$ is after differentiating. At a mode, this must be negative in all directions. So that the Hessian matrix is negative definite. Similarly, at an antimode, it is positive definite. In the intermediate case, where $F''(\theta, \phi)$ is indefinite, i.e. has both positive and negative eigenvalues, we have a saddle point. 
+\\
+If $F''(\theta, \phi)$ is positive definite, regions are:
+\\
+$F''(\theta, \phi)$ are negative definite, regions are:
+\\
+$F''(\theta, \phi)$ is indefinite, indefinite curvature.
+On the boundaries between these regions, one eigenvalues of $F''(\theta, \phi)$ is zero, so all points on such boundaries are inflection points.
+\\
+\underline{A point of inflection} corresponds to the second derivative being zero in some direction $t$, therefore inflection points are characterized by $F''(\theta, \phi)$ being singular. In fact, in more than two dimensions, we can further subdivide the regions of indefinite curvature according to how many positive eigenvalues of $F''(\theta, \phi)$ has, and all these subregions are also separated by inflection boundaries.
+\\
+\underline{\bf{Location:}}
+\\
+A plot gives a good idea of location, but the conventional location measures for distributions are also useful. These include the \underline{mean, mode and median}.
+\\
+\underline{\bf{Dispersion:}}
+\\
+The usual dispersion measure is the variance, or for a multivariate distribution the variance-covariance matrix.
+\\
+\underline{\bf{Dependence:}}
+\\
+It is important with multivariate distributions to summarize the dependence between individual parameters. This can be done with correlation coefficients, but plots of regression functions (conditional mean functions) can be more informative.
+\section{Informal Inferences}
+\begin{enumerate}
+\item Point estimation: The obvious posterior \underline{estimate} of $\theta$ is its posterior mean $\hat{\theta}=E(\theta \mid x)$. Modes and medians are also natural point estimates, and they all have intuitively different interpretations. The mean is the \underline{expected value}, the median is the \underline{central value} and the mode is the \underline{most probable} value.
+\item Interval estimation: If asked to provide an interval in which $\theta$ probably lies, we can readily derive such a thing from its posterior distribution. For instance, in the density shown on page 1, there is a probability 0.05 to the left of $\theta=3.28$ and also 0.05 to the right of $\theta = 11.84$. So the interval $(3.28,11.84)$ is a $90 \%$ posterior probability for $\theta$. We call such an interval a \underline{credible interval}.
+\begin{itemize}
+\item If a \underline{frequentist had} found this interval, it means that it would say that if we repeatedly draw samples of data from the same population, and applied the rule that was used to derive this particular interval to each off those datasets, then $90 \%$ of those intervals would contain $\theta$.
+\end{itemize}
+If a Bayesian approach, there is a posterior probability $0.9$ that $\theta$ lies between $3.28$ between $11.84$.
+\begin{definition}
+A $100(1-\alpha) \%$ credible set for $\theta$ is a subset $C$ such that:
+\begin{equation}
+1-\alpha \leq P(C \mid y)= \int_C p(\theta \mid y) \mathrm{d} \theta.
+\end{equation}
+where integration is replaced by summation for discrete components.
+\end{definition}
+
+\begin{definition}
+The exact possible coverage of $(1-\alpha)$ can be found by the \underline{highest posterior density} of HPD credible set as the set: 
+\begin{equation}
+C= \left \{  \theta \in \Theta : p(\theta \mid y) \geq k(\alpha)\right \}.
+\end{equation}
+where $k(\alpha)$ is the largest constant satisfying $P(C \mid y) \geq 1-\alpha$. 
+\end{definition}
+For 2-sided credible set, we can generally take the $\alpha / 2$ and $(1- \alpha/2)$ quantiles of $p(\theta \mid y)$ as our $100(1-\alpha) \%$ credible set for $\theta$. This \underline{equal tail} credible set will be equal to the HPD credible set if the posterior is symmetric and unimodal, but will be a bit wider otherwise.
+
+\item Evaluating hypothesis: Suppose we wish to test a hypothesis $H$ which asserts that $\theta$ lies in some region $A$. The Bayesian way to test to the hypothesis is simply to calculate the (posterior) probability that it is true: $P(\theta \in A \mid x)$. 
+\end{enumerate}
+\section{Multivariate inference}
+All the above treated $\theta$ as a scalar parameter. If we have a vector $\mathbf{\theta}$, then in general we can consider inference of the above forms about any scalar function $\phi = g(\theta)$. The inferences are then derived simply from the marginal posterior distribution of $\phi$.
+
+\lecture{Formal Inference}
+Suppose that we want to answer a question that falls neatly into the frequentist point estimation framework, "What is the best estimate of $\theta$?". In the frequentist theory, we need to be explicit about what we would regard as good properties for an estimator in order to identify a best one. 
+\\
+The Bayesian approach also needs to know what makes a good estimate before an answer can be given. This falls into the framework of formal inference. 
+\\
+Formally, we would seek the estimate that minimises expected square error. So the expectation is derived from the posterior distribution. We want to minimise:
+\begin{equation}
+\begin{split}
+E((\hat{\theta}-\theta)^2 \mid x)= \hat{\theta}^2 - 2 \hat{\theta}E(\theta \mid x)+E(\theta^2 \mid x)
+\\
+= (\hat{\theta}-E(\theta \mid x))^2 + v(\theta \mid x).
+\end{split}
+\end{equation}
+So the estimate $\hat{\theta}$ that minimises this expected squared error is $\hat{\theta}=E(\theta \mid x)$.
+\section{Utility and decisions}
+Formal inference aims to obtain \underline{optimal} answer to inference questions. This is done with reference to a measure of how good or bad the various possible inferences would be deemed to be if we knew the true value of $\theta$. This measure is a \underline{utility} function. Formally, $u(d,\theta)$ defines the value of inference $d$ if the true value of the parameter is $\theta$. Formal inference casts an inference problem as a decision problem. A decision problem is characterized by:
+\begin{itemize}
+\item a set $\Omega$ of possible parameter values
+\item a probability distribution for $\theta \in \Omega$
+\item a set $D$ of possible decisions
+\item utility function $u(d,\theta)$ for $d \in D$ and $\theta \in \Omega$.
+\end{itemize}
+\underline{The solution is}
+\begin{equation}
+\boxed{d_{opt}=arg \quad max_d E_{\theta}(u(d, \theta))}
+\end{equation}
+Here the distribution of $\theta$ is its prior distribution.
+\begin{itemize}
+\item In inference problems, we generally define a measure of badness of an inference, which we call a loss function $L(d, \theta)$. We can simply define utility to be negative loss, and then the optimal inference is the one which minimises \underline{posterior expected loss}.
+\end{itemize}
+\subsection{Formal Point Estimation}
+The set $D$ is the set of all possible values of $\theta$. We have seen that if we use squared error loss (which is implicitly the measure used by frequentist in considering mean-squared-error of the variance of an unbiased estimator), formally defining $L(\hat{\theta}, \theta)=(\hat{\theta}-\theta)^2$, then the posterior mean is the optimal estimator. If we use absolute error loss $L(\hat{\theta}, \theta)=\left | \hat{\theta}-\theta \right |$, then the optimal estimator is the posterior median.
+\subsection{Formal Interval Estimation}
+The possible inferences now are interval or, more generally, subsets of possible values of $\theta$. A loss function will penalize an interval if it fails to contain the true value of $\theta$.
 \appendix
-
-
-\chapter*{Basic Statistics}
-
 \chapter*{R Codes}
 
 \lstinputlisting[caption={Triplot Code in R}]{BasicStatistics.R}
+
+\lstinputlisting[caption={Inference Plots Code in R}]{Inference.R}
 
 \bibliographystyle{plain}
 % Note the spaces between the initials
