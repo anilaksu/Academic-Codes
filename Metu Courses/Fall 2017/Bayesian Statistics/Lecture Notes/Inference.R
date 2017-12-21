@@ -55,4 +55,19 @@ lines(x, posterior, type='l', col='blue',lwd=5)
 # title("Bivariate Posterior Distribution")
   legend = c("posterior")
 
+## credible interval posterior plot
+
+## the range of sampling
+x=seq(0,20,length=101)
+## this function gets numbers from console
+posterior=dnorm(x, mean = 7, sd = 2, log = FALSE)
+
+## let's plot them
+plot(range(x), range(c(posterior)), type='n', xlab=expression(paste(theta)), ylab=expression(paste("f(", theta, "|x )")))
+
+lines(x, posterior, type='l', col='blue',lwd=5)
+
+# title("Bivariate Posterior Distribution")
+  legend = c("posterior")
+
 

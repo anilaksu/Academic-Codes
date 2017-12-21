@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.8.25)  4 DEC 2017 17:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.8.25)  21 DEC 2017 10:59
 entering extended mode
 **./BayesLectureNotes.tex
 (BayesLectureNotes.tex
@@ -429,11 +429,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 Contents
-(BayesLectureNotes.toc)
+(BayesLectureNotes.toc [3])
 \tf@toc=\write3
 \openout3 = `BayesLectureNotes.toc'.
 
- [3] [4]
+ [4] [5]
 Overfull \hbox (17.12718pt too wide) detected at line 164
 \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A \OMS/cmsy/m/n/12 j \OML/c
 mm/m/it/12 B\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 P\OT1/cmr/m/n
@@ -441,7 +441,7 @@ mm/m/it/12 B\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 P\OT1/cmr/m/n
 OML/cmm/m/it/12 B[]\OT1/cmr/m/n/12 )([] \OMS/cmsy/m/n/12   []\OT1/cmr/m/n/12 )
  []
 
-[5] [6] [7]
+[6] [7] [8]
 Package epstopdf Info: Source file: <triplot.eps>
 (epstopdf)                    date: 2017-10-22 13:45:17
 (epstopdf)                    size: 8352 bytes
@@ -452,7 +452,7 @@ Package epstopdf Info: Source file: <triplot.eps>
 f triplot.eps>
 (epstopdf)             \includegraphics on input line 243.
 Package epstopdf Info: Output file is already uptodate.
- <triplot-eps-converted-to.pdf, id=37, 416.55624pt x 415.5525pt>
+ <triplot-eps-converted-to.pdf, id=40, 416.55624pt x 415.5525pt>
 File: triplot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use triplot-eps-converted-to.pdf>
@@ -463,7 +463,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 240--250
 
  []
 
-[8 <./triplot-eps-converted-to.pdf>]
+[9 <./triplot-eps-converted-to.pdf>]
 Overfull \hbox (5.53745pt too wide) in paragraph at lines 278--278
 [] 
  []
@@ -473,16 +473,19 @@ Overfull \hbox (5.53745pt too wide) in alignment at lines 277--278
 [] [] 
  []
 
-[9]
+[10]
 Overfull \hbox (3.6152pt too wide) in paragraph at lines 318--319
 \OT1/cmr/m/n/12 hood. $[]$ 
  []
 
-[10]
+[11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[11
+ [12
 
-] [12] [13] [14]
+]
+
+[13] [14] [15] [16]
 Package epstopdf Info: Source file: <triplot_v1.eps>
 (epstopdf)                    date: 2017-11-23 16:41:17
 (epstopdf)                    size: 8371 bytes
@@ -494,7 +497,7 @@ Package epstopdf Info: Source file: <triplot_v1.eps>
 (epstopdf)             \includegraphics on input line 498.
 Package epstopdf Info: Output file is already uptodate.
 
-<triplot_v1-eps-converted-to.pdf, id=66, 416.55624pt x 415.5525pt>
+<triplot_v1-eps-converted-to.pdf, id=72, 416.55624pt x 415.5525pt>
 File: triplot_v1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use triplot_v1-eps-converted-to.pdf>
@@ -512,15 +515,15 @@ Package epstopdf Info: Source file: <triplot_v2.eps>
 (epstopdf)             \includegraphics on input line 505.
 Package epstopdf Info: Output file is already uptodate.
 
-<triplot_v2-eps-converted-to.pdf, id=67, 416.55624pt x 415.5525pt>
+<triplot_v2-eps-converted-to.pdf, id=73, 416.55624pt x 415.5525pt>
 File: triplot_v2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use triplot_v2-eps-converted-to.pdf>
 Package pdftex.def Info: triplot_v2-eps-converted-to.pdf used on input line 505
 .
 (pdftex.def)             Requested size: 249.93567pt x 249.33342pt.
- [15] [16 <./triplot_v1-eps-converted-to.pdf> <./triplot_v2-eps-converted-to.pd
-f>] [17]
+ [17] [18 <./triplot_v1-eps-converted-to.pdf> <./triplot_v2-eps-converted-to.pd
+f>] [19]
 Overfull \hbox (16.33328pt too wide) in paragraph at lines 548--549
 \OT1/cmr/m/n/12 have $\OML/cmm/m/it/12 E\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 []\O
 T1/cmr/m/n/12 ) = \OML/cmm/m/it/12 a=\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 d \OMS/c
@@ -539,10 +542,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 562--566
 
  []
 
-[18] [19]
+[20] [21]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [20
+ [22
 
 ]
 
@@ -556,7 +559,7 @@ Package epstopdf Info: Source file: <posterior.eps>
 pdf posterior.eps>
 (epstopdf)             \includegraphics on input line 586.
 Package epstopdf Info: Output file is already uptodate.
-<posterior-eps-converted-to.pdf, id=98, 416.55624pt x 415.5525pt>
+<posterior-eps-converted-to.pdf, id=104, 416.55624pt x 415.5525pt>
 File: posterior-eps-converted-to.pdf Graphic file (type pdf)
 
 <use posterior-eps-converted-to.pdf>
@@ -568,7 +571,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 581--590
 
  []
 
-[21 <./posterior-eps-converted-to.pdf>]
+[23 <./posterior-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <perspec.eps>
 (epstopdf)                    date: 2017-11-30 19:16:11
 (epstopdf)                    size: 95891 bytes
@@ -580,7 +583,7 @@ f perspec.eps>
 (epstopdf)             \includegraphics on input line 596.
 Package epstopdf Info: Output file is already uptodate.
 
-<perspec-eps-converted-to.pdf, id=107, 416.55624pt x 415.5525pt>
+<perspec-eps-converted-to.pdf, id=113, 416.55624pt x 415.5525pt>
 File: perspec-eps-converted-to.pdf Graphic file (type pdf)
 
 <use perspec-eps-converted-to.pdf>
@@ -597,7 +600,7 @@ f contour.eps>
 (epstopdf)             \includegraphics on input line 601.
 Package epstopdf Info: Output file is already uptodate.
 
-<contour-eps-converted-to.pdf, id=108, 416.55624pt x 415.5525pt>
+<contour-eps-converted-to.pdf, id=114, 416.55624pt x 415.5525pt>
 File: contour-eps-converted-to.pdf Graphic file (type pdf)
 
 <use contour-eps-converted-to.pdf>
@@ -614,14 +617,14 @@ pdf BivarPost.eps>
 (epstopdf)             \includegraphics on input line 608.
 Package epstopdf Info: Output file is already uptodate.
 
-<BivarPost-eps-converted-to.pdf, id=109, 416.55624pt x 415.5525pt>
+<BivarPost-eps-converted-to.pdf, id=115, 416.55624pt x 415.5525pt>
 File: BivarPost-eps-converted-to.pdf Graphic file (type pdf)
 
 <use BivarPost-eps-converted-to.pdf>
 Package pdftex.def Info: BivarPost-eps-converted-to.pdf used on input line 608.
 
 (pdftex.def)             Requested size: 166.61954pt x 166.21805pt.
- [22 <./perspec-eps-converted-to.pdf> <./contour-eps-converted-to.pdf> <./Bivar
+ [24 <./perspec-eps-converted-to.pdf> <./contour-eps-converted-to.pdf> <./Bivar
 Post-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <MixGauss.eps>
 (epstopdf)                    date: 2017-12-03 13:13:11
@@ -634,7 +637,7 @@ df MixGauss.eps>
 (epstopdf)             \includegraphics on input line 642.
 Package epstopdf Info: Output file is already uptodate.
 
-<MixGauss-eps-converted-to.pdf, id=126, 416.55624pt x 415.5525pt>
+<MixGauss-eps-converted-to.pdf, id=132, 416.55624pt x 415.5525pt>
 File: MixGauss-eps-converted-to.pdf Graphic file (type pdf)
 
 <use MixGauss-eps-converted-to.pdf>
@@ -650,30 +653,130 @@ Overfull \hbox (19.58049pt too wide) detected at line 653
 /cmsy/m/n/12  [] [] []   [] [] []
  []
 
-[23]
+[25]
 Overfull \hbox (50.9411pt too wide) in paragraph at lines 672--695
 \OT1/cmr/m/n/12 sures for dis-tri-bu-tions are also use-ful. These in-clude the
  $[]$. 
  []
 
-[24 <./MixGauss-eps-converted-to.pdf>]
+[26 <./MixGauss-eps-converted-to.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [25]
-[26]
+ [27]
+[28]
 
-[27
+[29
 
-] [28]
+]
+Package epstopdf Info: Source file: <Credible.eps>
+(epstopdf)                    date: 2017-12-07 13:58:38
+(epstopdf)                    size: 5303 bytes
+(epstopdf)             Output file: <Credible-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-12-07 13:59:30
+(epstopdf)                    size: 3604 bytes
+(epstopdf)             Command: <epstopdf --outfile=Credible-eps-converted-to.p
+df Credible.eps>
+(epstopdf)             \includegraphics on input line 766.
+Package epstopdf Info: Output file is already uptodate.
+ <Credible-eps-converted-to.pdf, id=155, 416.55624pt x 415.5525pt>
+File: Credible-eps-converted-to.pdf Graphic file (type pdf)
+
+<use Credible-eps-converted-to.pdf>
+Package pdftex.def Info: Credible-eps-converted-to.pdf used on input line 766.
+(pdftex.def)             Requested size: 208.2776pt x 207.77574pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[30] [31 <./Credible-eps-converted-to.pdf>]
+Overfull \hbox (28.29065pt too wide) in paragraph at lines 815--816
+\OT1/cmr/m/n/12 idea that the prob-a-bil-ity of an event is the $[]$
+ []
+
+
+Overfull \hbox (64.71527pt too wide) in paragraph at lines 816--817
+\OT1/cmr/m/n/12 the prob-a-bil-ity of a propo-si-tion to be a mea-sure of a $[]
+$
+ []
+
+[32] [33] [34]
+Underfull \hbox (badness 10000) in paragraph at lines 886--890
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 911--915
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 921--925
+
+ []
+
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 930--932
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 939--941
+
+ []
+
+[36] [37]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [38
+
+]
+
+
+Overfull \hbox (1.62042pt too wide) in paragraph at lines 951--953
+ $[]$\OT1/cmr/m/n/12 : Sup-pose that $\OML/cmm/m/it/12 x[]; x[]; :::; x[]$ \OT1
+/cmr/m/n/12 are a sam-ple from the $\OMS/cmsy/m/n/12 N\OT1/cmr/m/n/12 (\OML/cmm
+/m/it/12 ; \OT1/cmr/m/n/12 1)$
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [39]
+[40] [41] [42]
+
+
+Overfull \hbox (18.38037pt too wide) in paragraph at lines 1089--1090
+[]\OT1/cmr/m/n/12 Suppose that $\OML/cmm/m/it/12 s\OT1/cmr/m/n/12 (\OML/cmm/m/i
+t/12 x\OT1/cmr/m/n/12 )$ rep-re-sents all other in-for-ma-tion in $\OML/cmm/m/i
+t/12 x$\OT1/cmr/m/n/12 , $\OML/cmm/m/it/12 x \OT1/cmr/m/n/12 = (\OML/cmm/m/it/1
+2 t\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; s\OT1
+/cmr/m/n/12 (\OML/cmm/m/it/12 x\OT1/cmr/m/n/12 ))$.
+ []
+
+[43
+
+] [44]
+Overfull \hbox (7.33499pt too wide) in paragraph at lines 1205--1223
+ [][] 
+ []
+
+[45] [46]
+
+[47
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [48
+
+]
 R Codes
 (BasicStatistics.R
 LaTeX Font Info:    Try loading font information for TS1+pcr on input line 16.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1pcr.fd"
 File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
 ))
-(Inference.R [29
-
-]
+(Inference.R [49]
 LaTeX Font Info:    Try loading font information for OMS+pcr on input line 15.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspcr.fd"
 File: omspcr.fd 
@@ -690,24 +793,24 @@ LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <10> not available
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [30])
-(BayesLectureNotes.bbl [31]
+ [50])
+(BayesLectureNotes.bbl [51]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [32
+ [52
 
 ]
 
-) [33] (BayesLectureNotes.aux)
+) [53] (BayesLectureNotes.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6439 strings out of 493333
- 91493 string characters out of 3139182
- 237408 words of memory out of 3000000
- 9683 multiletter control sequences out of 15000+200000
+ 6449 strings out of 493333
+ 91714 string characters out of 3139182
+ 238413 words of memory out of 3000000
+ 9692 multiletter control sequences out of 15000+200000
  15942 words of font info for 60 fonts, out of 3000000 for 9000
  1302 hyphenation exceptions out of 8191
  42i,24n,43p,635b,1662s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -715,22 +818,23 @@ Here is how much of TeX's memory you used:
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
-12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on BayesLectureNotes.pdf (33 pages, 346743 bytes).
+lic/amsfonts/cmextra/cmex8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
+6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on BayesLectureNotes.pdf (53 pages, 410374 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
+ 301 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

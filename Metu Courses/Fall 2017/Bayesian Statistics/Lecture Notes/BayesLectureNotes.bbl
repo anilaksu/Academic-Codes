@@ -5,6 +5,12 @@ Allen~B. Dawney.
 \newblock {\em Think Bayes: Bayesian Statistics in Python}.
 \newblock O'REILLY, 2013.
 
+\bibitem{Gamerman}
+D.~Gamerman and F.~L. Herbert.
+\newblock {\em Markov Chain Monte Carlo: Stochastic Simulation for Bayesian
+  Inference}.
+\newblock Chapman and Hall/CRC, 2006.
+
 \bibitem{Ross}
 Sheldon Ross.
 \newblock {\em Introduction to Probability Models}.

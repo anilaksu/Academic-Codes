@@ -755,13 +755,482 @@ Here the distribution of $\theta$ is its prior distribution.
 \subsection{Formal Point Estimation}
 The set $D$ is the set of all possible values of $\theta$. We have seen that if we use squared error loss (which is implicitly the measure used by frequentist in considering mean-squared-error of the variance of an unbiased estimator), formally defining $L(\hat{\theta}, \theta)=(\hat{\theta}-\theta)^2$, then the posterior mean is the optimal estimator. If we use absolute error loss $L(\hat{\theta}, \theta)=\left | \hat{\theta}-\theta \right |$, then the optimal estimator is the posterior median.
 \subsection{Formal Interval Estimation}
-The possible inferences now are interval or, more generally, subsets of possible values of $\theta$. A loss function will penalize an interval if it fails to contain the true value of $\theta$.
+The possible inferences now are interval or, more generally, subsets of possible values of $\theta$. A loss function will penalize an interval if it fails to contain the true value of $\theta$. So the optimal interval is found from this form:
+\begin{equation}
+\boxed{d_{opt}=\left \{ \theta: f(\theta \mid) \geq t \right \}}
+\end{equation}
+where $t$ is chosen to obtain the desired $P(\theta \in d_{opt} \mid x)$. Such a credible interval is called a highest (posterior) density interval (HPD interval or HDI).
+\begin{example}
+From the following figure \ref{fig:credible} which shows $90 \%$ credible interval, it is not HPI.
+\begin{figure}[h!]
+ \includegraphics[scale=0.5]{Credible}% Images in 100% size
+  \caption{A posterior density plot}
+\label{fig:credible}
+\end{figure}
+Because here the upper and lower limits should have the same posterior density, and shows that the density at $\theta = 3.28$ is higher that at $\theta = 11.84$. So the $90 \%$ highest density interval is actually $(2.78,11.06)$.
+\end{example}
+
+\section{Formal Hypothesis Testing}
+If we really need to decide whether (to act as if) hypothesis that $\theta \in A$, is true, there are just two inferences. $d_0$ is to say it is true, while $d_1$ says it is false. The loss function will take the form:
+\begin{equation}
+\begin{split}
+L(d_0, \theta)= 0 \quad if\quad \theta \in A
+\\
+= 1 \quad if \quad \theta \notin A 
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+L(d_1, \theta)= k \quad if\quad \theta \in A
+\\
+= 0 \quad if \quad \theta \notin A 
+\end{split}
+\end{equation}
+where $k$ defines the relative seriousness of the first kind of error relative to the second. Then $E_{\theta}(L(d_0, \theta))=P(\theta \notin A \mid x)$, while  $E_{\theta}(L(d_1, \theta))= k P(\theta \in A \mid x)$. The optimal decision is to select $d_0$ (say that $H$ is true) if its probability $P(\theta \in A \mid x)$ exceeds $\frac{1}{k+1}$. The greater the relative seriousness $k$ of the first kind of error, the more willing we are: 
+
+\section{Nuisance Parameter}
+In any inference problem, the parameter(s) that we wish to make inference about is (are) called the \underline{parameter of interest}, and the remainder of components of $\mathbf{\theta}$ is (are) called \underline{nuisance parameters}.
+\begin{example}
+If we have a sample from $\mathcal{N}(\mu, \sigma^2)$ and we wish to make inference about $\mu$, then nuisance parameter is $\sigma^2$.
+\\
+If $\mathbf{\theta}=(\phi , \psi)$ and $\psi$ is the vector of nuisance parameters, then the inference about $\phi$ is made from marginal value posterior distribution.
+\end{example}
+\section{Transformation}
+If $\hat{\theta}$ is an estimate of $\theta$, is $g(\hat{\theta})$ the appropriate estimate of $\phi$? 
+\\
+This depends on the kind of inference being mode. In the particular case of point estimation, then the posterior mean is not invariant in this way.
+\begin{example}
+If  $\phi = \theta^2)$, then 
+\begin{equation}
+E(\phi \mid x)=E(\theta^2 \mid x)=v(\theta \mid x)+ E(\theta \mid x)^2 \geq E( \theta \mid x)^2
+\end{equation}
+The mode is not invariant to transformations but the median is invariant, at least to $1-1$ transformations.
+\end{example}
+Interval estimates are also invariant to $1-1$ transformations in the sense that if $\left [ a, b \right ]$ is  a $90 \%$ interval, say for $\theta$, then $\left [ g(a), g(b) \right ]$ is a $90 \%$ interval for $\phi$ if g is a monotone increasing function. If $\left [ a, b \right ]$ is a $90 \%$ HPD interval for $\theta$, then $\left [ g(a), g(b) \right ]$ is an HPD interval for $\phi$?
+
+
+\section{The prior distribution}
+The nature of probability:
+\begin{enumerate}
+\item Frequency probability: Frequentist statistics uses the familiar idea that the probability of an event is the \underline{limiting relative frequency} with which that event would occur in an infinite sequence of repetitions. For this definition of probability to apply, it is necessary for the event to be, at least in principle, repeatable.
+\item Personal probability: Bayesian statistics is based on defining the probability of a proposition to be a measure  of a \underline{person's degree of belief} is the truth of that proposition.
+\end{enumerate}
+
+In the Bayesian framework, wherever there is uncertainty there is probability.
+
+In particular, parameters have probability distributions.
+\section{Subjectivity}
+
+The main critic to Bayesian methods is the subjectivity due to the prior density.
+
+If the data are sufficiently strong, the remaining element of personal judgement will not matter, because all priors based on reasonable interpretation of the prior information will lead to effectively the same posterior inferences. Then we can claim robust conclusion on the basis of the synthesis of prior information and data.
+
+If the data are not that strong, then we do not yet have enough scientific evidence to reach an objective conclusion. Any method which claims to produce a definitive answer in such a situation is misleading, so this is actually a strength of the Bayesian approach.
+
+\section{Noninformative Priors}
+
+The basis of this is that if we have a completely flat prior distribution such that $f(\theta)$ is a constant, then the posterior density if proportional to the likelihood and inferences will be based only on the data. If we can do this, we can get the other benefits of Bayesian analysis, such as having more meaningful inferences that actually answer the question, but without the  supposed disadvantage of subjectivity.
+
+The main problem with this neat solution is that it can not be applied consistently.
+
+\begin{example}
+$f(\theta)=1$ for all $\theta \in \left [ 0, 1 \right ]$ uniform distribution represents complete ignorance about $\theta$.
+
+If $\theta$ is ignored, then $\phi = \theta^2$, which also takes values in $\left [ 0, 1 \right ]$, is also completely ignored.
+
+But the implied distribution $f(\phi)=1$ is not consistent with the previous specification of $f(\theta)=1$. The uniform prior distribution for $\theta$ implies that $\phi = \theta^2$ should have the density $f(\phi)=\frac{1}{2 \sqrt{\phi}}$. Conversely, if $\phi$ has a uniform prior distribution, then the implied prior for $\theta$ has density $f(\theta)=2 \theta$.
+
+In general, a uniform prior for $\theta$ translates into a non-uniform prior for any function of $\theta$. Another complication is that if the range of possible values of $\theta$
+\end{example}
+
+Another complication is that if the range of possible values of $\theta$ is bounded then we can not properly give it a uniform distribution. For instance, if $\theta \in \left [ 0, \infty \right) $ and we try to define a prior distribution $f(\theta)=c$ for some constant $c$, then there is no value of $c$ that will make this density integrate to $1$. For $c=0$, it integrates to $0$, and for any positive $c$ it integrates to infinity. In these situations, we appeal to proportionality and simply write $f(\theta) \propto 1$
+
+A distribution expressed as $f(\theta) \propto h(\theta)$ when there can not be any proportionality constant that would make this into a proper density function, is called an \underline{improper} distribution. This arises whenever the integral of $h(\theta)$ over the range of possible values of $\theta$ does not change.
+
+\begin{example}
+For a parameter $\theta \in \left [ 0, 1 \right ]$, three favourite recommendations are $f(\theta)=1$, $f(\theta)=\pi^{-1} \theta^{-1/2}(1-\theta)^{-1/2}$ and $f(\theta)\propto \theta^{-1} (1-\theta)^{-1}$, the last of these being improper. We can identify these as the $Be(1,1)$, $Be(1/2,1/2)$ and $Be(0,0)$ distributions.
+\end{example}
+
+Improper distributions are not in fact usually much of a problem, since we can appeal to proportionality. That is, the absence of a well-defined proportionality constant is ignored and assumed to cancel in the proportionality constant of Bayes' theorem \cite{Gamerman}. In effect, we are obtaining the limit of the posterior distribution as we go through a range of increasingly flat priors towards the uniform limit.
+
+\begin{enumerate}
+\item The posterior distribution may also be improper. In this case, technically, the limit of the above process is not well-defined. Improper prior distribution should never be used when the resulting posterior distribution is improper, so it is important to verify propriety of the posterior.
+\item When comparing different models for the data, improper distributions always lead to undefined model comparisons. This is an area outside the scope of this course, but very important in practice.
+\end{enumerate}
+
+\section{Informative Priors}
+So in specifying an informative prior distribution, (a) we specify values for whatever summaries best express the features of the prior information, then (b) we simply choose any conventional $f(\theta)$ that has those summaries.
+\begin{example}
+I wish to formulate my prior beliefs about number $N$ of students who will turn up to one of my lectures. I first ask myself what my best estimate would be, and I decide on $38$, so I set $E(N)=38$. I next ask myself how far wrong this estimate might be. I decide that the  actual number  could be as high as $48$ or as low as $30$, but I think the probability of the actual number being outside that range is small, maybe only $10 \%$. Now a convenient prior distribution that matches these summaries is the Poisson distribution. 
+
+So it has mean $38$ and $P(30 \leq N \leq 48)=0.87$, which seems a good enough fit to my specified summaries.  
+\end{example}
+
+\section{Prior Choices}
+There are several alternatives to overcome the problem of improper prior.
+\begin{enumerate}
+\item \underline{Jeffrey's Prior}:
+\\
+Let $I(\theta)$ be the Fisher information:
+\begin{equation}
+I(\theta)=-E \left \{  \frac{\partial^2 \log f(x \mid \theta)}{\partial \theta^2}\right \}.
+\end{equation}
+In the case of a vector parameter, $I(\theta)$ is the matrix formed as minus the expectation of the matrix of second order partial derivatives of $\log f(x \mid \theta)$. The Jeffrey's prior distribution it then:
+\begin{equation}
+\boxed{f_o (\theta)\propto \left |  I(\theta) \right |^{1/2}}
+\end{equation} 
+\begin{example}
+If $x_1,x_2,...,x_n$ are normally distributed with mean $\theta$ and known variance $v$, then
+\begin{equation}
+f(x \mid \theta) \propto \exp \left \{  - \frac{n(\bar{x}-\theta)^2}{2 v}\right \}
+\end{equation}
+What is the Jeffrey's prior for this distribution?
+\\
+\textbf{Solution:}\\
+\begin{equation}
+\log f(x \mid \theta) = - \frac{n(\bar{x}-\theta)^2}{2 v}
+\end{equation}
+
+\begin{equation}
+\frac{\mathrm{d}^2}{\mathrm{d} \theta^2}\log f(x \mid \theta) = -\frac{n}{2 v}
+\end{equation}
+Therefore,
+\begin{equation}
+I(\theta)=-E(\frac{\mathrm{d}^2}{\mathrm{d} \theta^2}\log f(x \mid \theta)) = \frac{n}{2 v}
+\end{equation}
+As a result,
+\begin{equation}
+f_0(\theta)= \sqrt{I(\theta)} = \sqrt{\frac{n}{2 v}}.
+\end{equation}
+\end{example}
+
+\begin{example}
+If $x_1,x_2,...,x_n$ are distributed as $\mathcal{N}(\mu,\sigma^2)$ with $\theta=(\mu,\sigma^2)$, then
+\begin{equation}
+f(x \mid \theta) \propto \sigma^{-n} \exp \left \{  - \frac{-n(s+(\bar{x}-\theta)^2)}{2 \sigma^2}\right \}
+\end{equation}
+where $s=\frac{\sum (x_i -\bar{x})^2}{n}$, Then what is the Jeffrey's prior of $f(\mu,\sigma^2)$?
+\\
+\textbf{Solution:}\\
+\end{example}
+
+\begin{example}
+If $x_1,x_2,...,x_n$ are normally distributed with known mean $m$ and variance $\theta$, then
+\begin{equation}
+f(x \mid \theta) \propto \theta^{-n/2}\exp \left \{  - \frac{-s}{(2 \theta)^2}\right \}
+\end{equation}
+where $s=\sum (x_i -m)^2$, then what is the Jeffrey's prior for $\theta$?
+\\
+\textbf{Solution:}\\
+\begin{equation}
+\log f(x \mid \theta) =
+\end{equation}
+\end{example}
+
+A number of objections can made to the Jeffrey's prior, the most important of which is that it depends on the form of the data. The prior distribution should only represent the prior information, and not be influenced by what data are to be collected.
+\\
+
+\item \underline{Maximum Entropy}:
+\\
+The entropy $H(f)=-\int_{-\infty}^{\infty}f(\theta) \log f(\theta) \mathrm{d} \theta$ of the density $f(\theta)$ can be thought of a measure of how uninformative $f(\theta)$ is about $\theta$. For if we try to convert our information about $\theta$ as a general form of inference in the scoring rule framework, $H(f)$ is the lowest obtainable expected loss. If $H(f)$ is high, then the best decision is still poor. Now to represent prior ignorance we could use the prior density $f(\theta)$ which maximizes the entropy.
+\begin{example}
+Suppose that $\theta$ is discrete with possible values $\theta_1, \theta_2, ..., \theta_k$. The prior distribution with maximum entropy will then maximize $\sum_{i=1}^{k} p_i \log p_i + \lambda \sum p_i$, where $\lambda$ is a Lagrange multiplier, $\partial F / \partial p_i =  \log p_i+1+\lambda$. Equating this to zero yields the solution $p_i=k^{-1}$, $i=1,2,3,...,k$. That is the maximum entropy prior is the uniform distribution. 
+\end{example}
+The primary criticism of this approach is that it is not invariant under change of parametrization, the problem which the Jeffrey's  prior was designed to avoid. In general, unrestricted maximization of entropy leads to a uniform prior distribution, which was shown to be sensitive to parametrization.
+\\
+\item \underline{Reference Prior}:
+The expected amount of information provided by observing $x$ is given by
+\begin{equation}
+H\left \{  f(\theta)\right \}-E \left [ H \left \{ f(\theta \mid x) \right \} \right ],
+\end{equation}  
+where the expectation is over the preposterior distribution of $f(x)$ of $x$. If the experiment yielding $x$ were to be repeated, giving a new observation independent of $x$ given $\theta$ and with the same distribution, the posterior distribution would be expected to show a further reduction in entropy, representing the expected information in the second observation. If this were repeated indefinitely we would eventually learn $\theta$ exactly and so remove all the entropy in the original prior distribution.
+
+In the case of discrete $\theta$ taking a finite of possible values, this process reduces  ??? maximizing prior entropy, and so gives the uniform distribution. This is not the case for continuous $\theta$. It is shown that under appropriate regularity conditions, the reference prior distribution is the Jeffrey prior.
+\end{enumerate}
+
+\lecture{Structuring Prior Information}
+\underline{Independence}: Suppose that $x_1,x_2,...,x_n$ are a sample from the $\mathcal{N}(\mu ,1)$ distribution, which we write formally as:
+\begin{equation}
+x_i \mid \mu \sim \mathcal{N}(\mu ,1)
+\end{equation}
+, independent.  From a  Bayesian perspective, what is meant here is \underline{conditional dependence}. That is the $x_i$'s are independent given $\mu$.
+
+\underline{Exchangaability}: It is same as the independence in frequentist approach.
+\begin{definition}
+Random variables $x_1,x_2,...,x_m$ are said to be exchangeable if their joint distribution is unaffected by permitting the order of the $x_i$'s.
+\end{definition}
+So first consider the (marginal) distribution of $x_1$. The definition says that every one of the $x_i$'s must have the same marginal distribution, because we can permute them so that any desired $x_i$ comes into the first position in the sequence. So one implication of exchangeability is that the  random variables in question are identically distributed.
+
+next consider the joint distribution of $x_1$ and $x_2$ Exchangeability means that every pair $(x_i,x_j)$ (for $i \neq j$) has the same bivariate distribution as $(x_1,x_2)$. In particular, the correlation between any pair of random variables is the same.
+
+And so it goes to higher order joint distributions. The joint distributions $(x_1,x_2,....,x_k)$ is the same as that of any other collection of $k$ distinct $x_i$'s. This is the meaning of exchageability.
+
+\begin{itemize}
+\item In general, suppose that $x_i$'s have a common distribution $g(x \mid \theta)$, and are independent, given $\theta$. Then the joint density is:
+\begin{equation}
+\begin{split}
+f(x_1,x_2,...,x_m)=\int f(x_1,x_2,...,x_m, \theta) \mathrm{d}\theta
+\\
+=\int f(x_1,x_2,...,x_m)f(\theta)\mathrm{d}\theta
+\\
+= \int \prod_{i=1}^{m}g(x_i \mid \theta)f(\theta)\mathrm{d} \theta.
+\end{split}
+\end{equation}
+which is unaffected by permuting the $x_i$'s. Their  common marginal density is:
+\begin{equation}
+f(x)=\int g(x \mid \theta) f(\theta) \mathrm{d} \theta,
+\end{equation} 
+and the common distribution of any pair of the $x_i$'s is 
+\begin{equation}
+f(x,y)=\int g(x \mid \theta)g(y \mid \theta) f(\theta) \mathrm{d} \theta,
+\end{equation} 
+\end{itemize}
+
+This is generally what a frequentist means by the $x_i$'s being iid, or being a random sample from the distribution $g(x \mid \theta)$. From the Bayesian perspective all frequentist statements are conditional on the parameters. So exchangeability is the Bayesian concept that corresponds very precisely with the frequentist idea of a random sample.
+
+\section{Binary Exchangeability}
+
+\begin{theorem}[De Finetti, 1937]
+Let $x_1,x_2,x_3,...$ be an infinite sequence of exchangeable \underline{binary} random variables. Then their joint distribution is characterised by a distribution $f(\theta)$ for a parameter $\theta \in \left [ 0,1 \right ]$ such that the $x_i$'s are independent of $\theta$ with $P(x_i =1 \mid \theta)=0$.
+\end{theorem}
+
+De Finetti's theorem says that if we have a sequence of binary variables, so that each $x_i$ takes the value $1$ (success) or $0$ (failure), then we can represent them as independent Bernouilli trials with probability $\theta$ of success in each trial.
+
+\section{Exchangeable Parameters}
+Consider the simple one-way analysis of variance model:
+\begin{equation}
+y_{ij} \sim \left\{\begin{matrix}
+\mathcal{N}(\mu_i,\sigma^2), & i=1,2,...,k& \\ 
+ &j=1,2,...,n_i &,independent
+\end{matrix}\right.
+\end{equation}
+where $\theta = (\mu_1,\mu_2,...,\mu_k,\sigma^2)$. This says that we have $k$ independent normal samples, where the $i$-th sample has mean $\mu_i$ and size $n_i$, and where all the observations have a common variance $\sigma^2$.
+
+For this model, we need to specify a joint prior distribution for $\mu_1,\mu_2,...,\mu_k$ and $\sigma^2$. Now when it comes to formulating a joint prior distribution for many parameters, it is \underline{much} easier if we can regard them \underline{as independent}. Then we could write:
+\begin{equation}
+f(\mu_1,\mu_2,...,\mu_k,\sigma^2)=f(\sigma^2) \prod_{i=1}^{k}f(\mu_i),
+\end{equation}
+and we would only need to specify the prior distribution of each parameter separately. Unfortunately, this is unlikely to be the case in practice with this model.
+
+The model is generally used when the samples are from a related or similar populations. For instance, they might be weight gains of pigs given $k$ different diets, and $\mu_i$ is the mean weight gain with diet $i$. In this sort of situation, the $\mu_i$'s would not be independent. Then we could add to the "prior model"
+\begin{equation}
+\mu_i \mid \xi, \tau^2 \sim \mathcal{N}(\xi, \tau^2)
+\end{equation}
+, independent, which says that the $\mu_i$'s are drawn form a normal (assumed) population with unknown mean $\xi$ and unknown variance $\tau^2$.
+
+The prior distribution could then be completed by specifying a joint prior distribution $f(\xi, \sigma^2, \tau^2)$ for the remaining parameters.
+
+\section{Hierarchical Models}
+
+The kind of modelling seen in the previous section is called "hierarchical". In general, we can consider a model of the form:
+\begin{itemize}
+\item Data model: $f(x \mid \theta)$
+\item First level of prior: $f(\theta \mid \phi)$
+\item Second level of prior: $f(\phi)$
+\end{itemize}
+We often refer to $\phi$ as the hyperparameter(s)
+\begin{itemize}
+\item If we are only interested in the parameter $\theta$ of the original data model,
+\begin{equation}
+f(\theta)=\int f(\theta \mid \phi) f(\phi) \mathrm{d} \phi.
+\end{equation}
+\item Let us be actually interested in the hyperparameters $\phi$,
+\begin{equation}
+f(x \mid \phi)=
+\end{equation}
+\begin{equation}
+f(\theta, \phi)=
+\end{equation}
+\begin{equation}
+f(\theta,\phi \mid x) \propto
+\end{equation}
+\begin{equation}
+f(\theta \mid x)=
+\end{equation}
+\end{itemize}
+\underline{Shrinkage}: It means that the posterior distribution and posterior estimates of these parameters will generally be closer together than their corresponding data estimates. This is a phenomenon known as "shrinkage". Let $w=(\xi, \sigma^2, \tau^2)$ and $\mu=(\mu_1,\mu_2,...,\mu_k)$ and 
+\begin{equation}
+\begin{split}
+f(\mu \mid x, w)\propto f(x \mid \mu, \sigma^2)f(\mu \mid w)
+\\
+= \prod_{i=1}^{k} \left \{  \prod_{j=1}^{n_i}\frac{1}{\sqrt{2 \pi} \sigma}  \exp \left [  - \frac{(y_{ij}-\mu_i)^2}{2 \sigma^2} \right] \right \}  \exp  \left [- \frac{(\mu_{i}-\xi)^2}{2 \tau^2}\right ]
+\\
+= \prod_{i=1}^{k}f(\mu_i \mid x, w)
+\end{split}
+\end{equation}
+where each of the $f(\mu_i \mid x, w)$ comes from the analysis of a single normal sample given in Lecture 1. That is conditional on $w$, the $\mu_i$'s are independent $\mathcal{N}(m_{i}^*,v_{i}^*)$, where:
+\begin{equation}
+v_{i}^* =(n_i \sigma^{-2}+\tau^{-2})^{-1}
+\end{equation}
+\begin{equation}
+m_{i}^* =(n_i \sigma^{-2}+\tau^{-2})^{-1}(n_i \sigma^{-2}\bar{y}_i + \tau^{-2} \xi)
+\end{equation}
+We can already see the shrinkage in the model, because the posterior mean of each $\mu_i$ is a weighted average of its own data estimate $\bar{y}_i$ and the common value $\xi$. So they are shrunk towards this common value. 
+\begin{example}
+Let's consider a simple regression situation in which we have observations $y_1,y_2,...,y_n$ at values $x_1<x_2<..<x_n$ of the explanatory variables. The usual linear regression model specifies
+\begin{equation}
+y_i \mid \alpha, \beta, \sigma^2 \sim \mathcal{N}(\alpha + \beta x_i, \sigma^2)
+\end{equation}
+Instead we can create the hierarchical model:
+\begin{itemize}
+\item Data model:
+\item First level of prior:
+\item Second level of prior:
+\end{itemize}
+\end{example}
+\lecture{Sufficiency and Ancillary}
+What happens if $f(x \mid \theta)$ does not depend on $\theta$? If $f(x \mid \theta)$ does not depend on $\theta$, the data are completely uninformative. 
+\begin{definition}
+$t(x)$ is sufficient if, for any given $\theta$, $f(x \mid \theta)$ is a function only of $t(x)$, apart froma multiplicative factor that can be any function of $x$
+\end{definition}
+
+It means that we only need to know $t(x)$ in order to obtain the posterior distribution. It is sufficient to know $t(x)$. Therefore the posterior distribution is the same as if we only had observed $t(x)$ rather than the whole of $x$. 
+
+Suppose that $s(x)$ represents all other information in $x$, $x=(t(x),s(x))$. Then 
+\begin{equation}
+f(x \mid \theta)=f(t(x) \mid \theta)f(s(x)\mid t(x), \theta).
+\end{equation}
+$t(x)$ is sufficient $f(s(x)\mid t(x), \theta)$ must not depend on $\theta$. So once we know $t(x)$ there is no information in $s \mid x$.
+
+\begin{definition}
+$s(x)$ is ancillary if $f(s(x)\mid \theta)$ does not depend on $\theta$.
+\end{definition}
+
+\begin{example}
+Let $x_i \mid \sim \mathcal{N}(\mu, \sigma^2)$ with $\sigma^2$ known. Then $x_i-x_j \sim \mathcal{N}(0,2\sigma^2)$ is ancillary for any $i \neq j$. 
+\end{example}
+\begin{itemize}
+\item Let $t(x)$ be the rest of the information in $x$, so that again we have $x=(t(x),s(x))$. Then 
+\begin{equation}
+f(x \mid \theta)=f(s(x) \mid \theta)f(t(x)\mid s(x), \theta),
+\end{equation}
+but now this implies that $f(x \mid \theta) \propto f(t(x)\mid s(x), \theta)$
+\end{itemize}
+\section{The Likelihood Principle}
+The likelihood principle asserts that inference should be based only on the likelihood.
+
+\begin{example}
+Let $x \sim Be(1, \theta)$ and the results of a fixed number $n$ of independent Bernoullie trials.
+\begin{equation}
+f_x(x \mid \theta)= \theta^r (1-\theta)^{n-r}
+\end{equation}
+where $r$ is the number of success. If $x \sim Bi(n,\theta)$, then $f_R (r \mid \theta)= \binom{n}{r}\theta^r (1-\theta)^{n-r} \propto \theta^r (1-\theta)^{n-r}$.
+
+If we keep observing independent Bernoulli trials until we get a fixed number $r$ of success.
+\begin{equation}
+f_y(y \mid \theta)=\theta^r (1-\theta)^{n-r}
+\end{equation}
+where $r$-th success on the $n$-th trial. If the distribution is negative binomial 
+\begin{equation}
+f_N(n)=\binom{n-1}{r-1}\theta^r (1 -\theta)^{n-r} \propto \theta^r (1-\theta)^{n-r}
+\end{equation}
+\end{example}
+
+\section{Identifiability}
+Let $\theta = (y(\theta),h(\theta))$ and $f(x \mid \theta)$ depend only on $g(\theta)$.
+\begin{equation}
+\begin{split}
+f(\theta \mid x) \propto f(x \mid \theta)f(\theta)= f(x \mid g(\theta))f(\theta)
+\\
+=f(x \mid g(\theta))f(g(\theta))f(h(\theta) \mid g(\theta))
+\\
+\propto f(g(\theta) \mid x) f(h(\theta) \mid g(\theta)).
+\end{split}
+\end{equation}
+This says that the posterior distribution of $\theta$ is made up of the distribution of $g(\theta)$ and the \underline{prior} distribution of $h(\theta)$ given $g(\theta)$. So it is the \underline{conditional} posterior distribution of $h(\theta)$ given $g(\theta)$ that is the same as the prior. That is 
+\begin{equation}
+f(h(\theta)\mid x, g(\theta))=f(h(\theta)\mid g(\theta)).
+\end{equation}
+We say that $h(\theta)$ is \underline{not identifiable} from these data. No matter how much data we get, we can not learn exactly what $h(\theta)$ is. With sufficient data we can learn $g(\theta)$, but not $h(\theta)$.
+
+\section{Asymptotic Theory}
+
+Suppose that we have a sequence of iid observations $x_1,x_2,x_3,...$ and suppose that $\mathbf{x}_n=(x_1,x_2,...,x_n)$ comprises the first $n$ observations. 
+
+We can now consider a sequence of posterior distributions $f(\theta \mid x_1)$, $f(\theta \mid x_2)$, $f(\theta \mid x_3)$,...,$f(\theta \mid x_n)$,$f(\theta \mid x_{n+1})$. We wish to know how the posterior distribution $f(\theta \mid x_n)$ behaves as $n \rightarrow \infty$.
+
+So as we get more data, we expect that the posterior will in some sense converge to the true value. Also, the weight the posterior gives to the data increases, and therefore we can expect that in the limit the posterior will be insensitive to the prior.
+
+Subject to some \underline{regularity conditions}. Regularity conditions:
+\begin{enumerate}
+\item The whole $\theta$ needs to be identifiable.
+\item Prior possibility condition: the prior probability does not give zero probability to the true value of $\theta$.
+\item Continuity condition: we need a continuity condition for $\theta$. 
+\end{enumerate}
+\section{Preposterior Properties}
+Let $X$ and $Y$ be any two random variables. Then
+\begin{equation}
+E(Y)=E\left \{  E(Y \mid X)\right \},
+\end{equation}
+\begin{equation}
+v(Y)=E \left \{  v(Y \mid X)\right \}+ v\left \{  E(Y \mid X)\right \}
+\end{equation}
+Let's replace $Y$ by the parameter vector $\theta$ and $X$ by the data vector $X$.
+\begin{remark}
+If we use the posterior mean $E(\theta \mid x)$ to estimate $\theta$, the its expected bias $0$.
+\end{remark}
+
+\section{Conjugate Prior Forms}
+The conjugacy is a joint property of the prior and the likelihood function that provides a posterior from the same distributional family as the prior.
+
+\begin{example}
+Conjugacy in exponential specifications.
+\begin{equation}
+E(x\mid \theta)=\theta \exp \left \{  -\theta x\right \}
+\end{equation}
+where $0 \leq x$, $0<\theta$. If $\theta \sim Gamma(\alpha , \beta)$, then
+\begin{equation}
+f(\theta \mid \alpha, \beta)=\frac{1}{\Gamma(\alpha)}\beta^{\alpha}\theta^{\alpha -1} \exp \left \{  -\beta \theta \right \}
+\end{equation}
+where $\theta, \alpha, \beta > 0$
+\end{example}
+Suppose we now observe $x_1,x_2,...,x_n \sim iid$. The likelihood is 
+\begin{equation}
+L(\theta \mid x)=\prod_{i=1}^{n} \theta e^{-\theta x_i}=\theta^n \exp \left \{  - \theta \sum x_i\right \}
+\end{equation}
+Thus,
+\begin{equation}
+\begin{split}
+\pi(\theta \mid x) \propto E(x \mid \theta)L(\theta \mid x)
+\\
+=\theta^n \exp \left \{  - \theta \sum x_i\right \} \frac{1}{\Gamma(\alpha)}\beta^{\alpha}\theta^{\alpha -1} \exp \left \{  -\beta \theta \right \}
+\\
+\propto \theta^{\alpha +n -1} \exp \left \{  - \theta( \sum x_i + \beta)\right \}
+\end{split}
+\end{equation}
+This is the kernel of a $Gamma(\alpha+n,\sum x_i + \beta)$ and therefore the gamma distribution is shown to be conjugate to the exponential likelihood function.
+
+\begin{table}[h]
+\caption{Conjugate Prior Distribution Table}
+ \begin{tabular}{||c c c ||} 
+ \hline
+ Likelihood Form & Conjugate Prior Distribution & Hyperparameters  \\ [0.5ex]
+ \hline\hline
+ Bernouilli & Beta & $\alpha>0$, $\beta>0$ \\ 
+ Binomial & Beta & $\alpha>0$, $\beta>0$   \\ 
+ Multinomial & Dirichlet & $\theta_j>0$, $\sum \theta_j=\theta_0$  \\ 
+ Negative Binomial & Beta & $\alpha>0$, $\beta>0$  \\ 
+ Poisson & Gamma & $\alpha>0$, $\beta>0$  \\
+ Exponential & Gamma & $\alpha>0$, $\beta>0$  \\
+ Gamma (ind $\chi^2$) & Gamma & $\alpha>0$, $\beta>0$  \\
+ Normal for $\mu$ & Normal & $\mu \in \mathbb{R}$, $\sigma^2>0$  \\
+  Normal for $\sigma^2$ & Inverse Gamma & $\alpha>0$, $\beta>0$  \\
+   Pareto for $\alpha$ & Gamma & $\alpha>0$, $\beta>0$  \\
+    Pareto for $\beta$ & Pareto &$\alpha>0$, $\beta>0$  \\
+ Uniform & Pareto & $\alpha>0$, $\beta>0$ \\ [1ex] 
+ \hline
+\end{tabular}
+\end{table}
+
+\lecture{Tackling Real Problems}
 \appendix
+
 \chapter*{R Codes}
 
 \lstinputlisting[caption={Triplot Code in R}]{BasicStatistics.R}
 
 \lstinputlisting[caption={Inference Plots Code in R}]{Inference.R}
+
 
 \bibliographystyle{plain}
 % Note the spaces between the initials
