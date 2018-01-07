@@ -44,5 +44,18 @@
 \contentsline {section}{\tocsection {}{6.4}{Preposterior Properties}}{45}
 \contentsline {section}{\tocsection {}{6.5}{Conjugate Prior Forms}}{45}
 \contentsline {chapter}{Lecture\ 7.\ Tackling Real Problems}{47}
-\contentsline {chapter}{R Codes}{49}
-\contentsline {chapter}{Bibliography}{53}
+\contentsline {section}{\tocsection {}{7.1}{What is a Markov Chain?}}{47}
+\contentsline {section}{\tocsection {}{7.2}{The Chapman-Kolmogorov Equations}}{49}
+\contentsline {section}{\tocsection {}{7.3}{Marginal Distributions}}{49}
+\contentsline {section}{\tocsection {}{7.4}{General Properties of Markov Chains}}{49}
+\contentsline {section}{\tocsection {}{7.5}{Noniterative Monte Carlo Methods}}{51}
+\contentsline {chapter}{Lecture\ 8.\ }{55}
+\contentsline {section}{\tocsection {}{8.1}{The Gibbs Sampler}}{55}
+\contentsline {chapter}{Lecture\ 9.\ Summary of the properties of Gibbs sampler}{61}
+\contentsline {section}{\tocsection {}{9.1}{Metropolis Algorithm}}{61}
+\contentsline {section}{\tocsection {}{9.2}{Metropolis Algorithm}}{62}
+\contentsline {section}{\tocsection {}{9.3}{Data Augmentation}}{64}
+\contentsline {chapter}{GIBBS SAMPLING}{67}
+\contentsline {chapter}{DATA AUGMENTATION}{71}
+\contentsline {chapter}{R Codes}{75}
+\contentsline {chapter}{Bibliography}{79}

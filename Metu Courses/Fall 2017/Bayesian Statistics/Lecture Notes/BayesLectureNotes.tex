@@ -18,6 +18,7 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage[toc,page]{appendix}
+
 %\usepackage{natbib}
 %\usepackage{amssymb} % this command would have loaded all the extra symbols,
 
@@ -1223,14 +1224,787 @@ This is the kernel of a $Gamma(\alpha+n,\sum x_i + \beta)$ and therefore the gam
 \end{table}
 
 \lecture{Tackling Real Problems}
+There are various computational tools that are widely used in practical Bayesian statistics, the most well-know one is Markov Chain Monte Carlo or MCMC. The basic idea is that we randomly draw a very large sample $Q^{(1)},Q^{(2)},...$ from the posterior distribution. Given such a sample, we can compute any inference we wish. If we want to make inference about some derived parameter $\phi=g(\theta)$ then $\phi^{(1)}=g(Q^{(1)})$, $\phi^{(2)}=g(Q^{(2)})$,..., is a sample from its posterior distribution $f(\theta \mid x)$. The sample mean $\bar{\phi}$ is an estimate of $E(\phi \mid x)$. In principle, we could draw such a sample using simple Monte Carlo sampling. That is each $Q^{(j)}$ is independently drawn from $f(\theta \mid x)$ There are algorithms for efficiently drawing random samples from a wide variety of standard distributions. 
+\section{What is a Markov Chain?}
+"A stochastic process" is a consecutive set of random quantities defined on some known state space $Q$, indexed so that the order is known. $ \left \{  Q^{[t]}, t \in T \right \}$. Here the state space (which is parameter space for us) is just the allowable range of values for the random vector of interest. The state space $Q$ is either discrete or continuous depending on how the variable of interest is measured. 
+
+\underline{A Markov chain} is a stochastic process with the property that at time $t$ in the series, the probability of making a transition to any new state is dependent only on the current state of the process.
+\begin{equation}
+p( Q^{[t]} \in A \mid  Q^{[0]}, Q^{[1]},..., Q^{[t-2]}, Q^{[t-1]} )
+\end{equation}
+where $A$ is the identified set on the complete state space.
+
+A fundamental concern is the transition process that defines the probabilities of moving to other points in the state space, given the current location of the chain. This structure is defined via the \underline{transition kernel $K$} as a general mechanism for describing the probabilities of moving to some other specified state based on the current chain status. When the state space is discrete, then $K$ is a matrix, $k \times k$ for $k$ discrete elements in $A$, where each cell defines the probability of a state transition from the first term in the parentheses to all possible states:
+\begin{equation}
+P_A=
+\begin{bmatrix}
+p(\theta_1,\theta_1) & ... & p(\theta_1,\theta_k)\\ 
+: &  & \\ 
+ p(\theta_k,\theta_1)&...  & p(\theta_k,\theta_k)
+\end{bmatrix}
+\end{equation} 
+The row and columns indicate:
+\begin{itemize}
+\item
+\item 
+\end{itemize}
+An important feature of the transition kernel is that the transition probabilities between two selected states for arbitrary numbers of steps $m$ can be calculate multiplicative:
+\begin{equation}
+\label{eq:71}
+p^m(\theta^{[m]}_j = y \mid \theta^{[0]}_i = x)=\underbrace{\sum_{\theta_1}\sum_{\theta_2}..\sum_{\theta_{m-1}}}_{all\quad possible \quad paths}\underbrace{p(\theta_i,\theta_1)p(\theta_1,\theta_2)...p(\theta_{m-2},\theta_{m-1})}_{transition\quad products}
+\end{equation}
+So $p^m(\theta^{[m]}_j = y \mid \theta^{[0]}_i = x)$ is also a stochastic transition matrix.
+
+\begin{example}
+\begin{equation}
+\underbrace{P}_{current \quad period}=
+\left\{\begin{matrix}
+\theta_1\\ 
+\theta_2
+\end{matrix}\right.
+\begin{bmatrix}
+0.8 & 0.2)\\ 
+0.6 &0.4
+\end{bmatrix}
+\end{equation}
+Let the starting point $S_0 = \left [ 0,5 \quad 0,5 \right ] $, to get the first state 
+\begin{equation}
+S_1=
+\end{equation}
+To get the second state,
+\begin{equation}
+S_2=
+\end{equation}
+\begin{equation}
+S_3^=
+\end{equation}
+\begin{equation}
+S_4=
+\end{equation}
+So the choice proportions are converging to $\left [  0,75 \quad 0,25\right ]$ since the transition matrix is pushing toward a steady state or stationary distribution of the proportions. So when we reach this distribution, all future states are constant, that is stationary.
+\end{example}
+
+\section{The Chapman-Kolmogorov Equations}
+These equations specify how successive events are bound together probabilistically. If we abbreviate the hand side of expression \ref{eq:71}
+\begin{equation}
+p^{m_1+m_2}(x,y)=\sum_{all \quad z}p^{m_1}(x,z)p^{m_2}(z,y) \quad discrete \quad case.
+\end{equation}
+\begin{equation}
+p^{m_1+m_2}(x,y)=\int_{range \quad z}p^{m_1}(x,z)p^{m_2}(z,y) \mathrm{d}z \quad continuous case.
+\end{equation}
+This is also equal to:
+\begin{equation}
+p^{m_1+m_2}=p^{m_1}p^{m_2}=p^{m_1}p^{m_2-1}p=p^{m_1}p^{m_2-2}p^2=...
+\end{equation}
+For discrete case. Thus iterative probabilities can be decomposed into segmented products in any way we like, depending on the interim step.
+
+\section{Marginal Distributions}
+The marginal distributions at some step $m$-th from the transition kernel is found via
+\begin{equation}
+\underbrace{\pi^{m}(\theta)}_{\text{current value of the chain}}=\underbrace{\left [  p^m(\theta_1),p^m(\theta_2),...,p^m(\theta_k) \right ]}_{\text{the row of the transition kernel for the $m$-th step}}
+\end{equation} 
+So the marginal distribution at the first step of the Markov chain is given by
+\begin{equation}
+\boxed{\pi^1(\theta)=\pi^0(\theta)p^1}.
+\end{equation}
+where $\pi^0=\text{initial starting value assigned to the chain}$, $p^1=P=\text{simple transition matrix}$, Thus
+\begin{equation}
+\pi^n=
+\end{equation}
+\begin{equation}
+\pi^m(\theta_j)=
+\end{equation}
+\section{General Properties of Markov Chains}
+\begin{enumerate}
+\item \underline{Homogeneity:} A homogeneous Markov chain at step $n$-th transition probability that does not depend on the value of so the decision to move at this step is independent of this being the current point in time.
+\item \underline{Irreducibility:} A Markov chain is irreducible if every point or collection of points can be reached from every other point or collection of points. So irreducibility implies the existence of a path between any two points in the subspace
+\item \underline{Recurrence:}If a subspace is closed, finite, and irreducible, then all states within the supspace are recurrent An irreducible Markov chain is called recurrent with regard to a given state, A, which is a single point or a defined collection of point, if the probability that the chain occupies A infinitely often over unbounded time is non-zero. 
+\item \underline{Stationarity:} Let $\pi(\theta)=$stationary distribution of the Markov 
+chain for $\theta$ of the state space.
+
+$p(\theta_i,\theta_j)=$ the probability that the chain will move from $\theta_j$ to $\theta_j$ at some arbitrary step $t$ from the transition kernel.
+
+$\pi^t(\theta)=\text{the marginal distribution}$, thus the stationary distribution is defined as:
+\begin{equation}
+\sum_{\theta_i}\pi^t(\theta_i)p(\theta_i,\theta_j)=\pi^{t+1}(\theta_j)\quad \text{discrete case}
+\end{equation}
+
+\begin{equation}
+\int \pi^t(\theta_i)p(\theta_i,\theta_j) \mathrm{d} \theta_i=\pi^{t+1}(\theta_j)\quad \text{continuous case}
+\end{equation}
+That is $\pi=\pi p$. The marginal distribution remains fixed when the chain reaches the stationary distribution.
+
+Once the chain reaches its stationary distribution (also its invariant distribution, equilibrium distribution or limiting distribution), it stays in this distribution and moves about or "mixes" throughout the subspace according to marginal distribution, $\pi(\theta)$, forever.
+\item \underline{Ergodicity:} If the chain is irreducible, positive Harris recurrent (i.e. recurrence under unbounded continuous state space), and aperiodic, the we call it \underline{ergodic}. Ergodic Markov chains have the property:
+\begin{equation}
+\lim_{n\rightarrow \infty} p^n(\theta_i,\theta_j)=\pi(\theta_j)
+\end{equation}
+for all $\theta_i$, and $\theta_j$ in the subspace Therefore in the limit, the marginal distribution at one step is identical to the marginal distributions at all other steps. The ergodic theorem is analogous to the strong law of large numbers bot for Markov chains. Thus suppose that $\theta_{i+1},...,\theta_{i+n}$ are $n$ values from a Markov chain that has reached its ergodic distribution. A statistic of interest, $h(\theta)$, can be calculated empirically:
+\begin{equation}
+h(\theta_i)=\frac{1}{n}\sum_{j=i+1}^{i+n}h(\theta_j) \approx h(\theta)
+\end{equation}
+For a given empirical estimator $\hat{h}(\theta_i)$ with bounded limiting variance, we get the central limit theorem results 
+\begin{equation}
+\sqrt{n}\frac{\hat{h}(\theta_i)-h(\theta)}{\sqrt{v(\hat{h}(\theta_i))}}\rightarrow_{n \rightarrow \infty} \mathcal{N}(0,1).
+\end{equation}
+\end{enumerate}
+\section{Noniterative Monte Carlo Methods}
+\begin{enumerate}
+\item Direct Methods:
+\\
+The most basic definition of Monte Carlo integration is that  $\theta \sim h(\theta)$ and we seek $\gamma = E \left [  f(\theta)\right ]=\int f(\theta) h(\theta) \mathrm{d} \theta$. Then if $\theta_1,...,\theta_N \sim^{iid} h(\theta)$, we have
+\begin{equation}
+\hat{\gamma}=\frac{1}{N}\sum_{j=1}^{N}f(\theta_j)
+\end{equation}
+with converges to $E \left [  f(\theta)\right ]$ with probability $1$ as $N\rightarrow \infty$ by the strong law of large numbers. In our case, $h(\theta)$ is a posterior distribution and $\gamma$ is the posterior mean of $f(\theta)$. Hence the computation of posterior expectations require only a sample of size $N$ from the posterior distribution.
+\item Indirect methods:
+\\
+If we can't directly sample from distribution? In this case, we can use one of the following methods
+\begin{itemize}
+\item Importance sampling: Suppose we wish to approximate a posterior expectation, say 
+\begin{equation}
+E(f(\theta) \mid y)=\frac{\int f(\theta) L(\theta) \pi(\theta) \mathrm{d} \theta}{\int L(\theta)\pi(\theta) \mathrm{d} \theta}
+\end{equation}
+where $f$ is the function of interest, $L$ is the likelihood or the data $y$. By defining the weight function $w(\theta)=\frac{L(\theta)\pi(\theta)}{g(\theta)}$, we have
+\begin{equation}
+\begin{split}
+E(f(\theta) \mid y)=\frac{\int f(\theta) w(\theta) g(\theta) \mathrm{d} \theta}{\int w(\theta)g(\theta) \mathrm{d} \theta}
+\\
+\approx \frac{\frac{1}{N} \sum_{j=1}^{N}f(\theta_j)w(\theta_j)}{\frac{1}{N} \sum_{j=1}^{N}w(\theta_j)}
+\end{split}
+\end{equation} 
+where $\theta_j \sim^{iid} g(\theta)$. Here $g(\theta)$ is called the importance function, how closely it resembles $L(\theta) \pi(\theta)$ controls how good the approximation in the equation is. If $g(\theta)$ is a good approximation, the weights will all be roughly equal, which in turn will minimize the variance of the numerator and denominator. 
+
+If $g(\theta)$ is a poor approximation, many of the weights will be close to zero, and thus a few $\theta_j$'s will dominate the sums, producing an inaccurate approximation.
+
+Thus in importance sampling, one chooses a \underline{known} density function $g(\theta)$ that is easy to sample. The procedure works best if $g(\theta)$ is similar in shape to the known kernel of the posterior $L(\theta) \pi(\theta)$ with tails that do not decay more rapidly than the tails of the posterior.
+\item Refection sampling: Here instead of trying to approximate the normalized posterior:
+\begin{equation}
+h(\theta)=\frac{L(\theta)\pi(\theta)}{\int L(\theta)\pi(\theta) \mathrm{d} \theta},
+\end{equation} 
+we try to "blanket" it. That is suppose there exists an identifiable constant $\mu > 0$ and a smooth density $g(\theta)$, called the \underline{envelope function}, such that $L(\theta) \pi(\theta)  < \mu g(\theta)$ for all $\theta$.
+\begin{example}
+
+\begin{figure}[h!]
+ \includegraphics[scale=0.6]{Rejection}% Images in 100% size
+  \caption{Plot of $L(\theta) \pi(\theta)$ and $\mu g(\theta)$ }
+\label{fig:RejectionSampling}
+\end{figure}
+
+\end{example}
+The rejection method proceeds as follows:
+\begin{enumerate}
+\item Generate $\theta_j \sim g(\theta)$
+\item Generate $U \sim Uniform(0,1)$
+\item If $\mu u g(\theta_i) < L(\theta_j)\pi(\theta_j)$, accept $\theta_j$, otherwise reject $\theta_j$
+\item Return to step $(i)$ and repeat until the desired sample $\left \{ \theta_j, j=1,...,N \right \}$ is obtained. The members of this sample will then be random samples from $h(\theta)$. 
+
+Like an importance sampling density, the envelope density $g$ should be similar to the posterior in general appearance, but with heavier tails and sharper infinite peaks, in order to assure that there are sufficiently many rejection candidates available across its entire domain. Also $\mu g$ is actually an "envelope" for the unnormalized posterior $L \pi$.
+\end{enumerate}
+\item Weighted bootstrap: Suppose an $\mu$ appropriate for the rejection method is not readily available, but that we do have a sample $\theta_1,...,\theta_N$ from same approximating density $g(\theta)$, Define:
+\begin{equation}
+w_i=\frac{L(\theta_i)\pi(\theta_i)}{g(\theta_i)}
+\end{equation}
+and 
+\begin{equation}
+q_i=\frac{w_i}{\sum_{j=1}^{N}w_j}
+\end{equation}
+Now draw $\theta^*$ from the discrete distribution over $\left \{ \theta_1,,...,\theta_N \right \}$ which places mass at $\theta_i$. Then 
+\begin{equation}
+\theta^* \sim h(\theta)= \frac{L(\theta)\pi(\theta)}{\int L(\theta)\pi(\theta) \mathrm{d} \theta}
+\end{equation}
+with the approximation improving as $N \rightarrow \infty$. This is a weighted boottrap, since instead of resampling from the set $\left \{ \theta_1,,...,\theta_N \right \}$ with equally likely probabilities of selection , we are resampling some points more often that others due to the unequal weighting.
+\end{itemize}
+\end{enumerate}
+\underline{NOTE}: Importance sampling, rejection sampling and the weighted bootstrap are all "one-off", or non-iterative methods: they draw a sample of size $N$, and stop. Hence there is no notion of the algorithm "converging " we simply require $N$ sufficiently large. But for many problems, especially high-dimensional ones, it may be difficult or impossible to find an importance sampling density (or envelope function) which is an acceptably accurate approximation to the lay posterior, but still easy to sample from.
+
+\underline{Solution}: MCMC based methods
+\begin{itemize}
+\item Gibb's sampling
+\item Metropolis Algorithm
+\item Metropolis-Hastling Algorithms
+\end{itemize}
+\lecture{}
+\begin{itemize}
+\item There is a superficial resemblance between MCMC and the frequentist technique of bootstrapping.
+
+An MCMC sampler is a Markov chain in $\theta$ space. We start the chain with an arbitrary $\theta^{(1)}$, which is therefore not random. Each subsequent $\theta^{(j)}$ drawn from a distribution $q(\theta^{(j)} \mid \theta^{(j-1)})$, so that it depends only on the previous point $\theta^{(j-1)}$ and not on the history of the chain up to that point. This is the Markov property. The distribution $q(. \mid .)$ defines the transition probabilities of the chain.
+\item Let $\theta^{(2)}$ be the distribution given the initial $\theta^{(1)}$ so, just $q(\theta^{(2)}\mid\theta^{(1)})$. The distribution of $\theta^{(3)}$ is:
+\begin{equation}
+f( \theta^{(3)} \mid \theta^{(1)})=\int q(\theta^{(3)}\mid\theta^{(2)}) q(\theta^{(2)}\mid\theta^{(1)}) \mathrm{d} \theta^{(2)}.
+\end{equation}
+The distribution of $\theta^{(j)}$ can then be obtained in principle by iterating this convolution using
+ \begin{equation}
+f( \theta^{(j)} \mid \theta^{(1)})=\int q(\theta^{(j)}\mid\theta^{(j-1)}) q(\theta^{(j-1)}\mid\theta^{(1)}) \mathrm{d} \theta^{(j-1)}.
+\end{equation}
+
+The Markov chain theory then says that, subject to some conditions, there is a unique limiting distribution $p(\theta)$ such that for all sufficiently large $j$ we have $f( \theta^{(j)} \mid \theta^{(1)}) \approx p(\theta^{(j)})$, and this limiting distribution is independent of the arbitrary starting value $\theta^{(1)}$.
+\end{itemize}
+
+\section{The Gibbs Sampler}
+Procedure:
+\begin{enumerate}
+\item Choose starting values: $\theta^{\left [ 0 \right ]}=\left [ \theta^{\left [ 0 \right ]}_1,\theta^{\left [ 0 \right ]}_2,...,\theta^{\left [ 0 \right ]}_k \right ]$
+\item At the $j$-th  starting at $j=1$ complete the single cycle by drawing values from the $k$ distributions given by:
+\begin{equation*}
+\begin{split}
+\theta^{\left [ j \right ]}_1 \approx \pi( \theta_1 \mid \theta^{\left [ j-1 \right ]}_2,\theta^{\left [ j-1 \right ]}_3,\theta^{\left [ j-1 \right ]}_4,...,\theta^{\left [ j-1 \right ]}_{k-1},\theta^{\left [ j-1 \right ]}_k  )
+\\
+\theta^{\left [ j \right ]}_2 \approx \pi( \theta_2 \mid \theta^{\left [ j \right ]}_1,\theta^{\left [ j-1 \right ]}_3,\theta^{\left [ j-1 \right ]}_4,...,\theta^{\left [ j-1 \right ]}_{k-1},\theta^{\left [ j-1 \right ]}_k  )
+\\
+\theta^{\left [ j \right ]}_3 \approx \pi( \theta_3 \mid \theta^{\left [ j \right ]}_1,\theta^{\left [ j \right ]}_2,\theta^{\left [ j-1 \right ]}_4,...,\theta^{\left [ j-1 \right ]}_{k-1},\theta^{\left [ j-1 \right ]}_k  )
+\\
+:
+\\
+:
+\\
+\theta^{\left [ j \right ]}_{k-1} \approx \pi( \theta_{k-1} \mid \theta^{\left [ j \right ]}_1,\theta^{\left [ j \right ]}_2,\theta^{\left [ j \right ]}_3,...,\theta^{\left [ j \right ]}_{k-2},\theta^{\left [ j-1 \right ]}_k  )
+\\
+\theta^{\left [ j \right ]}_k \approx \pi( \theta_{k} \mid \theta^{\left [ j \right ]}_1,\theta^{\left [ j \right ]}_2,\theta^{\left [ j \right ]}_3,...,\theta^{\left [ j \right ]}_{k-2},\theta^{\left [ j \right ]}_{k-1}  )
+\end{split}
+\end{equation*}
+\item Increment $j$ and repeat until convergence.
+\end{enumerate}
+\begin{example}
+$\theta_1 \mid \theta_2 \sim \mathcal{N}(\begin{bmatrix}
+0\\ 
+0
+\end{bmatrix}, \begin{bmatrix}
+1 & \rho\\ 
+ \rho & 1
+\end{bmatrix})$
+\begin{equation}
+\theta^{\left [ j \right ]}_1 \mid \theta^{\left [ j-1 \right ]}_2 \sim \mathcal{N}(\rho \theta^{\left [ j-1 \right ]}_2, 1-\rho^2)
+\end{equation}
+
+\begin{equation}
+\theta^{\left [ j \right ]}_2 \mid \theta^{\left [ j \right ]}_1 \sim \mathcal{N}(\rho \theta^{\left [ j \right ]}_1, 1-\rho^2)
+\end{equation}
+\end{example}
+
+
+\begin{example}
+Let $x_1,x_2,...,x_n$ be a series of count data where there exists the possibility of a changepoint at some period $k$, along the series. Therefore there are two Poisson data-generating processes:
+\begin{equation}
+x_i \mid \lambda \sim P(\lambda) \qquad i=1,2,...,k
+\end{equation}
+
+\begin{equation}
+x_i \mid \phi \sim P(\phi) \qquad i=k+1,...,n
+\end{equation}
+The parameters to be estimated are $\lambda$, $\phi$ and $k$. Also the three independent priors applied to this model are:
+\begin{equation*}
+\begin{split}
+\lambda \sim Gamma(\alpha , \beta),
+\\
+\phi \sim Gamma(\gamma , \delta),
+\\
+k \sim \text{Discrete uniform on} \left [ 1,2,...,n \right ].
+\end{split}
+\end{equation*}
+So the joint posterior is 
+\begin{equation}
+\begin{split}
+\pi(\lambda, \phi, k\mid y) \propto L(\lambda, \phi, k \mid y)\pi(\lambda \mid \alpha, \beta )  \pi(\phi \mid \gamma, \delta)\pi(k)
+\\
+=(\prod_{i=1}^{k}\frac{e^{- \lambda}\lambda^{y_i}}{y_i !})(\prod_{i=k+1}^{n}\frac{e^{- \phi}\phi^{y_i}}{y_i !}) (\frac{\beta^{\alpha}}{\Gamma(\alpha)}\lambda^{\alpha-1}e^{- \beta \lambda})(\frac{\delta^{\gamma}}{\Gamma(\gamma)}\phi^{\gamma-1}e^{- \delta \phi})\frac{1}{n}
+\\
+\propto \lambda^{\alpha-1 + \sum_{i=1}^{k}y_i} \phi^{\gamma-1 + \sum_{i=k+1}^{n}y_i} e^{- (k+\beta) \lambda-(n-k+\delta)\phi}.
+\end{split}
+\end{equation}
+So 
+\begin{equation*}
+\begin{split}
+\lambda\mid \phi,k \sim Gamma(\alpha+ \sum_{i=1}^{k}y_i, \beta +k),
+\\
+\phi \mid \lambda,k \sim Gamma(\gamma+ \sum_{i=k+1}^{n}y_i, \delta +n -k).
+\end{split}
+\end{equation*}
+Let $\lambda$ and $\phi$ be fixed,
+\begin{equation}
+\begin{split}
+p(y \mid k, \lambda, \phi) = (\prod_{i=1}^{k}\frac{e^{- \lambda}\lambda^{y_i}}{y_i !})(\prod_{i=k+1}^{n}\frac{e^{- \phi}\phi^{y_i}}{y_i !})
+\\
+= (\prod_{i=1}^{k}\frac{1}{y_i !}) e^{k(\phi-\lambda)}e^{-n\phi} \lambda^{\sum_{i=1}^{k}y_i}(\prod_{i=k+1}^{n}\phi^{y_i})
+\\
+= (\prod_{i=k+1}^{n}\frac{e^{- \phi}\phi^{y_i}}{y_i !})(e^{k(\phi-\lambda)}(\frac{\lambda}{\phi})^{\sum_{i=1}^{k} y_i})
+\\
+= f(y,\phi)L(y \mid k, \lambda, \phi).
+\end{split}
+\end{equation}
+\end{example}
+
+\lstinputlisting[caption={MCMC Function in R}]{bcp.R}
+\begin{example}
+The time series stored in the tile gives the $\#$ of British cool mining disasters per year over the period $1851-1962$.
+
+\begin{figure}[h!]
+ \includegraphics[scale=0.6]{disaster}% Images in 100% size
+  \caption{Plot of $\#$ of disasters over $1851-1962$ }
+\label{fig:RejectionSampling}
+\end{figure}
+There has been a reduction in the rate of disasters over the period. Let $y_i$ denote the $\#$ of disasters in year $i=1,...,12$ (relabelling the years by numbers from $1$ to $n=112$). A model that has been proposed in the literature has the form:
+\begin{equation*}
+\begin{split}
+y_i \sim Poisson(\theta), \quad i=1,...,k
+\\
+y_i \sim Poisson(\lambda), \quad i=k+1,...,n
+\end{split}
+\end{equation*}
+Let 
+\begin{equation*}
+\begin{split}
+\theta \sim Gamma(a_1,b_1)
+\\
+\lambda \sim Gamma(a_2,b_2)
+\\
+k \sim \text{discrete uniform over}\left \{1,...,n  \right \}
+\\
+b_1 \sim Gamma(c_1,d_1)
+\\
+b_2 \sim Gamma(c_2,d_2)
+\end{split}
+\end{equation*}
+So
+\begin{equation*}
+\begin{split}
+\pi(\theta, \lambda, k, b_1, b_2\mid y) \propto  e^{- \theta k} \theta^{\sum_{i=1}^{k}y_i} e^{- \theta( n-k)}  \lambda^{ \sum_{i=k+1}^{n}y_i}b_{1}^{a_1}\theta^{a_1-1}e^{-b_1 \theta}
+\\
+\times b_{1}^{c_1-1}e^{-d_1 b_1}b_{2}^{a_2}\lambda^{ a_2-1}e^{-b_2 \lambda}b_{2}^{c_2 -1}e^{-d_2 b_2}I \left [ k \in \left \{ 1,2,...,n \right \} \right ].
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+\theta \mid y,\lambda, b_1, b_2, k \sim Gamma(a_1+\sum_{i=1}^{k}y_i,b_1+k)
+\\
+\lambda \mid y,\theta, b_1, b_2, k \sim Gamma(a_2+\sum_{i=k+1}^{n}y_i,b_2+n-k)
+\\
+b_1 \mid y,\theta,\lambda, b_2, k \sim Gamma(c_1+a_1,d_1+\theta)
+\\
+b_2 \mid y,\theta,\lambda, b_1, k \sim Gamma(c_2+a_2,d_2+\lambda)
+\end{split}
+\end{equation*}
+and 
+\begin{equation*}
+\begin{split}
+p(k \mid y, \theta_1, \lambda, b_1,b_2) = \frac{e^{( \lambda-\theta)k}(\theta/\lambda)^{\sum_{i=1}^{k}y_i}I \left [ k \in \left \{ 1,2,...,n \right \} \right ]}{\sum_{j=1}^{n}\left \{ e^{(\lambda- \phi)j} (\frac{\theta}{\lambda})^{\sum_{i=1}^{k}y_i} \right \}}
+\end{split}
+\end{equation*}
+\end{example}
+
+\underline{Burn-in period}: The observations obtained after the chain has settled down to the posterior will be more useful in estimating probabilities and expectations for $p(\theta)$. If we throw out the early observations, taken while the process was settling down, the remainder of the process should be a very close approximation to one in which every observation is sampled from the posterior. Dropping the early observations is referred to as using a burn-in period.
+
+\underline{Thinning} is a process used to make the observations more nearly independent, hence more nearly random sample from the posterior distribution. Frankly, after a burn-in, there is not much point in thinnings unless the correlations are extremely large. If there is a lot of correlation between adjacent observations, a larger overall MC sample size is needed to achieve reasonable numerical accuracy, in addition to needing a much larger burn-in.
+ 
+\lecture{Summary of the properties of Gibbs sampler}
+\begin{enumerate}
+\item Since the Gibbs sampler conditions on values from the last iteration of its chain values, it clearly constitutes a Markov chain.
+\item The Gibbs sampler has the true posterior distribution of parameter vector as its limiting distribution.
+\item The Gibbs sampler is a homogeneous Markov chain, the consecutive probabilities are independent of $n$, the current length of the chain.
+\item The Gibbs sampler converges at a geometric rate: the total variation distance between an arbitrary time and the point of convergence decreases at a geometric rate in time $(t)$.
+\item The Gibbs sampler is an ergodic Markov chain. 
+\end{enumerate}
+\section{Metropolis Algorithm}
+The Metropolis algorithm\cite{Hoff} is another type of accept-reject algorithm. It requires a candidate generating distribution, sometimes referred to as the proposal distribution. The algorithm begins with an initial value $\theta^1$. At the $k$-th iteration we have $(\theta^1,\theta^2,...,\theta^k)$. The $(k+1)$st iteration first generates $\theta^*$ from a proposal density $h(\theta^* \mid \theta^k)$ This density should mimic the actual posterior distribution in some sense, but in theory, it can be any distribution with the same support as the posterior. Define:
+\begin{equation}
+\alpha(\theta^*,\theta^k)= \min\left \{ 1, \frac{p(\theta^*)h(\theta^k \mid \theta^k)}{p(\theta^k)h(\theta^* \mid \theta^k)}  \right \} \cong \alpha.
+\end{equation} 
+We then simulate $u \sim u \left [ 0,1 \right ]$ and we select $\theta^{k+1}=\theta^*$ if $u \leq \alpha$ and otherwise take $\theta^{k+1}=\theta^k$. Thus
+\begin{equation}
+\theta^{k+1}= 
+\left\{\begin{matrix}
+\theta^* & \text{with probability} & \alpha(\theta^*,\theta^k)\\ 
+\theta^{k} & \text{with probability} & 1- \alpha(\theta^*,\theta^k) 
+\end{matrix}\right.
+\end{equation}
+Here $\alpha$ only uses the ratio of two values of $p(.)$, so it is enough to know the kernel of the posterior density. The acceptance ration can be also written as:
+\begin{equation}
+\alpha=\frac{p(\theta^* \mid y)/h_t(\theta^* \mid \theta^{t-1})}{p(\theta^{t-1} \mid y)/h_t(\theta^{t-1} \mid \theta^{*})}.
+\end{equation}
+The ratio $\alpha$ is always defined, because a jump from $\theta^{t-1}$ to $\theta^*$ can only occur if both $p(\theta^{t-1}\mid y)$ and $h_t(\theta^* \mid \theta^{t-1})$ are nonzero.
+
+So here the proposal density is asymmetric. 
+\section{Metropolis Algorithm}
+The original Metropolis algorithm assumes that $h(\theta^k \mid \theta^*)= h(\theta^* \mid \theta^k)$ so that $\alpha(\theta^*,\theta^k)= \min\left \{ p(\theta^*)/p(\theta^k)  \right \} $. This is called the \underline{random walk}. 
+
+Various suggestions are made about how to choose $h(\theta^* \mid \theta^k)$. Often it is taken as a $\mathcal{N}(\theta^k, \sum^k)$ distribution with various suggestions for $\sum^k$.
+
+The Metropolis algorithm is an adaptation of a random walk that uses an acceptance/rejection rule to converge to the specified target distribution. The algorithm proceeds as follows:
+\begin{enumerate}
+\item Draw a starting $\theta^0$, for which $p(\theta^0 \mid y)>0$ from a starting distribution $p_0(\theta)$. The starting distribution might, for example, be based on an approximation or we may simply choose starting values dispersed around a crude approximate estimate.
+\item For $t=1,2,...$
+ \begin{itemize}
+
+ \item Sample a proposal $\theta^*$ from a jumping distribution (or proposal distribution) at time $t$, $R_t(\theta^* \mid \theta^{t-1})$. For the Metropolis algorithm, the \underline{jumping distribution must be symmetric}, satisfying the condition $h_t(\theta_a \mid \theta_b)=h_t(\theta_b \mid \theta_a)$ for all $\theta_a$, $\theta_b$ and $t$.
+\item Calculate the ratio of the densities,
+\begin{equation}
+\alpha = \frac{p(\theta^* \mid y)}{p(\theta^{t-1} \mid y)}
+\end{equation}
+\item Set 
+\begin{equation}
+\theta^{t}= 
+\left\{\begin{matrix}
+\theta^* & \text{with probability} & \min(\alpha,1)\\ 
+\theta^{t+1} & \text{otherwise} & 
+\end{matrix}\right.
+\end{equation}
+Given the current value $\theta^{t-1}$, the transition distribution $h_t(\theta^t \mid \theta^{t-1})$ of the Markov chain is thus a mixture of a point mass at $\theta^t=\theta^{t-1}$, and a weighted version of the jumping distribution, $h_t(\theta^t \mid \theta^{t-1})$, that adjusts for the acceptance rate. The algorithm requires the ability to calculate the ratio $\alpha$ for all $(\theta,\theta^*)$, and to draw $\theta$ from the jumping distribution $h_t(\theta^* \mid \theta)$ for all $\theta$ and $t$ In addition, step (c) requires the generation of a uniform random number.
+
+If $\theta^t = \theta^{t-1}$, that is the jump is not accepted, this counts as an iteration in the algorithm. 
+
+Interpretation of the Gibbs sampler as a special case of the \underline{Metropolis-Hastling algorithm}:
+
+Gibbs sampling can be viewed as a special case of the Metropolis-Hasting's algorithm in the following way. We first define iteration $t$ to consist of a series of $d$ steps, with step $j$ of iteration $t$ corresponding to an update of the subvector $\theta_j$ conditional on all other elements of $\theta$. Then the jumping distribution $h_{j,t}(. \mid .)$ at step $j$ of iteration $t$ only jumps along the $j$-th subvector, and does so with the conditional posterior density of $\theta_j$ density $\theta_{-j}^{t-1}$:
+\begin{equation}
+h_{j,t}^{Gibbs}(\theta^* \mid \theta^{t-1})= 
+\left\{\begin{matrix}
+p(\theta_{j}^{*} \mid \theta_{j-1}^{t-1},y) & \text{if} & \theta_{-j}^{*}=\theta_{-j}^{t}\\ 
+0 & \text{otherwise} & 
+\end{matrix}\right.
+\end{equation}
+The only possible jumps are to parameter vectors that match. $\theta^{t-1}$ on all components other than $j$-th. Under this jumping distribution, the ratio at the $j$-th step of iteration $t$ is:
+\begin{equation}
+\begin{split}
+\alpha=\frac{p(\theta^* \mid y )/h_{j,t}^{Gibbs}(\theta^* \mid \theta^{t-1})}{ p(\theta^{t-1} \mid y )/h_{j,t}^{Gibbs}(\theta^{t-1} \mid \theta^{*})}
+\\
+=\frac{p(\theta^* \mid y )/p(\theta^{*}_{j} \mid \theta^{t-1}_{-j},y)}{ p(\theta^{t-1}_{j} \mid y )/p(\theta^{t-1}_{-j} \mid \theta^{*},y)}
+\\
+=\frac{p(\theta^{t-1}_{-j} \mid y)}{ p(\theta^{t-1}_{-j} \mid y)}
+\\
+=1
+\end{split}
+\end{equation}
+and thus every jump is accepted.
+ \end{itemize}
+
+\end{enumerate}
+
+\section{Data Augmentation}
+It is a technique that can be helpful in making problems amenable to Gibbs sampling.
+\begin{enumerate}
+\item In the real world, some of our data can be missing.
+\item The likelihood function is not fractable for one reason or another but conditional on a collection of unobserved random variables, the likelihood becomes easy to handle.
+\end{enumerate}
+\begin{example}
+Suppose $Y_0,Y_1,...Y_n$ is a time series of random variables defined by $Y_0=0$ and for each $i=1,...,n$, $Y_i=Y_{i-1}+s_i$ where $s_i \sim Beta(\theta,\theta)$, $\theta>0$. Therefore:
+\begin{equation}
+Y_i \mid Y_0,Y_1,...,Y_{i-1} \sim Y_{i-1}+s_i
+\end{equation} 
+Likelihood of $\theta$
+\begin{equation}
+\begin{split}
+f(y_0,...,y_n \mid \theta)=f(y_0 \mid \theta)\prod_{i=1}^{n}f(y_i \mid y_0,...,y_{i-1},\theta)
+\\
+=\prod_{i=1}^{n}f(y_i \mid y_{i-1},\theta)
+\\
+=\prod_{i=1}^{n}\frac{\Gamma(2 \theta)}{\left \{  \Gamma(\theta) \right \}^2}(y_i-y_{i-1})^{\theta-1} \left \{  1- (y_i-y_{i-1}) \right \}^{\theta-1} I \left [ 0<y_i-y_{i-1}<1 \right ].
+\end{split}
+\end{equation}
+However suppose that an observation $y_{i}^{*}$ is missing then the likelihood is no longer available in closed form.
+\\
+\textbf{Solution:}\\
+$z$ additional variables to be included in the model. $f(y \mid \theta)$ is not tractable but $f(y,z \mid \theta)$ is tractable. The posterior distribution of $(\theta,z)$ is proportional to:
+\begin{equation}
+\pi(\theta , z \mid y) \propto f(y,z \mid \theta)\pi(\theta). 
+\end{equation}
+$y=(y_0,y_{i}^{*},y_n)$ where $z=y_{i}^*$.
+\begin{equation}
+\begin{split}
+f(y,y_{i}^* \mid \theta)=f(y_0,...,y_n \mid \theta)
+\\
+=\prod_{i=1}^{n}\frac{\Gamma(2 \theta)}{\left \{  \Gamma(\theta) \right \}^2}(y_i-y_{i-1})^{\theta-1} \left \{  1- (y_i-y_{i-1}) \right \}^{\theta-1} I \left [ 0<y_i-y_{i-1}<1 \right ].
+\end{split}
+\end{equation}
+Therefore the posterior density of $\theta$ given $(y,y_{i}^*)$ is explicit:
+\begin{equation}
+\Gamma(\theta \mid y,y_{i}^*) \propto f(y,y_{i}^* \mid \theta) \pi(\theta).
+\end{equation}
+To complete the Gibbs sampler, we also need to sample from the conditional posterior distribution of $y_{i}^*$. This has density:
+\begin{equation}
+\begin{split}
+f(y_{i}^*,y \mid \theta) \propto f(y,y_{i}^* \mid \theta) 
+\\
+\propto \left [ (y_{i}^*-y_{i-1}^*)\left \{  1- (y_{i}^*-y_{i-1}^*) \right \} (y_{i+1}^*-y_{i}^*)\left \{  1- (y_{i+1}^*-y_{i}^*) \right \}\right ]^{\theta-1}
+\end{split}
+\end{equation}
+on the region $y_{i}^* \in (y_{i-1}^*,y_{i-1}^*+1)\cap (y_{i+1}^*-1,y_{i+1}^*) $. This sampling can be carried out by rejection sampling.
+\end{example}
+
+
 \appendix
 
+\chapter*{GIBBS SAMPLING}
+\begin{equation*}
+\begin{split}
+y_i \sim Poisson(\theta), \quad i=1,...,k
+\\
+y_i \sim Poisson(\lambda), \quad i=k+1,...,n
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+\theta \sim Gamma(a_1,b_1)
+\\
+\lambda \sim Gamma(a_2,b_2)
+\\
+k \sim \text{discrete uniform over}\left \{1,...,n  \right \}
+\\
+b_1 \sim Gamma(c_1,d_1)
+\\
+b_2 \sim Gamma(c_2,d_2)
+\end{split}
+\end{equation*}
+
+\underline{Likelihoods:}
+\begin{equation*}
+f(y_{I}\mid \theta)= \prod_{i=1}^{k}f(y_i \mid \theta)
+\end{equation*}
+\begin{equation*}
+f(y_{J}\mid \lambda)= \prod_{j=k+1}^{n}f(y_j \mid \lambda)
+\end{equation*}
+\begin{equation*}
+f(y_i \mid \theta)=\prod_{i=1}^{k}\frac{e^{-\theta} \theta^{y_i}}{y_i !}=\frac{e^{-k\theta} \theta^{\sum_{i=1}^k y_i}}{\prod_{i=1}^{k}y_i !}
+\end{equation*}
+\begin{equation*}
+f(y_j \mid \theta)=\prod_{j=k+1}^{n}\frac{e^{-\theta} \theta^{y_j}}{y_j !}=\frac{e^{-(n-k)\theta} \lambda^{\sum_{i=k+1}^n y_i}}{\prod_{i=k+1}^{n}y_i !}
+\end{equation*}
+\underline{Priors:}
+\begin{equation*}
+\pi(\theta)=\frac{1}{b_{1}^{a_1} \Gamma(a_1)}\theta^{a_1 -1}e^{-\theta/b_1}
+\end{equation*}
+\begin{equation*}
+\pi(\lambda)=\frac{1}{b_{2}^{a_2} \Gamma(a_2)}\theta^{a_2 -1}e^{-\theta/b_2}
+\end{equation*}
+\begin{equation*}
+\pi(b_1)=\frac{1}{d_{1}^{c_1} \Gamma(c_1)}b_{1}^{c_1 -1}e^{-b_1/d_1}
+\end{equation*}
+\begin{equation*}
+\pi(b_2)=\frac{1}{d_{2}^{c_2} \Gamma(c_2)}b_{2}^{c_2 -1}e^{-b_2/d_2}
+\end{equation*}
+Since 
+\begin{equation*}
+g(x;\alpha ,\beta )= 
+\left\{\begin{matrix}
+\frac{1}{\beta^{\alpha} \Gamma(\alpha)}x^{\alpha -1}e^{-x/\beta} & \text{for} & x>0\\ 
+0 & \text{elsewhere} & 
+\end{matrix}\right.
+\end{equation*}
+where $\alpha > 0$ and $\beta > 0$ for Gamma Distribution $(\alpha,\beta)$.
+
+\underline{Posterior Distribution}
+\begin{equation*}
+\pi(\theta,\lambda,k,b_1,b_2 \mid y) \propto f(y_i \mid \theta)f(y_j \mid \lambda)\pi(\lambda \mid a_2,b_2)\pi(\theta \mid a_1,b_1)\pi(b_1)\pi(b_2)\pi(k)
+\end{equation*}
+Explicitly,
+\begin{equation*}
+\begin{split}
+\pi(\theta,\lambda,k,b_1,b_2 \mid y)  \propto (e^{-k\theta} \theta^{\sum_{i=1}^k y_i})(e^{-(n-k)\theta} \lambda^{\sum_{i=k+1}^n y_i})(d_{1}^{-c_1} b_{1}^{c_1 -1}e^{-b_1/d_1})
+\\
+(d_{2}^{-c_2} b_{2}^{c_2 -1}e^{-b_2/d_2})I \left [ k \in \left \{ 1,2,...,n \right \} \right ](b_{2}^{-a_2} \theta^{a_2 -1}e^{-\theta/b_2})(b_{1}^{-a_1} \theta^{a_1 -1}e^{-\theta/b_1})
+\end{split}
+\end{equation*}
+So \underline{the conditional distributions are}:
+\begin{enumerate}
+\item 
+\begin{equation*}
+\begin{split}
+\pi(\theta \mid y ,\lambda,k,b_1,b_2 ) \propto \int \pi(\theta,\lambda,k,b_1,b_2 \mid y) \mathrm{d} \lambda \mathrm{d} \theta \mathrm{d} b_1 \mathrm{d} b_2 
+\\
+\propto \int (e^{-k\theta} \theta^{\sum_{i=1}^k y_i} \theta^{a_1 -1}e^{-\theta/b_1}) \text{constant} \mathrm{d} \theta
+\\
+\propto \int (e^{-(k+1/b_1)\theta} \theta^{\sum_{i=1}^k y_i+a_1-1} \mathrm{d} \theta 
+\\
+=Gamma(a_1 +\sum_{i=1}^k y_i, b_1+k)
+\end{split}
+\end{equation*}
+\item 
+\begin{equation*}
+\begin{split}
+\pi(\lambda \mid y ,\theta,k,b_1,b_2 ) \propto \int \pi(\theta,\lambda,k,b_1,b_2 \mid y) \mathrm{d}\theta \mathrm{d} b_1   \mathrm{d} b_2 \mathrm{d} \theta
+\\
+\propto \int (e^{-(n-k)\lambda} \theta^{\sum_{i=k+1}^n y_i} \theta^{a_2 -1}e^{-\theta/b_2}) \text{constant} \mathrm{d} \lambda
+\\
+\propto \int (e^{-((n-k)+b_2)\lambda} \theta^{\sum_{i=1}^k y_i+a_2-1} \mathrm{d} \lambda 
+\\
+=Gamma(a_2 +\sum_{i=k+1}^n y_i, b_2+(n-k))
+\end{split}
+\end{equation*}
+\item
+\begin{equation*}
+\begin{split}
+\pi(b_1 \mid y ,\lambda, \theta,k,b_1 ) \propto \int \pi(\theta,\lambda,k,b_1,b_2 \mid y) \mathrm{d}y \mathrm{d} \theta \mathrm{d} b_2 \mathrm{d} \theta
+\\
+\propto \int b_{1}^{c_1-1}e^{-b_1/d_1} \theta^{a_1-1} e^{-\theta/b_1}\text{constant} \mathrm{d} b_1
+\\
+\propto \int b_{1}^{c_1+a_1-1} e^{-b_1/(d_1+\theta)} \mathrm{d} b_1 
+\\
+=Gamma(a_1 +c_1,d_1+\theta)
+\end{split}
+\end{equation*}
+\item
+\begin{equation*}
+\begin{split}
+\pi(b_2 \mid y ,\lambda, \theta,k,b_1 ) \propto \int \pi(\theta,\lambda,k,b_1,b_2 \mid y) \mathrm{d}y \mathrm{d} \theta  \mathrm{d} b_1 \mathrm{d} k
+\\
+\propto \int b_{2}^{c_2-1}e^{-b_2/d_2} \lambda^{a_2-1} e^{-\lambda/b_2}\text{constant} \mathrm{d} b_2
+\\
+\propto \int b_{2}^{c_2+a_2-1} e^{-b_2/(d_2+\lambda)} \mathrm{d} b_2 
+\\
+=Gamma(a_2 +c_2,d_2+\lambda)
+\end{split}
+\end{equation*}
+\item
+\begin{equation*}
+\begin{split}
+\pi(k \mid y ,\lambda, \theta,b_1,b_2 ) \propto \int \pi(\theta,\lambda,k,b_1,b_2 \mid y) \mathrm{d}y \mathrm{d} \theta  \mathrm{d} b_1 \mathrm{d} b_2
+\\
+= \frac{ e^{(\lambda-\theta)k} (\theta / \lambda)^{\sum_{i=1}^{k} y_i}}{\sum_{j=1}^{n} \left \{ e^{(\lambda-\theta)j}   (\theta / \lambda)^{\sum_{i=1}^{j} y_i} \right \} } I \left [ k \in \left \{ 1,2,...,n \right \} \right ]
+\end{split}
+\end{equation*}
+
+\end{enumerate}
+As the conditional distribution of $k$ is discrete, thereby characterized by a probability mass function.
+\chapter*{DATA AUGMENTATION}
+Suppose $Y_0,Y_1,...,Y_n$ is a time series of random defined by $Y_0=0$, $i=1,...,n$, $Y_i=Y_{i-1}+S_i$ where $S_i \sim Beta(\theta,\theta)$, $\theta>0$. Therefore
+\begin{equation*}
+Y_i\mid Y_0,Y_1,...,Y_{i-1} \sim Y_{i-1}+S_i
+\end{equation*}
+Likelihood for the observations $(y_0,y_1,...,y_n)$ of $\theta$:
+\begin{equation*}
+\begin{split}
+f(y_0,...,y_n \mid \theta)=f(y_0 \mid \theta)\prod_{i=1}^{n}f(y_i \mid y_0,...,y_{i-1},\theta)=\prod_{i=1}^{n}f(y_i \mid y_{i-1},\theta)
+\\
+=\prod_{i=1}^{n}\frac{\Gamma(2 \theta)}{\left \{  \Gamma(\theta) \right \}^2}(y_i-y_{i-1})^{\theta-1} \left \{  1- (y_i-y_{i-1}) \right \}^{\theta-1} I \left [ 0<y_i-y_{i-1}<1 \right ].
+\end{split}
+\end{equation*}
+However suppose that an observation $y_{i}^*$ is missing. So since the likelihood is no longer in closed form, we assume that $Y_1,...,Y_n$ are iid data from the mixture density:
+\begin{equation*}
+f(y_i \mid \theta)=\frac{1}{2}\left ( \frac{1}{(2\pi)^{1/2}}e^{-y_{i}^2/2}+\frac{1}{(2\pi)^{1/2}}e^{-(y_{i}-\theta)^2/2} \right ).
+\end{equation*}
+and 
+\begin{equation*}
+L(y_i \mid \theta)=\prod_{i=1}^n f(y_i \mid \theta) \left ( e^{-y_{i}^2/2}+e^{-(y_{i}-\theta)^2/2} \right ).
+\end{equation*}
+Let
+\begin{itemize}
+\item z=the additional variables included in the model(z may be just a single variable or a vector containing several variables).
+\item $\theta=$ original parameters in the model with prior $\pi(\theta)$.
+\item $y=$ vector of observations.
+\end{itemize}
+So the posterior distribution of $(\theta,z)$ is proportional to 
+\begin{equation*}
+\pi(\theta,z\mid y) \propto f(y,z \mid \theta)\pi(\theta)
+\end{equation*}
+Data augmentation proceeds by carrying out Gibbs sampling to sample successively form $\theta$ and $z$ to produce a sample from this joint distribution. The marginal distribution of $\theta$ therefore the posterior distribution of interest. 
+\begin{itemize}
+\item $y=(y_0,...,y_n)$ excluding $y_{i}^*$, the missing observation $z=y_{i}^*$
+\begin{equation*}
+\begin{split}
+f(y_{i}^*,y \mid \theta) \propto f(y,y_{i}^* \mid \theta) 
+\\
+\propto \left [ (y_{i}^*-y_{i-1}^*)\left \{  1- (y_{i}^*-y_{i-1}^*) \right \} (y_{i+1}^*-y_{i}^*)\left \{  1- (y_{i+1}^*-y_{i}^*) \right \}\right ]^{\theta-1}
+\end{split}
+\end{equation*}
+Therefore, the \underline{posterior density of} $\theta$ given $(y,y_{i}^*)$ is 
+\begin{equation*}
+\pi(\theta,y_{i}^*\mid y) \propto f(y,y_{i}^* \mid \theta)\pi(\theta)
+\end{equation*}
+the conditional posterior distribution of $y_{i}^*$ is:
+\begin{equation*}
+\begin{split}
+f(y_{i}^*,y \mid \theta) \propto f(y,y_{i}^* \mid \theta) 
+\\
+\propto \left [ (y_{i}^*-y_{i-1}^*)\left \{  1- (y_{i}^*-y_{i-1}^*) \right \} (y_{i+1}^*-y_{i}^*)\left \{  1- (y_{i+1}^*-y_{i}^*) \right \}\right ]^{\theta-1}
+\end{split}
+\end{equation*}
+here $y_{i}^* \in (y_{i-1}^*,y_{i-1}^*+1)\cap (y_{i+1}^*-1,y_{i+1}^*) $.
+\item Here $z$ is a sequence of $n$ heads on tails, with one element per iteration. $z=(z_1,...,z_n)$ and
+\begin{equation*}
+z_i=\left\{\begin{matrix}
+1 & \text{if i-th observation is head} \\
+2 &  \text{if i-th observation is fail} 
+\end{matrix}\right.
+\end{equation*}
+Suppose the prior of $\theta \sim \mathcal{N}(0,1)$. Then
+\begin{equation*}
+f(y_i,z_i \mid \theta)=f(y_i \mid z_i, \theta)P(z_i).
+\end{equation*}
+where
+\begin{equation*}
+f(y_i \mid z_i, \theta)=\left\{\begin{matrix}
+e^{-y_{i}^2/2} & \text{if} & z_i=1 \\
+e^{-(y_{i}-\theta)^2/2} & \text{if} & z_i=2 
+\end{matrix}\right.
+\end{equation*}
+and $P(z_i=1)=P(z_i=2)=1/2$
+
+\underline{Using that}
+\begin{equation*}
+\begin{split}
+\pi(\theta,z \mid y) \propto \left \{  \prod_{i=1}^n f(y_i \mid z_i, \theta)P(z_i) \right \}\pi(\theta) 
+\\
+\propto \left ( e^{-\frac{1}{2}\sum_{i:z_i=z}(y_{i}-\theta)^2} \right )\left ( e^{-\theta^2} \right )\sim \mathcal{N}(\frac{\sum_{i:z_i=z} y_{i}}{1+n_2},\frac{1}{1+n_2})
+\end{split}
+\end{equation*}
+where $n_2=\#$ of observations for which $z_i=2$
+\begin{equation*}
+\begin{split}
+P(z_i =1 \mid \theta,y) = \frac{P(z_i =1)}{P(z_i =1 )+P(z_i =2)}
+\\
+= \frac{e^{-y_{i}^2/2}}{e^{-(y_{i}-\theta)^2/2}+e^{-y_{i}^2/2}}
+\end{split}
+\end{equation*}
+\begin{equation*}
+P(z_i =2 \mid \theta,y) = \frac{P(z_i =1)}{P(z_i =1 )+P(z_i =2)}=\frac{e^{-(y_{i}-\theta)^2/2}}{e^{-(y_{i}-\theta)^2/2}+e^{-y_{i}^2/2}}
+\end{equation*}
+Then a Gibbs sampler is used to simulate the posterior distribution of $(\theta,z_1,...,z_n)$.
+\end{itemize}
+\begin{example}
+A genetic linkage $y=(y_1,y_2,y_3,y_4)=(125,18,20,34)$ with cell probabilities $(\frac{2+\theta}{4},\frac{1}{4}(1-\theta),\frac{1}{4}(1-\theta),\frac{\theta}{4})$; $0 \leq \theta \leq 1$. Prior of $\theta \sim Uniform(0,1)$, so the \underline{posterior density} of $\theta$:
+\begin{equation*}
+\pi(\theta \mid y) \propto f(y \mid \theta)\pi(\theta) \propto (2+\theta)^{y_1}(1-\theta)^{y_2 +y_3}\theta^{y_4}I \left [ \theta \in (0,1) \right ]
+\end{equation*}
+Then
+\begin{enumerate}
+\item Sample the posterior distribution of $\theta$ directly (e.g. via rejection sampling)
+\item Use data augmentation
+
+Augment the observed data $(y_1,y_2,y_3,y_4)$ by dividing the first cell into two partitions, with respective probabilities proportional to $\theta$ and $2$. That is,
+\begin{equation*}
+z \mid y, \theta \sim Binomial (y_1,\frac{\theta}{2+\theta})
+\end{equation*}
+Then the likelihood function is:
+\begin{equation*}
+\begin{split}
+f(y,z \mid \theta) = f(y \mid \theta) \pi(z \mid y, \theta) 
+\\
+\propto (2+\theta)^{y_1}(1-\theta)^{y_2 +y_3}\theta^{y_4} \binom{y_1}{z}(\frac{\theta}{2+\theta})^z (\frac{2}{2+\theta})^{y_1-z}
+\\
+=(1-\theta)^{y_2 +y_3} \theta^{y_4} \theta^{2} z^{y_1-z} \binom{y_1}{z}
+\end{split}
+\end{equation*}
+The conditional posterior of $\theta$ is:
+\begin{equation*}
+\begin{split}
+(\theta \mid y,z)=\int f(y,z \mid \theta) \mathrm{d}z \mathrm{d}y \propto \theta^{y_4+z} (1-\theta)^{y_2 +y_3} I \left [ \theta \in (0,1) \right ]
+\\
+= Beta(y_4+z+1,y_2+y_3+1)
+\end{split}
+\end{equation*}
+To complete the Gibbs sampler, we also generate draws from the conditional posterior distribution of $z$ which is
+\begin{equation*}
+z \mid y,\theta \sim Binomial(y_1,\frac{\theta}{2+\theta})
+\end{equation*}
+\end{enumerate}
+\end{example}
 \chapter*{R Codes}
 
 \lstinputlisting[caption={Triplot Code in R}]{BasicStatistics.R}
 
 \lstinputlisting[caption={Inference Plots Code in R}]{Inference.R}
 
+\lstinputlisting[caption={Rejection Sampling Plots Code in R}]{Reject.R}
 
 \bibliographystyle{plain}
 % Note the spaces between the initials
