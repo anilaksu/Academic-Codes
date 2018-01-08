@@ -1,0 +1,10 @@
+\contentsline {chapter}{\numberline {1}Introduction}{4}
+\contentsline {section}{\numberline {1.1}Stratified Ocean}{4}
+\contentsline {section}{\numberline {1.2}Problem Description And Objectives}{7}
+\contentsline {chapter}{\numberline {2} Analysis}{9}
+\contentsline {section}{\numberline {2.1}Internal wave beam reflection from a surface with a bump }{9}
+\contentsline {section}{\numberline {2.2}Bayesian Analysis}{11}
+\contentsline {subsection}{\numberline {2.2.1}Metropolis Algorithm}{11}
+\contentsline {chapter}{\numberline {3}Results}{14}
+\contentsline {chapter}{\numberline {4}Conclusion}{16}
+\contentsline {chapter}{\numberline {A} R Codes}{17}
