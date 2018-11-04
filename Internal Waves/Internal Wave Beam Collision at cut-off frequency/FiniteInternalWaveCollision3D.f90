@@ -1,20 +1,22 @@
 
 Program FiniteAmplitudeInternalWaveCollision
 
-	!A Three-Dimensional Finite Amplitude Intenal Wave Beam Collision Problem
-	!This program solves transient three wave system based on the publication by Anil A. Aksu
-	!copyright (c) Anil A. Aksu, 2018 
-	!It can be extended to PSI problem after required modifications
-	!This code employs a spectral subdomain decomposition method
+	! A Three-Dimensional Finite Amplitude Intenal Wave Beam Collision Problem
+	! This program solves transient three wave system based on the publication by Anil A. Aksu
+	! copyright (c) Anil A. Aksu, 2018 
+	! This code employs a spectral subdomain decomposition method
 	! The full details of the equation will be published on JFM by Anil Aksu
+	! This is a general solver for three wave problem for finite internal wave beams 
+	! It can be extended to PSI problem after required modifications
+	! with great power, comes great responsibility
 	
 	integer i,j,k,jstart,jend
 	! the start and the end point of the grid 
-	real*8 x_ini, x_end
+	real*8 x_ini,x_end,y_ini,y_end,z_ini,z_end
 	! the time to output data
 	real*8 t_out
-	! the grid points array and corresponding weight
-	real*8, allocatable:: x_grid(:),w(:),x_total(:)
+	! the grid points array and corresponding weight in x,y,z directions
+	real*8, allocatable:: x_grid(:),w_x(:),x_total(:),y_grid(:),w_y(:),y_total(:),z_grid(:),w_z(:),z_total(:)
 	! the counter
 	integer counter
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
