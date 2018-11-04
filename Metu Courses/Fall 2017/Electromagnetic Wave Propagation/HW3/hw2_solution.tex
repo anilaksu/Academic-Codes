@@ -1,0 +1,294 @@
+
+% Homework template for MA 614, Spring 2011.  When a line begins with the percent sign, the typesetter ignores it.  So, use percent signs at the beginning of lines to insert comments to yourself.
+
+
+% Set the document class.  The command [11pt] sets the font at 11 point, which is nicer to read.  The default would be 10pt
+\documentclass[11pt]{amsart} 
+
+
+% Call packages that allow you to invoke certain mathematical symbols.
+\usepackage{amssymb,amsmath,amsthm}
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{graphicx}
+%\usepackage{natbib}
+% Set the title, author, and date information.
+\title{EE 523: Homework 2}
+\author{Anil A. Aksu}
+\date{\today}
+
+
+% Formally begin the document and make the title.
+\begin{document}
+\maketitle
+
+\section*{Problem 1 }
+The PEC plates located at $y=0$ and $y=d$ are infinite in extent and the region $0<y<d$ is
+free space. We assume that guided waves propagate in $+x$-direction.
+
+\subsection*{a}
+Find the expressions of $\bar{E}$ and $\bar{H}$ for $TM_x$ modes. Hint: Start with the assumption $\bar{A}(x,y)=\psi(x,y)\hat{a}_x$.
+\\
+\textbf{Solution:}\\
+The governing equation for $TM_x$ mode can be given as:
+\begin{equation}
+\label{eq:1}
+ \mathbf{\nabla}^2 \psi +k^2 \psi=0.
+\end{equation}
+The solution to the equation \ref{eq:1} can be given as:
+\begin{equation}
+\label{eq:2}
+\psi(x,y)= (\alpha_1 \cos k_y y +\alpha_2 \sin k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}).
+\end{equation}
+where $k_{x}^2+k_{y}^2=k^2$. Also note that
+\begin{equation}
+\label{eq:3}
+\bar{B}=\mathbf{\nabla}\times \bar{A}
+\end{equation}
+Therefore, the magnetic field can be expressed as:
+\begin{equation}
+\label{eq:4}
+\begin{split}
+\bar{B}(x,y)= k_y((\alpha_1 \sin k_y y -\alpha_2 \cos k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_z
+\end{split}
+\end{equation}
+where $\mu_0 \bar{H}=\bar{B}$. Also in the absence of the electric current density, the relation between $\bar{H}$ field and $\bar{E}$ field can be given as:
+\begin{equation}
+\label{eq:5}
+ \mathbf{\nabla}\times \mathbf{H}=-j \omega \varepsilon_0 \mathbf{E}.
+\end{equation}
+Therefore the electric field can be given as:
+\begin{equation}
+\label{eq:6}
+ \mathbf{\nabla}\times \mathbf{H}=-j \omega \varepsilon_0 \mathbf{E}.
+\end{equation}
+Therefore, the electric field can be given as:
+\begin{equation}
+\label{eq:7}
+\begin{split}
+\bar{E}(x,y)= \frac{j k_{y}^2}{\omega \varepsilon_0 \mu_0 }((\alpha_1 \cos k_y y +\alpha_2 \sin k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_x
+\\
+- \frac{j k_{y}k_{x}}{\omega \varepsilon_0 \mu_0 }((\alpha_1 \sin k_y y -\alpha_2 \cos k_y y)(\alpha_3 e^{-j k_x x}-\alpha_4 e^{j k_x x}))\hat{a}_y
+\end{split}
+\end{equation}
+Under the given geometry, the electric field $E_x$ must be zero at $y=0$ and $y=d$, therefore $\alpha_1=0$ and $k_y=n \pi/d$ where $n=1,2,...$. As a result, the electric field can be expressed as:
+\begin{equation}
+\label{eq:8}
+\begin{split}
+\bar{E}(x,y)= \frac{j k_{y}^2}{\omega \varepsilon_0 \mu_0 }(\alpha_2 \sin k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_x
+\\
++\frac{j k_{y}k_{x}}{\omega \varepsilon_0 \mu_0 }( \alpha_2 \cos k_y y)(\alpha_3 e^{-j k_x x}-\alpha_4 e^{j k_x x}))\hat{a}_y
+\end{split}
+\end{equation}
+Also the  magnetic field can be given as:
+\begin{equation}
+\label{eq:9}
+\begin{split}
+\bar{B}(x,y)= -k_y((\alpha_2 \cos k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_z
+\end{split}
+\end{equation}
+\subsection*{b}
+Find the expressions of $\bar{E}$ and $\bar{H}$ for $TE_x$ modes. Hint: Start with the assumption $\bar{F}(x,y)=\psi(x,y)\hat{a}_x$ 
+\\
+\textbf{Solution:}\\
+The governing equation for $TM_x$ mode can be given as:
+\begin{equation}
+\label{eq:10}
+ \mathbf{\nabla}^2 \psi +k^2 \psi=0.
+\end{equation}
+The solution to the equation \ref{eq:1} can be given as:
+\begin{equation}
+\label{eq:11}
+\psi(x,y)= (\alpha_1 \cos k_y y +\alpha_2 \sin k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}).
+\end{equation}
+where $k_{x}^2+k_{y}^2=k^2$. Also note that
+\begin{equation}
+\label{eq:12}
+\bar{E}=\frac{1}{\varepsilon_0}\mathbf{\nabla}\times \bar{F}
+\end{equation}
+Therefore, the electric field can be expressed as:
+\begin{equation}
+\label{eq:13}
+\begin{split}
+\bar{E}(x,y)= \frac{k_y}{\varepsilon_0}((\alpha_1 \sin k_y y -\alpha_2 \cos k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_z
+\end{split}
+\end{equation}
+Under the given geometry, the electric field $E_z$ must be zero at $y=0$ and $y=d$, therefore $\alpha_2=0$ and $k_y=n \pi/d$ where $n=1,2,...$. As a result, the electric field can be expressed as:
+\begin{equation}
+\label{eq:14}
+\begin{split}
+\bar{E}(x,y)= \frac{k_y}{\varepsilon_0}((\alpha_1 \sin k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_z
+\end{split}
+\end{equation}
+By using the relation below
+\begin{equation}
+\label{eq:15}
+\mathbf{\nabla}\times \mathbf{E}=j \omega \mu \mathbf{H}.
+\end{equation}
+\begin{equation}
+\label{eq:16}
+\begin{split}
+\bar{H}(x,y)= \frac{j k_{y}^2}{\omega \varepsilon_0 \mu_0 }(\alpha_1 \cos k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_x
+\\
++\frac{j k_{y}k_{x}}{\omega \varepsilon_0 \mu_0 }( \alpha_1 \sin k_y y)(\alpha_3 e^{-j k_x x}-\alpha_4 e^{j k_x x}))\hat{a}_y
+\end{split}
+\end{equation}
+\subsection*{c}
+By using Love’s equivalence principle, show that the electromagnetic fields in the
+region $x>0$ can be evaluated as the fields generated by the magnetic surface current
+over the waveguide opening (i.e. $x<0$, $0<y<d$) with density $\bar{J}_m = 2\bar{E}\times \hat{a}_x$.
+\\
+\textbf{Solution:}\\
+By Love's equivalence theorem, Assuming the wave guide opening at $x=0$ is PEC, the electric field inside the wave guide can be replaced with the surface current as:
+\begin{equation}
+\bar{J}_m=  \bar{E}\times \hat{a}_x
+\end{equation}
+Also making use of image theory, PEC surface can also be eliminated by also adding equivalent source due to image, therefore the equivalent source is given as:
+\begin{equation}
+\bar{J}_m \approx 2\bar{E}\times \hat{a}_x.
+\end{equation}
+
+\subsection*{d}
+Assuming that the $\bar{E}$ field over the waveguide opening is approximately equal to the $\bar{E}$ field within the waveguide, evaluate the far field expressions of the $\bar{E}$ and $\bar{H}$ fields when the waveguide is supporting the fundamental $TM_x$ mode.
+\\
+\textbf{Solution:}\\
+The $TM_x$ mode of electric field inside the wave guide is found as:
+\begin{equation}
+\label{eq:17}
+\begin{split}
+\bar{E}(x,y)= \frac{j k_{y}^2}{\omega \varepsilon_0 \mu_0 }(\alpha_2 \sin k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_x
+\\
++\frac{j k_{y}k_{x}}{\omega \varepsilon_0 \mu_0 }( \alpha_2 \cos k_y y)(\alpha_3 e^{-j k_x x}-\alpha_4 e^{j k_x x}))\hat{a}_y
+\end{split}
+\end{equation}
+By using the equivalence theorem, the equivalent surface magnetic current can be calculated as:
+\begin{equation}
+\bar{J}_m \approx \frac{j 2 k_{y}k_{x}}{\omega \varepsilon_0 \mu_0 }( \alpha_2 \cos k_y y)(\alpha_3 e^{-j k_x x}-\alpha_4 e^{j k_x x}))\hat{a}_z
+\end{equation}
+The magnetic potential for given magnetic current at the far field can be computed as:
+\begin{equation}
+\label{eq:18}
+\bar{A}(x,y)=\frac{\mu_0}{4 \pi}\int \bar{J}_m(\bar{r}') \frac{e^{-jk\left | \bar{r}-\bar{r}' \right |}}{\left | \bar{r}-\bar{r}' \right |}\mathrm{d} s' \approx \frac{\mu_0 e^{-jkr}}{4 \pi r}\int \bar{J}_m(\bar{r}') e^{jk\bar{r}'}\mathrm{d} s'.
+\end{equation}
+The integral in equation \ref{eq:18} can be explicitly given as:
+\begin{equation}
+\label{eq:19}
+\bar{A}(x,y) \approx \hat{a}_z \frac{\mu_0 e^{-jkr}}{4 \pi r}\frac{j 2 \alpha_2 k_{y}k_{x}}{\omega \varepsilon_0 \mu_0 }(\alpha_3 e^{-j k_x x}-\alpha_4 e^{j k_x x})) \underbrace{\int_{0}^{d} \cos k_y y' e^{jk (x\cos \phi+y'\sin \phi)}\mathrm{d} y'}_{\bar{N}}.
+\end{equation}
+Therefore,
+\begin{equation}
+\bar{A}(x,y) \approx \hat{a}_z \frac{\mu_0 e^{-jkr}}{4 \pi r}\frac{j 2 \alpha_2 k_{y}k_{x}}{\omega \varepsilon_0 \mu_0 }(\alpha_3 e^{-j k_x x}-\alpha_4 e^{j k_x x}))\bar{N}(x).
+\end{equation}
+As a result, the electric field at the far field can be given as:
+\begin{equation}
+\bar{E}(x,y) \approx \hat{a}_z \frac{\mu_0 e^{-jkr}}{4 \pi r}\frac{2 \alpha_2 k_{y}k_{x}}{\varepsilon_0 \mu_0 }(\alpha_3 e^{-j k_x x}-\alpha_4 e^{j k_x x}))\bar{N}(x).
+\end{equation}
+
+\subsection*{e}
+Repeat part iv. when the waveguide is supporting the fundamental $TE_x$ mode.
+\\
+\textbf{Solution:}\\
+The $TE_x$ mode of electric field inside the wave guide is found as:
+\begin{equation}
+\label{eq:20}
+\begin{split}
+\bar{E}(x,y)= \frac{k_y}{\varepsilon_0}((\alpha_1 \sin k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_z
+\end{split}
+\end{equation}
+By using the equivalence theorem, the equivalent surface magnetic current can be calculated as:
+\begin{equation}
+\bar{J}_m \approx \frac{2 k_y}{\varepsilon_0}((\alpha_1 \sin k_y y)(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\hat{a}_y
+\end{equation}
+The magnetic potential for given magnetic current can be computed as:
+\begin{equation}
+\label{eq:21}
+\bar{A}(x,y)=\frac{\mu_0}{4 \pi}\int \bar{J}_m(\bar{r}') \frac{e^{-jk\left | \bar{r}-\bar{r}' \right |}}{\left | \bar{r}-\bar{r}' \right |}\mathrm{d} s'.
+\end{equation}
+The integral in equation \ref{eq:21} can be explicitly given as:
+\begin{equation}
+\label{eq:22}
+\bar{A}(x,y) \approx \hat{a}_y \frac{\mu_0 e^{-jkr}}{4 \pi r}\frac{2 \alpha_1 k_y}{\varepsilon_0}(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x})) \underbrace{\int_{0}^{d} \sin k_y y' e^{jk (x\cos \phi+y'\sin \phi)}\mathrm{d} y'}_{\bar{N}}.
+\end{equation}
+Therefore,
+\begin{equation}
+\bar{A}(x,y) \approx \hat{a}_y \frac{\mu_0 e^{-jkr}}{4 \pi r}\frac{2 \alpha_1 k_y}{\varepsilon_0}(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\bar{N}(x).
+\end{equation}
+As a result, the electric field at the far field can be given as:
+\begin{equation}
+\bar{E}(x,y) \approx -\hat{a}_y \frac{\mu_0 e^{-jkr}}{4 \pi r}\frac{2 j \alpha_1 k_y \omega}{\varepsilon_0}(\alpha_3 e^{-j k_x x}+\alpha_4 e^{j k_x x}))\bar{N}(x).
+\end{equation}
+\section*{Problem 2 }
+In the exponent, we have the term $\frac{1}{\tau_{0}^2+jk''(\omega_0)z}=\frac{\tau_{0}^2}{\tau_{0}^4+(k''(\omega_0)z)^2}-\frac{jk''(\omega_0)z}{\tau_{0}^4+(k''(\omega_0)z)^2}$, real part of which can be interpreted as the inverse of the square of pulse duration as the pulse propagates. Why?
+\\
+So: $\tau^2(z)=\tau_{0}^2+\frac{(k''(\omega_0)z)^2}{\tau_{0}^2}$
+\\
+\textbf{Solution:}\\
+Since the wave envelope is composed of spectrum of wave numbers, as it propagates, the wave envelope spreads out due to dispersion. Actually, each wave number propagates with different group velocities, however at the first order Taylor expansion of the wave number around $\omega$, only group velocity term appears. It does not include the effect of the dispersion, it just translates the wave envelope along the direction of the group velocity. However, the second order term adds the effect of the dispersion, therefore the wave enveloper spreads out dispersively.
+
+\subsection*{a}
+Suppose that a wave in the form $E_x(y,z,t)=A \sin(\frac{\pi y}{b})a(z,t)e^{j(\omega t-k(\omega)z)}$ propagates in the WR90 wave guide, whose specifications are given in table 1. Let $\omega_0=2 \pi \times 10^{10} rad/s$ and assume that the envelope is a Gaussian pulse with approximate duration $\tau_0=1\mu s$ at $z=0$. $A$ is constant, $b=2a$, and the wave guide is empty (no material)   .
+\begin{enumerate}
+\item Identify the wave guide mode given above. Is it the fundamental mode?
+\\
+\textbf{Solution:}\\
+Assuming that the width of the wave guide is $b$, the fundamental mode can be given as:
+\begin{equation}
+k_{y}^f=\frac{\pi y}{b}
+\end{equation}
+Therefore, it is fundamental mode.
+\item Find the phase and group velocities of the wave and determine the phase and group delays when the wave propagates a distance $L=1m$. Since there is no material medium in the wave guide, how can you explain the dispersion in this case?
+\\
+\textbf{Solution:}\\
+the dispersion relation in this case can be given as:
+\begin{equation}
+k^2+(\frac{\pi}{b})^2=\mu_0 \varepsilon_0 \omega^2
+\end{equation}
+where $\mu_0 \varepsilon_0=1.1 \times 10^{-19} s^2/m^2$ and $b=0.0254m$, therefore
+\begin{equation}
+k=183.1\times 10^3 m^{-1}
+\end{equation}
+The group velocity is defined as:
+\begin{equation}
+Cg=\frac{\partial \omega}{\partial k}=\frac{1}{\sqrt{\mu_0 \varepsilon_0}}\frac{k}{\sqrt{k^2+(\frac{\pi}{b})^2}}=1.87 \times 10^{-6}\frac{m}{s}.
+\end{equation}
+Therefore, the phase delay $kL=183.1\times 10^3 rad$ and the group delay $L/Cg=533\times 10^{3}s$. Since the wave envelope is composed of different frequencies, each of follows differing Ray paths during the reflection from the wall of the wave guide, therefore as the Ray path of each frequency changes, the envelope again spreads out.
+\item Find the change in pulse duration at $L=1m$.
+\\
+\textbf{Solution:}\\
+\begin{equation}
+k''(\omega_0)=-\frac{(\mu_0 \varepsilon_0 \omega)^2}{(\mu_0 \varepsilon_0 \omega^2-(\frac{\pi}{b})^2)^{3/2}}+\frac{\mu_0 \varepsilon_0 }{(\mu_0 \varepsilon_0 \omega^2-(\frac{\pi}{b})^2)^{1/2}}=-4.05\times 10^{-11}\frac{s^2}{m}
+\end{equation}
+Therefore, $\tau(1m)=6.36\times 10^{-3}s$
+
+\end{enumerate}
+\subsection*{b}
+Repeat a for $\omega_0=2 \pi \times 6.6 \times 10^{10} rad/s$. Comment on your results.
+\begin{enumerate}
+\item Find the phase and group velocities of the wave and determine the phase and group delays when the wave propagates a distance $L=1m$. Since there is no material medium in the wave guide, how can you explain the dispersion in this case?
+\\
+\textbf{Solution:}\\
+the dispersion relation in this case can be given as:
+\begin{equation}
+k^2+(\frac{\pi}{b})^2=\mu_0 \varepsilon_0 \omega^2
+\end{equation}
+where $\mu_0 \varepsilon_0=8.5 \times 10^{-6} s^2/m^2$ and $b=0.0254m$, therefore
+\begin{equation}
+k=187.7\times 10^6 m^{-1}
+\end{equation}
+The group velocity is defined as:
+\begin{equation}
+Cg=\frac{\partial \omega}{\partial k}=\frac{1}{\sqrt{\mu_0 \varepsilon_0}}\frac{k}{\sqrt{k^2+(\frac{\pi}{b})^2}}=330.267\frac{m}{s}.
+\end{equation}
+Therefore, the phase delay $kL=730.5 rad$ and the group delay $L/Cg=3.03\times 10^{-3}s$. 
+\item Find the change in pulse duration at $L=1m$.
+\\
+\textbf{Solution:}\\
+\begin{equation}
+k''(\omega_0)=-\frac{(\mu_0 \varepsilon_0 \omega)^2}{(\mu_0 \varepsilon_0 \omega^2-(\frac{\pi}{b})^2)^{3/2}}+\frac{\mu_0 \varepsilon_0 }{(\mu_0 \varepsilon_0 \omega^2-(\frac{\pi}{b})^2)^{1/2}}
+\end{equation}
+Therefore, $\tau(1m)=6.36\times 10^{-3}s$
+\end{enumerate}
+\bibliographystyle{plain}
+% Note the spaces between the initials
+\bibliography{EE523}
+
+\end{document}

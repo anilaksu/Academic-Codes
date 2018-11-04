@@ -1,0 +1,712 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.8.25)  23 JAN 2018 15:53
+entering extended mode
+**./TakeHomeFinalExam.tex
+(TakeHomeFinalExam.tex
+LaTeX2e <2017/01/01> patch level 1
+Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsart.cls"
+Document Class: amsart 2015/03/04 v2.20.2
+\linespacing=\dimen102
+\normalparindent=\dimen103
+\normaltopskip=\skip41
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip42
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen104
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen105
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count79
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count80
+\leftroot@=\count81
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count82
+\DOTSCASE@=\count83
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen106
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count84
+\c@MaxMatrixCols=\count85
+\dotsspace@=\muskip10
+\c@parentequation=\count86
+\dspbrk@lvl=\count87
+\tag@help=\toks15
+\row@=\count88
+\column@=\count89
+\maxfields@=\count90
+\andhelp@=\toks16
+\eqnshift@=\dimen107
+\alignsep@=\dimen108
+\tagshift@=\dimen109
+\tagwidth@=\dimen110
+\totwidth@=\dimen111
+\lineht@=\dimen112
+\@envbody=\toks17
+\multlinegap=\skip43
+\multlinetaggap=\skip44
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 388.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+\copyins=\insert199
+\abstractbox=\box28
+\listisep=\skip45
+\c@part=\count91
+\c@section=\count92
+\c@subsection=\count93
+\c@subsubsection=\count94
+\c@paragraph=\count95
+\c@subparagraph=\count96
+\c@figure=\count97
+\c@table=\count98
+\abovecaptionskip=\skip46
+\belowcaptionskip=\skip47
+\captionindent=\dimen113
+\thm@style=\toks19
+\thm@bodyfont=\toks20
+\thm@headfont=\toks21
+\thm@notefont=\toks22
+\thm@headpunct=\toks23
+\thm@preskip=\skip48
+\thm@postskip=\skip49
+\thm@headsep=\skip50
+\dth@everypar=\toks24
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+) (mcode.sty
+-- Package: `mcode' 2.3 <2012/08/31> --
+Package: mcode 2012/08/31 2.3
+ - settings optimized for display (colour formating)
+ - line numbering enabled
+ - literate programming (character replacements) enabled
+ - automatic line breaking enabled (careful, buggy!)
+ - framed listings
+("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count99
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks25
+)
+\lst@mode=\count100
+\lst@gtempboxa=\box29
+\lst@token=\toks26
+\lst@length=\count101
+\lst@currlwidth=\dimen114
+\lst@column=\count102
+\lst@pos=\count103
+\lst@lostspace=\dimen115
+\lst@width=\dimen116
+\lst@newlines=\count104
+\lst@lineno=\count105
+\lst@maxwidth=\dimen117
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count106
+\lst@skipnumbers=\count107
+\lst@framebox=\box30
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
+Package: textcomp 2017/01/24 v2.0c Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
+\lbreakdots=\box31
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 220.
+
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+)
+\Gin@req@height=\dimen118
+\Gin@req@width=\dimen119
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen120
+\captionmargin@=\dimen121
+\captionwidth=\dimen122
+\caption@tempdima=\dimen123
+\caption@indent=\dimen124
+\caption@parindent=\dimen125
+\caption@hangindent=\dimen126
+)
+Package caption Info: AMS or SMF document class.
+\c@ContinuedFloat=\count108
+Package caption Info: listings package is loaded.
+)
+\c@subfigure=\count109
+\c@subtable=\count110
+)
+(TakeHomeFinalExam.aux
+
+LaTeX Warning: Label `eq:9' multiply defined.
+
+
+LaTeX Warning: Label `fig:gull' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:gull' multiply defined.
+
+
+LaTeX Warning: Label `fig:tiger' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:tiger' multiply defined.
+
+
+LaTeX Warning: Label `fig:gull' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:gull' multiply defined.
+
+
+LaTeX Warning: Label `fig:tiger' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:tiger' multiply defined.
+
+
+LaTeX Warning: Label `fig:gull' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:gull' multiply defined.
+
+
+LaTeX Warning: Label `fig:tiger' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:tiger' multiply defined.
+
+
+LaTeX Warning: Label `fig:RCS' multiply defined.
+
+)
+\openout1 = `TakeHomeFinalExam.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 22.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Try loading font information for U+msa on input line 22.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 22.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count111
+\scratchdimen=\dimen127
+\scratchbox=\box32
+\nofMPsegments=\count112
+\nofMParguments=\count113
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count114
+\MPscratchDim=\dimen128
+\MPnumerator=\count115
+\makeMPintoPDFobject=\count116
+\everyMPtoPDFconversion=\toks28
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+\c@lstlisting=\count117
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+Overfull \hbox (56.5235pt too wide) detected at line 65
+[]\OT1/cmr/m/n/10.95 ([]) = \OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 (\OML/cmm
+/m/it/10.95 k\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95   []\OML/cmm/m/it/10.95 
+H[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 k\OT1/cmr/m/n/10.95 ) + 2 [] \OML/c
+mm/m/it/10.95 j[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 J[]\OT1/cmr/m/n/10.95 
+(\OML/cmm/m/it/10.95 k\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95   []\OML/cmm/m/
+it/10.95 H[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 k\OT1/cmr/m/n/10.95 )) [] 
+\OML/cmm/m/it/10.95 n\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95  \OMS/cmsy/m/n/10
+.95   \OML/cmm/m/it/10.95 []\OT1/cmr/m/n/10.95 )
+ []
+
+[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Package epstopdf Info: Source file: <ScatRelative.eps>
+(epstopdf)                    date: 2018-01-22 14:58:00
+(epstopdf)                    size: 37082 bytes
+(epstopdf)             Output file: <ScatRelative-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-01-22 14:58:09
+(epstopdf)                    size: 4867 bytes
+(epstopdf)             Command: <epstopdf --outfile=ScatRelative-eps-converted-
+to.pdf ScatRelative.eps>
+(epstopdf)             \includegraphics on input line 88.
+Package epstopdf Info: Output file is already uptodate.
+
+<ScatRelative-eps-converted-to.pdf, id=16, 421.575pt x 316.18124pt>
+File: ScatRelative-eps-converted-to.pdf Graphic file (type pdf)
+
+<use ScatRelative-eps-converted-to.pdf>
+Package pdftex.def Info: ScatRelative-eps-converted-to.pdf used on input line 8
+8.
+(pdftex.def)             Requested size: 295.10048pt x 221.32535pt.
+ [2 <./ScatRelative-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <RCSka01.eps>
+(epstopdf)                    date: 2018-01-23 09:54:30
+(epstopdf)                    size: 34234 bytes
+(epstopdf)             Output file: <RCSka01-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-01-23 09:56:17
+(epstopdf)                    size: 8710 bytes
+(epstopdf)             Command: <epstopdf --outfile=RCSka01-eps-converted-to.pd
+f RCSka01.eps>
+(epstopdf)             \includegraphics on input line 106.
+Package epstopdf Info: Output file is already uptodate.
+ <RCSka01-eps-converted-to.pdf, id=25, 276.03125pt x 293.095pt>
+File: RCSka01-eps-converted-to.pdf Graphic file (type pdf)
+
+<use RCSka01-eps-converted-to.pdf>
+Package pdftex.def Info: RCSka01-eps-converted-to.pdf used on input line 106.
+(pdftex.def)             Requested size: 161.9989pt x 172.02113pt.
+Package epstopdf Info: Source file: <RCSka1.eps>
+(epstopdf)                    date: 2018-01-23 09:55:05
+(epstopdf)                    size: 33601 bytes
+(epstopdf)             Output file: <RCSka1-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-01-23 09:56:18
+(epstopdf)                    size: 7943 bytes
+(epstopdf)             Command: <epstopdf --outfile=RCSka1-eps-converted-to.pdf
+ RCSka1.eps>
+(epstopdf)             \includegraphics on input line 113.
+Package epstopdf Info: Output file is already uptodate.
+
+<RCSka1-eps-converted-to.pdf, id=26, 276.03125pt x 293.095pt>
+File: RCSka1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use RCSka1-eps-converted-to.pdf>
+Package pdftex.def Info: RCSka1-eps-converted-to.pdf used on input line 113.
+(pdftex.def)             Requested size: 161.9989pt x 172.02113pt.
+Package epstopdf Info: Source file: <RCSka10.eps>
+(epstopdf)                    date: 2018-01-23 09:55:23
+(epstopdf)                    size: 32049 bytes
+(epstopdf)             Output file: <RCSka10-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-01-23 09:56:19
+(epstopdf)                    size: 7705 bytes
+(epstopdf)             Command: <epstopdf --outfile=RCSka10-eps-converted-to.pd
+f RCSka10.eps>
+(epstopdf)             \includegraphics on input line 119.
+Package epstopdf Info: Output file is already uptodate.
+
+<RCSka10-eps-converted-to.pdf, id=27, 276.03125pt x 293.095pt>
+File: RCSka10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use RCSka10-eps-converted-to.pdf>
+Package pdftex.def Info: RCSka10-eps-converted-to.pdf used on input line 119.
+(pdftex.def)             Requested size: 161.9989pt x 172.02113pt.
+Package epstopdf Info: Source file: <RCSka100.eps>
+(epstopdf)                    date: 2018-01-23 09:56:03
+(epstopdf)                    size: 32034 bytes
+(epstopdf)             Output file: <RCSka100-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-01-23 09:56:20
+(epstopdf)                    size: 7386 bytes
+(epstopdf)             Command: <epstopdf --outfile=RCSka100-eps-converted-to.p
+df RCSka100.eps>
+(epstopdf)             \includegraphics on input line 126.
+Package epstopdf Info: Output file is already uptodate.
+
+<RCSka100-eps-converted-to.pdf, id=28, 276.03125pt x 293.095pt>
+File: RCSka100-eps-converted-to.pdf Graphic file (type pdf)
+
+<use RCSka100-eps-converted-to.pdf>
+Package pdftex.def Info: RCSka100-eps-converted-to.pdf used on input line 126.
+(pdftex.def)             Requested size: 161.9989pt x 172.02113pt.
+ [3 <./RCSka01-eps-converted-to.pdf> <./RCSka1-eps-converted-to.pdf> <./RCSka10
+-eps-converted-to.pdf> <./RCSka100-eps-converted-to.pdf>]
+Overfull \hbox (21.40663pt too wide) detected at line 168
+[]\OT1/cmr/m/n/10.95 ([]) = \OMS/cmsy/m/n/10.95  [] [] []\OT1/cmr/m/n/10.95 ([]
+)\OML/cmm/m/it/10.95 H[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 k []\OT1/cmr/m/
+n/10.95 )\OML/cmm/m/it/10.95 a\OT1/cmr/m/n/10.95 d\OML/cmm/m/it/10.95  \OMS/cm
+sy/m/n/10.95   [][] [] []\OT1/cmr/m/n/10.95 ([])\OML/cmm/m/it/10.95 e[]a\OT1/c
+mr/m/n/10.95 d\OML/cmm/m/it/10.95 :
+ []
+
+
+Overfull \hbox (110.90524pt too wide) detected at line 173
+[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 r; \OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/
+n/10.95   [][] [][] []\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 [] \OMS/cmsy/m/
+n/10.95   \OML/cmm/m/it/10.95 []\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 e[]e[]
+\OT1/cmr/m/n/10.95 d\OML/cmm/m/it/10.95 []:
+ []
+
+[4]
+Package epstopdf Info: Source file: <AsymRCSka10.eps>
+(epstopdf)                    date: 2018-01-23 15:47:07
+(epstopdf)                    size: 36106 bytes
+(epstopdf)             Output file: <AsymRCSka10-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-01-23 15:52:27
+(epstopdf)                    size: 8371 bytes
+(epstopdf)             Command: <epstopdf --outfile=AsymRCSka10-eps-converted-t
+o.pdf AsymRCSka10.eps>
+(epstopdf)             \includegraphics on input line 179.
+Package epstopdf Info: Output file is already uptodate.
+ <AsymRCSka10-eps-converted-to.pdf, id=53, 336.25626pt x 293.095pt>
+File: AsymRCSka10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use AsymRCSka10-eps-converted-to.pdf>
+Package pdftex.def Info: AsymRCSka10-eps-converted-to.pdf used on input line 17
+9.
+(pdftex.def)             Requested size: 180.0pt x 156.89595pt.
+Package epstopdf Info: Source file: <AsymEka10.eps>
+(epstopdf)                    date: 2018-01-23 15:47:40
+(epstopdf)                    size: 32924 bytes
+(epstopdf)             Output file: <AsymEka10-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-01-23 15:52:28
+(epstopdf)                    size: 7349 bytes
+(epstopdf)             Command: <epstopdf --outfile=AsymEka10-eps-converted-to.
+pdf AsymEka10.eps>
+(epstopdf)             \includegraphics on input line 186.
+Package epstopdf Info: Output file is already uptodate.
+
+<AsymEka10-eps-converted-to.pdf, id=54, 358.33875pt x 293.095pt>
+File: AsymEka10-eps-converted-to.pdf Graphic file (type pdf)
+
+<use AsymEka10-eps-converted-to.pdf>
+Package pdftex.def Info: AsymEka10-eps-converted-to.pdf used on input line 186.
+
+(pdftex.def)             Requested size: 180.0pt x 147.22691pt.
+
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 178--190
+ [][] [] 
+ []
+
+Package epstopdf Info: Source file: <AsymRCSka100.eps>
+(epstopdf)                    date: 2018-01-23 15:49:00
+(epstopdf)                    size: 32893 bytes
+(epstopdf)             Output file: <AsymRCSka100-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-01-23 15:52:29
+(epstopdf)                    size: 7560 bytes
+(epstopdf)             Command: <epstopdf --outfile=AsymRCSka100-eps-converted-
+to.pdf AsymRCSka100.eps>
+(epstopdf)             \includegraphics on input line 192.
+Package epstopdf Info: Output file is already uptodate.
+<AsymRCSka100-eps-converted-to.pdf, id=55, 331.2375pt x 295.1025pt>
+File: AsymRCSka100-eps-converted-to.pdf Graphic file (type pdf)
+
+<use AsymRCSka100-eps-converted-to.pdf>
+Package pdftex.def Info: AsymRCSka100-eps-converted-to.pdf used on input line 1
+92.
+(pdftex.def)             Requested size: 180.0pt x 160.36162pt.
+Package epstopdf Info: Source file: <AsymEka100.eps>
+(epstopdf)                    date: 2018-01-23 15:49:16
+(epstopdf)                    size: 31326 bytes
+(epstopdf)             Output file: <AsymEka100-eps-converted-to.pdf>
+(epstopdf)                    date: 2018-01-23 15:52:30
+(epstopdf)                    size: 7138 bytes
+(epstopdf)             Command: <epstopdf --outfile=AsymEka100-eps-converted-to
+.pdf AsymEka100.eps>
+(epstopdf)             \includegraphics on input line 199.
+Package epstopdf Info: Output file is already uptodate.
+
+<AsymEka100-eps-converted-to.pdf, id=56, 362.35374pt x 293.095pt>
+File: AsymEka100-eps-converted-to.pdf Graphic file (type pdf)
+
+<use AsymEka100-eps-converted-to.pdf>
+Package pdftex.def Info: AsymEka100-eps-converted-to.pdf used on input line 199
+.
+(pdftex.def)             Requested size: 180.0pt x 145.59901pt.
+
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 191--203
+ [][] [] 
+ []
+
+[5 <./AsymRCSka10-eps-converted-to.pdf> <./AsymEka10-eps-converted-to.pdf> <./A
+symRCSka100-eps-converted-to.pdf> <./AsymEka100-eps-converted-to.pdf>]
+(EE523TakeHomeFinal.m
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 10.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ts1pcr.fd"
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+) [6]) (fun_cylinder_PEC.m
+Overfull \hbox (60.47554pt too wide) in paragraph at lines 2--3
+[][][][][]  
+ []
+
+
+Overfull \hbox (60.47554pt too wide) in paragraph at lines 5--7
+[][][][][]  
+ []
+
+[7]
+Overfull \hbox (146.87642pt too wide) in paragraph at lines 29--31
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][]  
+ []
+
+) (RCSPlot.m
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 27.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspcr.fd"
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
+)
+(getRCS.m [8]
+Overfull \hbox (17.2751pt too wide) in paragraph at lines 26--28
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+) (AsymptoticElectricField.m [9]) (getAysmptoticElectric.m) [10] (getIntFunc.m
+Overfull \hbox (283.47801pt too wide) in paragraph at lines 4--6
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+) [11] (TakeHomeFinalExam.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 6418 strings out of 493333
+ 90779 string characters out of 3139182
+ 240735 words of memory out of 3000000
+ 9664 multiletter control sequences out of 15000+200000
+ 13811 words of font info for 54 fonts, out of 3000000 for 9000
+ 1302 hyphenation exceptions out of 8191
+ 42i,16n,43p,416b,1653s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on TakeHomeFinalExam.pdf (11 pages, 274710 bytes).
+PDF statistics:
+ 152 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+
