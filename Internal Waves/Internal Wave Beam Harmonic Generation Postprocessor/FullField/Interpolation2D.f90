@@ -1,3 +1,7 @@
+! The nonlinear higher harmonics and mean flow generation is analyzed by postprocessing 
+	! the pressure and the velocity data obtained form the main solver
+	! copyright (c) Anil A. Aksu, 2018 
+	! The particular program band-pass filters the pressure and the velocity data around the zeroth mode
 subroutine MeanPU(PU,P,U,V,Cgx,Cgz,N)
 !5 Point Gauss Quadrature so N = 5
  integer i
