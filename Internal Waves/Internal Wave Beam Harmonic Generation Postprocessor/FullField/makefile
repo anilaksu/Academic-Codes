@@ -2,7 +2,7 @@ SHELL=/bin/sh
 
 F77_SRC = fftmod.f
 
-F90_SRC =  FieldFilter.f90  Interpolation2D.f90 Pread.f90 filter.f90
+F90_SRC =  FieldFilter.f90  Interpolation2D.f90 ReadData.f90 Filter.f90
 	
 
 F77_OBJS = $(patsubst %.f, %.o, $(F77_SRC))
